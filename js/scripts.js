@@ -1,5 +1,5 @@
 //   all ------------------
-function  initEasybook() {
+function  initShareYaSpace() {
     "use strict";
     //   loader ------------------
     $(".loader-wrap").fadeOut(300, function () {
@@ -1128,6 +1128,6 @@ $(".notification-close").on("click", function () {
 });
 //   Init All ------------------
 $(document).ready(function () {
-    initEasybook();
+    initShareYaSpace();
     initparallax();
 });
