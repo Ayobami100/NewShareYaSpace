@@ -114,7 +114,7 @@
                 id: i,
                 label: {
                     text: "" + (i + 1),
-                    color: "#3AACED",
+                    color: "#90EE90",
                     fontSize: "11px",
                     fontWeight: "bold",
                 },

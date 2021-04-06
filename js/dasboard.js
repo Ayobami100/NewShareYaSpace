@@ -39,8 +39,8 @@ var config = {
                 label: 'Bookings',
                 fill: false,
                 animation: false,
-                backgroundColor: "#3AACED",
-                borderColor: "#3AACED",
+                backgroundColor: "#90EE90",
+                borderColor: "#90EE90",
                 pointBorderWidth: 10,
                 pointHoverBorderWidth: 10,
 
