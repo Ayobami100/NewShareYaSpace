@@ -17,7 +17,7 @@ body{
   	margin: 0px;
  	padding: 0px;
 	text-align:center;
-	background: #228B22;
+	background: #0a844a;
 	color:#000;
 	font-family: 'Nunito', sans-serif;
 }
@@ -32,7 +32,7 @@ body{
 	right:0;
 	bottom:0;
 	z-index:100;
-	background: #228B22;
+	background: #0a844a;
 }
 .pin , .ajax-loader {
 	position:absolute;

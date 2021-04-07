@@ -3,7 +3,7 @@ f@charset "utf-8";
  [ -Main Stylesheet-
   Theme: ShareYaSpace
   Version: 1.0
-  Last change: 16/08/2018 ]
+  Last change: 16/08/2021 ]
 ++ Fonts ++
 ++ General Style ++
 ++ Typography ++
@@ -26,7 +26,7 @@ body{
   	margin: 0px;
  	padding: 0px;
 	text-align:center;
-	background: #228B22;
+	background: #0a844a;
 	color:#000;
 	font-family: 'Nunito', sans-serif;
 }
@@ -72,7 +72,7 @@ blockquote p {
 	right:0;
 	bottom:0;
 	z-index:100;
-	background: #228B22;
+	background: #0a844a;
 }
 .pin , .ajax-loader {
 	position:absolute;
@@ -361,7 +361,7 @@ transform: rotate(360deg);
 	margin-top:20px;
 	border-radius:6px;
 	font-weight:700;
-	background: #228B22;
+	background: #0a844a;
 	box-shadow: 0px 0px 0px 7px rgba(204,204,204,0.4);
 }
 .load-more-button i {
@@ -460,7 +460,7 @@ transform: rotate(360deg);
 	border-bottom:1px solid  rgba(0,0,0,0.21);
 	-webkit-transform: translate3d(0,0,0);
 	height:110px;
-	background:#228B22;
+	background:#0a844a;
 }
 .fs-header {
 	padding:0px 50px;
@@ -704,7 +704,7 @@ transform: rotate(360deg);
 	padding:6px 14px;
 }
 .lang-tooltip li:hover , .currency-tooltip li:hover {
-	background:#228B22;
+	background:#0a844a;
 }
 .currency-tooltip li {
 	margin-bottom:4px;
@@ -1094,7 +1094,7 @@ nav li ul a:before , nav li ul a:after {
 	position:relative;
 }
 .main-footer   {
-	background:#228B22;
+	background:#0a844a;
 	z-index:3;
 	overflow:hidden;	
 }
@@ -1119,7 +1119,7 @@ nav li ul a:before , nav li ul a:after {
 	background-origin: content-box;
 }
 .sub-footer {
-	background: #046307;
+	background: #1B5E20;
 	padding:34px 0 20px;
 	z-index:3;
 }
@@ -1171,7 +1171,7 @@ nav li ul a:before , nav li ul a:after {
 	bottom:0;
 	margin-bottom:30px;
 	padding:15px 0;
-	background: #228B22;
+	background: #0a844a;
 	right:0;
 	width:80%;
 	border-radius:4px;
@@ -1459,7 +1459,7 @@ nav li ul a:before , nav li ul a:after {
 	padding-left:10px;
 }
 .contact-btn:hover{
-	background: #228B22;
+	background: #0a844a;
 }
 .subscribe-wrap {
 	padding:90px 0;
@@ -1537,7 +1537,7 @@ nav li ul a:before , nav li ul a:after {
 	border-top-right-radius:4px;
 	border-bottom-right-radius:4px;
 	z-index:2;
-	background: #228B22;
+	background: #0a844a;
 	color:#fff;
 }
 .footer-widget #subscribe-button:hover i {
@@ -2087,7 +2087,7 @@ section.hero-section   {
 	margin-bottom:10px;
 	font-size: 11px;
     border-radius: 4px;
-    background: #228B22;
+    background: #0a844a;
     color: #fff;
     padding: 9px 12px;
 	position:relative;
@@ -2971,7 +2971,7 @@ input[type=number]
 	right:-10px;
 	top:-40px;
 	border-radius: 4px;
-    background: #228B22;
+    background: #0a844a;
 	height: 30px;
     line-height: 30px;
     min-width: 100px;
@@ -3183,7 +3183,7 @@ input[type=number]
 	color:#fff;
 	float:left;
 	font-size:11px;
-	background: #228B22;
+	background: #0a844a;
 }
 .mapnavigation a i {
 	padding:0 5px;
@@ -3599,7 +3599,7 @@ input[type=number]
 	visibility: hidden;
 	padding:9px 0;
 	border-radius:4px;
-	background: #228B22;
+	background: #0a844a;
 	color:#fff;
 	font-size:11px;
 	font-weight:600;
@@ -3690,7 +3690,7 @@ input[type=number]
 	font-weight:500;
 } 
 .geodir-category-opt  .rate-class-name span {
-	background: #228B22;
+	background: #0a844a;
 	color:#fff;
 	float:left;
 	font-weight:600;
@@ -3747,7 +3747,7 @@ input[type=number]
 	font-size:11px;
 	visibility: hidden;
 	border-radius:4px;
-	background: #228B22;
+	background: #0a844a;
 }
 .facilities-list li:hover span {
 	visibility:visible;
@@ -3839,7 +3839,7 @@ input[type=number]
 	padding-left:20px;
 }
 .geodir-opt-link a:hover{
-	background: #228B22;
+	background: #0a844a;
 }
 .geodir-opt-link a i {
 	position:absolute;
@@ -4085,7 +4085,7 @@ input[type=number]
 	color:#fff;
 	line-height:40px;
 	z-index:-1;
-	background: #228B22;
+	background: #0a844a;
 	border-top-right-radius:6px;
 	border-bottom-right-radius:6px;
 }
@@ -4106,7 +4106,7 @@ input[type=number]
 	font-weight:500;
 	border-top-left-radius:6px;
 	border-bottom-left-radius:6px;
-	background: #228B22;
+	background: #0a844a;
 }
 .back-to-filters:hover span {
 	margin-top:0;
@@ -4304,7 +4304,7 @@ input[type=number]
 	cursor:pointer;
 }
 .list-single-hero-rating .rate-class-name span {
-	background: #228B22;
+	background: #0a844a;
     color: #fff;
     float: left;
     font-weight: 600;
@@ -4434,7 +4434,7 @@ input[type=number]
 	width:60%;
 }
 .flat-hero-container .rate-class-name span  {
-	background: #228B22;
+	background: #0a844a;
     color: #fff;
     float: left;
     font-weight: 600;
@@ -5305,7 +5305,7 @@ article.post-article .list-single-main-item {
 	width:25%;
 }
 .review-score-total span {
-    background: #228B22;
+    background: #0a844a;
     color: #fff;
     float: left;
     font-weight: 600;
@@ -5344,7 +5344,7 @@ article.post-article .list-single-main-item {
 	top:-12px;
 }
 .reviews-comments-item-text .review-score-user span  {
-    background: #228B22;
+    background: #0a844a;
     color: #fff;
     float: right;
     font-weight: 600;
@@ -5553,7 +5553,7 @@ article.post-article .list-single-main-item {
 	z-index:10;
 	font-size:11px;
     border-radius: 4px;
-    background: #228B22;
+    background: #0a844a;
     color: #fff;
 	padding: 9px 12px;
     box-shadow: 0px 0px 0px 5px rgba(255,255,255,0.2);
@@ -5721,7 +5721,7 @@ article.post-article .list-single-main-item {
 	cursor:pointer;
 	border-radius:4px;
 	color:#fff;
-	background: #228B22;
+	background: #0a844a;
 	font-size:11px;
 	box-shadow: 0px 0px 0px 5px rgba(255,255,255,0.2);
 }
@@ -5764,7 +5764,7 @@ article.post-article .list-single-main-item {
     color: #fff;
     line-height: 40px;
     z-index:20;
-    background: #228B22;
+    background: #0a844a;
     border-radius:6px;
 	cursor:pointer;
 }
@@ -6084,10 +6084,10 @@ article.post-article .list-single-main-item {
 	padding:0 25px;
 	font-size:12px;
 	font-weight:600;
-    background: #228B22;
+    background: #0a844a;
 }
 .scroll-nav-wrapper .show-hidden-map:hover {
-	background: #228B22;
+	background: #0a844a;
 }
 .scroll-nav-wrapper .show-hidden-map:hover i , .scroll-nav-wrapper .show-hidden-map:hover {
 	color:#fff;
@@ -6248,7 +6248,7 @@ article.post-article .list-single-main-item {
 	position:absolute;
 	left:100%;
 	margin-left:12px;
-	background: #228B22;
+	background: #0a844a;
 	opacity:0;
 	visibility: hidden;
 	top:8px;
@@ -7437,7 +7437,7 @@ article.post-article .list-single-main-item {
 	-webkit-transform: translate3d(0,0,0);
 }
 .to-top:hover {
-	background: #228B22;
+	background: #0a844a;
 	color:#fff;
 }
 /*------FAQ------------------------------------------------*/
@@ -8557,7 +8557,7 @@ section.hero-section  {
 	position:absolute;
 	top:70px;
 	left:0;
-	background:#228B22;
+	background:#0a844a;
 	padding-left:20px;
 	width:180px;
 	border-radius:6px;

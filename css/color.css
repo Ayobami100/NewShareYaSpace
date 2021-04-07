@@ -26,10 +26,10 @@
 --*/
  
 .accordion a.toggle.act-accordion , .banner-wdget-content a , .box-image-widget-media a:hover , .rooms-media-btn-item , .sw-btn , .bt n:hover  , .more-photos-button , .box-item a.gal-link:hover , .dasboard-sidebar-content , .tfp-det-btn:hover  , .color3-bg , .team-social , .text-carousel-wrap .sw-btn:hover , .home-intro-card-counter  , .mlc , .geodir-opt-tooltip , .custom-form .log-submit-btn , .lg-actions .lg-next:hover, .lg-actions .lg-prev:hover , .error-wrap form  .search-submit:hover , .close-reg:hover  , .custom-form .log-submit-btn:hover , .soc-log a:hover {
-	background: #228B22;
+	background: #0a844a;
 } 
 .mapzoom-out , .single-facts .inline-facts .num , .section-title h2 ,.singleMap_visible-title-item h4  , .card-post-content h3 a , .map-modal-container h3 a , .error_message  h3  , #success_page h3 , .text-carousel-item a.testim-link {
-	color:#228B22;
+	color:#0a844a;
 }
 /*--
 	gradient

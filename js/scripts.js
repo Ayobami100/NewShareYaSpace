@@ -52,6 +52,8 @@ function  initShareYaSpace() {
         loop: false,
         counter: false
     });
+
+
     function initHiddenGal() {
         $(".dynamic-gal").on('click', function () {
             var dynamicgal = eval($(this).attr("data-dynamicPath"));
@@ -66,14 +68,14 @@ function  initShareYaSpace() {
 
         });
 		
-    $(".rooms-menu a").on("click", function (a) {
-        a.preventDefault();
-        $(this).parent().addClass("current");
-        $(this).parent().siblings().removeClass("current");
-        var b = $(this).attr("href");
-        $(".tab-content").not(b).css("display", "none");
-        $(b).fadeIn();
-    });		
+    // $(".rooms-menu a").on("click", function (a) {
+    //     a.preventDefault();
+    //     $(this).parent().addClass("current");
+    //     $(this).parent().siblings().removeClass("current");
+    //     var b = $(this).attr("href");
+    //     $(".#0a844a").not(b).css("display", "none");
+    //     $(b).fadeIn();
+    // });		
 		
     }
     initHiddenGal();
@@ -116,6 +118,9 @@ function  initShareYaSpace() {
 
         return false;
     });
+
+
+
     //   appear------------------
     $(".stats").appear(function () {
         $(".num").countTo();
@@ -314,9 +319,11 @@ function  initShareYaSpace() {
         }, 800);
         return false;
     });
+
     // modal ------------------
     var modal = {};
-    modal.hide = function () {
+    modal.hide = function () {    
+     
         $('.modal , .reg-overlay').fadeOut(200);
         $("html, body").removeClass("hid-body");
     };
@@ -325,8 +332,9 @@ function  initShareYaSpace() {
         $('.modal , .reg-overlay').fadeIn(200);
         $("html, body").addClass("hid-body");
     });
-    $('.close-reg , .reg-overlay').on("click", function () {
+    $('.close-reg , .reg-overlay').on("dblclick", function () {
         modal.hide();
+        
     });
     // Header ------------------
     $(".more-filter-option").on("click", function () {
