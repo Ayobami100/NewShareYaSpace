@@ -2614,7 +2614,7 @@ section.hero-section   {
 .custom-form .nice-select {
 	margin-bottom:20px;
 }
-.custom-form  textarea , .custom-form input[type="text"] , .custom-form  input[type=email] , .custom-form  input[type=password] , .custom-form  input[type=button]{
+.custom-form  textarea, .custom-form select, .custom-form input[type="date"] , .custom-form input[type="text"] , .custom-form  input[type=email] , .custom-form  input[type=password] , .custom-form  input[type=button]{
     float: left;
     border: 1px solid #eee;
     background:#F7F9FB;
@@ -2625,7 +2625,7 @@ section.hero-section   {
 	font-size:13px;
 	-webkit-appearance: none;
 }
-.custom-form  textarea:focus , .custom-form input[type="text"]:focus  , .custom-form  input[type=email]:focus  , .custom-form  input[type=password]:focus  {
+.custom-form  textarea:focus ,.custom-form input[type="date"]:focus , .custom-form input[type="text"]:focus  , .custom-form  input[type=email]:focus  , .custom-form  input[type=password]:focus  {
 	background:#fff;
 }
 .custom-form .nice-select input {
@@ -3029,7 +3029,7 @@ input[type=number]
     right: 0px;
 }
 .main-register .custom-form input[type="text"] , .main-register .custom-form  input[type=email] ,
-.main-register .custom-form  input[type=password]{
+.main-register .custom-form  input[type=password] ,.custom-form input[type="date"]{
 	padding-left:20px;
 }
 /*-------------Map---------------------------------------*/

@@ -332,7 +332,7 @@ function  initShareYaSpace() {
         $('.modal , .reg-overlay').fadeIn(200);
         $("html, body").addClass("hid-body");
     });
-    $('.close-reg , .reg-overlay').on("dblclick", function () {
+    $('.close-reg , .reg-overlay').on("click", function () {
         modal.hide();
         
     });
