@@ -11,8 +11,8 @@ var puser = localStorage.getItem('token');
 
 // const axios = require('axios').default;
 function loadIt(){
-    windows.alert(puser)
-  if(puser != ""){
+  console.log(puser)
+  if(puser != null){
 
     document.getElementById('signout').style.display = 'block';
     document.getElementById('signin').style.display = 'none';
@@ -34,7 +34,9 @@ function loadIt(){
 
 
 function logOff(){
-    localStorage.setItem('token',''); 
+    localStorage.removeItem('token'); 
+
+    loadIt();
    
    
 }
