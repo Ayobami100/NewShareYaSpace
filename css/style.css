@@ -486,7 +486,7 @@ transform: rotate(360deg);
 	height:100%;
 	width:auto;
 }
-.add-hotel {
+.add-Listing {
 	float:right;
 	padding: 0 32px;
 	position:relative;
@@ -498,7 +498,7 @@ transform: rotate(360deg);
 	font-size:12px;
 	background:#90EE90;
 }
-.add-hotel span {
+.add-Listing span {
 	padding-left:4px;
 	font-weight:700;
 }
@@ -2297,25 +2297,25 @@ section.hero-section   {
 	padding:10px 20px;
 	-webkit-transform: translate3d(0,0,0);
 }
-.hotel-card .geodir-category-img{
+.Listing-card .geodir-category-img{
 	border-radius: 6px;
 	box-shadow: 0px 0px 0px 6px rgba(255,255,255,0.1);
 }
-.hotel-card .geodir-category-location {
+.Listing-card .geodir-category-location {
 	float:left;
 	position:relative;
 	top:18px;
 }
-.hotel-card  .geodir-category-opt h4 {
+.Listing-card  .geodir-category-opt h4 {
 	position:relative;
 	top:10px;
 }
-.hotel-card .geodir-category-location a {
+.Listing-card .geodir-category-location a {
 	float:left;
 	color:#fff;
 	font-size:10px;
 }
-.hotel-card .geodir-category-opt .listing-rating {
+.Listing-card .geodir-category-opt .listing-rating {
 	top:4px;
 } 
 /*-------------Team---------------------------------------*/
@@ -2640,6 +2640,9 @@ section.hero-section   {
 	color: #888DA0;
 	font-weight:600;
 	font-size:13px
+}
+.custom-form input[type="date"]{
+	text-align: center;
 }
 .custom-form  textarea{
 	height: 200px;
@@ -3521,7 +3524,7 @@ input[type=number]
 	border-radius: 10px;
 	top:12px;
 }
-.listing-item.has_one_column  .hotel-card .geodir-category-img {
+.listing-item.has_one_column  .Listing-card .geodir-category-img {
 	width:100%;
 	border-radius: 10px;
 	top:0;
@@ -7273,7 +7276,7 @@ article.post-article .list-single-main-item {
 	cursor:pointer;
  
 }
-.hotel-facts  input{
+.Listing-facts  input{
 	width:30% !important;
 	padding-left:10px !important;
 	margin-right:1%;
@@ -8593,7 +8596,7 @@ section.hero-section  {
 .show-search-button {
     width: 120px;
 }
-.add-hotel {
+.add-Listing {
     padding: 0 20px;
 }
 .show-reg-form {
@@ -8637,7 +8640,7 @@ section.hero-section  {
 .light-carousel .slick-slide-item {
 	padding:10px 0;
 }
-.light-carousel .slick-slide-item  .hotel-card {
+.light-carousel .slick-slide-item  .Listing-card {
 	padding:0 10px;
 }
 .text-carousel .slick-item  {
@@ -8939,7 +8942,7 @@ section.hero-section  {
 }	
 }
 @media only screen and  (max-width: 420px) {
-.add-hotel {
+.add-Listing {
 	display:none;
 }
 .show-reg-form {

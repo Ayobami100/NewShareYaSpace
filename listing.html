@@ -3,7 +3,7 @@
     <head>
         <!--=============== basic  ===============-->
         <meta charset="UTF-8">
-        <title>ShareYaSpace - Hotel Booking Directory Listing Template</title>
+        <title>ShareYaSpace - Listing Booking Directory Listing Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="robots" content="index, follow"/>
         <meta name="keywords" content=""/>
@@ -34,8 +34,9 @@
                         <div class="logo-holder">
                             <a href="index.html"><img src="images/logo.png" alt=""></a>
                         </div>
-                        <a href="dashboard-add-listing.html" class="add-hotel">Add Your Space <span><i class="far fa-plus"></i></span></a>
-                        <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In/Sign Up</div>
+                    <a href="dashboard-add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
+                    <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
+                        <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
                         <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
                         <!-- <div class="lang-wrap">
                             <div class="show-lang"><img src="images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
@@ -174,7 +175,7 @@
                                         <li class="clearfix">
                                             <a href="#"  class="widget-posts-img"><img src="images/gal/9.jpg" class="respimg" alt=""></a>
                                             <div class="widget-posts-descr">
-                                                <a href="#" title="">Moonlight Hotel</a>
+                                                <a href="#" title="">Moonlight Listing</a>
                                                 <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
                                                 <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i>  70 BRIGHT ST NEW YORK, USA</a></div>
                                                 <span class="rooms-price">$105 <strong> /  Awg</strong></span>
@@ -195,7 +196,7 @@
                             <!-- header-search-input-item -->
                             <div class="col-sm-4">
                                 <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Destination or Hotel Name</label>
+                                    <label>Destination or Listing Name</label>
                                     <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
                                     <input type="text" placeholder="Location" class="autocomplete-input" id="autocompleteid" value=""/>
                                     <a href="#"><i class="fal fa-dot-circle"></i></a>
@@ -284,15 +285,15 @@
                                             <label>City/Category</label>
                                             <div class="listsearch-input-item">
                                                 <select data-placeholder="City" class="chosen-select" >
-                                                    <option>All Cities</option>
-                                                    <option>New York</option>
-                                                    <option>London</option>
-                                                    <option>Paris</option>
-                                                    <option>Kiev</option>
-                                                    <option>Moscow</option>
-                                                    <option>Dubai</option>
-                                                    <option>Rome</option>
-                                                    <option>Beijing</option>
+                                                    <option>All States</option>
+                                                    <option>Osun</option>
+                                                    <option>Lagos</option>
+                                                    <option>FCT</option>
+                                                    <option>Kwara</option>
+                                                    <option>Ekiti</option>
+                                                    <option>Ondo</option>
+                                                    <option>Kano</option>
+                                                    <option>Kaduna</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -303,7 +304,7 @@
                                         <div class="col-list-search-input-item fl-wrap location autocomplete-container">
                                             <label>Destination</label>
                                             <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
-                                            <input type="text" placeholder="Destination or Hotel Name" class="autocomplete-input" id="autocompleteid3" value=""/>
+                                            <input type="text" placeholder="Destination or Listing Name" class="autocomplete-input" id="autocompleteid3" value=""/>
                                             <a href="#"><i class="fal fa-dot-circle"></i></a>
                                         </div>
                                     </div>
@@ -442,9 +443,9 @@
                             <a class="custom-scroll-link back-to-filters" href="#lisfw"><i class="fas fa-angle-up"></i><span>Back to Filters</span></a>
                             <div class="container">
                                 <!-- list-main-wrap-title-->
-                                <div class="list-main-wrap-title fl-wrap">
+                                <!-- <div class="list-main-wrap-title fl-wrap">
                                     <h2>Results For : <span>New York </span></h2>
-                                </div>
+                                </div> -->
                                 <!-- list-main-wrap-title end-->
                                 <!-- list-main-wrap-opt-->
                                 <div class="list-main-wrap-opt fl-wrap">
@@ -493,7 +494,7 @@
                                             <div class="geodir-category-content fl-wrap">
                                                 <div class="geodir-category-content-title fl-wrap">
                                                     <div class="geodir-category-content-title-item">
-                                                        <h3 class="title-sin_map"><a href="listing-single.html">Premium Plaza Hotel</a></h3>
+                                                        <h3 class="title-sin_map"><a href="listing-single.html">Premium Plaza Listing</a></h3>
                                                         <div class="geodir-category-location fl-wrap"><a href="#0" class="map-item"><i class="fas fa-map-marker-alt"></i> 27th Brooklyn New York, USA</a></div>
                                                     </div>
                                                 </div>
@@ -670,7 +671,7 @@
                                             <div class="geodir-category-content fl-wrap title-sin_item">
                                                 <div class="geodir-category-content-title fl-wrap">
                                                     <div class="geodir-category-content-title-item">
-                                                        <h3 class="title-sin_map"><a href="listing-single.html">Gold Plaza Hotel</a></h3>
+                                                        <h3 class="title-sin_map"><a href="listing-single.html">Gold Plaza Listing</a></h3>
                                                         <div class="geodir-category-location fl-wrap"><a href="#4" class="map-item"><i class="fas fa-map-marker-alt"></i> 34-42 Montgomery St , NY, USA</a></div>
                                                     </div>
                                                 </div>
@@ -715,7 +716,7 @@
                                             <div class="geodir-category-content fl-wrap title-sin_item">
                                                 <div class="geodir-category-content-title fl-wrap">
                                                     <div class="geodir-category-content-title-item">
-                                                        <h3 class="title-sin_map"><a href="listing-single.html">Moonlight Hotel</a></h3>
+                                                        <h3 class="title-sin_map"><a href="listing-single.html">Moonlight Listing</a></h3>
                                                         <div class="geodir-category-location fl-wrap"><a href="#5" class="map-item"><i class="fas fa-map-marker-alt"></i> 70 Bright St New York, USA</a></div>
                                                     </div>
                                                 </div>

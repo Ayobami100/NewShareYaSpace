@@ -3,7 +3,7 @@
     <head>
         <!--=============== basic  ===============-->
         <meta charset="UTF-8">
-        <title>ShareYaSpace - Hotel Booking Directory Listing Template</title>
+        <title>ShareYaSpace - Listing Booking Directory Listing Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="robots" content="index, follow"/>
         <meta name="keywords" content=""/>
@@ -34,8 +34,9 @@
                     <div class="logo-holder">
                         <a href="index.html"><img src="images/logo.png" alt=""></a>
                     </div>
-                    <a href="dashboard-add-listing.html" class="add-hotel">Add Your Space <span><i class="far fa-plus"></i></span></a>
-                    <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In/Sign Up</div>
+                <a href="dashboard-add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
+                    <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
+                    <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
                     <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
                     <!-- <div class="lang-wrap">
                         <div class="show-lang"><img src="images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
@@ -174,7 +175,7 @@
                                     <li class="clearfix">
                                         <a href="#"  class="widget-posts-img"><img src="images/gal/9.jpg" class="respimg" alt=""></a>
                                         <div class="widget-posts-descr">
-                                            <a href="#" title="">Moonlight Hotel</a>
+                                            <a href="#" title="">Moonlight Listing</a>
                                             <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
                                             <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i>  70 BRIGHT ST NEW YORK, USA</a></div>
                                             <span class="rooms-price">$105 <strong> /  Awg</strong></span>
@@ -195,7 +196,7 @@
                         <!-- header-search-input-item -->
                         <div class="col-sm-4">
                             <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                <label>Destination or Hotel Name</label>
+                                <label>Destination or Listing Name</label>
                                 <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
                                 <input type="text" placeholder="Location" class="autocomplete-input" id="autocompleteid" value=""/>
                                 <a href="#"><i class="fal fa-dot-circle"></i></a>
@@ -271,7 +272,7 @@
                                                 Jessie Manrty
                                             </h3>
                                         </div>
-                                        <a href="dashboard-add-listing.html" class="ed-btn">Add Hotel</a>                                        
+                                        <a href="dashboard-add-listing.html" class="ed-btn">Add Listing</a>                                        
                                         <div class="user-stats fl-wrap">
                                             <ul>
                                                 <li>
@@ -347,7 +348,7 @@
                                                     <a href="listing-single.html"><img src="images/gal/8.jpg" alt=""></a>
                                                 </div>
                                                 <div class="dashboard-listing-table-text">
-                                                    <h4><a href="listing-single.html">Premium Plaza Hotel</a></h4>
+                                                    <h4><a href="listing-single.html">Premium Plaza Listing</a></h4>
                                                     <span class="dashboard-listing-table-address"><i class="far fa-map-marker"></i><a  href="#">USA 27TH Brooklyn NY</a></span>
                                                     <ul class="dashboard-listing-table-opt  fl-wrap">
                                                         <li><a href="#">Edit <i class="fal fa-edit"></i></a></li>
@@ -398,7 +399,7 @@
                                                     <a href="listing-single.html"><img src="images/gal/3.jpg" alt=""></a>
                                                 </div>
                                                 <div class="dashboard-listing-table-text">
-                                                    <h4><a href="listing-single.html">Gold Plaza Hotel </a></h4>
+                                                    <h4><a href="listing-single.html">Gold Plaza Listing </a></h4>
                                                     <span class="dashboard-listing-table-address"><i class="far fa-map-marker"></i><a  href="#">34-42 Montgomery St , NY, USA</a></span>
                                                     <ul class="dashboard-listing-table-opt  fl-wrap">
                                                         <li><a href="#">Edit <i class="fal fa-edit"></i></a></li>
@@ -632,7 +633,7 @@
                 <div class="map-modal-wrap-overlay"></div>
                 <div class="map-modal-item">
                     <div class="map-modal-container fl-wrap">
-                        <h3>Hotel Title</h3>
+                        <h3>Listing Title</h3>
                         <div class="map-modal fl-wrap">
                             <div id="singleMap" data-latitude="40.7" data-longitude="-73.1"></div>
                         </div>

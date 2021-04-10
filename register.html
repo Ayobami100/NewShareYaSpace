@@ -3,7 +3,7 @@
     <head>
         <!--=============== basic  ===============-->
         <meta charset="UTF-8">
-        <title>ShareYaSpace - Hotel Booking Directory Listing Template</title>
+        <title>ShareYaSpace - Listing Booking Directory Listing Template</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="robots" content="index, follow"/>
         <meta name="keywords" content=""/>
@@ -15,6 +15,23 @@
         <link type="text/css" rel="stylesheet" href="css/color.css">
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
+
+        <style>
+            #profile-container{
+                width: 150px;
+                height: 150px;
+                overflow: hidden;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                border-radius: 50%;
+            }
+            #profile-container img{
+                width: 150px;
+                height: 150px;
+            }
+        </style>
     </head>
      <body onload="loadIt()">
         <!--loader-->
@@ -34,8 +51,9 @@
                         <div class="logo-holder">
                             <a href="index.html"><img src="images/logo.png" alt=""></a>
                         </div>
-                        <a href="dashboard-add-listing.html" class="add-hotel">Add Your Space <span><i class="far fa-plus"></i></span></a>
-                        <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In/Sign Up</div>
+                    <a href="dashboard-add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
+                    <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
+                        <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
                         <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
                      
                     </div>
@@ -77,7 +95,7 @@
                                     </li>
                                     <li>
                                         <a href="listing.html">Listings </a>
-                                     ]
+                                     
                                     </li>
                                    
                                     <li>
@@ -119,7 +137,7 @@
                                         <li class="clearfix">
                                             <a href="#"  class="widget-posts-img"><img src="images/gal/9.jpg" class="respimg" alt=""></a>
                                             <div class="widget-posts-descr">
-                                                <a href="#" title="">Moonlight Hotel</a>
+                                                <a href="#" title="">Moonlight Listing</a>
                                                 <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
                                                 <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i>  70 BRIGHT ST NEW YORK, USA</a></div>
                                                 <span class="rooms-price">$105 <strong> /  Awg</strong></span>
@@ -147,9 +165,9 @@
                         <div class="wave-bg wave-bg2"></div>
                         <div class="container">
                             <div class="dasboard-wrap fl-wrap">
-                                <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">Home</a><a href="#">Dashboard</a><span>Profile page</span></div>
+                                <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">Home</a><a href="#">Register</a></div>
                                 <!--dasboard-sidebar-->
-                                <div class="dasboard-sidebar">
+                                <!-- <div class="dasboard-sidebar">
                                     <div class="dasboard-sidebar-content fl-wrap">
                                         <div class="dasboard-avatar">
                                            <img src="images/avatar/avatar-bg.png" alt="">
@@ -157,29 +175,29 @@
                                         <div class="dasboard-sidebar-item fl-wrap">
                                             <h3>
                                                 <span>Welcome </span>
-                                                Jessie Manrty
+                                              
                                             </h3>
                                         </div>
-                                        <a href="dashboard-add-listing.html" class="ed-btn">Add Hotel</a>                                        
+                                        <a href="dashboard-add-listing.html" class="ed-btn">Add Listing</a>                                        
                                         <div class="user-stats fl-wrap">
                                             <ul>
                                                 <li>
                                                     Listings	
-                                                    <span>4</span>
+                                                
                                                 </li>
                                                 <li>
                                                     Bookings
-                                                    <span>32</span>	
+                                                  
                                                 </li>
                                                 <li>
                                                     Reviews	
-                                                    <span>9</span>	
+                                                   
                                                 </li>
                                             </ul>
                                         </div>
                                         <a href="#" class="log-out-btn color-bg">Log Out <i class="far fa-sign-out"></i></a>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!--dasboard-sidebar end--> 
                                 <!-- dasboard-menu-->
                                 <!-- <div class="dasboard-menu">
@@ -207,18 +225,18 @@
                                 </div> -->
                                 <!--dasboard-menu end-->
                                 <!--Tariff Plan menu-->
-                                <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
+                                <!-- <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
                                 <div class="tfp-det">
                                     <p>You Are on <a href="#">Extended</a> . Use link bellow to view details or upgrade. </p>
                                     <a href="#" class="tfp-det-btn color2-bg">Details</a>
-                                </div>
+                                </div> -->
                                 <!--Tariff Plan menu end-->
                             </div>
                         </div>
                     </section>
                     <!-- section end-->
                     <!-- section-->
-                    <section class="middle-padding">
+                    <section class="middle-padding" id="profileinfo">
                         <div class="container">
                             <!--dasboard-wrap-->
                             <div class="dasboard-wrap fl-wrap">
@@ -231,45 +249,53 @@
                                     <div class="profile-edit-container">
                                         <div class="custom-form">
                                             <div class="col-sm-3">
-                                                <label>Change Avatar</label> 
+                                                <!-- <label>Upload Image</label> 
                                                 <div class="add-list-media-wrap">
                                                     <form class="fuzone">
                                                         <div class="fu-text">
                                                             <span><i class="fal fa-image"></i> Click here or drop image to upload</span>
                                                         </div>
-                                                        <input type="file" class="upload">
+                                                        <input type="file" class="uplnb oad">
                                                     </form>
+                                                </div> -->
+
+
+                                                <!-- <div id="profile-container">
+                                                    <img id="profileImage" src=""/>
                                                 </div>
-                                            </div>
+                                                <input id="imageUpload" type="file" name="profile_photo" placeholder="photo" required="" capture> -->
+
+                                                <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                                                <button><label for="file" style="cursor: pointer;">Upload Image</label></button>
+                                                <p><img id="output" width="200" /></p>
+                                                                                            </div>
+
                                             <label>Your First Name <i class="far fa-user"></i></label>
-                                            <input type="text" placeholder="Jessie" value=""/>
-                                            <label>Your Last Name <i class="far fa-user"></i></label>
-                                            <input type="text" placeholder="Manrty" value=""/>
+                                            <input type="text" placeholder="Jessie" value=""  id="firstname"/>
+                                            <label>Your Last Name <i class="far fa-user" ></i></label>
+                                            <input type="text" placeholder="Manrty" value=""  id="lastname"/>
                                             <label>Email Address<i class="far fa-envelope"></i>  </label>
-                                            <input type="text" placeholder="JessieManrty@domain.com" value=""/>
-                                            <label for="start">Date</label>
+                                            <input type="text" placeholder="JessieManrty@domain.com" value="" id="emailreg"/>
+                                            <label for="start">Date of Birth<i class="far fa-calendar"></i></label>
 
                                             <input type="date" id="start" name="trip-start"
                                                 value="2021-01-01"
-                                                min="1930-01-01" max="2021-12-31">
+                                                min="1930-01-01" max="2020-01-01">
 
-                                                <div class="main-search-input-item main-date-parent main-search-input-item_small">
-                                                    <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> <input type="text" placeholder="When" name="main-input-search"   value=""/>
-                                                </div>
+                                        
+
 
                                             <label> Country <i class="far fa-globe"></i>  </label>
-                                            <select name="cars" id="cars">
-                                                <option value="volvo">Volvo</option>
-                                                <option value="saab">Saab</option>
-                                                <option value="mercedes">Mercedes</option>
-                                                <option value="audi">Audi</option>
+                                            <select name="country" id="country" selected disabled id="country">
+                                                <option value="nigeria">Nigeria</option>
+                                            
                                               </select>
                                             <label>Phone<i class="far fa-phone"></i>  </label>
-                                            <input type="text" placeholder="+7(123)987654" value=""/>
-                                            <label> Adress <i class="fas fa-map-marker"></i>  </label>
-                                            <input type="text" placeholder="USA 27TH Brooklyn NY" value=""/>
+                                            <input type="text" value="+234" id="phone"/>
+                                            <label> Address <i class="fas fa-map-marker"></i>  </label>
+                                            <input type="text" placeholder="USA 27TH Brooklyn NY" value="" id="address"/>
                                             <label> Password <i class="far fa-globe"></i>  </label>
-                                            <input type="password" placeholder=".........." value=""/>
+                                            <input type="password" placeholder=".........." value="" id="password"/>
                                             <label> Confirm Password <i class="far fa-globe"></i>  </label>
                                             <input type="password" placeholder=".........." value=""/>
                                            
@@ -277,7 +303,7 @@
                                     </div>
                                     <!-- profile-edit-container end--> 
                                     <div class="box-widget-item-header mat-top">
-                                        <h3>Your  Tariff Plan</h3>
+                                        <h3>Are you a student?</h3>
                                     </div>
                                     <!-- profile-edit-container--> 
                                     <div class="profile-edit-container add-list-container">
@@ -287,9 +313,21 @@
                                                 <div class="col-md-4">
                                                     <div class="add-list-media-header">
                                                         <label class="radio inline"> 
-                                                        <input type="radio" name="gender">
-                                                        <span>Basic 99$</span> 
+                                                        <input type="radio" name="gender" id="yes" onclick="findStudent()">
+                                                        <span>Yes</span> 
                                                         </label>
+                                                    </div>
+                                                    <div id="studentdetails">
+                                                        <label> Choose Your School <i class="far fa-globe"></i>  </label>
+                                                        <select name="school" id="school">
+                                                        <option value="nigeria">Ekiti State University</option>
+                                                        <option value="nigeria">University of Ilorin</option>
+                                                        <option value="nigeria">University of Ibadan</option></select>
+
+                                                        <label> Course of Study <i class="fas fa-map-marker"></i>  </label>
+                                                        <input type="text" placeholder="Mass Communication" value="" id="cos"/>
+                                                        <label> Matriculation Number<i class="fas fa-map-marker"></i>  </label>
+                                                        <input type="text" placeholder="Nas/13062" value="" id="mat"/>
                                                     </div>
                                                 </div>
                                                 <!--col end--> 
@@ -297,21 +335,13 @@
                                                 <div class="col-md-4">
                                                     <div class="add-list-media-header">
                                                         <label class="radio inline"> 
-                                                        <input type="radio" name="gender"  checked>
-                                                        <span>Extended 99$</span> 
+                                                        <input type="radio" name="gender" onclick="findStudent()" checked>
+                                                        <span>No</span> 
                                                         </label>
                                                     </div>
                                                 </div>
                                                 <!--col end--> 
-                                                <!--col --> 
-                                                <div class="col-md-4">
-                                                    <div class="add-list-media-header">
-                                                        <label class="radio inline"> 
-                                                        <input type="radio" name="gender">
-                                                        <span>Professional 149$</span> 
-                                                        </label>
-                                                    </div>
-                                                </div>
+                                              
                                                 <!--col end-->                                                   
                                             </div>
                                         </div>
@@ -331,7 +361,7 @@
                                             <input type="text" placeholder="https://vk.com" value=""/>
                                             <label> Instagram <i class="fab fa-instagram"></i>  </label>
                                             <input type="text" placeholder="https://www.instagram.com/" value=""/> -->
-                                            <button class="btn    color2-bg  float-btn">Continue<i class="fal fa-save"></i></button>
+                                            <button class="btn    color2-bg  float-btn" onclick="registerUser()">Submit<i class="fal fa-save"></i></button>
                                         </div>
                                     </div>
                                     <!-- profile-edit-container end-->                                     
@@ -341,6 +371,21 @@
                             <!-- dasboard-wrap end-->
                         </div>
                     </section>
+
+                    <section id="otp">
+                        <div class="custom-form">
+
+                           <div class="container">
+                               <div class="col-md-8">
+                                <label>Enter OTP<i class="far fa-phone"></i>  </label>
+                                <input type="text" placeholder="" value="" id="otpnumber" disabled/>
+                                <button class="btn    color2-bg  float-btn">Verify<i class="fal fa-save"></i></button>
+                               </div>
+                           </div>
+                        </div>
+                       
+                    </section>
+                 
                     <div class="limit-box fl-wrap"></div>
                 </div>
                 <!-- content end-->
@@ -507,7 +552,7 @@
                                 <div class="col-md-8">
                                     <div class="customer-support-widget fl-wrap">
                                         <h4>Customer support : </h4>
-                                        <a href="tel:+19012300888" class="cs-mumber">+1(901)2300888</a>
+                                        <a href="tel:+19012300888" class="cs-mumber">2300888</a>
                                         <a href="tel:+19012300888" class="cs-mumber-button color2-bg">Call Now <i class="far fa-phone-volume"></i></a>
                                     </div>
                                 </div>
@@ -549,7 +594,7 @@
                 <div class="map-modal-wrap-overlay"></div>
                 <div class="map-modal-item">
                     <div class="map-modal-container fl-wrap">
-                        <h3>Hotel Title</h3>
+                        <h3>Listing Title</h3>
                         <div class="map-modal fl-wrap">
                             <div id="singleMap" data-latitude="40.7" data-longitude="-73.1"></div>
                         </div>
@@ -628,10 +673,37 @@
         </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->
+        <!-- <script>
+           $("#profileImage").click(function(e){
+               $("#imageUpload").click();
+           });
+
+           function fasterPreview (uploader){
+               if(uploader.files && uploader.files[0]){
+                   $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
+               }
+           }
+
+           $("#imageUpload").change(function(){
+               fasterPreview(this);
+           });
+        </script> -->
+
+        <script>
+            var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            console.log(URL.createObjectURL(event.target.files[0]));
+            console.log(event.target.files[0].name)
+
+            imgProfile = event.target.files[0].name;
+            };
+    </script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
          <script  src="js/main.js"></script>
+         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>         
     </body>
 </html>
