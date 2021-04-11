@@ -74,7 +74,7 @@
                                 <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
                                 <li><a href="dashboard-bookings.html">  Bookings  </a></li>
                                 <li><a href="dashboard-review.html"> Reviews </a></li>
-                                <li><a href="#">Log Out</a></li>
+                                 <li><a href="#" onclick="logOff()">Log Out</a></li>
                             </ul>
                         </div>
                         <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
@@ -195,7 +195,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <a href="#" class="log-out-btn color-bg">Log Out <i class="far fa-sign-out"></i></a>
+                                        <a href="#" class="log-out-btn color-bg" onclick="logOff()">Log Out <i class="far fa-sign-out"></i></a>
                                     </div>
                                 </div> -->
                                 <!--dasboard-sidebar end--> 
@@ -268,7 +268,8 @@
                                                 <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
                                                 <button><label for="file" style="cursor: pointer;">Upload Image</label></button>
                                                 <p><img id="output" width="200" /></p>
-                                                                                            </div>
+                                                <p id="imageUrl"></p>
+                                            </div>
 
                                             <label>Your First Name <i class="far fa-user"></i></label>
                                             <input type="text" placeholder="Jessie" value=""  id="firstname"/>
@@ -696,14 +697,17 @@
             console.log(URL.createObjectURL(event.target.files[0]));
             console.log(event.target.files[0].name)
 
-            imgProfile = event.target.files[0].name;
+            // 
+           document.getElementById('imageUrl').innerText = "images/" +event.target.files[0].name;
+
             };
     </script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>
-         <script  src="js/main.js"></script>
-         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>  
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script  src="js/main.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>         
     </body>
 </html>

@@ -73,7 +73,7 @@
                                 <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
                                 <li><a href="dashboard-bookings.html">  Bookings  </a></li>
                                 <li><a href="dashboard-review.html"> Reviews </a></li>
-                                <li><a href="#">Log Out</a></li>
+                                 <li><a href="#" onclick="logOff()">Log Out</a></li>
                             </ul>
                         </div>
                         <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
@@ -332,6 +332,7 @@
                                                     <textarea name="comments"  id="comments" cols="40" rows="3" placeholder="Your Message:"></textarea>
                                                 </fieldset>
                                                 <button class="btn float-btn color2-bg" style="margin-top:15px;" id="submit">Send Message<i class="fal fa-angle-right"></i></button>
+                                             
                                             </form>
                                         </div>
                                         <!-- contact form  end--> 
@@ -545,69 +546,9 @@
             </footer>
             <!--footer end -->           
             <!--register form -->
-            <div class="main-register-wrap modal">
-                <div class="reg-overlay"></div>
-                <div class="main-register-holder">
-                    <div class="main-register fl-wrap">
-                        <div class="close-reg color-bg"><i class="fal fa-times"></i></div>
-                        <ul class="tabs-menu">
-                            <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
-                            <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Register</a></li>
-                        </ul>
-                        <!--tabs -->                       
-                        <div id="tabs-container">
-                            <div class="tab">
-                                <!--tab -->
-                                <div id="tab-1" class="tab-content">
-                                       <h3>Sign-in to  <span>ShareYa<strong>Space</strong></span></h3>
-                                    <div class="custom-form">
-                                        <form method="post"  name="registerform">
-                                            <label>Username or Email Address <span>*</span> </label>
-                                            <input name="email" type="text"   onClick="this.select()" value="">
-                                            <label >Password <span>*</span> </label>
-                                            <input name="password" type="password"   onClick="this.select()" value="" >
-                                            <button type="submit"  class="log-submit-btn"><span>Log In</span></button>
-                                            <div class="clearfix"></div>
-                                            <div class="filter-tags">
-                                                <input id="check-a" type="checkbox" name="check">
-                                                <label for="check-a">Remember me</label>
-                                            </div>
-                                        </form>
-                                        <div class="lost_password">
-                                            <a href="#">Lost Your Password?</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--tab end -->
-                                <!--tab -->
-                                <div class="tab">
-                                    <div id="tab-2" class="tab-content">
-                                        <h3>Sign Up <span>Easy<strong>Book</strong></span></h3>
-                                        <div class="custom-form">
-                                            <form method="post"   name="registerform" class="main-register-form" id="main-register-form2">
-                                                <label >Full Name <span>*</span> </label>
-                                                <input name="name" type="text"   onClick="this.select()" value="">
-                                                <label>Email Address <span>*</span></label>
-                                                <input name="email" type="text"  onClick="this.select()" value="">
-                                                <label >Password <span>*</span></label>
-                                                <input name="password" type="password"   onClick="this.select()" value="" >
-                                                <button type="submit"     class="log-submit-btn"  ><span>Register</span></button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--tab end -->
-                            </div>
-                            <!--tabs end -->
-                            <div class="log-separator fl-wrap"><span>or</span></div>
-                            <div class="soc-log fl-wrap">
-                                <p>For faster login or register use your social account.</p>
-                                <a href="#" class="facebook-log"><i class="fab fa-facebook-f"></i>Connect with Facebook</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          
+
+            
             <!--register form end -->
             <a class="to-top"><i class="fas fa-caret-up"></i></a>
         </div>
@@ -616,8 +557,8 @@
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
-        <script src="js/main.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>  
-        <script type="text/javascript" src="js/map-single.js"></script>         
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script  src="js/main.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>     
     </body>
 </html>

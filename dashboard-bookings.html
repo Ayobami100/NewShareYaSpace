@@ -73,7 +73,7 @@
                                 <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
                                 <li><a href="dashboard-bookings.html">  Bookings  </a></li>
                                 <li><a href="dashboard-review.html"> Reviews </a></li>
-                                <li><a href="#">Log Out</a></li>
+                                 <li><a href="#" onclick="logOff()">Log Out</a></li>
                             </ul>
                         </div>
                         <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
@@ -289,7 +289,7 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <a href="#" class="log-out-btn color-bg">Log Out <i class="far fa-sign-out"></i></a>
+                                        <a href="#" class="log-out-btn color-bg" onclick="logOff()">Log Out <i class="far fa-sign-out"></i></a>
                                     </div>
                                 </div>
                                 <!--dasboard-sidebar end--> 
@@ -762,6 +762,8 @@
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>      
-        <script  src="js/main.js"></script>   
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+         <script  src="js/main.js"></script>
+         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
 </html>

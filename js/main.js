@@ -5,31 +5,39 @@
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 var puser = localStorage.getItem('token');
-var imgProfile="";
- 
+// var otpnumber = document.getElementById("otpnumber").value;
+ var registerResponse ={};
 // index.html -----------------------------------------
 
 
 // const axios = require('axios').default;
 function loadIt(){
-  console.log(puser)
 
   if(puser != null){
 
     document.getElementById('signout').style.display = 'block';
     document.getElementById('signin').style.display = 'none';
-     document.getElementById('userValue').innerText = "Hello, firstname and lastname";
+     document.getElementById('userValue').innerText = "Hello,"+ registerResponse.otp+ " "+registerResponse.lastname;
     document.getElementById('reg').style.display = 'none';
     document.getElementById('addlisting').style.display = 'block';
     // document.getElementById('userValue').innerText = " ";
-    document.getElementById("studentdetails").style.display = "none";
+    // document.getElementById("studentdetails").style.display = "none";
 
+    // var d = new Date();  
+    // $("#start").attr("min",d.getFullYear() + "-01-01").attr("max",d.getFullYear() + "-12-31");
+    // alert(d)
 
+      // var $dp2 = $("#datepicker2");
+      // $dp2.datepicker({
+      //   changeYear: true,
+      //   changeMonth: true,
+      //   yearRange: "-100:+20",
+      //   dateFormat: "yy-m-dd",
+      // });
+  
 
-
-
-    document.getElementById("otp").style.display = "none";
-   
+    // document.getElementById("otp").style.display = "none";
+    populateCombo()
   }
     else{
       document.getElementById('signout').style.display = 'none';
@@ -69,7 +77,7 @@ document.getElementById("firstname").value = '';
  document.getElementById("start").value = '';
   document.getElementById("address").value = '';
  document.getElementById("password").value = '';
-  imgProfile = imgProfile
+  // imgProfile = imgProfile
  document.getElementById("school").value = '';
   document.getElementById("mat").value = '';
 document.getElementById("cos").value = '';
@@ -113,7 +121,7 @@ async function loginUser(){
          
 
         // alert('gggggggggggg')
-        alert('You are Logged in  ' + response.data.user.firstname)
+        alert('You are Logged in  ' + response.data.data.firstname)
     
       })
      
@@ -171,9 +179,9 @@ async function loadReview(){
     var start =  document.getElementById("start").value 
     var address =  document.getElementById("address").value 
     var password =  document.getElementById("password").value 
-    imgProfile = imgProfile
-    var schoolId =  document.getElementById("school").value 
-    var matricNo =  document.getElementById("mat").value 
+    // imgProfile = imgProfile
+    var schoolId =  "3";
+    var matricNo =  document.getElementById("mat").value ;
     var cos =        document.getElementById("cos").value ;
 
 
@@ -186,33 +194,47 @@ number:phone,
 DOB:start,
 address:address,
 password:password,
-imgProfile: imgProfile,
+imgProfile: document.getElementById('imageUrl').innerText,
 schoolId: schoolId,
 course:cos,
-matricNo:matricNo
+matricNo:matricNo,
+role:'1',
+number_verification:'2'
+
 
 
 
 
   })
   .then(function (response) {
-    localStorage.setItem('token', response.data.token);
+
+    if(response.data.status == "success"){
+      localStorage.setItem('token', response.data.token);
      
 
-    puser = localStorage.getItem('token');
+      puser = localStorage.getItem('token');
+  
+      document.getElementById("otp").style.display = "block";
+      document.getElementById("profileinfo").style.display = "none";
+      
+      registerResponse = response.data;
+      console.log(response)
+      console.log(response.data)
+      console.log(response.data.data)
+      console.log(puser)
+      console.log(response.data.data.otp)
 
-    document.getElementById("otp").style.display = "block";
-    document.getElementById("profileinfo").style.display = "none";
-    document.getElementById("otpnumber").value = response.data.otp;
-    console.log(response)
+      document.getElementById("otpnumber").value = response.data.data.otp;
+    }
+    
 
     // loadIt()
-    clearOff();
+    // clearOff();
    
    
 
   // alert('gggggggggggg')
-  alert('You have successfully registered  ' + response.data.user.firstname)
+  alert('You have successfully registered  ' + response.data.data.firstname)
 
 })
 
@@ -238,4 +260,44 @@ matricNo:matricNo
       
     }
  ///////////////////////////////////////////////////////
- 
+
+ function populateCombo(){
+
+  let dropdown = document.getElementById('locality-dropdown');
+dropdown.length = 0;
+
+
+let defaultOption = document.createElement('option');
+defaultOption.text = 'Choose Category';
+
+dropdown.add(defaultOption);
+dropdown.selectedIndex = 0;
+
+axios.get('https://share.highflierstutors.com/api/allCategory')
+
+.then(function (response) {
+      if (response.status !== 200) {  
+        console.warn('Looks like there was a problem. Status Code: ' + 
+          response.status);  
+        return;  
+      }
+
+      // Examine the text in the response  
+      // console.log(response);
+      // .then(function(data) {  
+        let option;
+        
+    
+    	for (let i = 0; i < response.data.data.length; i++) {
+          option = document.createElement('option');
+      	  option.text = response.data.data[i].categoryName;
+      	  option.value = response.data.data[i].id;
+      	  dropdown.add(option);
+    	
+      }}
+ )
+
+  .catch(function(err) {  
+    console.error('Fetch Error -', err);  
+  });
+ }
