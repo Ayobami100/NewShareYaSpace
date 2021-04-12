@@ -472,7 +472,7 @@
                                                 <label for="datetimepickerDemo">Listing Date In<i
                                                         class="far fa-calendar"></i></label>
 
-                                                        <div class='input-group date' id='datetimepickerDemo'>
+                                                        <div class='input-group date' id='datetimepickerDemo1'>
                                                             <input type='text' class="form-control" />
                                                             <span class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -482,7 +482,7 @@
                                                 <label for="start">Listing Date Out<i
                                                         class="far fa-calendar"></i></label>
 
-                                                        <div class='input-group date' id='datetimepickerDemo1'>
+                                                        <div class='input-group date' id='datetimepickerDemo2'>
                                                             <input type='text' class="form-control" />
                                                             <span class="input-group-addon">
                                                                 <span class="glyphicon glyphicon-calendar"></span>
@@ -502,30 +502,29 @@
                                             </div>
                                             <div class="col-sm-6">
                                                 <label for="start">Discount Period from<i
-                                                        class="far fa-calendar"></i></label>
+                                                    class="far fa-calendar"></i></label>
 
-                                                <div class='input-group date' id='datetimepickerDemo'>
-                                                    <input type='text' class="form-control" />
-                                                    <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-calendar"></span>
-                                                    </span>
-                                                </div>
+                                                    <div class='input-group date' id='datetimepickerDemo3'>
+                                                        <input type='text' class="form-control" />
+                                                        <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                        </span>
+                                                    </div>
                                                 <label for="start">To<i class="far fa-calendar"></i></label>
-
-                                                <div class='input-group date' id='datetimepickerDemo1'>
-                                                    <input type='text' class="form-control" />
+                                                <div class='input-group date' id='datetimepickerDemo4'>
+                                                    <input type='text' class="form-control" ifFormat= "%Y/%m/%d"/>
                                                     <span class="input-group-addon">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <label>Attachments(you can select more than one file)</label>
-                                                    <input type="file" id="docpicker"
-                                                        accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                                        multiple>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6">
+                                                <label>Attachments(you can select more than one file)</label>
+                                                <input type="file" id="docpicker"
+                                                    accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                                    multiple>
+                                            </div>
+                                           
                                         </div>
                                         <!-- profile-edit-container end-->
                                         <div class="box-widget-item-header">
@@ -984,7 +983,7 @@
                     <div class="close-reg color-bg"><i class="fal fa-times"></i></div>
                     <ul class="tabs-menu">
                         <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
-                        <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Register</a></li>
+                        
                     </ul>
                     <!--tabs -->
                     <div id="tabs-container">
@@ -1067,13 +1066,29 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
     <script type="text/javascript">
+    var d = new Date();
+
         $(function () {
-            $('#datetimepickerDemo').datetimepicker({
+            $('#datetimepickerDemo1').datetimepicker({
+                format: 'DD/MM/YYYY',
                 minDate: new Date()
             });
         });
         $(function () {
-            $('#datetimepickerDemo1').datetimepicker({
+            $('#datetimepickerDemo2').datetimepicker({
+                format: 'DD/MM/YYYY',
+                minDate: new Date()
+            });
+        });
+        $(function () {
+            $('#datetimepickerDemo3').datetimepicker({
+                format: 'DD/MM/YYYY',
+                minDate: new Date()
+            });
+        });
+        $(function () {
+            $('#datetimepickerDemo4').datetimepicker({
+                format: 'DD/MM/YYYY',
                 minDate: new Date()
             });
         });

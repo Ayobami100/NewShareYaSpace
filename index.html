@@ -15,6 +15,7 @@
         <link type="text/css" rel="stylesheet" href="css/color.css">
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
+
     </head>
     <body onload="loadIt()">
         <!--loader-->
@@ -1353,12 +1354,14 @@
                                     <div class="custom-form">
                                         <form method="post"  name="registerform" onsubmit="return false;">
                                             <label>Username or Email Address <span>*</span> </label>
-                                            <input name="email" type="email"  id="email" onClick="this.select()" value="" required>
+                                            <input name="email" type="email"  id="email1" onClick="this.select()" value="" required>
                                             <label class="formerror">Please enter a valid email <span></span></label>
                                             
                                             <label >Password <span>*</span> </label>
-                                            <input name="password" type="password" id="password"  onClick="this.select()" value="" required>
-                                            <button onclick="loginUser()" type="submit" class="log-submit-btn color-bg"><span>Log In</span></button>
+                                            <input name="password" type="password" id="password1"  onClick="this.select()" value="" required>
+
+                                            <button  type="submit" class="log-submit-btn color-bg" onClick="loginUser()"><span>Log In</span></button>
+
                                             <div class="clearfix" id="message"></div>
                                             <div class="filter-tags">
                                                 <input id="check-a" type="checkbox" name="check">
@@ -1422,7 +1425,9 @@
 
         <!-- <script  src="js/start.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-         <script  src="js/main.js"></script>
+        <script  src="js/main.js"></script>
+        
+       
          <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </body>
 </html>
