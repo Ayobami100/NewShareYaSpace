@@ -12,12 +12,12 @@ var puser = localStorage.getItem('token');
 
 // const axios = require('axios').default;
 function loadIt(){
-
   if(puser != null){
-
+    registerResponse = JSON.parse(localStorage.getItem('user'));
+    console.log(registerResponse)
     document.getElementById('signout').style.display = 'block';
     document.getElementById('signin').style.display = 'none';
-     document.getElementById('userValue').innerText = "Hello,"+ registerResponse.otp+ " "+registerResponse.lastname;
+     document.getElementById('userValue').innerText = "Hello, "+ registerResponse.firstname+ " "+registerResponse.lastname;
     document.getElementById('reg').style.display = 'none';
     document.getElementById('addlisting').style.display = 'block';
     // document.getElementById('userValue').innerText = " ";
@@ -35,23 +35,24 @@ function loadIt(){
       //   dateFormat: "yy-m-dd",
       // });
   
+     
 
     // document.getElementById("otp").style.display = "none";
-    populateCombo()
+    // populateCombo()
   }
     else{
+    
       document.getElementById('signout').style.display = 'none';
     document.getElementById('signin').style.display = 'block';
     document.getElementById('dropit').style.display = 'block';
     // document.getElementById('avatar').src = res.data.user.imgProfile;
     document.getElementById('reg').style.display = 'block';
     document.getElementById('addlisting').style.display = 'none';
+
     // document.getElementById('userValue').innerText = "Hello,";
-    document.getElementById("studentdetails").style.display = "none";
-
-
-
-
+    // document.getElementById("studentdetails").style.display = "none";
+   
+   
     document.getElementById("otp").style.display = "none";
     }
 }
@@ -66,6 +67,10 @@ function logOff(){
 }
 
 ////////////////////////////////////////////////////////////////
+function clearSignOff(){
+  document.getElementById("email").value='';
+  document.getElementById("password").value = '';
+}
 function clearOff(){
   document.getElementById("email").value='';
   document.getElementById("password").value = '';
@@ -93,40 +98,50 @@ function assignValues(){
     // document.getElementById('bio').innerText = response.bio;
     // document.getElementById('count').innerText = "Foll0wers : "+response.followers;
 }
-  
+function IsEmail(email) {
+  var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+  if(!regex.test(email)) {
+     return false;
+  }else{
+     return true;
+  }
+}
 async function loginUser(){
 
     var email = document.getElementById("email").value;
     var password = document.getElementById('password').value;
-
-
+    if(email== ''){
+      $('#email').next().show();
+      return false;
+   }
+   if(IsEmail(email)==false){
+    // $('.formerror').css('display', "block");
+    return false;
+  }
+  if(password = ''){
+    return false
+  }
    await axios.post('https://share.highflierstutors.com/api/login', {
-
         email: email,
         password: password
-
       } )
-
       .then(function (response) {
           localStorage.setItem('token', response.data.token);
-           
-
+          localStorage.setItem('user', JSON.stringify(response.data.user));
           puser = localStorage.getItem('token');
-
-          console.log(response)
-
+          console.log(response.data.user.firstname)
           // loadIt()
-          clearOff();
-         
-         
-
+          clearSignOff();
         // alert('gggggggggggg')
-        alert('You are Logged in  ' + response.data.data.firstname)
+        alert('You are Logged in  ' + response.data.user.firstname)
+        window.location.reload();
     
       })
      
       .catch(function (error) {
-        console.log(error);
+        // alert('You are not Logged in  '+ error.)
+        res = error.response.data.message[0];
+        alert(res)
       });
 
      
@@ -170,7 +185,7 @@ async function loadReview(){
     }
 
   async function registerUser(){
-
+    
     var firstname =  document.getElementById("firstname").value 
     var lastname =  document.getElementById("lastname").value 
     var emailreg =  document.getElementById("emailreg").value 
@@ -183,8 +198,13 @@ async function loadReview(){
     var schoolId =  "3";
     var matricNo =  document.getElementById("mat").value ;
     var cos =        document.getElementById("cos").value ;
-
-
+   
+    if(firstname == '' || lastname == '' || email== '' || emailreg=='' || country == '' || phone == '' || start == ''
+    || address == '' || password ==''
+    ){
+   
+      return false;
+   }
     await axios.post('https://share.highflierstutors.com/api/register', {
 firstname : firstname,
 lastname: lastname,
@@ -200,30 +220,20 @@ course:cos,
 matricNo:matricNo,
 role:'1',
 number_verification:'2'
-
-
-
-
-
   })
   .then(function (response) {
 
     if(response.data.status == "success"){
       localStorage.setItem('token', response.data.token);
-     
-
       puser = localStorage.getItem('token');
-  
       document.getElementById("otp").style.display = "block";
       document.getElementById("profileinfo").style.display = "none";
-      
       registerResponse = response.data;
       console.log(response)
       console.log(response.data)
       console.log(response.data.data)
       console.log(puser)
       console.log(response.data.data.otp)
-
       document.getElementById("otpnumber").value = response.data.data.otp;
     }
     
@@ -264,6 +274,7 @@ number_verification:'2'
  function populateCombo(){
 
   let dropdown = document.getElementById('locality-dropdown');
+  console.log(dropdown)
 dropdown.length = 0;
 
 
@@ -287,7 +298,7 @@ axios.get('https://share.highflierstutors.com/api/allCategory')
       // .then(function(data) {  
         let option;
         
-    
+    console.log(response)
     	for (let i = 0; i < response.data.data.length; i++) {
           option = document.createElement('option');
       	  option.text = response.data.data[i].categoryName;
