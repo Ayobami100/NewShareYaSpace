@@ -236,6 +236,7 @@
                     </section>
                     <!-- section end-->
                     <!-- section-->
+
                     <section class="middle-padding" id="profileinfo">
                         <div class="container">
                             <!--dasboard-wrap-->
@@ -264,7 +265,7 @@
                                                     <img id="profileImage" src=""/>
                                                 </div>
                                                 <input id="imageUpload" type="file" name="profile_photo" placeholder="photo" required="" capture> -->
-
+<form method="post"  name="registerform" onsubmit="return false;">
                                                 <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
                                                 <button><label for="file" style="cursor: pointer;">Upload Image</label></button>
                                                 <p><img id="output" width="200" /></p>
@@ -272,33 +273,33 @@
                                             </div>
 
                                             <label>Your First Name <i class="far fa-user"></i></label>
-                                            <input type="text" placeholder="Jessie" value=""  id="firstname"/>
-                                            <label>Your Last Name <i class="far fa-user" ></i></label>
-                                            <input type="text" placeholder="Manrty" value=""  id="lastname"/>
+                                            <input type="text" placeholder="Jessie" value=""  id="firstname" required/>
+                                            <label>Your Last Name <i class="far fa-user"></i></label>
+                                            <input type="text" placeholder="Manrty" value="" id="lastname" required/>
                                             <label>Email Address<i class="far fa-envelope"></i>  </label>
-                                            <input type="text" placeholder="JessieManrty@domain.com" value="" id="emailreg"/>
+                                            <input type="email" placeholder="JessieManrty@domain.com" value="" id="emailreg" required/>
                                             <label for="start">Date of Birth<i class="far fa-calendar"></i></label>
 
                                             <input type="date" id="start" name="trip-start"
                                                 value="2021-01-01"
-                                                min="1930-01-01" max="2020-01-01">
+                                                min="1930-01-01" max="2020-01-01" required>
 
                                         
 
 
                                             <label> Country <i class="far fa-globe"></i>  </label>
-                                            <select name="country" id="country" selected disabled id="country">
+                                            <select required name="country" id="country" selected disabled id="country">
                                                 <option value="nigeria">Nigeria</option>
                                             
                                               </select>
                                             <label>Phone<i class="far fa-phone"></i>  </label>
-                                            <input type="text" value="+234" id="phone"/>
+                                            <input type="text" value="+234" id="phone" required/>
                                             <label> Address <i class="fas fa-map-marker"></i>  </label>
-                                            <input type="text" placeholder="USA 27TH Brooklyn NY" value="" id="address"/>
+                                            <input type="text" placeholder="USA 27TH Brooklyn NY" value="" id="address" required/>
                                             <label> Password <i class="far fa-globe"></i>  </label>
-                                            <input type="password" placeholder=".........." value="" id="password"/>
+                                            <input type="password" placeholder=".........." value="" id="password" required/>
                                             <label> Confirm Password <i class="far fa-globe"></i>  </label>
-                                            <input type="password" placeholder=".........." value=""/>
+                                            <input type="password" placeholder=".........." value="" required/>
                                            
                                         </div>
                                     </div>
@@ -365,7 +366,8 @@
                                             <button class="btn    color2-bg  float-btn" onclick="registerUser()">Submit<i class="fal fa-save"></i></button>
                                         </div>
                                     </div>
-                                    <!-- profile-edit-container end-->                                     
+                                    <!-- profile-edit-container end-->     
+                                </form>                                
                                 </div>
                                 <!-- dashboard-list-box end--> 
                             </div>
@@ -380,7 +382,7 @@
                                <div class="col-md-8">
                                 <label>Enter OTP<i class="far fa-phone"></i>  </label>
                                 <input type="text" placeholder="" value="" id="otpnumber" disabled/>
-                                <button class="btn    color2-bg  float-btn">Verify<i class="fal fa-save"></i></button>
+                                <button class="btn color2-bg  float-btn"  onclick="verifyUser()">Verify<i class="fal fa-save"></i></button>
                                </div>
                            </div>
                         </div>

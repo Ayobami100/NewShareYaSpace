@@ -112,6 +112,13 @@ transform: rotate(360deg);
     }
 }
 /* ---------Content Styles--------------------------------------*/
+
+.formerror{
+	margin-top: -10px !important;
+	font-size: medium !important;
+	display: none !important;
+	color:red !important;
+}
 #main{
 	height:100%;
 	width:100%;

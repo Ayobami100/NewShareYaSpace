@@ -32,7 +32,7 @@
                 <div class="header-top fl-wrap">
                     <div class="container">
                         <div class="logo-holder">
-                            <a href="index.html"><img  id="avatar" src="images/logo.png" alt=""></a>
+                            <a href="index.html"><img id="avatar" src="images/logo.png" alt=""></a>
                         </div>
                     <a href="dashboard-add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
@@ -57,6 +57,7 @@
                         </div> -->
                     </div>
                 </div>
+
                 <!-- header-top end-->
                 <!-- header-inner-->
                 <div class="header-inner fl-wrap">
@@ -728,6 +729,7 @@
                         <!--container-->
                         <div class="container">
                             <div class="row">
+                              
                                 <div class="col-md-4">
                                     <div class="colomn-text fl-wrap pad-top-column-text_small">
                                         <div class="colomn-text-title">
@@ -1351,9 +1353,11 @@
                                     <div class="custom-form">
                                         <form method="post"  name="registerform" onsubmit="return false;">
                                             <label>Username or Email Address <span>*</span> </label>
-                                            <input name="email" type="text"  id="email" onClick="this.select()" value="">
+                                            <input name="email" type="email"  id="email" onClick="this.select()" value="" required>
+                                            <label class="formerror">Please enter a valid email <span></span></label>
+                                            
                                             <label >Password <span>*</span> </label>
-                                            <input name="password" type="password" id="password"  onClick="this.select()" value="" >
+                                            <input name="password" type="password" id="password"  onClick="this.select()" value="" required>
                                             <button onclick="loginUser()" type="submit" class="log-submit-btn color-bg"><span>Log In</span></button>
                                             <div class="clearfix" id="message"></div>
                                             <div class="filter-tags">
@@ -1407,6 +1411,7 @@
             <!--register form end -->
             <a class="to-top"><i class="fas fa-caret-up"></i></a>
         </div>
+
         <!-- Main end -->
         <!--=============== scripts  ===============-->
         <script type="text/javascript" src="js/jquery.min.js"></script>
