@@ -183,7 +183,9 @@ async function loadReview(){
  
    
     }
-
+ function verifyUser() {
+  window.location.href = 'index.html';
+ }
   async function registerUser(){
     
     var firstname =  document.getElementById("firstname").value 
@@ -251,8 +253,6 @@ number_verification:'2'
 .catch(function (error) {
   console.log(error);
 });
-
-
 
     
   }
