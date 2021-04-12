@@ -5,10 +5,65 @@
 
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
+
+
+  var puser = localStorage.getItem('token');
+ const userFirstname = localStorage.getItem('firstname');
+ const userLastname = localStorage.getItem('lastname');
+ const userDOB = localStorage.getItem('DOB');
+ const  userId= localStorage.getItem('id');
+ const userToken = localStorage.getItem('token');
+ const userOtp = localStorage.getItem('otp');
+ const userimgProfile = localStorage.getItem('imgProfile');
+
+
+
+ function validateImage() {
+  var formData = new FormData();
+  var file = document.getElementById("img").files[0];
+  formData.append("Filedata", file);
+  var t = file.type.split('/').pop().toLowerCase();
+
+
+
+  if (t != "jpeg" && t != "jpg" && t != "png" && t != "bmp" && t != "gif") {
+      alert('Please select a valid image file');
+      document.getElementById("img").value = '';
+      return false;
+  }
+  if (file.size > 1024000) {
+      alert('Max Upload size is 1MB only');
+      document.getElementById("img").value = '';
+      return false;
+  }
+  
+
+
+
+
+
+
+
+    var image = document.getElementById('output');
+    image.src = URL.createObjectURL(event.target.files[0]);
+    console.log(URL.createObjectURL(event.target.files[0]));
+    console.log(event.target.files[0].name)
+
+    // 
+   document.getElementById('imageUrl').innerText = "images/" +event.target.files[0].name;
+  document.getElementById('imageUrl').style.display = "none";
+
+   return true;
+}
+
+
+
+
 async function loginUser() {
 
   var email = document.getElementById("email1").value;
   var password = document.getElementById('password1').value;
+
   alert(password);
   if (email == '') {
     $('#email').next().show();
@@ -24,45 +79,54 @@ async function loginUser() {
   else
 
   alert(email);
+
   await axios.post('https://share.highflierstutors.com/api/login', {
-    email: "d@gmail.com",
-    password: "1234567890",
+
+    email: email,
+    password: password,
+
   })
 
     .then(function (response) {
-      alert(password);
-      alert(email);
-      console.log()
+
       localStorage.setItem('token', response.data.token);
+
       console.log(response.data)
-      localStorage.setItem('user', JSON.stringify(response.data.user));
-      puser = localStorage.getItem('token');
+      console.log(response.data.user.id)
       console.log(response.data.user.firstname)
-      // loadIt()
-      clearSignOff();
-      // alert('gggggggggggg')
-      alert('You are Logged in  ' + response.data.user.firstname)
+      console.log(response.data.user.lastname)
+
+
+      localStorage.setItem('id', response.data.user.id);
+      localStorage.setItem('firstname', response.data.user.firstname);
+       localStorage.setItem('lastname', response.data.user.lastname);
+       localStorage.setItem('DOB', response.data.user.DOB);
+
+
+
+       alert('You are Logged in Successfully ' + userFirstname);
+
       window.location.reload();
 
     })
 
     .catch(function (error) {
-       alert('You are Logged in  ')
-      // res = error.response.data.message[0];
-      // alert(res)
+      //  alert('You are not Logged in  ')
+     // res = error.response.data.message[0];
+      alert(error)
     });
 
 
 
-
-  $('.modal , .reg-overlay').fadeOut(200);
-  $("html, body").removeClass("hid-body");
-
-
 }
+
+
+
+
 
 async function registerUser() {
 
+  
   var firstname = document.getElementById("firstname").value
   var lastname = document.getElementById("lastname").value
   var emailreg = document.getElementById("emailreg").value
@@ -76,12 +140,15 @@ async function registerUser() {
   var matricNo = document.getElementById("mat").value;
   var cos = document.getElementById("cos").value;
 
-  if (firstname == '' || lastname == '' || emailreg == '' || country == '' || phone == '' || start == ''
-    || address == '' || password == ''
-  ) {
+  // if (firstname == '' || lastname == '' || emailreg == '' || country == '' || phone == '' || start == ''
+  //   || address == '' || password == ''
+  // ) {
+  // alert("Ensure you fill out all the needed information")
+  //   return false;
+  // }
 
-    return false;
-  }
+
+
   await axios.post('https://share.highflierstutors.com/api/register', {
     firstname: firstname,
     lastname: lastname,
@@ -98,39 +165,56 @@ async function registerUser() {
     role: '1',
     number_verification: '2'
   })
+
+
+
     .then(function (response) {
 
       if (response.data.status == "success") {
+
+
+        console.log(response.data);
+        console.log(response.data.data);
+
         localStorage.setItem('token', response.data.token);
-        puser = localStorage.getItem('token');
+        // localStorage.setItem('id', response.data.user.id);
+        localStorage.setItem('firstname', response.data.data.firstname);
+        localStorage.setItem('lastname', response.data.data.lastname);
+        localStorage.setItem('DOB', response.data.data.DOB);
+        localStorage.setItem('otp', response.data.data.otp);
+        localStorage.setItem('imgProfile', response.data.data.imgProfile);
+
+
+
         document.getElementById("otp").style.display = "block";
         document.getElementById("profileinfo").style.display = "none";
-        registerResponse = response.data;
-        console.log(response)
-        console.log(response.data)
-        console.log(response.data.data)
-        console.log(puser)
-        console.log(response.data.data.otp)
-        document.getElementById("otpnumber").value = response.data.data.otp;
+    
+     
+        document.getElementById("otpnumber").value = userOtp;
       }
 
-
+      else{
+        alert(response.data.message);
+      }
       // loadIt()
       // clearOff();
 
 
 
       // alert('gggggggggggg')
-      alert('You have successfully registered  ' + response.data.data.firstname)
+     
 
     })
 
     .catch(function (error) {
-      console.log(error);
+      console.log(error)
+      alert(error);
     });
 
 
 }
+
+
 function findStudent() {
   var yes = document.getElementById("yes").checked;
 
@@ -143,17 +227,13 @@ function findStudent() {
 }
 
 function logOff() {
-  localStorage.removeItem('token');
-  localStorage.removeItem('user')
 
-  loadIt();
-  window.location.reload();
+    localStorage.clear();
+    location.reload();
+  // loadIt();
 
 }
-var puser = localStorage.getItem('token');
 
-
-var registerResponse = localStorage.getItem(JSON.parse('user'));
 
 // index.html -----------------------------------------
 
@@ -162,66 +242,64 @@ var registerResponse = localStorage.getItem(JSON.parse('user'));
 
 
 function verifyUser() {
+
+  alert('You have successfully registered ' + userFirstname)
   window.location.href = 'index.html';
 }
+
+
+
 function loadIt() 
 {
   if (puser != null) {
-
-
-    console.log(registerResponse)
+  
+     console.log(userOtp)
     console.log(puser)
     
     document.getElementById('signout').style.display = 'block';
     document.getElementById('signin').style.display = 'none';
     document.getElementById('reg').style.display = 'none';
     document.getElementById('addlisting').style.display = 'block';
+    document.getElementById('dropit').style.display = 'block';
 
 
     // console.log(localStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){
      
-      document.getElementById('userValue').innerText = "Hello, " + registerResponse.firstname + " " + registerResponse.lastname;
+      document.getElementById('userValue').innerText = "Hello, " + userFirstname + " " + userLastname;
      
     // }
    
     // document.getElementById('userValue').innerText = " ";
-    // document.getElementById("studentdetails").style.display = "none";
+    document.getElementById("studentdetails").style.display = "none";
 
-    // var d = new Date();  
-    // $("#start").attr("min",d.getFullYear() + "-01-01").attr("max",d.getFullYear() + "-12-31");
-    // alert(d)
-
-    // var $dp2 = $("#datepicker2");
-    // $dp2.datepicker({
-    //   changeYear: true,
-    //   changeMonth: true,
-    //   yearRange: "-100:+20",
-    //   dateFormat: "yy-m-dd",
-    // });
-
-
-    console.log('otp')
     document.getElementById("otp").style.display = "none";
-    // populateCombo()
+    populateCombo()
   }
+
+
   else {
+
+    console.log(puser)
 
     document.getElementById('signout').style.display = 'none';
     document.getElementById('signin').style.display = 'block';
-    document.getElementById('dropit').style.display = 'block';
+    document.getElementById('dropit').style.display = 'none';
     // document.getElementById('avatar').src = res.data.user.imgProfile;
     document.getElementById('reg').style.display = 'block';
     document.getElementById('addlisting').style.display = 'none';
-
-    // document.getElementById('userValue').innerText = "Hello,";
-    // document.getElementById("studentdetails").style.display = "none";
+    document.getElementById("studentdetails").style.display = "none";
 
    
       document.getElementById("otp").style.display = "none";
   }
 }
+
+
+
+
   function clearSignOff() {
+
     document.getElementById("email").value = '';
     document.getElementById("password").value = '';
   }
@@ -254,6 +332,11 @@ function loadIt()
     // document.getElementById('bio').innerText = response.bio;
     // document.getElementById('count').innerText = "Foll0wers : "+response.followers;
   }
+
+
+
+
+
   function IsEmail(email) {
     var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     if (!regex.test(email)) {
@@ -276,6 +359,10 @@ function loadIt()
       }
       )
   }
+
+
+
+
   async function getUserListing() {
     await axios.get('https://share.highflierstutors.com/api/listing')
 
@@ -285,21 +372,19 @@ function loadIt()
       }
       )
   }
+
+
+
+
   async function getUserBooking() {
 
   }
 
-  async function loadReview() {
-
-    loadIt();
 
 
-  }
+ 
   
  
-
-
-  ////////////////////////////////////////////////////////////////////////////////////////
  
   ///////////////////////////////////////////////////////
 
@@ -345,4 +430,4 @@ function loadIt()
         console.error('Fetch Error -', err);
       });
   }
-}
+

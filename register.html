@@ -167,14 +167,14 @@
                             <div class="dasboard-wrap fl-wrap">
                                 <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">Home</a><a href="#">Register</a></div>
                                 <!--dasboard-sidebar-->
-                                <!-- <div class="dasboard-sidebar">
+                                 <!-- <div class="dasboard-sidebar">
                                     <div class="dasboard-sidebar-content fl-wrap">
                                         <div class="dasboard-avatar">
                                            <img src="images/avatar/avatar-bg.png" alt="">
                                         </div>
                                         <div class="dasboard-sidebar-item fl-wrap">
                                             <h3>
-                                                <span>Welcome </span>
+                                                <span>Welcome</span>
                                               
                                             </h3>
                                         </div>
@@ -189,10 +189,7 @@
                                                     Bookings
                                                   
                                                 </li>
-                                                <li>
-                                                    Reviews	
-                                                   
-                                                </li>
+                                               
                                             </ul>
                                         </div>
                                         <a href="#" class="log-out-btn color-bg" onclick="logOff()">Log Out <i class="far fa-sign-out"></i></a>
@@ -222,15 +219,15 @@
                                         <li><a href="dashboard-bookings.html"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
                                         <li><a href="dashboard-review.html"><i class="far fa-comments"></i> Reviews </a></li>
                                     </ul>
-                                </div> -->
-                                <!--dasboard-menu end-->
+                                </div>
+                                dasboard-menu end-->
                                 <!--Tariff Plan menu-->
                                 <!-- <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
                                 <div class="tfp-det">
                                     <p>You Are on <a href="#">Extended</a> . Use link bellow to view details or upgrade. </p>
                                     <a href="#" class="tfp-det-btn color2-bg">Details</a>
-                                </div> -->
-                                <!--Tariff Plan menu end-->
+                                </div>
+                                Tariff Plan menu end-->
                             </div>
                         </div>
                     </section>
@@ -265,10 +262,11 @@
                                                     <img id="profileImage" src=""/>
                                                 </div>
                                                 <input id="imageUpload" type="file" name="profile_photo" placeholder="photo" required="" capture> -->
-<form method="post"  name="registerform" onsubmit="return false;">
+                                            <form method="post"  name="registerform" onsubmit="return false;">
                                                 <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-                                                <button><label for="file" style="cursor: pointer;">Upload Image</label></button>
+                                                <!-- <button><label for="file" style="cursor: pointer;">Upload Image</label></button> -->
                                                 <p><img id="output" width="200" /></p>
+                                                <input type="file" id="img" onchange="validateImage()" >
                                                 <p id="imageUrl"></p>
                                             </div>
 
@@ -295,7 +293,7 @@
                                             <label>Phone<i class="far fa-phone"></i>  </label>
                                             <input type="text" value="+234" id="phone" required/>
                                             <label> Address <i class="fas fa-map-marker"></i>  </label>
-                                            <input type="text" placeholder="USA 27TH Brooklyn NY" value="" id="address" required/>
+                                            <input type="text" placeholder="No 234 Iyana ipaja Lagos State" value="" id="address" required/>
                                             <label> Password <i class="far fa-globe"></i>  </label>
                                             <input type="password" placeholder=".........." value="" id="password" required/>
                                             <label> Confirm Password <i class="far fa-globe"></i>  </label>
@@ -348,22 +346,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- profile-edit-container end-->  
-                                    <!-- <div class="box-widget-item-header mat-top">
-                                        <h3>Your  Socials</h3>
-                                    </div> -->
-                                    <!-- profile-edit-container--> 
+                                   
                                     <div class="profile-edit-container">
                                         <div class="custom-form">
-                                            <!-- <label>Facebook <i class="fab fa-facebook"></i></label>
-                                            <input type="text" placeholder="https://www.facebook.com/" value=""/>
-                                            <label>Twitter<i class="fab fa-twitter"></i>  </label>
-                                            <input type="text" placeholder="https://twitter.com/" value=""/>
-                                            <label>Vkontakte<i class="fab fa-vk"></i>  </label>
-                                            <input type="text" placeholder="https://vk.com" value=""/>
-                                            <label> Instagram <i class="fab fa-instagram"></i>  </label>
-                                            <input type="text" placeholder="https://www.instagram.com/" value=""/> -->
-                                            <button class="btn    color2-bg  float-btn" onclick="registerUser()">Submit<i class="fal fa-save"></i></button>
+                                            <button class="btn color2-bg  float-btn" onclick="registerUser()">Submit<i class="fal fa-save"></i></button>
+                                           
                                         </div>
                                     </div>
                                     <!-- profile-edit-container end-->     
@@ -381,7 +368,7 @@
                            <div class="container">
                                <div class="col-md-8">
                                 <label>Enter OTP<i class="far fa-phone"></i>  </label>
-                                <input type="text" placeholder="" value="" id="otpnumber" disabled/>
+                                <input type="text" id="otpnumber" disabled/>
                                 <button class="btn color2-bg  float-btn"  onclick="verifyUser()">Verify<i class="fal fa-save"></i></button>
                                </div>
                            </div>
@@ -489,7 +476,7 @@
                                         <p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam. </p>
                                         <ul  class="footer-contacts fl-wrap">
                                             <li><span><i class="fal fa-envelope"></i> Mail :</span><a href="#" target="_blank">yourmail@domain.com</a></li>
-                                            <li> <span><i class="fal fa-map-marker-alt"></i> Adress :</span><a href="#" target="_blank">USA 27TH Brooklyn NY</a></li>
+                                            <li> <span><i class="fal fa-map-marker-alt"></i> Adress :</span><a href="#" target="_blank">No 234 Iyana ipaja Lagos State</a></li>
                                             <li><span><i class="fal fa-phone"></i> Phone :</span><a href="#">+7(111)123456789</a></li>
                                         </ul>
                                         <div class="footer-social">
@@ -675,35 +662,8 @@
             <a class="to-top"><i class="fas fa-caret-up"></i></a>
         </div>
         <!-- Main end -->
-        <!--=============== scripts  ===============-->
-        <!-- <script>
-           $("#profileImage").click(function(e){
-               $("#imageUpload").click();
-           });
+        
 
-           function fasterPreview (uploader){
-               if(uploader.files && uploader.files[0]){
-                   $('#profileImage').attr('src', window.URL.createObjectURL(uploader.files[0]));
-               }
-           }
-
-           $("#imageUpload").change(function(){
-               fasterPreview(this);
-           });
-        </script> -->
-
-        <script>
-            var loadFile = function(event) {
-            var image = document.getElementById('output');
-            image.src = URL.createObjectURL(event.target.files[0]);
-            console.log(URL.createObjectURL(event.target.files[0]));
-            console.log(event.target.files[0].name)
-
-            // 
-           document.getElementById('imageUrl').innerText = "images/" +event.target.files[0].name;
-
-            };
-    </script>
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>  
