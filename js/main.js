@@ -1,20 +1,15 @@
-
-// axios.defaults.baseURL="https://share.highflierstutors.com/api/";
-
-
-
 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 
 
   var puser = localStorage.getItem('token');
- const userFirstname = localStorage.getItem('firstname');
- const userLastname = localStorage.getItem('lastname');
- const userDOB = localStorage.getItem('DOB');
- const  userId= localStorage.getItem('id');
- const userToken = localStorage.getItem('token');
- const userOtp = localStorage.getItem('otp');
- const userimgProfile = localStorage.getItem('imgProfile');
+//  const userFirstname = localStorage.getItem('firstname');
+//  const userLastname = localStorage.getItem('lastname');
+//  const userDOB = localStorage.getItem('DOB');
+//  const  userId= localStorage.getItem('id');
+//  const userToken = localStorage.getItem('token');
+//  const userOtp = localStorage.getItem('otp');
+//  const userimgProfile = localStorage.getItem('imgProfile');
 
 
  //////////////////////////////All Listings Declaration///////////////////////////////////////////
@@ -308,10 +303,11 @@ function loadIt()
     // document.getElementById('avatar').src = res.data.user.imgProfile;
     document.getElementById('reg').style.display = 'block';
     document.getElementById('addlisting').style.display = 'none';
-    document.getElementById("studentdetails").style.display = "none";
-
-   
-      document.getElementById("otp").style.display = "none";
+    if(window.location.href == 'register.html')
+    {
+    document.getElementById("studentdetails").style.display = "none";    
+    document.getElementById("otp").style.display = "none";
+    }
   }
 }
 
@@ -473,18 +469,18 @@ function loadIt()
 
           var div =  document.createElement("div");
           div.innerHTML = 
-          '<div class="listing-item">\n'+
-          '<article class = geodir-category-listing fl-wrap">\n'+
-              '<div class="geodir-category-img">\n'+
-                  '<a href="listing-single.html">'+'<img src="images/gal/1.jpg" alt="">'+'</a>\n'+
-                  '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="images/avatar/1.jpg" alt="">'+'</a>\n'+
-                    //  '<span class="avatar-tooltip">Added By'+'<strong> Alisa Noory </strong>' +  '</span>\n'
+          '<div class="listing-item">'+
+          '<article class = geodir-category-listing fl-wrap">'+
+              '<div class="geodir-category-img">'+
+                  '<a href="listing-single.html">'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
+                  '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="images/avatar/1.jpg" alt="">'+'</a>'+
+                    '<span class="avatar-tooltip">Added By<strong> Alisa Noory </strong></span>'+
                   '</div>'+
                   '<div class="sale-window">Sale 20%</div>'+
                   ' <div class="geodir-category-opt">'+
                      '<div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>'+
                       '<div class="rate-class-name">'+
-                          '<div class="score" id="score"><strong>Very Good</strong>27 Reviews </div>'+
+                          '<div class="score" id="score"><strong>Very Good</strong>'+ Object.values(response.data.data[i].reviews).length +" Reviews"+'</div>'+
                               '<span>9.0</span>'+
                           '</div>'+
                       '</div>'+
@@ -503,7 +499,7 @@ function loadIt()
                              '</div>'+
                     '</div>'+
                   '</div>'+
-                  '<p>Sed interdum metus at nisi tempor laoreet. Integer gravida orci a justo sodales.</p>'+
+                  '<p>'+  response.data.data[i].listing.spaceDetails +'</p>'+
                   '<ul class="facilities-list fl-wrap">'+
                       '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
                      '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
@@ -511,7 +507,7 @@ function loadIt()
                       '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
                   '</ul>'+
                   '<div class="geodir-category-footer fl-wrap">'+
-                      '<div class="geodir-category-price">Awg/Night <span>$ 320</span></div>'+
+                      '<div class="geodir-category-price">Awg/Night <span>'+"NGN  "+  response.data.data[i].listing.price +'</span></div>'+
                       '<div class="geodir-opt-list">'+
                           '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
                           '<a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>'+
