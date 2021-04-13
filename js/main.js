@@ -111,7 +111,7 @@ async function loginUser() {
 
 
 
-       alert('You are Logged in Successfully ' + localStorage.getItem('firstname');
+       alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
 
       window.location.reload();
 
@@ -485,7 +485,7 @@ function loadIt()
                      '<div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>'+
                       '<div class="rate-class-name">'+
                           '<div class="score" id="score"><strong>Very Good</strong>27 Reviews </div>'+
-                              '<span>5.0</span>'+
+                              '<span>9.0</span>'+
                           '</div>'+
                       '</div>'+
                  '</div>'+
