@@ -3,13 +3,13 @@ axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getIte
 
 
   var puser = localStorage.getItem('token');
-//  const userFirstname = localStorage.getItem('firstname');
-//  const userLastname = localStorage.getItem('lastname');
-//  const userDOB = localStorage.getItem('DOB');
-//  const  userId= localStorage.getItem('id');
-//  const userToken = localStorage.getItem('token');
-//  const userOtp = localStorage.getItem('otp');
-//  const userimgProfile = localStorage.getItem('imgProfile');
+ const userFirstname = localStorage.getItem('firstname');
+ const userLastname = localStorage.getItem('lastname');
+ const userDOB = localStorage.getItem('DOB');
+ const  userId= localStorage.getItem('id');
+ const userToken = localStorage.getItem('token');
+ const userOtp = localStorage.getItem('otp');
+ const userimgProfile = localStorage.getItem('imgProfile');
 
 
  //////////////////////////////All Listings Declaration///////////////////////////////////////////
