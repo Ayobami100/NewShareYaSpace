@@ -73,7 +73,6 @@ async function loginUser() {
   var email = document.getElementById("email1").value;
   var password = document.getElementById('password1').value;
 
-  alert(password);
   if (email == '') {
     $('#email').next().show();
     return false;
@@ -87,7 +86,6 @@ async function loginUser() {
   }
   else
 
-  alert(email);
 
   await axios.post('https://share.highflierstutors.com/api/login', {
 
@@ -113,7 +111,7 @@ async function loginUser() {
 
 
 
-       alert('You are Logged in Successfully ' + userFirstname);
+       alert('You are Logged in Successfully ' + localStorage.getItem('firstname');
 
       window.location.reload();
 
@@ -237,9 +235,17 @@ function findStudent() {
 
 function logOff() {
 
+  if (confirm('Are you sure you want to sign out?')) {
+    
     localStorage.clear();
     location.reload();
-  // loadIt();
+  
+  } else {
+    // Do nothing!
+   
+  }
+
+  
 
 }
 
@@ -275,7 +281,7 @@ function loadIt()
     // console.log(localStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){
      
-      document.getElementById('userValue').innerText = "Hello, " + userFirstname + " " + userLastname;
+      document.getElementById('userValue').innerText = userFirstname + " " + userLastname;
      
     // }
    
