@@ -68,12 +68,12 @@
                                 <span><img  id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
                                 <div id="userValue"></div>
                             </div>
-                            <ul>
+                              <ul>
                                 <li><a href="dashboard-myprofile.html"> Edit profile</a></li>
                                 <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
                                 <li><a href="dashboard-bookings.html">  Bookings  </a></li>
                                 <li><a href="dashboard-review.html"> Reviews </a></li>
-                                <li><a href="#" onclick="logOff()">Log Out</a></li>
+                                 <li><a href="#" onclick="logOff()">Log Out</a></li>
                             </ul>
                         </div>
                         <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
@@ -600,7 +600,6 @@
                         <div class="close-reg color-bg"><i class="fal fa-times"></i></div>
                         <ul class="tabs-menu">
                             <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
-                            <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Register</a></li>
                         </ul>
                         <!--tabs -->                       
                         <div id="tabs-container">
@@ -609,12 +608,14 @@
                                 <div id="tab-1" class="tab-content">
                                        <h3>Sign-in to  <span>ShareYa<strong>Space</strong></span></h3>
                                     <div class="custom-form">
-                                        <form method="post"  name="registerform">
-                                            <label>Username or Email Address <span>*</span> </label>
-                                            <input name="email" type="text"   onClick="this.select()" value="">
+                                      <form method="post"  name="registerform" onsubmit="return false;">
+                                             <label>Username or Email Address <span>*</span> </label>
+                                            <input name="email" type="email"  id="email1" onClick="this.select()" value="" required>
+                                            <label class="formerror">Please enter a valid email <span></span></label>
+                                            
                                             <label >Password <span>*</span> </label>
-                                            <input name="password" type="password"   onClick="this.select()" value="" >
-                                            <button type="submit"  class="log-submit-btn"><span>Log In</span></button>
+                                            <input name="password" type="password" id="password1"  onClick="this.select()" value="" required>
+                                             <button  type="submit" class="log-submit-btn color-bg" onClick="loginUser()"><span>Log In</span></button>
                                             <div class="clearfix"></div>
                                             <div class="filter-tags">
                                                 <input id="check-a" type="checkbox" name="check">

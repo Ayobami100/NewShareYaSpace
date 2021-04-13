@@ -9,7 +9,7 @@ axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getIte
  const  userId= localStorage.getItem('id');
  const userToken = localStorage.getItem('token');
  const userOtp = localStorage.getItem('otp');
- const userimgProfile = localStorage.getItem('imgProfile');
+ const userimgProfile = "https://share.highflierstutors.com/images/1276705039.jpg";
 
 
  //////////////////////////////All Listings Declaration///////////////////////////////////////////
@@ -103,7 +103,7 @@ async function loginUser() {
       localStorage.setItem('firstname', response.data.user.firstname);
        localStorage.setItem('lastname', response.data.user.lastname);
        localStorage.setItem('DOB', response.data.user.DOB);
-
+       localStorage.setItem('imgProfile', response.data.user.imgProfile);
 
 
        alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
@@ -266,12 +266,12 @@ function loadIt()
      console.log(userOtp)
     console.log(puser)
     
-    document.getElementById('signout').style.display = 'block';
+    document.getElementById('signout').style.display = 'none';
     document.getElementById('signin').style.display = 'none';
     document.getElementById('reg').style.display = 'none';
     document.getElementById('addlisting').style.display = 'block';
     document.getElementById('dropit').style.display = 'block';
-
+    document.getElementById('avatar').src = userimgProfile;
 
     // console.log(localStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){

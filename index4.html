@@ -1283,11 +1283,13 @@
                                 <div id="tab-1" class="tab-content">
                                        <h3>Sign-in to  <span>ShareYa<strong>Space</strong></span></h3>
                                     <div class="custom-form">
-                                        <form method="post"  name="registerform">
-                                            <label>Username or Email Address <span>*</span> </label>
-                                            <input name="email" type="text"   onClick="this.select()" value="">
+                                      <form method="post"  name="registerform" onsubmit="return false;">
+                                             <label>Username or Email Address <span>*</span> </label>
+                                            <input name="email" type="email"  id="email1" onClick="this.select()" value="" required>
+                                            <label class="formerror">Please enter a valid email <span></span></label>
+                                            
                                             <label >Password <span>*</span> </label>
-                                            <input name="password" type="password"   onClick="this.select()" value="" >
+                                            <input name="password" type="password" id="password1"  onClick="this.select()" value="" required>
                                             <button type="submit"  class="log-submit-btn color-bg"><span>Log In</span></button>
                                             <div class="clearfix"></div>
                                             <div class="filter-tags">

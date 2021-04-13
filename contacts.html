@@ -1,21 +1,30 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
+     <head>
         <!--=============== basic  ===============-->
         <meta charset="UTF-8">
-        <title>ShareYaSpace - Listing Booking Directory Listing Template</title>
+        <title>ShareYaSpace</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="robots" content="index, follow"/>
         <meta name="keywords" content=""/>
         <meta name="description" content=""/>
 
+        <!-- =========================================================================== -->
 
-
-
-
-
-        <script  src="js/main.js"></script>
-        <!--=============== css  ===============-->
+        <script type="module" >
+        
+            $(document).ready(function(){
+                
+            document.getElementById('signout').style.display = 'none';
+            document.getElementById('signin').style.display = 'none';
+            document.getElementById('dropit').style.display = 'none';
+            // document.getElementById('avatar').src = res.data.user.imgProfile;
+            
+            document.getElementById('reg').style.display = 'none';
+            document.getElementById('addlisting').style.display = 'none';
+            })
+            
+        </script>
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/plugins.css">
         <link type="text/css" rel="stylesheet" href="css/style.css">
@@ -75,12 +84,12 @@
                                 <span><img  id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
                                 <div id="userValue"></div>
                             </div>
-                            <ul>
+                             <ul>
                                 <li><a href="dashboard-myprofile.html"> Edit profile</a></li>
                                 <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
                                 <li><a href="dashboard-bookings.html">  Bookings  </a></li>
                                 <li><a href="dashboard-review.html"> Reviews </a></li>
-                                <!--  <li><a href="#" onclick="logOff()">Log Out</a></li> -->
+                                 <li><a href="#" onclick="logOff()">Log Out</a></li>
                             </ul>
                         </div>
                         <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
