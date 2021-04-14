@@ -16,7 +16,7 @@
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
     </head>
-    <body onload="getUserReview()">
+     <body onload="loadIt()">
         <!--loader-->
         <div class="loader-wrap">
             <div class="pin">
@@ -34,16 +34,32 @@
                         <div class="logo-holder">
                             <a href="index.html"><img src="images/logo.png" alt=""></a>
                         </div>
-                    <a href="dashboard-add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
+                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
                         <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
                         <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
-                      
+                        <!-- <div class="lang-wrap">
+                            <div class="show-lang"><img src="images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
+                            <ul class="lang-tooltip green-bg">
+                                <li><a href="#"><img src="images/lan/4.png" alt=""> De</a></li>
+                                <li><a href="#"><img src="images/lan/5.png" alt=""> It</a></li>
+                                <li><a href="#"><img src="images/lan/2.png" alt=""> Fr</a></li>
+                                <li><a href="#"><img src="images/lan/3.png" alt=""> Es</a></li>
+                            </ul>
+                        </div> -->
+                        <!-- <div class="currency-wrap">
+                            <div class="show-currency-tooltip"><i class="fas fa-dollar-sign"></i> <span>USD <i class="fa fa-caret-down"></i> </span></div>
+                            <ul class="currency-tooltip">
+                                <li><a href="#"><i class="far fa-euro-sign"></i> EUR</a></li>
+                                <li><a href="#"><i class="far fa-pound-sign"></i> GBP</a></li>
+                                <li><a href="#"><i class="far fa-ruble-sign"></i>RUR</a></li>
+                            </ul>
+                        </div> -->
                     </div>
                 </div>
                 <!-- header-top end-->
                 <!-- header-inner-->
-                <div class="header-inner fl-wrap">
+                 <div class="header-inner fl-wrap">
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
                         <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter">3</span></div>
@@ -52,11 +68,11 @@
                                 <span><img  id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
                                 <div id="userValue"></div>
                             </div>
-                              <ul>
-                                <li><a href="dashboard-myprofile.html"> Edit profile</a></li>
-                                <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
-                                <li><a href="dashboard-bookings.html">  Bookings  </a></li>
-                                <li><a href="dashboard-review.html"> Reviews </a></li>
+                             <ul>
+                                <li><a href="myprofile.html"> Edit profile</a></li>
+                                <li><a href="add-listing.html"> Add Listing</a></li>
+                                <li><a href="bookings.html">  Bookings  </a></li>
+                                <li><a href="review.html"> Reviews </a></li>
                                  <li><a href="#" onclick="logOff()">Log Out</a></li>
                             </ul>
                         </div>
@@ -74,28 +90,74 @@
                                 <ul>
                                     <li>
                                         <a href="index.html" class="act-link">Home </a>
-                                   
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">Listings </a>
-                                      
+                                        <!--second level -->
+                                        <!-- <ul>
+                                            <li><a href="index.html">Parallax Image</a></li>
+                                            <li><a href="index2.html">Slider</a></li>
+                                            <li><a href="index3.html">Video</a></li>
+                                            <li><a href="index4.html">Slideshow</a></li>
                                         </ul> -->
                                         <!--second level end-->
                                     </li>
-                                 
+                                    <li>
+                                        <a href="listing.html">Listings </a>
+                                        <!--second level -->
+                                        <!-- <ul> -->
+                                            <!-- <li><a href="listing.html">Column map</a></li>
+                                            <li><a href="listing6.html">Column map 2</a></li>
+                                            <li><a href="listing2.html">Fullwidth Map</a></li>
+                                            <li><a href="listing3.html">Fullwidth Map 2</a></li>
+                                            <li><a href="listing4.html">Without Map</a></li>
+                                            <li><a href="listing5.html">Without Map 2</a></li>
+                                            <li>
+                                                <a href="#">Single <i class="fas fa-caret-down"></i></a> -->
+                                                <!--third  level  -->
+                                                <!-- <ul>
+                                                    <li><a href="listing-single.html">Style 1</a></li>
+                                                    <li><a href="listing-single2.html">Style 2</a></li>
+                                                    <li><a href="listing-single3.html">Style 3</a></li>
+                                                    <li><a href="listing-single4.html">Style 4</a></li>
+                                                </ul> -->
+                                                <!--third  level end-->
+                                            <!-- </li>
+                                        </ul> -->
+                                        <!--second level end-->
+                                    </li>
+                                    <!-- <li>
+                                        <a href="blog.html">News</a>
+                                    </li> -->
                                     <li>
                                         <a href="#">Pages <i class="fas fa-caret-down"></i></a>
                                         <!--second level -->
                                         <ul>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="contacts.html">Contacts</a></li>
-                                          
+                                            <!-- <li><a href="author-single.html">User single</a></li>
+                                            <li><a href="help.html">Help FAQ</a></li>
+                                            <li><a href="pricing-tables.html">Pricing</a></li>
+                                            <li><a href="booking-single.html">Booking</a></li>
+                                            <li><a href="dashboard.html">User Dashboard</a></li>
+                                            <li><a href="blog2.html">Blog Classik</a></li>
+                                            <li><a href="blog-single.html">Blog Single</a></li>
+                                            <li><a href="add-listing.html">Add Listing</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                            <li><a href="invoice.html">Invoice</a></li>
+                                            <li><a href="coming-soon.html">Coming Soon</a></li> -->
                                         </ul>                                      
                                     </li>
                                 </ul>
                             </nav>
                         </div>
-                      
+                        <!-- navigation  end -->
+                        <!-- wishlist-wrap-->
+                        
+                        <!-- wishlist-wrap end-->
+                    </div>
+                </div>
+                        <!-- navigation  end -->
+                        <!-- wishlist-wrap-->
+                        
+                        <!-- wishlist-wrap end-->
                     </div>
                 </div>
                 <!-- header-inner end-->
@@ -171,18 +233,19 @@
                             <div class="dasboard-wrap fl-wrap">
                                 <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">Home</a><a href="#">Dashboard</a><span>Profile page</span></div>
                                 <!--dasboard-sidebar-->
-                                <div class="dasboard-sidebar">
+                                  <div class="dasboard-sidebar">
                                     <div class="dasboard-sidebar-content fl-wrap">
                                         <div class="dasboard-avatar">
                                            <img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">
                                         </div>
-                                        <div class="dasboard-sidebar-item fl-wrap">
-                                            <h3>
+                                         <div class="dasboard-sidebar-item fl-wrap">
+                                            <h3 id="fullname">
                                                 <span>Welcome </span>
-                                                <h3 id="fullname">  My Account </h3>
+                                                
                                             </h3>
                                         </div>
-                                        <a href="dashboard-add-listing.html" class="ed-btn">Add Listing</a>                                        
+                                        <a href="ad
+                                        <a href="add-listing.html" class="ed-btn">Add Listing</a>                                        
                                         <div class="user-stats fl-wrap">
                                             <ul>
                                                 <li>
@@ -210,30 +273,30 @@
                                         <li>
                                             <a href="dashboard.html"><i class="far fa-user"></i>Profile</a>
                                             <ul>
-                                                <li><a href="dashboard-myprofile.html">Edit profile</a></li>
-                                                <li><a href="dashboard-password.html">Change Password</a></li>
+                                                <li><a href="myprofile.html">Edit profile</a></li>
+                                                <li><a href="password.html">Change Password</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="dashboard-messages.html"><i class="far fa-envelope"></i> Messages <span>3</span></a></li>
+                                        <li><a href="messages.html" class="user-profile-act"><i class="far fa-envelope"></i> Messages <span>3</span></a></li>
                                         <li>
-                                            <a href="dashboard-listing-table.html"><i class="far fa-th-list"></i> My listigs  </a>
+                                            <a href="listing-table.html"><i class="far fa-th-list"></i> My listigs  </a>
                                             <ul>
                                                 <!-- <li><a href="#">Active</a><span>5</span></li>
                                                 <li><a href="#">Pending</a><span>2</span></li>
                                                 <li><a href="#">Expire</a><span>3</span></li> -->
                                             </ul>
                                         </li>
-                                        <li><a href="dashboard-bookings.html"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
-                                        <li><a href="dashboard-review.html" class="user-profile-act"><i class="far fa-comments"></i> Reviews </a></li>
+                                        <li><a href="bookings.html"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
+                                        <li><a href="review.html"><i class="far fa-comments"></i> Reviews </a></li>
                                     </ul>
                                 </div>
                                 <!--dasboard-menu end-->
                                 <!--Tariff Plan menu-->
-                                <!-- <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
+                                <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
                                 <div class="tfp-det">
                                     <p>You Are on <a href="#">Extended</a> . Use link bellow to view details or upgrade. </p>
                                     <a href="#" class="tfp-det-btn color2-bg">Details</a>
-                                </div> -->
+                                </div>
                                 <!--Tariff Plan menu end-->
                             </div>
                         </div>
@@ -246,27 +309,159 @@
                             <div class="dasboard-wrap fl-wrap">
                                 <!-- dashboard-content--> 
                                 <div class="dashboard-content fl-wrap">
+                                    <!-- dashboard-list-box-->         
                                     <div class="dashboard-list-box fl-wrap">
                                         <div class="dashboard-header fl-wrap">
-                                            <h3>Reviews</h3>
+                                            <h3>Indox</h3>
                                         </div>
-                                        <div class="reviews-comments-wrap" id="showreview">
-                                            <!-- reviews-comments-item -->  
-                                           
-                                            <!--reviews-comments-item end--> 
-                                           
-                                                                                                                                                       
+                                        <div class="row">
+                                            <!-- chat-box--> 
+                                            <div class="col-sm-8">
+                                                <div class="chat-box fl-wrap grey-blue-bg ">
+                                                    <!-- message--> 
+                                                    <div class="chat-message chat-message_guest fl-wrap">
+                                                        <div class="dashboard-message-avatar">
+                                                            <img src="images/avatar/1.jpg" alt="">
+                                                            <span>Andy</span>
+                                                        </div>
+                                                        <span class="massage-date">25 may 2021  <span>7.51 PM</span></span>
+                                                        <p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p>
+                                                    </div>
+                                                    <!-- message end-->
+                                                    <!-- message--> 
+                                                    <div class="chat-message chat-message_user fl-wrap">
+                                                        <div class="dashboard-message-avatar">
+                                                           <img src="images/avatar/avatar-bg.png" alt="">
+                                                            <span>Jessie</span>
+                                                        </div>
+                                                        <span class="massage-date">25 may 2021  <span>7.51 PM</span></span>
+                                                        <p>Nulla eget erat consequat quam feugiat dapibus eget sed mauris.</p>
+                                                    </div>
+                                                    <!-- message end-->                                             
+                                                    <!-- message--> 
+                                                    <div class="chat-message chat-message_guest fl-wrap">
+                                                        <div class="dashboard-message-avatar">
+                                                            <img src="images/avatar/1.jpg" alt="">
+                                                            <span>Andy</span>
+                                                        </div>
+                                                        <span class="massage-date">25 may 2021  <span>7.51 PM</span></span>
+                                                        <p>Sed non neque faucibus, condimentum lectus at, accumsan enim. Fusce pretium egestas cursus..</p>
+                                                    </div>
+                                                    <!-- message end--> 
+                                                    <!-- message--> 
+                                                    <div class="chat-message chat-message_user fl-wrap">
+                                                        <div class="dashboard-message-avatar">
+                                                           <img src="images/avatar/avatar-bg.png" alt="">
+                                                            <span>Jessie</span>
+                                                        </div>
+                                                        <span class="massage-date">25 may 2021  <span>7.51 PM</span></span>
+                                                        <p>Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat .</p>
+                                                    </div>
+                                                    <!-- message end-->                                           
+                                                </div>
+                                                <div class="message-input fl-wrap">
+                                                    <textarea  placeholder="Type Message"></textarea>                                                 
+                                                    <button type="submit"><i class="fal fa-paper-plane"></i></button>
+                                                </div>
+                                            </div>
+                                            <!-- chat-box end--> 
+                                            <!-- chat-contacts--> 
+                                            <div class="col-sm-4">
+                                                <div class="chat-contacts fl-wrap">
+                                                    <!-- chat-contacts-item-->
+                                                    <a class="chat-contacts-item" href="#">
+                                                        <div class="dashboard-message-avatar">
+                                                            <img src="images/avatar/2.jpg" alt="">
+                                                            <div class="message-counter">2</div>
+                                                        </div>
+                                                        <div class="chat-contacts-item-text">
+                                                            <h4>Mark Rose</h4>
+                                                            <span>27 Dec 2021 </span>
+                                                            <p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p>
+                                                        </div>
+                                                    </a>
+                                                    <!-- chat-contacts-item -->
+                                                    <!-- chat-contacts-item-->
+                                                    <a class="chat-contacts-item" href="#">
+                                                        <div class="dashboard-message-avatar">
+                                                            <img  id="avatar" src="images/avatar/avatar-bg.png" alt="">
+                                                            <div class="message-counter">1</div>
+                                                        </div>
+                                                        <div class="chat-contacts-item-text">
+                                                            <h4>Adam Koncy</h4>
+                                                            <span>27 Dec 2021 </span>
+                                                            <p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p>
+                                                        </div>
+                                                    </a>
+                                                    <!-- chat-contacts-item -->
+                                                    <!-- chat-contacts-item-->
+                                                    <a class="chat-contacts-item chat-contacts-item_active" href="#">
+                                                        <div class="dashboard-message-avatar">
+                                                            <img src="images/avatar/1.jpg" alt="">
+                                                            <div class="message-counter">3</div>
+                                                        </div>
+                                                        <div class="chat-contacts-item-text">
+                                                            <h4>Andy Smith</h4>
+                                                            <span>27 Dec 2021 </span>
+                                                            <p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p>
+                                                        </div>
+                                                    </a>
+                                                    <!-- chat-contacts-item --> 
+                                                    <!-- chat-contacts-item-->
+                                                    <a class="chat-contacts-item" href="#">
+                                                        <div class="dashboard-message-avatar">
+                                                            <img src="images/avatar/5.jpg" alt="">
+                                                            <div class="message-counter">4</div>
+                                                        </div>
+                                                        <div class="chat-contacts-item-text">
+                                                            <h4>Joe Frick</h4>
+                                                            <span>27 Dec 2021 </span>
+                                                            <p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p>
+                                                        </div>
+                                                    </a>
+                                                    <!-- chat-contacts-item -->
+                                                    <!-- chat-contacts-item-->
+                                                    <a class="chat-contacts-item" href="#">
+                                                        <div class="dashboard-message-avatar">
+                                                            <img  id="avatar" src="images/avatar/avatar-bg.png" alt="">
+                                                        </div>
+                                                        <div class="chat-contacts-item-text">
+                                                            <h4>Alise Goovy</h4>
+                                                            <span>27 Dec 2021 </span>
+                                                            <p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p>
+                                                        </div>
+                                                    </a>
+                                                    <!-- chat-contacts-item -->
+                                                    <!-- chat-contacts-item-->
+                                                    <a class="chat-contacts-item" href="#">
+                                                        <div class="dashboard-message-avatar">
+                                                            <img src="images/avatar/3.jpg" alt="">
+                                                        </div>
+                                                        <div class="chat-contacts-item-text">
+                                                            <h4>Freddy Kovalsky</h4>
+                                                            <span>27 Dec 2021 </span>
+                                                            <p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p>
+                                                        </div>
+                                                    </a>
+                                                    <!-- chat-contacts-item -->                                                
+                                                    <!-- chat-contacts-item-->
+                                                    <a class="chat-contacts-item" href="#">
+                                                        <div class="dashboard-message-avatar">
+                                                            <img  id="avatar" src="images/avatar/avatar-bg.png" alt="">
+                                                        </div>
+                                                        <div class="chat-contacts-item-text">
+                                                            <h4>Cristiano Olando</h4>
+                                                            <span>27 Dec 2021 </span>
+                                                            <p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p>
+                                                        </div>
+                                                    </a>
+                                                    <!-- chat-contacts-item -->                                                
+                                                </div>
+                                            </div>
+                                            <!-- chat-contacts end--> 
                                         </div>
                                     </div>
-                                    <!-- pagination-->
-                                    <div class="pagination">
-                                        <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                                        <a href="#">1</a>
-                                        <a href="#" class="current-page">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-                                    </div>
+                                    <!-- dashboard-list-box end--> 
                                 </div>
                                 <!-- dashboard-list-box end--> 
                             </div>
@@ -532,14 +727,12 @@
         </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-        <script  src="js/main.js"></script>
-
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>    
-       
-         <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>      -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script  src="js/main.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>         
     </body>
 </html>

@@ -37,7 +37,7 @@
                     <div class="logo-holder">
                         <a href="index.html"><img src="images/logo.png" alt=""></a>
                     </div>
-                    <a href="dashboard-add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i
+                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i
                                 class="far fa-plus"></i></span></a>
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i
                                 class="far fa-plus"></i></span></a>
@@ -75,10 +75,10 @@
                             <div id="userValue"></div>
                         </div>
                         <ul>
-                            <li><a href="dashboard-myprofile.html"> Edit profile</a></li>
-                            <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
-                            <li><a href="dashboard-bookings.html"> Bookings </a></li>
-                            <li><a href="dashboard-review.html"> Reviews </a></li>
+                            <li><a href="myprofile.html"> Edit profile</a></li>
+                            <li><a href="add-listing.html"> Add Listing</a></li>
+                            <li><a href="bookings.html"> Bookings </a></li>
+                            <li><a href="review.html"> Reviews </a></li>
                              <li><a href="#" onclick="logOff()">Log Out</a></li>
                         </ul>
                     </div>
@@ -145,7 +145,7 @@
                                             <li><a href="dashboard.html">User Dashboard</a></li>
                                             <li><a href="blog2.html">Blog Classik</a></li>
                                             <li><a href="blog-single.html">Blog Single</a></li>
-                                            <li><a href="dashboard-add-listing.html">Add Listing</a></li>
+                                            <li><a href="add-listing.html">Add Listing</a></li>
                                             <li><a href="404.html">404</a></li>
                                             <li><a href="invoice.html">Invoice</a></li>
                                             <li><a href="coming-soon.html">Coming Soon</a></li> -->
@@ -288,13 +288,14 @@
                                         <div class="dasboard-avatar">
                                            <img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">
                                         </div>
-                                        <div class="dasboard-sidebar-item fl-wrap">
-                                            <h3>
+                                         <div class="dasboard-sidebar-item fl-wrap">
+                                            <h3 id="fullname">
                                                 <span>Welcome </span>
-                                                <h3 id="fullname">  My Account </h3>
+                                                
                                             </h3>
                                         </div>
-                                        <a href="dashboard-add-listing.html" class="ed-btn">Add Listing</a>                                        
+                                        <a href="ad
+                                        <a href="add-listing.html" class="ed-btn">Add Listing</a>                                        
                                         <div class="user-stats fl-wrap">
                                             <ul>
                                                 <li>
@@ -323,14 +324,14 @@
                                     <li>
                                         <a href="dashboard.html"><i class="far fa-user"></i>Profile</a>
                                         <ul>
-                                            <li><a href="dashboard-myprofile.html">Edit profile</a></li>
-                                            <li><a href="dashboard-password.html">Change Password</a></li>
+                                            <li><a href="myprofile.html">Edit profile</a></li>
+                                            <li><a href="password.html">Change Password</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="dashboard-messages.html"><i class="far fa-envelope"></i> Messages
+                                    <li><a href="messages.html"><i class="far fa-envelope"></i> Messages
                                             <span>3</span></a></li>
                                     <li>
-                                        <a href="dashboard-listing-table.html" class="user-profile-act"><i
+                                        <a href="listing-table.html" class="user-profile-act"><i
                                                 class="far fa-th-list"></i> My listigs </a>
                                         <ul>
                                             <!-- <li><a href="#">Active</a><span>5</span></li>
@@ -338,9 +339,9 @@
                                             <li><a href="#">Expire</a><span>3</span></li> -->
                                         </ul>
                                     </li>
-                                    <li><a href="dashboard-bookings.html"> <i class="far fa-calendar-check"></i>
+                                    <li><a href="bookings.html"> <i class="far fa-calendar-check"></i>
                                             Bookings <span>2</span></a></li>
-                                    <li><a href="dashboard-review.html"><i class="far fa-comments"></i> Reviews </a>
+                                    <li><a href="review.html"><i class="far fa-comments"></i> Reviews </a>
                                     </li>
                                 </ul>
                             </div>
@@ -518,22 +519,20 @@
                                                     </span>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div style="margin-top: 5ch;">
-
-                                                </div>
-                                                <label>Attachments(you can select more than one file)</label>
-
-                                                <input type="file" id="docpicker"
+                                            <div class="col-md-6">                                               
+                                                <div class='input-group date' id=''>
+                                                    <label for="str">Attachments(you can select more than one file)<i class="far fa-calendar"></i></label>
+                                                    <input type="file" id="docpicker" name="str"
                                                     accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                                    multiple/>
+                                                    multiple class="form-control"/>
+                                                    
+                                                </div>
+                                               
                                             </div>
                                            
                                         </div>
                                         <!-- profile-edit-container end-->
-                                        <div class="box-widget-item-header">
-                                            <!-- <h3> Location / Contacts</h3> -->
-                                        </div>
+                                      
                                         <!-- profile-edit-container-->
                                         <div class="profile-edit-container">
                                             <div class="custom-form">
@@ -1026,20 +1025,22 @@
     </div>
     <!-- Main end -->
     <!--=============== scripts  ===============-->
-
     <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
-    <script type="text/javascript" src="js/map-add.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
 
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script type="text/javascript" src="js/map-add.js"></script>
+   
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
@@ -1073,7 +1074,7 @@
                 minDate: new Date()
             });
         });
-    </script>
+    </script> -->
     <!-- 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">

@@ -16,7 +16,7 @@
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
     </head>
-     <body onload="loadIt()">
+    <body onload="getUserReview()">
         <!--loader-->
         <div class="loader-wrap">
             <div class="pin">
@@ -34,32 +34,16 @@
                         <div class="logo-holder">
                             <a href="index.html"><img src="images/logo.png" alt=""></a>
                         </div>
-                    <a href="dashboard-add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
+                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
                         <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
                         <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
-                        <!-- <div class="lang-wrap">
-                            <div class="show-lang"><img src="images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
-                            <ul class="lang-tooltip green-bg">
-                                <li><a href="#"><img src="images/lan/4.png" alt=""> De</a></li>
-                                <li><a href="#"><img src="images/lan/5.png" alt=""> It</a></li>
-                                <li><a href="#"><img src="images/lan/2.png" alt=""> Fr</a></li>
-                                <li><a href="#"><img src="images/lan/3.png" alt=""> Es</a></li>
-                            </ul>
-                        </div> -->
-                        <!-- <div class="currency-wrap">
-                            <div class="show-currency-tooltip"><i class="fas fa-dollar-sign"></i> <span>USD <i class="fa fa-caret-down"></i> </span></div>
-                            <ul class="currency-tooltip">
-                                <li><a href="#"><i class="far fa-euro-sign"></i> EUR</a></li>
-                                <li><a href="#"><i class="far fa-pound-sign"></i> GBP</a></li>
-                                <li><a href="#"><i class="far fa-ruble-sign"></i>RUR</a></li>
-                            </ul>
-                        </div> -->
+                      
                     </div>
                 </div>
                 <!-- header-top end-->
                 <!-- header-inner-->
-                 <div class="header-inner fl-wrap">
+                <div class="header-inner fl-wrap">
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
                         <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter">3</span></div>
@@ -68,11 +52,11 @@
                                 <span><img  id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
                                 <div id="userValue"></div>
                             </div>
-                             <ul>
-                                <li><a href="dashboard-myprofile.html"> Edit profile</a></li>
-                                <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
-                                <li><a href="dashboard-bookings.html">  Bookings  </a></li>
-                                <li><a href="dashboard-review.html"> Reviews </a></li>
+                              <ul>
+                                <li><a href="myprofile.html"> Edit profile</a></li>
+                                <li><a href="add-listing.html"> Add Listing</a></li>
+                                <li><a href="bookings.html">  Bookings  </a></li>
+                                <li><a href="review.html"> Reviews </a></li>
                                  <li><a href="#" onclick="logOff()">Log Out</a></li>
                             </ul>
                         </div>
@@ -90,74 +74,28 @@
                                 <ul>
                                     <li>
                                         <a href="index.html" class="act-link">Home </a>
-                                        <!--second level -->
-                                        <!-- <ul>
-                                            <li><a href="index.html">Parallax Image</a></li>
-                                            <li><a href="index2.html">Slider</a></li>
-                                            <li><a href="index3.html">Video</a></li>
-                                            <li><a href="index4.html">Slideshow</a></li>
-                                        </ul> -->
-                                        <!--second level end-->
+                                   
                                     </li>
                                     <li>
                                         <a href="listing.html">Listings </a>
-                                        <!--second level -->
-                                        <!-- <ul> -->
-                                            <!-- <li><a href="listing.html">Column map</a></li>
-                                            <li><a href="listing6.html">Column map 2</a></li>
-                                            <li><a href="listing2.html">Fullwidth Map</a></li>
-                                            <li><a href="listing3.html">Fullwidth Map 2</a></li>
-                                            <li><a href="listing4.html">Without Map</a></li>
-                                            <li><a href="listing5.html">Without Map 2</a></li>
-                                            <li>
-                                                <a href="#">Single <i class="fas fa-caret-down"></i></a> -->
-                                                <!--third  level  -->
-                                                <!-- <ul>
-                                                    <li><a href="listing-single.html">Style 1</a></li>
-                                                    <li><a href="listing-single2.html">Style 2</a></li>
-                                                    <li><a href="listing-single3.html">Style 3</a></li>
-                                                    <li><a href="listing-single4.html">Style 4</a></li>
-                                                </ul> -->
-                                                <!--third  level end-->
-                                            <!-- </li>
+                                      
                                         </ul> -->
                                         <!--second level end-->
                                     </li>
-                                    <!-- <li>
-                                        <a href="blog.html">News</a>
-                                    </li> -->
+                                 
                                     <li>
                                         <a href="#">Pages <i class="fas fa-caret-down"></i></a>
                                         <!--second level -->
                                         <ul>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="contacts.html">Contacts</a></li>
-                                            <!-- <li><a href="author-single.html">User single</a></li>
-                                            <li><a href="help.html">Help FAQ</a></li>
-                                            <li><a href="pricing-tables.html">Pricing</a></li>
-                                            <li><a href="booking-single.html">Booking</a></li>
-                                            <li><a href="dashboard.html">User Dashboard</a></li>
-                                            <li><a href="blog2.html">Blog Classik</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                            <li><a href="dashboard-add-listing.html">Add Listing</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                            <li><a href="invoice.html">Invoice</a></li>
-                                            <li><a href="coming-soon.html">Coming Soon</a></li> -->
+                                          
                                         </ul>                                      
                                     </li>
                                 </ul>
                             </nav>
                         </div>
-                        <!-- navigation  end -->
-                        <!-- wishlist-wrap-->
-                        
-                        <!-- wishlist-wrap end-->
-                    </div>
-                </div>
-                        <!-- navigation  end -->
-                        <!-- wishlist-wrap-->
-                        
-                        <!-- wishlist-wrap end-->
+                      
                     </div>
                 </div>
                 <!-- header-inner end-->
@@ -233,18 +171,18 @@
                             <div class="dasboard-wrap fl-wrap">
                                 <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">Home</a><a href="#">Dashboard</a><span>Profile page</span></div>
                                 <!--dasboard-sidebar-->
-                                  <div class="dasboard-sidebar">
+                                <div class="dasboard-sidebar">
                                     <div class="dasboard-sidebar-content fl-wrap">
                                         <div class="dasboard-avatar">
                                            <img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">
                                         </div>
                                         <div class="dasboard-sidebar-item fl-wrap">
-                                            <h3>
+                                            <h3 id="fullname">
                                                 <span>Welcome </span>
-                                                <h3 id="fullname">  My Account </h3>
+                                                
                                             </h3>
                                         </div>
-                                        <a href="dashboard-add-listing.html" class="ed-btn">Add Listing</a>                                        
+                                        <a href="add-listing.html" class="ed-btn">Add Listing</a>                                        
                                         <div class="user-stats fl-wrap">
                                             <ul>
                                                 <li>
@@ -272,21 +210,21 @@
                                         <li>
                                             <a href="dashboard.html"><i class="far fa-user"></i>Profile</a>
                                             <ul>
-                                                <li><a href="dashboard-myprofile.html">Edit profile</a></li>
-                                                <li><a href="dashboard-password.html">Change Password</a></li>
+                                                <li><a href="myprofile.html">Edit profile</a></li>
+                                                <li><a href="password.html">Change Password</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="dashboard-messages.html"><i class="far fa-envelope"></i> Messages <span>3</span></a></li>
+                                        <li><a href="messages.html"><i class="far fa-envelope"></i> Messages <span>3</span></a></li>
                                         <li>
-                                            <a href="dashboard-listing-table.html"><i class="far fa-th-list"></i> My listigs  </a>
+                                            <a href="listing-table.html"><i class="far fa-th-list"></i> My listigs  </a>
                                             <ul>
                                                 <!-- <li><a href="#">Active</a><span>5</span></li>
                                                 <li><a href="#">Pending</a><span>2</span></li>
                                                 <li><a href="#">Expire</a><span>3</span></li> -->
                                             </ul>
                                         </li>
-                                        <li><a href="dashboard-bookings.html" class="user-profile-act"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
-                                        <li><a href="dashboard-review.html"><i class="far fa-comments"></i> Reviews </a></li>
+                                        <li><a href="bookings.html"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
+                                        <li><a href="review.html" class="user-profile-act"><i class="far fa-comments"></i> Reviews </a></li>
                                     </ul>
                                 </div>
                                 <!--dasboard-menu end-->
@@ -310,129 +248,21 @@
                                 <div class="dashboard-content fl-wrap">
                                     <div class="dashboard-list-box fl-wrap">
                                         <div class="dashboard-header fl-wrap">
-                                            <h3>Bookings</h3>
+                                            <h3>Reviews</h3>
                                         </div>
-                                        <!-- dashboard-list end-->    
-                                        <div class="dashboard-list">
-                                            <div class="dashboard-message">
-                                                <span class="new-dashboard-item">New</span>
-                                                <div class="dashboard-message-avatar">
-                                                    <img src="images/avatar/3.jpg" alt="">
-                                                </div>
-                                                <div class="dashboard-message-text">
-                                                    <h4>Andy Smith - <span>27 December 2021</span></h4>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Listing Item :</span> :
-                                                        <span class="booking-text"><a href="listing-sinle.html">Premium Plaza Listing</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Persons :</span>   
-                                                        <span class="booking-text">4 Peoples</span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Booking Date :</span>   
-                                                        <span class="booking-text">02.03.2021  - 10.03.2021</span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">                                                               
-                                                        <span class="booking-title">Mail :</span>  
-                                                        <span class="booking-text"><a href="#" target="_top">yormail@domain.com</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Phone :</span>   
-                                                        <span class="booking-text"><a href="tel:+496170961709" target="_top">+496170961709</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Payment State :</span> 
-                                                        <span class="booking-text"> <strong class="done-paid">Paid  </strong>  using Paypal</span>
-                                                    </div>
-                                                    <span class="fw-separator"></span>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                                </div>
-                                            </div>
+                                        <div class="reviews-comments-wrap" id="showreview">
+                                            <!-- reviews-comments-item -->  
+                                           
+                                            <!--reviews-comments-item end--> 
+                                           
+                                                                                                                                                       
                                         </div>
-                                        <!-- dashboard-list end-->    
-                                        <!-- dashboard-list end-->    
-                                        <div class="dashboard-list">
-                                            <div class="dashboard-message">
-                                                <div class="dashboard-message-avatar">
-                                                    <img src="images/avatar/2.jpg" alt="">
-                                                </div>
-                                                <div class="dashboard-message-text">
-                                                    <h4>Andy Smith - <span>27 December 2021</span></h4>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Listing Item :</span>  
-                                                        <span class="booking-text"><a href="listing-sinle.html">Moonlight Listing</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Persons :</span>   
-                                                        <span class="booking-text">4 Peoples</span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Booking Date :</span>  
-                                                        <span class="booking-text">02.03.2021  - 10.03.2021</span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">                                                               
-                                                        <span class="booking-title">Mail :</span>  
-                                                        <span class="booking-text"><a href="#" target="_top">yormail@domain.com</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Phone :</span>  
-                                                        <span class="booking-text"><a  href="tel:+496170961709" target="_top">+496170961709</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Payment State :</span> 
-                                                        <span class="booking-text"> <strong class="done-paid">Paid  </strong>  using Paypal</span>
-                                                    </div>
-                                                    <span class="fw-separator"></span>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- dashboard-list end-->                                             
-                                        <!-- dashboard-list end-->    
-                                        <div class="dashboard-list">
-                                            <div class="dashboard-message">
-                                                <div class="dashboard-message-avatar">
-                                                    <img  id="avatar" src="images/avatar/avatar-bg.png" alt="">
-                                                </div>
-                                                <div class="dashboard-message-text">
-                                                    <h4>Andy Smith - <span>27 December 2021</span></h4>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Listing Item :</span>  
-                                                        <span class="booking-text"><a href="listing-sinle.html">Moonlight Listing</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Persons :</span>   
-                                                        <span class="booking-text">4 Peoples</span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Booking Date :</span>   
-                                                        <span class="booking-text">02.03.2021  - 10.03.2021</span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">                                                               
-                                                        <span class="booking-title">Mail :</span>  
-                                                        <span class="booking-text"><a href="#" target="_top">yormail@domain.com</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Phone :</span>  
-                                                        <span class="booking-text"><a  href="tel:+496170961709" target="_top">+496170961709</a></span>
-                                                    </div>
-                                                    <div class="booking-details fl-wrap">
-                                                        <span class="booking-title">Payment State :</span> 
-                                                        <span class="booking-text"> <strong class="done-paid">Paid  </strong>  using Paypal</span>
-                                                    </div>
-                                                    <span class="fw-separator"></span>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- dashboard-list end-->                                            
                                     </div>
                                     <!-- pagination-->
                                     <div class="pagination">
                                         <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                                        <a href="#" class="current-page">1</a>
-                                        <a href="#">2</a>
+                                        <a href="#">1</a>
+                                        <a href="#" class="current-page">2</a>
                                         <a href="#">3</a>
                                         <a href="#">4</a>
                                         <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
@@ -702,12 +532,14 @@
         </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script  src="js/main.js"></script>
+
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-         <script  src="js/main.js"></script>
-         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>    
+       
+         <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>      -->
     </body>
 </html>

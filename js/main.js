@@ -18,6 +18,11 @@ axios.interceptors.request.use(function (config) {
  const userOtp = localStorage.getItem('otp');
  const userimgProfile = "https://share.highflierstutors.com/images/1276705039.jpg";
 
+// =====================================================================================================================================================
+ var keeplist
+ const reviewspaceTitle = localStorage.getItem('spaceTitle');
+ const reviewspaceInfo = localStorage.getItem('spaceInfo');
+ const reviewFullname = localStorage.getItem('fullnameReview');
 //  axios.defaults.headers.common['Authorization'] =  puser;
 //  instance.defaults.headers.common['Authorization'] = puser;
 
@@ -281,8 +286,8 @@ function loadIt()
     document.getElementById('addlisting').style.display = 'block';
     document.getElementById('dropit').style.display = 'block';
     document.getElementById('avatar').src = userimgProfile;
-    document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
-    document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
+
+    
     // console.log(localStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){
      
@@ -296,7 +301,7 @@ function loadIt()
     document.getElementById("studentdetails").style.display = "none";    
     document.getElementById("otp").style.display = "none";
     }
-    if(window.location.href == 'dashboard-add-listing.html')
+    if(window.location.href == 'add-listing.html')
     {
     populateCombo()
     }
@@ -304,31 +309,33 @@ function loadIt()
     {
     getUserId()
     }
-    if(window.location.href == 'dashboard-bookings.html' )
-    {
-      console.log(userOtp)
+    // /Attempt to get the element using document.getElementById
+    var element = document.getElementById("allreview");
+
+    //If it isn't "undefined" and it isn't "null", then it exists.
+    if(typeof(element) != 'undefined' && element != null){
+        // alert('Element exists!');
+        document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
+        document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
+    }
+  }
+
+    else {
+
       console.log(puser)
-   
-    }
-  }
 
-
-  else {
-
-    console.log(puser)
-
-    document.getElementById('signout').style.display = 'none';
-    document.getElementById('signin').style.display = 'block';
-    document.getElementById('dropit').style.display = 'none';
-    // document.getElementById('avatar').src = res.data.user.imgProfile;
-    document.getElementById('reg').style.display = 'block';
-    document.getElementById('addlisting').style.display = 'none';
+      document.getElementById('signout').style.display = 'none';
+      document.getElementById('signin').style.display = 'block';
+      document.getElementById('dropit').style.display = 'none';
+      // document.getElementById('avatar').src = res.data.user.imgProfile;
+      document.getElementById('reg').style.display = 'block';
+      document.getElementById('addlisting').style.display = 'none';
     if(window.location.href == 'register.html')
-    {
-    document.getElementById("studentdetails").style.display = "none";    
-    document.getElementById("otp").style.display = "none";
-    }
-  }
+      {
+      document.getElementById("studentdetails").style.display = "none";    
+      document.getElementById("otp").style.display = "none";
+      }
+   } 
 }
 
 
@@ -387,11 +394,12 @@ function loadIt()
   // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   async function getUserReview() {
+
     loadIt();
+
     await axios.get('https://share.highflierstutors.com/api/review')
     .then(function (response) {
-        console.log(response);
-        console.log(response.data.data.length);
+        
 
       if (response.status !== 200) {
         console.warn('Looks like there was a problem. error: ' +
@@ -400,12 +408,20 @@ function loadIt()
       }
       else
       {
-        console.log(response.data.data)
+
+       
         localStorage.setItem('allreview',response.data.data.length);
-      
+
+        
+
+    
       
         for (let i = 0;i < response.data.data.length;i++){
-        
+
+          keeplist = response.data.data[i].listingId;
+          console.log(keeplist);
+  
+          findlisting()
 
           // =========================split date created on the API==================================================================
           var input = response.data.data[i].created_at;
@@ -422,13 +438,13 @@ function loadIt()
               '<img src="images/avatar/2.jpg" alt=""> '+
          ' </div>'+
           '<div class="reviews-comments-item-text">'+
-              '<h4><a href="#">Liza Rose</a> on <a href="listing-single.html" class="reviews-comments-item-link">Holiday Home</a></h4>'+
+              '<h4><a href="#">'+reviewFullname+'</a> on <a href="listing-single.html" class="reviews-comments-item-link">'+reviewspaceTitle+'</a></h4>'+
              '<div class="review-score-user">'+
                   '<span>'+response.data.data[i].rating+'</span>'+
                   '<strong>'+response.data.data[i].comments+'</strong>'+
               '</div>'+
               '<div class="clearfix"></div>'+
-              '<p> "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "</p>'+
+              '<p> '+reviewspaceInfo+'</p>'+
               '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
           '</div>'+
       '</div>'
@@ -465,8 +481,95 @@ function loadIt()
 
 
   async function getUserBooking() {
+    loadIt();
 
-  }
+    await axios.get('https://share.highflierstutors.com/api/order')
+  
+    .then(function (response) {
+      console.log(response)
+    if (response.status !== 200) {
+      console.warn('Looks like there was a problem. error: ' +
+        response.message);
+      return;
+    }
+    else
+    {
+    
+  
+      console.log(response)
+
+
+      for(let i = 0;i < response.data.data.length;i++){
+
+        var div =  document.createElement("div");
+          div.innerHTML = 
+        '<div class="dashboard-message">'+
+        '<span class="new-dashboard-item">New</span>'+
+       ' <div class="dashboard-message-avatar">'+
+           '<img src="images/avatar/3.jpg" alt="">'+
+        '</div>'+
+        '<div class="dashboard-message-text">'+
+           '<h4>Andy <span>27 December 2021</span></h4>'+
+            '<div class="booking-details fl-wrap">'+
+               '<span class="booking-title">Listing Item :</span> :'+
+                '<span class="booking-text"><a href="listing-sinle.html">'+response.data.data[i].listingDetails.listing.spaceTitle+'</a></span>'+
+            '</div>'+
+            '<div class="booking-details fl-wrap">'+
+                '<span class="booking-title">Persons :</span>   '+
+                '<span class="booking-text">4 Peoples</span>'+
+            '</div>'+
+            '<div class="booking-details fl-wrap">'+
+                '<span class="booking-title">Booking Date :</span>   '+
+                '<span class="booking-text">'+response.data.data[i].order.checkIn+" - "+response.data.data[i].order.checkOut+'</span>'+
+            '</div>'+
+            '<div class="booking-details fl-wrap">                       '+                                        
+                '<span class="booking-title">Mail :</span>  '+
+                '<span class="booking-text"><a href="#" target="_top">yormail@domain.com</a></span>'+
+            '</div>'+
+            '<div class="booking-details fl-wrap">'+
+                '<span class="booking-title">Phone :</span>   '+
+                '<span class="booking-text"><a href="tel:+496170961709" target="_top">+496170961709</a></span>'+
+            '</div>'+
+            '<div class="booking-details fl-wrap">'+
+                '<span class="booking-title">Payment State :</span> '+
+                '<span class="booking-text"> <strong class="done-paid">Paid  </strong>  using Paypal</span>'+
+            '</div>'+
+            '<span class="fw-separator"></span>'+
+            '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>'+
+        '</div>'+
+    '</div>'
+
+    var element = document.getElementById("dashboard-listing");
+         
+         element.appendChild(div);
+
+      }
+  }})
+  .catch(function (err) {
+    console.error('Fetch Error -', err);
+  });
+}
+    
+      
+      
+      // localStorage.setItem('fullnameReview', response.data.data[0].host.firstname +" "+response.data.data[0].host.lastname)
+      // localStorage.setItem('spaceInfo', response.data.data[0].listing.additionalInfo )
+      // localStorage.setItem('spaceTitle', response.data.data[0].listing.spaceTitle )
+     
+  
+  
+
+async function findlisting(){
+  await axios.get('https://share.highflierstutors.com/api/listingfind/'+keeplist+'')
+  .then(function (response) {
+
+    console.log(response.data.data)
+    localStorage.setItem('fullnameReview', response.data.data[0].host.firstname +" "+response.data.data[0].host.lastname)
+    localStorage.setItem('spaceInfo', response.data.data[0].listing.additionalInfo )
+    localStorage.setItem('spaceTitle', response.data.data[0].listing.spaceTitle )
+   
+  })
+}
 
 
 

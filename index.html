@@ -54,7 +54,7 @@
                         <div class="logo-holder">
                             <a href="index.html"><img src="images/logo.png" alt=""></a>
                         </div>
-                    <a href="dashboard-add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
+                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
                         <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
                         <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
@@ -90,10 +90,10 @@
                                 <div id="userValue"></div>
                             </div>
                             <ul>
-                                <li><a href="dashboard-myprofile.html"> Edit profile</a></li>
-                                <li><a href="dashboard-add-listing.html"> Add Listing</a></li>
-                                <li><a href="dashboard-bookings.html">  Bookings  </a></li>
-                                <li><a href="dashboard-review.html"> Reviews </a></li>
+                                <li><a href="myprofile.html"> Edit profile</a></li>
+                                <li><a href="add-listing.html"> Add Listing</a></li>
+                                <li><a href="bookings.html">  Bookings  </a></li>
+                                <li><a href="review.html"> Reviews </a></li>
                                  <li><a href="#" onclick="logOff()">Log Out</a></li>
                             </ul>
                         </div>
@@ -160,7 +160,7 @@
                                             <li><a href="dashboard.html">User Dashboard</a></li>
                                             <li><a href="blog2.html">Blog Classik</a></li>
                                             <li><a href="blog-single.html">Blog Single</a></li>
-                                            <li><a href="dashboard-add-listing.html">Add Listing</a></li>
+                                            <li><a href="add-listing.html">Add Listing</a></li>
                                             <li><a href="404.html">404</a></li>
                                             <li><a href="invoice.html">Invoice</a></li>
                                             <li><a href="coming-soon.html">Coming Soon</a></li> -->
@@ -181,26 +181,54 @@
                     <div class="container">
                         <div class="row">
                             <!-- header-search-input-item -->
-                            <div class="col-sm-4">
+                            <div class="col-sm-3">
                                 <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Destination or Listing Name</label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
+                                    <label>Name</label>
+                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                    <input type="text" placeholder="Name" name="header-search"   value=""/>
+                                    <!-- <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
                                     <input type="text" placeholder="Location" class="autocomplete-input" id="autocompleteid" value=""/>
-                                    <a href="#"><i class="fal fa-dot-circle"></i></a>
+                                    <a href="#"><i class="fal fa-dot-circle"></i></a> -->
                                 </div>
                             </div>
                             <!-- header-search-input-item end -->
                             <!-- header-search-input-item -->
                             <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap date-parent">
+                                <div class="header-search-input-item fl-wrap location autocomplete-container">
+                                    <label>Category</label>
+                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                    <input type="text" placeholder="Name" name="header-search"   value=""/>
+                                <!-- <div class="header-search-input-item fl-wrap date-parent">
                                     <label>Date In-Out </label>
                                     <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
                                     <input type="text" placeholder="When" name="header-search"   value=""/>
-                                </div>
+                                </div> -->
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="header-search-input-item fl-wrap location autocomplete-container">
+                                    <label>Category</label>
+                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                    <input type="text" placeholder="Name" name="header-search"   value=""/>
+                                <!-- <div class="header-search-input-item fl-wrap date-parent">
+                                    <label>Date In-Out </label>
+                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                    <input type="text" placeholder="When" name="header-search"   value=""/>
+                                </div> -->
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="header-search-input-item fl-wrap location autocomplete-container">
+                                    <label>Category</label>
+                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                    <input type="text" placeholder="Name" name="header-search"   value=""/>
+                                <!-- <div class="header-search-input-item fl-wrap date-parent">
+                                    <label>Date In-Out </label>
+                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                    <input type="text" placeholder="When" name="header-search"   value=""/>
+                                </div> -->
                             </div>
                             <!-- header-search-input-item end -->
                             <!-- header-search-input-item -->
-                            <div class="col-sm-3">
+                            <!-- <div class="col-sm-3">
                                 <div class="header-search-input-item fl-wrap">
                                     <div class="quantity-item">
                                         <label>Rooms</label>
@@ -221,7 +249,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                             <!-- header-search-input-item end -->
                             <!-- header-search-input-item -->
                             <div class="col-sm-2">
@@ -256,17 +284,27 @@
                                     <span class="section-separator"></span>
                                     <h3>Let's start exploring the world together with ShareYaSpace</h3>
                                 </div>
-                                <div class="main-search-input-wrap">
+                                <!-- <div class="main-search-input-wrap">
                                     <div class="main-search-input fl-wrap">
-                                        <div class="main-search-input-item location" id="autocomplete-container">
-                                            <span class="inpt_dec"><i class="fal fa-map-marker"></i></span>
-                                            <input type="text" placeholder="Listing , City..." class="autocomplete-input" id="autocompleteid2"  value=""/>
-                                            <a href="#"><i class="fal fa-dot-circle"></i></a>
+                                        <div class="main-search-input-item main-date-parent">
+                                            <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> <input type="text" placeholder="Name" name=""   value=""/>
                                         </div>
-                                        <div class="main-search-input-item main-date-parent main-search-input-item_small">
-                                            <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> <input type="text" placeholder="When" name="main-input-search"   value=""/>
+                                        <div class="main-search-input-item main-date-parent ">
+                                            <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> <input type="text" placeholder="Name" name=""   value=""/>
                                         </div>
-                                        <div class="main-search-input-item">
+                                        <div class="main-search-input-item main-date-parent ">
+                                            <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> <input type="text" placeholder="Name" name=""   value=""/>
+                                        </div>
+                                        <div class="main-search-input-item main-date-parent ">
+                                            <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> <input type="text" placeholder="Name" name=""   value=""/>
+                                        </div>
+                                       <div class="main-search-input-item main-date-parent ">
+                                        <span class="inpt_dec"><i class="fal fa-calendar-check"></i></span> </span><select id="spacerule" name="">
+                                            <option value="">Yes</option>
+                                            <option value="">No</option>
+                                        </select>
+                                       </div> -->
+                                        <!-- <div class="main-search-input-item">
                                             <div class="qty-dropdown fl-wrap">
                                                 <div class="qty-dropdown-header fl-wrap"><i class="fal fa-users"></i> Persons</div>
                                                 <div class="qty-dropdown-content fl-wrap">
@@ -277,17 +315,16 @@
                                                         </div>
                                                     </div>
                                                     <div class="quantity-item">
-                                                        <label><i class="fas fa-child"></i> Children</label>
                                                         <div class="quantity">
                                                             <input type="number" min="0" max="3" step="1" value="0">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <button class="main-search-button color2-bg" onclick="">Search <i class="fal fa-search"></i></button>
-                                    </div>
-                                </div>
+                                        </div> -->
+                                        <!-- <button class="main-search-button color2-bg" onclick="">Search <i class="fal fa-search"></i></button>
+                                    </div> -->
+                                <!-- </div> -->
                             </div>
                         </div>
                         <div class="header-sec-link">
@@ -1010,7 +1047,7 @@
                                         <div class="colomn-text-title">
                                             <h3>The owner of the Listing or business ?</h3>
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</p>
-                                            <a href="dashboard-add-listing.html" class="btn  color-bg float-btn">Add your Listing<i class="fal fa-plus"></i></a>
+                                            <a href="add-listing.html" class="btn  color-bg float-btn">Add your Listing<i class="fal fa-plus"></i></a>
                                         </div>
                                     </div>
                                     <!--column text   end-->

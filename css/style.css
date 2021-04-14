@@ -6893,7 +6893,7 @@ article.post-article .list-single-main-item {
 	top:6px;
 	position:relative;
 }
-.dashboard-message-text h4  , .dashboard-listing-table-text h4{
+.dashboard-message-text h4  , .listing-table-text h4{
 	font-weight:600;
 	font-size:16px;
 	padding-bottom:20px;
@@ -6923,45 +6923,45 @@ article.post-article .list-single-main-item {
 	background:#5ECFB1;
 	z-index:10;
 }
-.dashboard-listing-table-image {
+.listing-table-image {
 	float:left;
 	width:30%;
 	padding:0 30px 0 0;
 }
-.dashboard-listing-table-image img {
+.listing-table-image img {
 	width:100%;
 	height:auto;
 	border-radius:6px;
 }
-.dashboard-listing-table-text {
+.listing-table-text {
 	float:left;
 	text-align:left;
 	width:70%;
 }
-.dashboard-listing-table-text h4 a {
+.listing-table-text h4 a {
 	color:#50596E;
 }
-.dashboard-listing-table-address {
+.listing-table-address {
 	float:left;
 	padding-bottom:10px;
 }
-.dashboard-listing-table-address a {
+.listing-table-address a {
 	font-weight:600;
 	color:#999;
 	font-size:10px;
 	text-transform:uppercase;
 }
-.dashboard-listing-table-address i {
+.listing-table-address i {
 	padding-right:10px;
 }
-.dashboard-listing-table-opt li {
+.listing-table-opt li {
 	float:left;
 	margin-right:10px;
 }
-.dashboard-listing-table-opt {
+.listing-table-opt {
 	margin-top:15px;
 }
-.dashboard-listing-table-opt li  a {
+.listing-table-opt li  a {
 	color:#fff;
 	padding:9px 22px;
 	border-radius:4px;
@@ -6969,10 +6969,10 @@ article.post-article .list-single-main-item {
 	float:left;
 	font-size:12px;
 }
-.dashboard-listing-table-opt li  a i {
+.listing-table-opt li  a i {
 	padding-left:10px;
 }
-.dashboard-listing-table-opt li  a.del-btn:hover {
+.listing-table-opt li  a.del-btn:hover {
 	background:#f91942;
 }
 .profile-edit-header h4 span{
@@ -8624,7 +8624,38 @@ section.hero-section  {
 .main-search-input-item {
 	margin-bottom:10px;
 }
-.main-search-input-item input , .main-search-input-item , .main-search-button  {
+.main-search-input-item input , .  <div class="dasboard-sidebar">
+                                    <div class="dasboard-sidebar-content fl-wrap">
+                                        <div class="dasboard-avatar">
+                                           <img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">
+                                        </div>
+                                         <div class="dasboard-sidebar-item fl-wrap">
+                                            <h3 id="fullname">
+                                                <span>Welcome </span>
+                                                
+                                            </h3>
+                                        </div>
+                                        <a href="ad
+                                        <a href="add-listing.html" class="ed-btn">Add Listing</a>                                        
+                                        <div class="user-stats fl-wrap">
+                                            <ul>
+                                                <li>
+                                                    Listings	
+                                                    <span>4</span>
+                                                </li>
+                                                <li>
+                                                    Bookings
+                                                    <span>32</span>	
+                                                </li>
+                                                <li>
+                                                    Reviews	
+                                                    <span id="allreview"></span>	
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" class="log-out-btn color-bg" onclick="logOff()">Log Out <i class="far fa-sign-out"></i></a>
+                                    </div>
+                                </div> , .main-search-button  {
 	border-radius:6px;
 }
 .main-search-input {
