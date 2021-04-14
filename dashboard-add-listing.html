@@ -283,37 +283,37 @@
                             <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">Home</a><a
                                     href="#">Dashboard</a><span>Profile page</span></div>
                             <!--dasboard-sidebar-->
-                            <div class="dasboard-sidebar">
-                                <div class="dasboard-sidebar-content fl-wrap">
-                                    <div class="dasboard-avatar">
-                                        <img src="images/avatar/avatar-bg.png" alt="">
+                       <div class="dasboard-sidebar">
+                                    <div class="dasboard-sidebar-content fl-wrap">
+                                        <div class="dasboard-avatar">
+                                           <img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">
+                                        </div>
+                                        <div class="dasboard-sidebar-item fl-wrap">
+                                            <h3>
+                                                <span>Welcome </span>
+                                                <h3 id="fullname">  My Account </h3>
+                                            </h3>
+                                        </div>
+                                        <a href="dashboard-add-listing.html" class="ed-btn">Add Listing</a>                                        
+                                        <div class="user-stats fl-wrap">
+                                            <ul>
+                                                <li>
+                                                    Listings	
+                                                    <span>4</span>
+                                                </li>
+                                                <li>
+                                                    Bookings
+                                                    <span>32</span>	
+                                                </li>
+                                                <li>
+                                                    Reviews	
+                                                    <span id="allreview"></span>	
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <a href="#" class="log-out-btn color-bg" onclick="logOff()">Log Out <i class="far fa-sign-out"></i></a>
                                     </div>
-                                    <div class="dasboard-sidebar-item fl-wrap">
-                                        <h3>
-                                            <span>Welcome </span>
-                                            Jessie Manrty
-                                        </h3>
-                                    </div>
-                                    <a href="dashboard-add-listing.html" class="ed-btn">Add Listing</a>
-                                    <div class="user-stats fl-wrap">
-                                        <ul>
-                                            <li>
-                                                Listings
-                                                <span>4</span>
-                                            </li>
-                                            <li>
-                                                Bookings
-                                                <span>32</span>
-                                            </li>
-                                            <li>
-                                                Reviews
-                                                <span>9</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <a href="#" class="log-out-btn color-bg" onclick="logOff()">Log Out <i class="far fa-sign-out"></i></a>
                                 </div>
-                            </div>
                             <!--dasboard-sidebar end-->
                             <!-- dasboard-menu-->
                             <div class="dasboard-menu">
@@ -333,9 +333,9 @@
                                         <a href="dashboard-listing-table.html" class="user-profile-act"><i
                                                 class="far fa-th-list"></i> My listigs </a>
                                         <ul>
-                                            <li><a href="#">Active</a><span>5</span></li>
+                                            <!-- <li><a href="#">Active</a><span>5</span></li>
                                             <li><a href="#">Pending</a><span>2</span></li>
-                                            <li><a href="#">Expire</a><span>3</span></li>
+                                            <li><a href="#">Expire</a><span>3</span></li> -->
                                         </ul>
                                     </li>
                                     <li><a href="dashboard-bookings.html"> <i class="far fa-calendar-check"></i>
@@ -346,12 +346,12 @@
                             </div>
                             <!--dasboard-menu end-->
                             <!--Tariff Plan menu-->
-                            <div class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
+                            <!-- <div class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
                             <div class="tfp-det">
                                 <p>You Are on <a href="#">Extended</a> . Use link bellow to view details or upgrade.
                                 </p>
                                 <a href="#" class="tfp-det-btn color2-bg">Details</a>
-                            </div>
+                            </div> -->
                             <!--Tariff Plan menu end-->
                         </div>
                     </div>
@@ -434,28 +434,28 @@
 
                                             <div class="row">
 
-                                                <div class="col-md-2 col-sm-2 col-lg-2">
+                                                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
                                                     <label>Number of Rooms</label>
                                                     <div class="quantity">
                                                         <input id="numberofrooms" type="number" min="1" max="90"
                                                             step="1" value="1">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 col-sm-2 col-lg-2">
+                                                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
                                                     <label>Number of Guest</label>
                                                     <div class="quantity">
                                                         <input id="numberofguest" type="number" min="1" max="90"
                                                             step="1" value="1">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 col-sm-2 col-lg-2">
+                                                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
                                                     <label>Bathrooms</label>
                                                     <div class="quantity">
                                                         <input id="bathrooms" type="number" min="1" max="90" step="1"
                                                             value="1">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 col-sm-2 col-lg-2">
+                                                <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
                                                     <label>beds</label>
                                                     <div class="quantity">
                                                         <input id="beds" type="number" min="1" max="90" step="1"
@@ -466,7 +466,7 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Price <i class="fa fa-key"></i></label>
-                                                <input type="text" placeholder="" value="" />
+                                                <input type="text" placeholder="" value="NGN " />
                                             </div>
                                             <div class="col-sm-6">
                                                 <label for="datetimepickerDemo">Listing Date In<i
@@ -497,7 +497,7 @@
                                                 <input type="text" placeholder="" value="" />
                                             </div>
                                             <div class="col-md-6">
-                                                <label>Price <i class="fa fa-key"></i></label>
+                                                <label>Price <i class="fa fa-money"></i></label>
                                                 <input type="text" placeholder="" value="" />
                                             </div>
                                             <div class="col-sm-6">
@@ -519,10 +519,14 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
+                                                <div style="margin-top: 5ch;">
+
+                                                </div>
                                                 <label>Attachments(you can select more than one file)</label>
+
                                                 <input type="file" id="docpicker"
                                                     accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                                    multiple>
+                                                    multiple/>
                                             </div>
                                            
                                         </div>
@@ -699,29 +703,7 @@
                                                 <!-- Checkboxes end -->
                                             </div>
                                         </div>
-                                        <!-- profile-edit-container end-->
-
-                                        <!-- profile-edit-container-->
-
-                                        <!-- profile-edit-container end-->
-
-                                        <!-- profile-edit-container-->
-                                        <!-- profile-edit-container end-->
-                                        <div class="box-widget-item-header mat-top">
-                                            <!-- <h3>Rooms</h3> -->
-                                        </div>
-                                        <!-- profile-edit-container-->
-
-                                        <!-- profile-edit-container end-->
-                                        <div class="box-widget-item-header mat-top">
-                                            <!-- <h3>Sidebar Widgets</h3> -->
-                                        </div>
-                                        <!-- profile-edit-container-->
-
-                                        <!-- profile-edit-container end-->
-                                        <!-- <div class="box-widget-item-header mat-top">
-                                        <h3>Your  Socials</h3>
-                                    </div> -->
+                                        
                                         <!-- profile-edit-container-->
                                         <div class="profile-edit-container">
                                             <div class="custom-form">
@@ -733,8 +715,7 @@
                                             <input type="text" placeholder="https://vk.com" value=""/>
                                             <label> Instagram <i class="fab fa-instagram"></i>  </label>
                                             <input type="text" placeholder="https://www.instagram.com/" value=""/> -->
-                                                <button class="btn    color2-bg  float-btn">Send Listing<i
-                                                        class="fal fa-paper-plane"></i></button>
+                                                <button class="btn color2-bg float-btn">Save Listing<i class=""></i></button>
                                             </div>
                                         </div>
                                         <!-- profile-edit-container end-->

@@ -1,6 +1,13 @@
-axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
 
 
+console.log(localStorage.getItem('token'))
+axios.interceptors.request.use(function (config) {
+
+
+ config.headers.authorization = 'Bearer '  + localStorage.getItem('token');
+
+ return config;
+});
 
   var puser = localStorage.getItem('token');
  const userFirstname = localStorage.getItem('firstname');
@@ -11,6 +18,8 @@ axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getIte
  const userOtp = localStorage.getItem('otp');
  const userimgProfile = "https://share.highflierstutors.com/images/1276705039.jpg";
 
+//  axios.defaults.headers.common['Authorization'] =  puser;
+//  instance.defaults.headers.common['Authorization'] = puser;
 
  //////////////////////////////All Listings Declaration///////////////////////////////////////////
   publicGet=[]
@@ -18,6 +27,7 @@ axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getIte
   publicFees = []
   publicReview = []
   publicListing = []
+  publicId = []
 
 
 
@@ -263,8 +273,7 @@ function loadIt()
 {
   if (puser != null) {
   
-     console.log(userOtp)
-    console.log(puser)
+    
     
     document.getElementById('signout').style.display = 'none';
     document.getElementById('signin').style.display = 'none';
@@ -272,7 +281,8 @@ function loadIt()
     document.getElementById('addlisting').style.display = 'block';
     document.getElementById('dropit').style.display = 'block';
     document.getElementById('avatar').src = userimgProfile;
-
+    document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
+    document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
     // console.log(localStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){
      
@@ -289,6 +299,16 @@ function loadIt()
     if(window.location.href == 'dashboard-add-listing.html')
     {
     populateCombo()
+    }
+    if(window.location.href == 'listing-single.html')
+    {
+    getUserId()
+    }
+    if(window.location.href == 'dashboard-bookings.html' )
+    {
+      console.log(userOtp)
+      console.log(puser)
+   
     }
   }
 
@@ -369,12 +389,61 @@ function loadIt()
   async function getUserReview() {
     loadIt();
     await axios.get('https://share.highflierstutors.com/api/review')
+    .then(function (response) {
+        console.log(response);
+        console.log(response.data.data.length);
 
-        .then(function (response) {
-          console.log(response);
-          console.log(response.data.length);
-        }
-      )
+      if (response.status !== 200) {
+        console.warn('Looks like there was a problem. error: ' +
+          response.message);
+        return;
+      }
+      else
+      {
+        console.log(response.data.data)
+        localStorage.setItem('allreview',response.data.data.length);
+      
+      
+        for (let i = 0;i < response.data.data.length;i++){
+        
+
+          // =========================split date created on the API==================================================================
+          var input = response.data.data[i].created_at;
+
+          var fields = input.split('T');
+  
+          var name = fields[0];
+
+          var div =  document.createElement("div");
+          div.innerHTML = 
+
+         ' <div class="reviews-comments-item">'+
+          '<div class="review-comments-avatar">'+
+              '<img src="images/avatar/2.jpg" alt=""> '+
+         ' </div>'+
+          '<div class="reviews-comments-item-text">'+
+              '<h4><a href="#">Liza Rose</a> on <a href="listing-single.html" class="reviews-comments-item-link">Holiday Home</a></h4>'+
+             '<div class="review-score-user">'+
+                  '<span>'+response.data.data[i].rating+'</span>'+
+                  '<strong>'+response.data.data[i].comments+'</strong>'+
+              '</div>'+
+              '<div class="clearfix"></div>'+
+              '<p> "Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "</p>'+
+              '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
+          '</div>'+
+      '</div>'
+
+
+      var element = document.getElementById("showreview");
+         
+      element.appendChild(div);
+        
+      }
+    }
+    }
+      ).catch(function (err) {
+        console.error('Fetch Error -', err);
+      });
 
       
   }
@@ -465,7 +534,8 @@ function loadIt()
         console.log(response.data.data)
         for (let i = 0;i < response.data.data.length;i++){
           console.log(response.data.data[i].listing.address)
-          console.log(response.data.data[i].listing.spaceTitle)
+          console.log(response.data.data[i].listing.id)
+          publicId = response.data.data[i].listing.id;
 
           var div =  document.createElement("div");
           div.innerHTML = 
@@ -473,8 +543,8 @@ function loadIt()
           '<article class = geodir-category-listing fl-wrap">'+
               '<div class="geodir-category-img">'+
                   '<a href="listing-single.html">'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
-                  '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="images/avatar/1.jpg" alt="">'+'</a>'+
-                    '<span class="avatar-tooltip">Added By<strong> Alisa Noory </strong></span>'+
+                  '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="images/avatar/3.jpg" alt="">'+'</a>'+
+                    '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                   '</div>'+
                   '<div class="sale-window">Sale 20%</div>'+
                   ' <div class="geodir-category-opt">'+
@@ -524,56 +594,17 @@ function loadIt()
       
         }
         
-        // console.log(publicGet[0].listing.address)
-        // console.log(response.data.data[0].listing.spaceTitle)
-        // var getListing = response.data.data;
-        // getListing1 = []
-        // getListing2 = [];
-        // console.log(response.data.data.len;gth)
 
         document.getElementById('totalListing').innerHTML = "TOTAL AVAILABLE LISTING " + "   "+response.data.data.length;
 
-        // getListing.forEach(function(dt){
-        //   console.log(dt.);
-        // })
-
-        // const map1 = getListing.map(x =>{
-        //   console.log(map1);
-        // });
-        
-          // for(let i = 0;i < getListing.length;i++)
-          // {
-
-          //   getListing1 = getListing[i];
-
-          //   getListing2 = Object.values(getListing1);  
-          
-
-
-          //   for(let j = 0;j < getListing2.length;j++)
-          //   {
-          //    publicGet =  Object.values(getListing2[j])
-          //    console.log(publicGet)
-          //   }       
-            // for(let k = 0;k < publicGet.length;k++)
-            // {
-
-            //   publicHosting =  Object.values(publicGet[k]);
-            //   // publicReview = publicGet[2];
-            //   // publicFees = publicGet[1];
-            //   // publicListing = publicGet[3];
-
-            //   console.log(publicHosting)
-            //   // console.log(publicListing)
-
-            // }
-        
-              
-        
        
       }
     })
   .catch(function (err) {
     console.error('Fetch Error -', err);
   });
+}
+
+function getUserId(){
+
 }

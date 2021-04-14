@@ -38,23 +38,7 @@
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
                         <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
                         <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
-                        <!-- <div class="lang-wrap">
-                            <div class="show-lang"><img src="images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
-                            <ul class="lang-tooltip green-bg">
-                                <li><a href="#"><img src="images/lan/4.png" alt=""> De</a></li>
-                                <li><a href="#"><img src="images/lan/5.png" alt=""> It</a></li>
-                                <li><a href="#"><img src="images/lan/2.png" alt=""> Fr</a></li>
-                                <li><a href="#"><img src="images/lan/3.png" alt=""> Es</a></li>
-                            </ul>
-                        </div> -->
-                        <!-- <div class="currency-wrap">
-                            <div class="show-currency-tooltip"><i class="fas fa-dollar-sign"></i> <span>USD <i class="fa fa-caret-down"></i> </span></div>
-                            <ul class="currency-tooltip">
-                                <li><a href="#"><i class="far fa-euro-sign"></i> EUR</a></li>
-                                <li><a href="#"><i class="far fa-pound-sign"></i> GBP</a></li>
-                                <li><a href="#"><i class="far fa-ruble-sign"></i>RUR</a></li>
-                            </ul>
-                        </div> -->
+                      
                     </div>
                 </div>
                 <!-- header-top end-->
@@ -90,68 +74,28 @@
                                 <ul>
                                     <li>
                                         <a href="index.html" class="act-link">Home </a>
-                                        <!--second level -->
-                                        <!-- <ul>
-                                            <li><a href="index.html">Parallax Image</a></li>
-                                            <li><a href="index2.html">Slider</a></li>
-                                            <li><a href="index3.html">Video</a></li>
-                                            <li><a href="index4.html">Slideshow</a></li>
-                                        </ul> -->
-                                        <!--second level end-->
+                                   
                                     </li>
                                     <li>
                                         <a href="listing.html">Listings </a>
-                                        <!--second level -->
-                                        <!-- <ul> -->
-                                            <!-- <li><a href="listing.html">Column map</a></li>
-                                            <li><a href="listing6.html">Column map 2</a></li>
-                                            <li><a href="listing2.html">Fullwidth Map</a></li>
-                                            <li><a href="listing3.html">Fullwidth Map 2</a></li>
-                                            <li><a href="listing4.html">Without Map</a></li>
-                                            <li><a href="listing5.html">Without Map 2</a></li>
-                                            <li>
-                                                <a href="#">Single <i class="fas fa-caret-down"></i></a> -->
-                                                <!--third  level  -->
-                                                <!-- <ul>
-                                                    <li><a href="listing-single.html">Style 1</a></li>
-                                                    <li><a href="listing-single2.html">Style 2</a></li>
-                                                    <li><a href="listing-single3.html">Style 3</a></li>
-                                                    <li><a href="listing-single4.html">Style 4</a></li>
-                                                </ul> -->
-                                                <!--third  level end-->
-                                            <!-- </li>
+                                      
                                         </ul> -->
                                         <!--second level end-->
                                     </li>
-                                    <!-- <li>
-                                        <a href="blog.html">News</a>
-                                    </li> -->
+                                 
                                     <li>
                                         <a href="#">Pages <i class="fas fa-caret-down"></i></a>
                                         <!--second level -->
                                         <ul>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="contacts.html">Contacts</a></li>
-                                            <!-- <li><a href="author-single.html">User single</a></li>
-                                            <li><a href="help.html">Help FAQ</a></li>
-                                            <li><a href="pricing-tables.html">Pricing</a></li>
-                                            <li><a href="booking-single.html">Booking</a></li>
-                                            <li><a href="dashboard.html">User Dashboard</a></li>
-                                            <li><a href="blog2.html">Blog Classik</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                            <li><a href="dashboard-add-listing.html">Add Listing</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                            <li><a href="invoice.html">Invoice</a></li>
-                                            <li><a href="coming-soon.html">Coming Soon</a></li> -->
+                                          
                                         </ul>                                      
                                     </li>
                                 </ul>
                             </nav>
                         </div>
-                        <!-- navigation  end -->
-                        <!-- wishlist-wrap-->
-                        
-                        <!-- wishlist-wrap end-->
+                      
                     </div>
                 </div>
                 <!-- header-inner end-->
@@ -230,12 +174,12 @@
                                 <div class="dasboard-sidebar">
                                     <div class="dasboard-sidebar-content fl-wrap">
                                         <div class="dasboard-avatar">
-                                           <img src="images/avatar/avatar-bg.png" alt="">
+                                           <img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">
                                         </div>
                                         <div class="dasboard-sidebar-item fl-wrap">
                                             <h3>
                                                 <span>Welcome </span>
-                                                Jessie Manrty
+                                                <h3 id="fullname">  My Account </h3>
                                             </h3>
                                         </div>
                                         <a href="dashboard-add-listing.html" class="ed-btn">Add Listing</a>                                        
@@ -251,7 +195,7 @@
                                                 </li>
                                                 <li>
                                                     Reviews	
-                                                    <span>9</span>	
+                                                    <span id="allreview"></span>	
                                                 </li>
                                             </ul>
                                         </div>
@@ -274,9 +218,9 @@
                                         <li>
                                             <a href="dashboard-listing-table.html"><i class="far fa-th-list"></i> My listigs  </a>
                                             <ul>
-                                                <li><a href="#">Active</a><span>5</span></li>
+                                                <!-- <li><a href="#">Active</a><span>5</span></li>
                                                 <li><a href="#">Pending</a><span>2</span></li>
-                                                <li><a href="#">Expire</a><span>3</span></li>
+                                                <li><a href="#">Expire</a><span>3</span></li> -->
                                             </ul>
                                         </li>
                                         <li><a href="dashboard-bookings.html"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
@@ -285,11 +229,11 @@
                                 </div>
                                 <!--dasboard-menu end-->
                                 <!--Tariff Plan menu-->
-                                <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
+                                <!-- <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
                                 <div class="tfp-det">
                                     <p>You Are on <a href="#">Extended</a> . Use link bellow to view details or upgrade. </p>
                                     <a href="#" class="tfp-det-btn color2-bg">Details</a>
-                                </div>
+                                </div> -->
                                 <!--Tariff Plan menu end-->
                             </div>
                         </div>
@@ -306,75 +250,12 @@
                                         <div class="dashboard-header fl-wrap">
                                             <h3>Reviews</h3>
                                         </div>
-                                        <div class="reviews-comments-wrap">
+                                        <div class="reviews-comments-wrap" id="showreview">
                                             <!-- reviews-comments-item -->  
-                                            <div class="reviews-comments-item">
-                                                <div class="review-comments-avatar">
-                                                    <img src="images/avatar/2.jpg" alt=""> 
-                                                </div>
-                                                <div class="reviews-comments-item-text">
-                                                    <h4><a href="#">Liza Rose</a> on <a href="listing-single.html" class="reviews-comments-item-link">Holiday Home</a></h4>
-                                                    <div class="review-score-user">
-                                                        <span>4.4</span>
-                                                        <strong>Good</strong>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                    <p>" Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "</p>
-                                                    <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>12 April 2021</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>
-                                                </div>
-                                            </div>
+                                           
                                             <!--reviews-comments-item end--> 
-                                            <!-- reviews-comments-item -->  
-                                            <div class="reviews-comments-item">
-                                                <div class="review-comments-avatar">
-                                                    <img src="images/avatar/5.jpg" alt=""> 
-                                                </div>
-                                                <div class="reviews-comments-item-text">
-                                                    <h4><a href="#">Adam Koncy</a> on <a href="listing-single.html" class="reviews-comments-item-link">Premium Plaza Listing </a></h4>
-                                                    <div class="review-score-user">
-                                                        <span>4.7</span>
-                                                        <strong>Very Good</strong>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                    <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. "</p>
-                                                    <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>03 December 2017</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>
-                                                </div>
-                                            </div>
-                                            <!--reviews-comments-item end-->  
-                                            <!-- reviews-comments-item -->  
-                                            <div class="reviews-comments-item">
-                                                <div class="review-comments-avatar">
-                                                    <img src="images/avatar/1.jpg" alt=""> 
-                                                </div>
-                                                <div class="reviews-comments-item-text">
-                                                    <h4><a href="#">Liza Rose </a>on  <a href="listing-single.html" class="reviews-comments-item-link">Park Central </a></h4>
-                                                    <div class="review-score-user">
-                                                        <span>4.4</span>
-                                                        <strong>Good</strong>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                    <p>" Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "</p>
-                                                    <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>12 April 2021</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>
-                                                </div>
-                                            </div>
-                                            <!--reviews-comments-item end--> 
-                                            <!-- reviews-comments-item -->  
-                                            <div class="reviews-comments-item">
-                                                <div class="review-comments-avatar">
-                                                    <img src="images/avatar/3.jpg" alt=""> 
-                                                </div>
-                                                <div class="reviews-comments-item-text">
-                                                    <h4><a href="#">Adam Koncy</a> on  <a href="listing-single.html" class="reviews-comments-item-link">Grand Hero Palace </a></h4>
-                                                    <div class="review-score-user">
-                                                        <span>4.7</span>
-                                                        <strong>Very Good</strong>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                    <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. "</p>
-                                                    <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>03 December 2017</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>
-                                                </div>
-                                            </div>
-                                            <!--reviews-comments-item end-->                                                                                                                    
+                                           
+                                                                                                                                                       
                                         </div>
                                     </div>
                                     <!-- pagination-->
@@ -651,13 +532,14 @@
         </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script  src="js/main.js"></script>
+
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-
-         <script  src="js/main.js"></script>
-         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>     
+       
+         <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>      -->
     </body>
 </html>
