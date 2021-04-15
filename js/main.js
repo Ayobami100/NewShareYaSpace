@@ -248,8 +248,9 @@ function logOff() {
   if (confirm('Are you sure you want to sign out?')) {
     
     localStorage.clear();
+   
+    window.location.href = 'index.html';
     location.reload();
-  
   } else {
     // Do nothing!
    
@@ -408,11 +409,12 @@ function loadIt()
       }
       else
       {
-
        
+       if(response.data.data != null){
+
         localStorage.setItem('allreview',response.data.data.length);
 
-        
+        console.log(response.data.data.length);
 
     
       
@@ -456,6 +458,32 @@ function loadIt()
         
       }
     }
+    else{
+      var div =  document.createElement("div");
+      div.innerHTML = 
+
+     ' <div class="reviews-comments-item">'+
+      '<div class="review-comments-avatar">'+
+          // '<img src="images/avatar/2.jpg" alt=""> '+
+     ' </div>'+
+      '<div class="reviews-comments-item-text">'+
+          // '<h4><a href="#">'+reviewFullname+'</a> on <a href="listing-single.html" class="reviews-comments-item-link">'+reviewspaceTitle+'</a></h4>'+
+         '<div class="review-score-user">'+
+              '<span></span>'+
+              '<strong></strong>'+
+          '</div>'+
+          '<div class="clearfix"></div>'+
+          '<p> No Review Available</p>'+
+          '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i></span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
+      '</div>'+
+  '</div>'
+
+
+  var element = document.getElementById("showreview");
+     
+  element.appendChild(div);
+    }
+       }
     }
       ).catch(function (err) {
         console.error('Fetch Error -', err);
@@ -640,6 +668,9 @@ async function findlisting(){
           console.log(response.data.data[i].listing.id)
           publicId = response.data.data[i].listing.id;
 
+          if(Object.values(response.data.data[i].reviews).length > 1){
+
+          
           var div =  document.createElement("div");
           div.innerHTML = 
           '<div class="listing-item">'+
@@ -654,7 +685,7 @@ async function findlisting(){
                      '<div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>'+
                       '<div class="rate-class-name">'+
                           '<div class="score" id="score"><strong>Very Good</strong>'+ Object.values(response.data.data[i].reviews).length +" Reviews"+'</div>'+
-                              '<span>9.0</span>'+
+                              '<span>'+response.data.data[i].reviews[i].rating+'</span>'+
                           '</div>'+
                       '</div>'+
                  '</div>'+
@@ -693,8 +724,62 @@ async function findlisting(){
           var element = document.getElementById("listing-item");
          
           element.appendChild(div);
+        }
+      else{
+        var div =  document.createElement("div");
+        div.innerHTML = 
+        '<div class="listing-item">'+
+        '<article class = geodir-category-listing fl-wrap">'+
+            '<div class="geodir-category-img">'+
+                '<a href="listing-single.html">'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
+                '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="images/avatar/3.jpg" alt="">'+'</a>'+
+                  '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
+                '</div>'+
+                '<div class="sale-window">Sale 20%</div>'+
+                ' <div class="geodir-category-opt">'+
+                   '<div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>'+
+                    '<div class="rate-class-name">'+
+                        '<div class="score" id="score"><strong>Very Good</strong>'+ Object.values(response.data.data[i].reviews).length +" Reviews"+'</div>'+
+                            '<span>No Rating</span>'+
+                        '</div>'+
+                    '</div>'+
+               '</div>'+
+            '<div class="geodir-category-content fl-wrap">'+
+                '<div class="geodir-category-content-title fl-wrap">'+
+                    '<div class="geodir-category-content-title-item">'+
+                        '<h3 class="title-sin_map">'+
+                        '<a href="listing-single.html">'+response.data.data[i].listing.spaceTitle+'</a>'+
+                        '</h3>'+
+                        '<div class="geodir-category-location fl-wrap">'+
+                        '<a href="#0" class="map-item">'+
+                          '<i class="fas fa-map-marker-alt"></i>'+
+                          response.data.data[i].listing.address+
+                           '</a>'+
+                           '</div>'+
+                  '</div>'+
+                '</div>'+
+                '<p>'+  response.data.data[i].listing.spaceDetails +'</p>'+
+                '<ul class="facilities-list fl-wrap">'+
+                    '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
+                   '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
+                    '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
+                    '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
+                '</ul>'+
+                '<div class="geodir-category-footer fl-wrap">'+
+                    '<div class="geodir-category-price">Awg/Night <span>'+"NGN  "+  response.data.data[i].listing.price +'</span></div>'+
+                    '<div class="geodir-opt-list">'+
+                        '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
+                        '<a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>'+
+                        '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
+        '</article>'+
+        '</div>'
+        var element = document.getElementById("listing-item");
        
-      
+        element.appendChild(div);
+      }
         }
         
 
