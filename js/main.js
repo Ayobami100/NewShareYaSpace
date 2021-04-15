@@ -657,7 +657,17 @@ async function findlisting(){
    
   })
 }
+async function postNewReview(){
+  await axios.post('https://share.highflierstutors.com/api/review')
+  .then(function (response) {
 
+    console.log(response.data.data)
+    localStorage.setItem('fullnameReview', response.data.data[0].host.firstname +" "+response.data.data[0].host.lastname)
+    localStorage.setItem('spaceInfo', response.data.data[0].listing.additionalInfo )
+    localStorage.setItem('spaceTitle', response.data.data[0].listing.spaceTitle )
+   
+  })
+}
 async function findsinglelisting(){
   loadIt();
   console.log(keepsinglelist);
@@ -670,7 +680,7 @@ async function findsinglelisting(){
     }
     else
     {
-      console.log(response.data.data[0].reviews.length)
+      console.log(response.data.data[0])
       console.log(response.data.data[0].host.number)
       console.log(response.data.data[0].host.email)
       console.log(response.data.data[0].listing.spaceTitle)
@@ -678,7 +688,7 @@ async function findsinglelisting(){
       console.log(response.data.data[0].listing.amenities)
       console.log(response.data.data[0].listing.additionalInfo)
        console.log(response.data.data[0].host.firstname)
-
+ 
 
        document.getElementById("listingspaceTitle").innerHTML = response.data.data[0].listing.spaceTitle;
        document.getElementById("listingEmail").innerHTML = response.data.data[0].host.email;
@@ -690,49 +700,70 @@ async function findsinglelisting(){
        document.getElementById("listingPrice").innerHTML = "NGN "+response.data.data[0].listing.price;
 
 
-       document.getElementById("listingReview").innerHTML = (response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews.length + "Reviews" : "0 Review";
+       document.getElementById("listingReview").innerHTML = (response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews.length + " Reviews" : "0 Review";
        document.getElementById("listingRating").innerHTML = (response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews[0].rating  : "No Rating";
        document.getElementById("listingComment").innerHTML = (response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews[0].comments  : "No Comment";
 
 
+       if(response.data.data[0].reviews.length >= 1){
+
+        for (let i = 0; i < response.data.data[0].reviews.length; i++){
 
 
+        var input = response.data.data[0].listing.created_at;
 
-       var input = response.data.data[0].listing.created_at;
-
-       var fields = input.split('T');
-
-       var name = fields[0];
-
-       var div =  document.createElement("div");
-       div.innerHTML = 
-
-      ' <div class="reviews-comments-item">'+
-       '<div class="review-comments-avatar">'+
-           '<img src="images/avatar/2.jpg" alt=""> '+
-      ' </div>'+
-       '<div class="reviews-comments-item-text">'+
-           '<h4><a href="#"></a> on <a href="listing-single.html" class="reviews-comments-item-link">'+ (response.data.data[0].reviews.length > 1) ? response.data.data[0].listing.spaceTitle  : "No Review"+'</a></h4>'+
-          '<div class="review-score-user">'+
-               '<span>'+(response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews.rating  : "No Review"+'</span>'+
-               '<strong>'+(response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews.comments  : "No Review"+'</strong>'+
-           '</div>'+
-           '<div class="clearfix"></div>'+
-           '<p> '+(response.data.data[0].reviews.length > 1) ? response.data.data[0].listing.spaceInfo  : "No Review"+'</p>'+
-           '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
-       '</div>'+
-   '</div>'
-
-
-   // var element = document.getElementById("showreview");
-   var element = document.getElementById("singlelistreview");
-   if(element != null && element != 'undefined')
-   {
-     element.appendChild(div);
-   }
-   
-    }
+        var fields = input.split('T');
+ 
+        var name = fields[0];
+ 
+        var div =  document.createElement("div");
+        div.innerHTML = 
+       ' <div class="reviews-comments-item">'+
+        '<div class="review-comments-avatar">'+
+            '<img src="images/avatar/2.jpg" alt=""> '+
+       ' </div>'+
+        '<div class="reviews-comments-item-text">'+
+            '<h4><a href="#">'+ response.data.data[0].host.lastname +'</a> on <a href="listing-single.html" class="reviews-comments-item-link">'+response.data.data[0].listing.spaceTitle+'</a></h4>'+
+           '<div class="review-score-user">'+
+                '<span>'+ response.data.data[0].reviews[i].rating +'</span>'+
+                '<strong>'+response.data.data[0].reviews[i].comments+'</strong>'+
+            '</div>'+
+            '<div class="clearfix"></div>'+
+            '<p> '+ response.data.data[0].listing.spaceDetails +'</p>'+
+            '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
+        '</div>'+
+    '</div>'
+ 
+//    ' <div class="reviews-comments-item">'+
+//    '<div class="review-comments-avatar">'+
+//        '<img src="images/avatar/2.jpg" alt=""> '+
+//   ' </div>'+
+//    '<div class="reviews-comments-item-text">'+
+//        '<h4><a href="#">ttttttttttttttttt</a> on <a href="listing-single.html" class="reviews-comments-item-link">yyyyyyyyyyyyyyyyyyyy</a></h4>'+
+//       '<div class="review-score-user">'+
+//            '<span>555555555555</span>'+
+//            '<strong>uuuuuuuuuuuuuuuuuuuuuuuuuuuuu</strong>'+
+//        '</div>'+
+//        '<div class="clearfix"></div>'+
+//        '<p> 77777777777777777777777777777777777777777</p>'+
+//        '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
+//    '</div>'+
+//  '</div>'
+ 
+    // var element = document.getElementById("showreview");
+    var element = document.getElementById("singlelistreview");
+    if(element != null && element != 'undefined')
+    {
       
+      element.appendChild(div);
+    }
+  }
+     }
+       
+
+       }
+
+
   })
 }
      
@@ -938,3 +969,4 @@ function getUserId(listId){
   console.log(listId);
 window.location.href = 'listing-single.html';
 }
+ 
