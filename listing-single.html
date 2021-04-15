@@ -8,6 +8,25 @@
         <meta name="robots" content="index, follow"/>
         <meta name="keywords" content=""/>
         <meta name="description" content=""/>
+
+
+
+        <script type="module" >
+        
+            $(document).ready(function(){
+                
+            document.getElementById('signout').style.display = 'none';
+            document.getElementById('signin').style.display = 'none';
+            document.getElementById('dropit').style.display = 'none';
+            // document.getElementById('avatar').src = res.data.user.imgProfile;
+            
+            document.getElementById('reg').style.display = 'none';
+            document.getElementById('addlisting').style.display = 'none';
+            })
+            
+        </script>
+
+        
         <!--=============== css  ===============-->
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/plugins.css">
@@ -16,7 +35,7 @@
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
     </head>
-     <body onload="loadIt()">
+     <body onload="findsinglelisting()">
         <!--loader-->
         <div class="loader-wrap">
             <div class="pin">
@@ -119,12 +138,12 @@
                                         <div class="listing-rating-wrap">
                                             <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
                                         </div>
-                                        <h2><span>Premium Plaza Listing</span></h2>
+                                        <h2><span id="listingspaceTitle"></span></h2>
                                         <div class="list-single-header-contacts fl-wrap">
                                             <ul>
-                                                <li><i class="far fa-phone"></i><a  href="#">+234</a></li>
-                                                <li><i class="far fa-map-marker-alt"></i><a  href="#">No 234 Iyana ipaja Lagos State</a></li>
-                                                <li><i class="far fa-envelope"></i><a  href="#">yourmail@domain.com</a></li>
+                                                <li><i class="far fa-phone"></i><a  href="#" id="listingPhone">+234</a></li>
+                                                <li><i class="far fa-map-marker-alt"></i><a  href="#" id="listingAddress">No 234 Iyana ipaja Lagos State</a></li>
+                                                <li><i class="far fa-envelope"></i><a  href="#" id="listingEmail">yourmail@domain.com</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -134,8 +153,8 @@
                                             <!--  list-single-hero-rating-->
                                             <div class="list-single-hero-rating">
                                                 <div class="rate-class-name">
-                                                    <div class="score"><strong>Very Good</strong>2 Reviews </div>
-                                                    <span>4.5</span>                                             
+                                                    <div class="score" ><strong id="listingComment">Very Good</strong><strong id="listingReview"></strong></div>
+                                                    <span id="listingRating">4.5</span>                                             
                                                 </div>
                                                 <!-- list-single-hero-rating-list-->
                                                 <div class="list-single-hero-rating-list">
@@ -191,8 +210,8 @@
                                     </div>
                                 </div>
                                 <div class="breadcrumbs-hero-buttom fl-wrap">
-                                    <div class="breadcrumbs"><a href="#">Home</a><a href="#">Listings</a><a href="#">New York</a><span>Listing Single</span></div>
-                                    <div class="list-single-hero-price">AWG/NIGHT<span>$ 320</span></div>
+                                    <!-- <div class="breadcrumbs"><a href="#">Home</a><a href="#">Listings</a><a href="#">New York</a><span>Listing Single</span></div> -->
+                                    <div class="list-single-hero-price" id="listingPhone">AWG/NIGHT<span id="listingPrice">NGN 320</span></div>
                                 </div>
                             </div>
                         </div>
@@ -369,9 +388,9 @@
                                             <div class="list-single-main-item-title fl-wrap">
                                                 <h3>About Listing </h3>
                                             </div>
-                                            <p>Praesent eros turpis, commodo vel justo at, pulvinar mollis eros. Mauris aliquet eu quam id ornare. Morbi ac quam enim. Cras vitae nulla condimentum, semper dolor non, faucibus dolor. Vivamus adipiscing eros quis orci fringilla, sed pretium lectus viverra. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec nec velit non odio aliquam suscipit. Sed non neque faucibus, condimentum lectus at, accumsan enim. Fusce pretium egestas cursus. Etiam consectetur, orci vel rutrum volutpat, odio odio pretium nisiodo tellus libero et urna. Sed commodo ipsum ligula, id volutpat risus vehicula in. Pellentesque non massa eu nibh posuere bibendum non sed enim. Maecenas lobortis nulla sem, vel egestas  . </p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat .</p>
-                                            <a href="https://vimeo.com/70851162" class="btn flat-btn color-bg big-btn float-btn image-popup">Video Presentation <i class="fal fa-play"></i></a>
+                                            <p id="listingAbout"> </p>
+                                            <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat .</p> -->
+                                            <!-- <a href="https://vimeo.com/70851162" class="btn flat-btn color-bg big-btn float-btn image-popup">Video Presentation <i class="fal fa-play"></i></a> -->
                                         </div>
                                         <!--   list-single-main-item end -->
                                         <!--   list-single-main-item -->
@@ -392,7 +411,7 @@
                                                 </ul>
                                             </div>
                                             <span class="fw-separator"></span>
-                                            <div class="list-single-main-item-title no-dec-title fl-wrap">
+                                            <!-- <div class="list-single-main-item-title no-dec-title fl-wrap">
                                                 <h3>Tags</h3>
                                             </div>
                                             <div class="list-single-tags tags-stylwrap">
@@ -402,12 +421,12 @@
                                                 <a href="#">Spa</a>
                                                 <a href="#">Restourant</a>
                                                 <a href="#">Parking</a>                                                                               
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <!--   list-single-main-item end -->     
                                         <!-- accordion-->
                                         <div class="accordion mar-top">
-                                            <a class="toggle act-accordion" href="#"> Details option   <span></span></a>
+                                            <!-- <a class="toggle act-accordion" href="#"> Details option   <span></span></a>
                                             <div class="accordion-inner visible">
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
                                             </div>
@@ -418,7 +437,7 @@
                                             <a class="toggle" href="#"> Details option 3  <span></span></a>
                                             <div class="accordion-inner">
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar. Donec a consectetur nulla. Nulla posuere sapien vitae lectus suscipit, et pulvinar nisi tincidunt. Aliquam erat volutpat. Curabitur convallis fringilla diam sed aliquam. Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa, a consequat purus viverra.</p>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <!-- accordion end -->                                                     
                                         <!--   list-single-main-item -->
@@ -436,7 +455,7 @@
                                                     </div>
                                                     <div class="rooms-details">
                                                         <div class="rooms-details-header fl-wrap">
-                                                            <span class="rooms-price">$81 <strong> / person</strong></span>
+                                                            <span class="rooms-price">NGN81 <strong> / person</strong></span>
                                                             <h3>Standard Family Room</h3>
                                                             <h5>Max Guests: <span>3 persons</span></h5>
                                                         </div>
@@ -462,7 +481,7 @@
                                                     </div>
                                                     <div class="rooms-details">
                                                         <div class="rooms-details-header fl-wrap">
-                                                            <span class="rooms-price">$122 <strong> / person</strong></span>
+                                                            <span class="rooms-price">NGN122 <strong> / person</strong></span>
                                                             <h3>Superior Double Room</h3>
                                                             <h5>Max Guests: <span>4 persons</span></h5>
                                                         </div>
@@ -487,7 +506,7 @@
                                                     </div>
                                                     <div class="rooms-details">
                                                         <div class="rooms-details-header fl-wrap">
-                                                            <span class="rooms-price">$310 <strong> / person</strong></span>
+                                                            <span class="rooms-price">NGN310 <strong> / person</strong></span>
                                                             <h3>Deluxe Single Room</h3>
                                                             <h5>Max Guests: <span>2 persons</span></h5>
                                                         </div>
@@ -511,62 +530,12 @@
                                         <!-- list-single-main-item -->   
                                         <div class="list-single-main-item fl-wrap" id="sec5">
                                             <div class="list-single-main-item-title fl-wrap">
-                                                <h3>Item Reviews -  <span> 2 </span></h3>
+                                                <h3>Item Reviews -  <span> </span></h3>
                                             </div>
                                             <!--reviews-score-wrap-->   
-                                            <div class="reviews-score-wrap fl-wrap">
-                                                <div class="review-score-total">
-                                                    <span>
-                                                    4.5
-                                                    <strong>Very Good</strong>
-                                                    </span>
-                                                    <a href="#" class="color2-bg">Add Review</a>
-                                                </div>
-                                                <div class="review-score-detail">
-                                                    <!-- review-score-detail-list-->
-                                                    <div class="review-score-detail-list">
-                                                        <!-- rate item-->
-                                                        <div class="rate-item fl-wrap">
-                                                            <div class="rate-item-title fl-wrap"><span>Cleanliness</span></div>
-                                                            <div class="rate-item-bg" data-percent="100%">
-                                                                <div class="rate-item-line color-bg"></div>
-                                                            </div>
-                                                            <div class="rate-item-percent">5.0</div>
-                                                        </div>
-                                                        <!-- rate item end-->
-                                                        <!-- rate item-->
-                                                        <div class="rate-item fl-wrap">
-                                                            <div class="rate-item-title fl-wrap"><span>Comfort</span></div>
-                                                            <div class="rate-item-bg" data-percent="90%">
-                                                                <div class="rate-item-line color-bg"></div>
-                                                            </div>
-                                                            <div class="rate-item-percent">5.0</div>
-                                                        </div>
-                                                        <!-- rate item end-->                                                        
-                                                        <!-- rate item-->
-                                                        <div class="rate-item fl-wrap">
-                                                            <div class="rate-item-title fl-wrap"><span>Staf</span></div>
-                                                            <div class="rate-item-bg" data-percent="80%">
-                                                                <div class="rate-item-line color-bg"></div>
-                                                            </div>
-                                                            <div class="rate-item-percent">4.0</div>
-                                                        </div>
-                                                        <!-- rate item end-->  
-                                                        <!-- rate item-->
-                                                        <div class="rate-item fl-wrap">
-                                                            <div class="rate-item-title fl-wrap"><span>Facilities</span></div>
-                                                            <div class="rate-item-bg" data-percent="90%">
-                                                                <div class="rate-item-line color-bg"></div>
-                                                            </div>
-                                                            <div class="rate-item-percent">4.5</div>
-                                                        </div>
-                                                        <!-- rate item end--> 
-                                                    </div>
-                                                    <!-- review-score-detail-list end-->
-                                                </div>
-                                            </div>
+                                          
                                             <!-- reviews-score-wrap end -->   
-                                            <div class="reviews-comments-wrap">
+                                            <div class="reviews-comments-wrap" id="singlelistreview">
                                                 <!-- reviews-comments-item -->  
                                                 <div class="reviews-comments-item">
                                                     <div class="review-comments-avatar">
@@ -693,9 +662,9 @@
                                                                     <label>Room Type</label>
                                                                     <select data-placeholder="Room Type" name="repopt"   class="chosen-select no-search-select" >
                                                                         <option value="0" selected>Select Room</option>
-                                                                        <option value="81">Standard Family Room - 81$</option>
-                                                                        <option value="122">Superior Double Room - 122$</option>
-                                                                        <option value="310">Deluxe Single Room - 310$</option>
+                                                                        <option value="81">Standard Family Room - 81NGN</option>
+                                                                        <option value="122">Superior Double Room - 122NGN</option>
+                                                                        <option value="310">Deluxe Single Room - 310NGN</option>
                                                                     </select>
                                                                     <!--data-formula -->
                                                                     <input type="text" name="item_total" class="hid-input"  value=""  data-form="{repopt}">
@@ -729,44 +698,14 @@
                                                             </div>
                                                         </fieldset>
                                                         <input type="number"  id="totaldays" name="qty5" class="hid-input">
-                                                        <div class="total-coast fl-wrap"><strong>Total Cost</strong> <span>$ <input type="text" name="grand_total" value="" data-form="SUM({item_total}) * {qty5}"></span></div>
+                                                        <div class="total-coast fl-wrap"><strong>Total Cost</strong> <span>NGN <input type="text" name="grand_total" value="" data-form="SUM({item_total}) * {qty5}"></span></div>
                                                         <button class="btnaplly color2-bg book-btn">Book Now<i class="fal fa-paper-plane"></i></button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
                                         <!--box-widget-item end -->                                      
-                                        <!--box-widget-item -->
-                                        <div class="box-widget-item fl-wrap">
-                                            <div class="box-widget counter-widget" data-countDate="09/12/2021">
-                                                <div class="banner-wdget fl-wrap">
-                                                    <div class="overlay"></div>
-                                                    <div class="bg"  data-bg="images/bg/10.jpg"></div>
-                                                    <div class="banner-wdget-content fl-wrap">
-                                                        <h4>Get a discount <span>20%</span> when ordering a room from three days.</h4>
-                                                        <div class="countdown fl-wrap">
-                                                            <div class="countdown-item">
-                                                                <span class="days rot">00</span>
-                                                                <p>days</p>
-                                                            </div>
-                                                            <div class="countdown-item">
-                                                                <span class="hours rot">00</span>
-                                                                <p>hours </p>
-                                                            </div>
-                                                            <div class="countdown-item">
-                                                                <span class="minutes rot">00</span>
-                                                                <p>minutes </p>
-                                                            </div>
-                                                            <div class="countdown-item">
-                                                                <span class="seconds rot">00</span>
-                                                                <p>seconds</p>
-                                                            </div>
-                                                        </div>
-                                                        <a href="#">Book Now</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                         <!--box-widget-item end -->                                       
                                         <!--box-widget-item -->
                                         <div class="box-widget-item fl-wrap">
@@ -795,29 +734,7 @@
                                             </div>
                                         </div>
                                         <!--box-widget-item end -->                          
-                                        <!--box-widget-item -->
-                                        <div class="box-widget-item fl-wrap">
-                                            <div class="box-widget">
-                                                <div class="box-widget-content">
-                                                    <div class="box-widget-item-header">
-                                                        <h3> Price Range </h3>
-                                                    </div>
-                                                    <div class="claim-price-wdget fl-wrap">
-                                                        <div class="claim-price-wdget-content fl-wrap">
-                                                            <div class="pricerange fl-wrap"><span>Price : </span> 81$ - 320$ </div>
-                                                            <div class="claim-widget-link fl-wrap"><span>Own or work here?</span><a href="#">Claim Now!</a></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--box-widget-item end -->                             
-                                        <!--box-widget-item -->
-                                        <div class="box-widget-item fl-wrap">
-											<div id="weather-widget" class="gradient-bg ideaboxWeather" data-city="New York"></div>
-                                        </div>
-                                        <!--box-widget-item end -->    
-                                        <!--box-widget-item end -->   
+                                      
                                         <!--box-widget-item -->
                                         <div class="box-widget-item fl-wrap">
                                             <div class="box-widget widget-posts">
@@ -874,7 +791,7 @@
                                                             <div class="box-widget-author-title-img">
                                                                <img src="images/avatar/avatar-bg.png" alt=""> 
                                                             </div>
-                                                            <a href="user-single.html">Jessie Manrty</a>
+                                                            <a href="user-single.html" id="listingFullname"></a>
                                                             <span>4 Places Hosted</span>
                                                         </div>
                                                         <a href="author-single.html" class="btn flat-btn color-bg   float-btn image-popup">View Profile<i class="fal fa-user-alt"></i></a>
@@ -898,7 +815,7 @@
                                                                     <a href="#" title="">Park Central</a>
                                                                     <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
                                                                     <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i> 40 JOURNAL SQUARE PLAZA, NJ, US</a></div>
-                                                                    <span class="rooms-price">$80 <strong> /  Awg</strong></span>
+                                                                    <span class="rooms-price">NGN80 <strong> /  Awg</strong></span>
                                                                 </div>
                                                             </li>
                                                             <li class="clearfix">
@@ -907,7 +824,7 @@
                                                                     <a href="#" title="">Holiday Home</a>
                                                                     <div class="listing-rating card-popup-rainingvis" data-starrating2="3"></div>
                                                                     <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i> 75 PRINCE ST, NY, USA</a></div>
-                                                                    <span class="rooms-price">$50 <strong> /   Awg</strong></span>
+                                                                    <span class="rooms-price">NGN50 <strong> /   Awg</strong></span>
                                                                 </div>
                                                             </li>
                                                             <li class="clearfix">
@@ -916,7 +833,7 @@
                                                                     <a href="#" title="">Moonlight Listing</a>
                                                                     <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
                                                                     <div class="geodir-category-location fl-wrap"><a href="#"><i class="fas fa-map-marker-alt"></i>  70 BRIGHT ST NEW YORK, USA</a></div>
-                                                                    <span class="rooms-price">$105 <strong> /  Awg</strong></span>
+                                                                    <span class="rooms-price">NGN105 <strong> /  Awg</strong></span>
                                                                 </div>
                                                             </li>
                                                         </ul>
@@ -1123,7 +1040,7 @@
                                 <ul>
                                     <li>Date : <span>05.05.2020</span></li>
                                     <li>Persons : <span>2</span></li>
-                                    <li>Price : <span>$120</span> </li>
+                                    <li>Price : <span>NGN120</span> </li>
                                 </ul>
                             </div>
                         </div>

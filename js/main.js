@@ -23,8 +23,11 @@ axios.interceptors.request.use(function (config) {
  const reviewspaceTitle = localStorage.getItem('spaceTitle');
  const reviewspaceInfo = localStorage.getItem('spaceInfo');
  const reviewFullname = localStorage.getItem('fullnameReview');
-//  axios.defaults.headers.common['Authorization'] =  puser;
-//  instance.defaults.headers.common['Authorization'] = puser;
+
+
+//  ===================================================================================================================================================
+const keepsinglelist = localStorage.getItem('keepsinglelisting');
+
 
  //////////////////////////////All Listings Declaration///////////////////////////////////////////
   publicGet=[]
@@ -655,6 +658,85 @@ async function findlisting(){
   })
 }
 
+async function findsinglelisting(){
+  loadIt();
+  console.log(keepsinglelist);
+  await axios.get('https://share.highflierstutors.com/api/listingfind/'+keepsinglelist+'')
+  .then(function (response) {
+    if (response.status !== 200) {
+      console.warn('Looks like there was a problem. error: ' +
+        response.message);
+      return;
+    }
+    else
+    {
+      console.log(response.data.data[0].reviews.length)
+      console.log(response.data.data[0].host.number)
+      console.log(response.data.data[0].host.email)
+      console.log(response.data.data[0].listing.spaceTitle)
+      console.log(response.data.data[0].listing.address)
+      console.log(response.data.data[0].listing.amenities)
+      console.log(response.data.data[0].listing.additionalInfo)
+       console.log(response.data.data[0].host.firstname)
+
+
+       document.getElementById("listingspaceTitle").innerHTML = response.data.data[0].listing.spaceTitle;
+       document.getElementById("listingEmail").innerHTML = response.data.data[0].host.email;
+       document.getElementById("listingPhone").innerHTML = response.data.data[0].host.number;
+       document.getElementById("listingAddress").innerHTML = response.data.data[0].listing.address;
+      //  document.getElementById("listing-item").innerHTML = response.data.data[0].listing.amenities;
+       document.getElementById("listingAbout").innerHTML = response.data.data[0].listing.additionalInfo;
+       document.getElementById("listingFullname").innerHTML = response.data.data[0].host.firstname+" "+response.data.data[0].host.lastname;
+       document.getElementById("listingPrice").innerHTML = "NGN "+response.data.data[0].listing.price;
+
+
+       document.getElementById("listingReview").innerHTML = (response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews.length + "Reviews" : "0 Review";
+       document.getElementById("listingRating").innerHTML = (response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews[0].rating  : "No Rating";
+       document.getElementById("listingComment").innerHTML = (response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews[0].comments  : "No Comment";
+
+
+
+
+
+       var input = response.data.data[0].listing.created_at;
+
+       var fields = input.split('T');
+
+       var name = fields[0];
+
+       var div =  document.createElement("div");
+       div.innerHTML = 
+
+      ' <div class="reviews-comments-item">'+
+       '<div class="review-comments-avatar">'+
+           '<img src="images/avatar/2.jpg" alt=""> '+
+      ' </div>'+
+       '<div class="reviews-comments-item-text">'+
+           '<h4><a href="#"></a> on <a href="listing-single.html" class="reviews-comments-item-link">'+ (response.data.data[0].reviews.length > 1) ? response.data.data[0].listing.spaceTitle  : "No Review"+'</a></h4>'+
+          '<div class="review-score-user">'+
+               '<span>'+(response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews.rating  : "No Review"+'</span>'+
+               '<strong>'+(response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews.comments  : "No Review"+'</strong>'+
+           '</div>'+
+           '<div class="clearfix"></div>'+
+           '<p> '+(response.data.data[0].reviews.length > 1) ? response.data.data[0].listing.spaceInfo  : "No Review"+'</p>'+
+           '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
+       '</div>'+
+   '</div>'
+
+
+   // var element = document.getElementById("showreview");
+   var element = document.getElementById("singlelistreview");
+   if(element != null && element != 'undefined')
+   {
+     element.appendChild(div);
+   }
+   
+    }
+      
+  })
+}
+     
+   
 
 
  
@@ -732,7 +814,7 @@ async function findlisting(){
           '<div class="listing-item">'+
           '<article class = geodir-category-listing fl-wrap">'+
               '<div class="geodir-category-img">'+
-                  '<a href="listing-single.html" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
+                  '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
                   '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="images/avatar/3.jpg" alt="">'+'</a>'+
                     '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                   '</div>'+
@@ -749,10 +831,10 @@ async function findlisting(){
                   '<div class="geodir-category-content-title fl-wrap">'+
                       '<div class="geodir-category-content-title-item">'+
                           '<h3 class="title-sin_map">'+
-                          '<a href="listing-single.html" id="'+response.data.data[i].listing.id+'">'+response.data.data[i].listing.spaceTitle+'</a>'+
+                          '<a href="#" onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
                           '</h3>'+
                           '<div class="geodir-category-location fl-wrap">'+
-                          '<a href="#0" class="map-item">'+
+                          '<a  id="'+response.data.data[i].listing.id+' onclick="getUserId(id)" class="map-item">'+
                             '<i class="fas fa-map-marker-alt"></i>'+
                             response.data.data[i].listing.address+
                              '</a>'+
@@ -787,7 +869,7 @@ async function findlisting(){
         '<div class="listing-item">'+
         '<article class = geodir-category-listing fl-wrap">'+
             '<div class="geodir-category-img">'+
-                '<a href="listing-single.html">'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
+                '<a href="#" id="'+response.data.data[i].listing.id+'" onclick="getUserId(id)" return false;>'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
                 '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="images/avatar/3.jpg" alt="">'+'</a>'+
                   '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                 '</div>'+
@@ -804,10 +886,10 @@ async function findlisting(){
                 '<div class="geodir-category-content-title fl-wrap">'+
                     '<div class="geodir-category-content-title-item">'+
                         '<h3 class="title-sin_map">'+
-                        '<a href="listing-single.html">'+response.data.data[i].listing.spaceTitle+'</a>'+
+                        '<a  href="#" id="'+response.data.data[i].listing.id+'" onclick="getUserId(id)" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
                         '</h3>'+
                         '<div class="geodir-category-location fl-wrap">'+
-                        '<a href="#0" class="map-item">'+
+                        '<a href="#" id="'+response.data.data[i].listing.id+'" onclick="getUserId(id)" class="map-item" return false;>'+
                           '<i class="fas fa-map-marker-alt"></i>'+
                           response.data.data[i].listing.address+
                            '</a>'+
@@ -824,9 +906,9 @@ async function findlisting(){
                 '<div class="geodir-category-footer fl-wrap">'+
                     '<div class="geodir-category-price">Awg/Night <span>'+"NGN  "+  response.data.data[i].listing.price +'</span></div>'+
                     '<div class="geodir-opt-list">'+
-                        '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
-                        '<a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>'+
-                        '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
+                        '<a  class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
+                        '<a class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>'+
+                        '<a class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
                     '</div>'+
                 '</div>'+
             '</div>'+
@@ -849,6 +931,10 @@ async function findlisting(){
   });
 }
 
-function getUserId(){
+function getUserId(listId){
 
+  // console.log(listId);
+  localStorage.setItem('keepsinglelisting', listId)
+  console.log(listId);
+window.location.href = 'listing-single.html';
 }
