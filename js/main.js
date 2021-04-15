@@ -248,9 +248,9 @@ function logOff() {
   if (confirm('Are you sure you want to sign out?')) {
     
     localStorage.clear();
-   
-    window.location.href = 'index.html';
     location.reload();
+    window.location.href = 'index.html';
+   
   } else {
     // Do nothing!
    
@@ -271,6 +271,7 @@ function verifyUser() {
 
   alert('You have successfully registered ' + userFirstname)
   window.location.href = 'index.html';
+
 }
 
 
@@ -397,10 +398,10 @@ function loadIt()
   async function getUserReview() {
 
     loadIt();
-
+  
     await axios.get('https://share.highflierstutors.com/api/review')
     .then(function (response) {
-        
+        localStorage.setItem('allreview',response.data.data.length);
 
       if (response.status !== 200) {
         console.warn('Looks like there was a problem. error: ' +
@@ -410,13 +411,16 @@ function loadIt()
       else
       {
        
+
        if(response.data.data != null){
 
-        localStorage.setItem('allreview',response.data.data.length);
+        
 
         console.log(response.data.data.length);
 
-    
+        
+
+
       
         for (let i = 0;i < response.data.data.length;i++){
 
@@ -452,9 +456,13 @@ function loadIt()
       '</div>'
 
 
+      // var element = document.getElementById("showreview");
       var element = document.getElementById("showreview");
-         
-      element.appendChild(div);
+      if(element != null && element != 'undefined')
+      {
+        element.appendChild(div);
+      }
+      
         
       }
     }
@@ -496,13 +504,61 @@ function loadIt()
 
 
   async function getUserListing() {
+   
+   
+    loadIt();
     await axios.get('https://share.highflierstutors.com/api/listing')
 
-      .then(function (response) {
-        console.log(response);
-        console.log(response.data.length);
+    .then(function (response) {
+      console.log(response)
+    if (response.status !== 200) {
+      console.warn('Looks like there was a problem. error: ' +
+        response.message);
+      return;
+    }
+    else
+    {
+    
+  
+      console.log(response)
+
+
+      for(let i = 0;i < response.data.data.length;i++){
+
+        var input = response.data.data[i].listing.attachments;
+
+        var fields = input.split(',');
+
+        var name = fields[0];
+        var div =  document.createElement("div");
+          div.innerHTML = 
+          '<div class="dashboard-list">'+
+          '<div class="dashboard-message">'+
+             ' <span class="new-dashboard-item">New</span>'+
+              '<div class="listing-table-image">'+
+                  '<a href="listing-single.html"><img src="https://share.highflierstutors.com/images/'+name+'" alt=""></a>'+
+              '</div>'+
+              '<div class="listing-table-text">'+
+                  '<h4><a href="listing-single.html">'+response.data.data[i].listing.spaceTitle+'</a></a></h4>'+
+                  '<span class="listing-table-address"><i class="far fa-map-marker"></i><a  href="#">'+response.data.data[i].listing.address+'</a></span>'+
+                  '<ul class="listing-table-opt  fl-wrap">'+
+                      '<li><a href="#">Edit <i class="fal fa-edit"></i></a></li>'+
+                      '<li><a href="#" class="del-btn">Delete <i class="fal fa-trash-alt"></i></a></li>'+
+                  '</ul>'+
+              '</div>'+
+          '</div>'+
+      '</div>'
+
+    var element = document.getElementById("showuserlisting");
+         
+         element.appendChild(div);
+
       }
-      )
+  }})
+  .catch(function (err) {
+    console.error('Fetch Error -', err);
+  });
+
   }
 
 
@@ -676,7 +732,7 @@ async function findlisting(){
           '<div class="listing-item">'+
           '<article class = geodir-category-listing fl-wrap">'+
               '<div class="geodir-category-img">'+
-                  '<a href="listing-single.html">'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
+                  '<a href="listing-single.html" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
                   '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="images/avatar/3.jpg" alt="">'+'</a>'+
                     '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                   '</div>'+
@@ -693,7 +749,7 @@ async function findlisting(){
                   '<div class="geodir-category-content-title fl-wrap">'+
                       '<div class="geodir-category-content-title-item">'+
                           '<h3 class="title-sin_map">'+
-                          '<a href="listing-single.html">'+response.data.data[i].listing.spaceTitle+'</a>'+
+                          '<a href="listing-single.html" id="'+response.data.data[i].listing.id+'">'+response.data.data[i].listing.spaceTitle+'</a>'+
                           '</h3>'+
                           '<div class="geodir-category-location fl-wrap">'+
                           '<a href="#0" class="map-item">'+

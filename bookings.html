@@ -8,6 +8,24 @@
         <meta name="robots" content="index, follow"/>
         <meta name="keywords" content=""/>
         <meta name="description" content=""/>
+
+
+
+
+        <script type="module" >
+        
+            $(document).ready(function(){
+                
+            document.getElementById('signout').style.display = 'none';
+            document.getElementById('signin').style.display = 'none';
+            document.getElementById('dropit').style.display = 'none';
+            // document.getElementById('avatar').src = res.data.user.imgProfile;
+            
+            document.getElementById('reg').style.display = 'none';
+            document.getElementById('addlisting').style.display = 'none';
+            })
+            
+        </script>
         <!--=============== css  ===============-->
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/plugins.css">
@@ -69,9 +87,9 @@
                                 <span><img  id="avatar"  alt=""></span>
                                 <div id="userValue"></div>
                             </div>
-                            <ul>
+                             <ul>
                                 <li><a href="myprofile.html"> Edit profile</a></li>
-                                <li><a href="add-listing.html"> Add Listing</a></li>
+                                <li><a href="listing-table.html"> My Listing</a></li>
                                 <li><a href="bookings.html">  Bookings  </a></li>
                                 <li><a href="review.html"> Reviews </a></li>
                                  <li><a href="#" onclick="logOff()">Log Out</a></li>
@@ -273,7 +291,7 @@
                                         </li>
                                         <li><a href="messages.html"><i class="far fa-envelope"></i> Messages <span>3</span></a></li>
                                         <li>
-                                            <a href="listing-table.html"><i class="far fa-th-list"></i> My listigs  </a>
+                                            <a href="listing-table.html"><i class="far fa-th-list"></i> My Listings  </a>
                                             <ul>
                                                 <!-- <li><a href="#">Active</a><span>5</span></li>
                                                 <li><a href="#">Pending</a><span>2</span></li>
