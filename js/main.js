@@ -843,48 +843,160 @@ async function findsinglelisting(){
 
 async function postNewListing(){
 
-  var emailreview = document.getElementById("emailreview").value;
-  var namereview = document.getElementById('namereview').value;
-  var comment = document.getElementById('comment').value;
-  rating =  document.getElementById('rg_total').value
+  alert('tttttttttt')
+  var spacetitle = document.getElementById('spacetitle').value;
+  var category = document.getElementById('category').value;
+  var address = document.getElementById('address').value;
+  var entirespace = document.getElementById('entirespace').value;
+  var organization = document.getElementById('organization').value;
+  var guestonly = document.getElementById('guestonly').value;
+  var spaceowner = document.getElementById("spaceowner").value;
+  var spacerules = document.getElementById('spacerules').value;
+  var country = document.getElementById('country').value;
+  var state = document.getElementById("state").value;
+  var city = document.getElementById('city').value;
+  var numberofrooms = document.getElementById('numberofrooms').value;
 
+  var numberofguest = document.getElementById('numberofguest').value;
+  var bathrooms = document.getElementById('bathrooms').value;
+  var beds = document.getElementById('beds').value;
+  var price = document.getElementById('price').value;
+  var listingdate = document.getElementById('listingdate').value;
+  var discount = document.getElementById('discount').value;
+  var discountperiod = document.getElementById("discountperiod").value;
+  var spacedetails = document.getElementById('spacedetails').value;
+  var additionalinfo = document.getElementById('additionalinfo').value;
+  legalAuthorization = "1"
+  terms = "1"
+  userid = "2"
+  lastname = "ismail",
+  verifiedID = "1",
+  student = "no";
+  amenities = "ee";
+  attachments = "po";
+ 
+  alert('tttttttttt')
 
-  if(puser != null ){
-      
+  var input = discountperiod;
+
+  var fields = input.split('-');
+
+  var start1 = fields[0];
+  var end1 = fields[1]
+
+  var input = listingdate;
+
+  var fields = input.split('-');
+
+  var start2 = fields[0];
+  var end2 = fields[1];
+
+  discountStart = start1;
+  discountEnd  = end1,
+  startDate = start2,
+  endDate = end2;
+
+  if(puser != null && spacedetails != "" ){
        
+    // alert(spacetitle);
+    // alert(category);
+    // alert(address);
+    // alert(entirespace);
+    // alert(organization);
+    // alert(guestonly);
+    // alert(spaceowner);
+    // alert(spacerules);
+    // alert(country);
+    // alert(state);
+    // alert(city);
+    // alert(numberofrooms);
+    // alert(numberofguest);
+    // alert(bathrooms);
+    // alert(beds);
+    // alert(price);
+    // alert(listingdate);
+    // alert(discount);
+    // alert(legalAuthorization);
+    // alert(discountStart);
+    // alert(discountEnd);
+    // alert(startDate);
+    // alert(endDate);
+    // alert(spacedetails);
+    // alert(additionalInfo);
+    // alert(terms);
+    // alert(userid);
+    // alert(lastname);
+    // alert(verifiedID);
+    // alert(student);
+    // alert(amenities);
+    // alert(attachments);
+
+    // frm = document.getElementById("newlisting");
+    // return false
       await axios.post('https://share.highflierstutors.com/api/listing', {
 
-        spaceTitle,
-        address,
-        entireSpace,
-        spaceType,
-        student,
-        guestOnly,
-        organisation,
-        numberOfGuest,
-        numberOfRomms,
-        bathrooms,
-        beds,
-        amenities,
-        attachments,
-        spaceRules,
-        spaceDetails,
-        additionalInfo,
-        startDate,
-        endDate,
-        price,
-        discount,
-        discountStart,
-        discountEnd,
-        lastname,
-        verifiedID,
-        spaceOwner,
-        legalAuthorization,
-        terms,
-        userId,
-        country,
-        state,
-        city,
+        address:"65, ajewamiwa",
+        entireSpace:'yes',
+        spaceType:'Space',
+        student:'yes',
+        guestOnly:'no',
+        organization:'Olawhizzy',
+        numberOfGuest:'3',
+        numberOfRooms:'10',
+        bathrooms:'2',
+        beds:'22',
+        amenities:'be',
+        spaceDetails:'th thet thet e the t eht ethet t e ect e.e te te et et e te te t et ette. et et te et et te tet et te' ,
+        spaceRules:'No kids',
+        additionalInfo:'thdt t dtd td td td tdtdttdtdttd t.dttdttdtdttd' ,
+        startDate:'2021-12-04 00:00:00.000',
+        endDate:'2022-11-04 00:00:00.000',
+        price:'40000',
+        discount:'3000',
+        discountStart:'2021-11-04 00:00:00.001',
+        discountEnd:'2022-11-04 00:00:00.000,',
+        lastname:'ismail',
+        verifiedID:'yes',
+        spaceOwner:'yes',
+        legalAuthorization:'2',
+        terms:'1',
+        userId:'2',
+        country:'Nigeria',
+        state:'Lagos',
+        city:'ojo',
+
+
+        // spaceTitle : document.getElementById('spacetitle').value,
+        // address : document.getElementById('address').value,
+        // entireSpace  : entirespace,
+        // spaceType : category,
+        // student : student ,
+        // guestOnly : guestonly,
+        // organization :  document.getElementById('organization').value,
+        // numberOfGuest : numberofguest,
+        // numberOfRooms : numberofrooms,
+        // bathrooms : bathrooms,
+        // beds : beds,
+        // amenities :amenities,
+        // attachments: attachments,
+        // spaceRules : spacerules,
+        // spaceDetails : spacedetails,
+        // additionalInfo : additionalinfo,
+        // startDate : startDate,
+        // endDate : endDate,
+        // price : price,
+        // discount : discount,
+        // discountStart : discountStart,
+        // discountEnd : discountEnd,
+        // lastname : lastname,
+        // verifiedID : verifiedID,
+        // spaceOwner : spaceowner,
+        // legalAuthorization : legalAuthorization,
+        // terms : terms,
+        // userId : userid,
+        // country : country,
+        // state : state,
+        // city : city,
 
       })  
       .then(function (response) {
@@ -892,20 +1004,23 @@ async function postNewListing(){
         console.log(response.data.data)
       
       
-        frm = document.getElementById("add-comment");
-        document.getElementById("reviewmessage").style.display="block";
-        document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
-        document.getElementById("reviewmessage").style.backgroundColor= "lightgreen"
-        document.getElementById("reviewmessage").style.color= "white"
+        frm = document.getElementById("newlisting");
+        document.getElementById("listmessage").style.display="block";
+        document.getElementById("listmessage").innerHTML="Your listing is successfully submitted!"
+        document.getElementById("listmessage").style.backgroundColor= "lightgreen"
+        document.getElementById("listmessage").style.color = "white"
         setTimeout(function(){
-          document.getElementById("reviewmessage").style.display="none";
+          document.getElementById("listmessage").style.display="none";
           },3000);
-          frm.reset();  // 
-      })
+          // frm.reset();  // 
+      }).catch(function (err) {
+        alert('Fetch Error -', err);
+      });
+
     
    }
    else{
-     alert('Only Logged In Users are allowed to review and also put a comment')
+     alert('are you a registered user?')
    }
   
 }
