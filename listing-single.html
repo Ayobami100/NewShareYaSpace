@@ -53,7 +53,7 @@
                         <div class="logo-holder">
                             <a href="index.html"><img src="images/logo.png" alt=""></a>
                         </div>
-                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i class="far fa-plus"></i></span></a>
+                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Listing <span><i class="far fa-plus"></i></span></a>
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
                         <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
                         <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
@@ -578,10 +578,14 @@
                                             <div class="list-single-main-item-title fl-wrap">
                                                 <h3>Add Review</h3>
                                             </div>
+                                           
                                             <!-- Add Review Box -->
                                             <div id="add-review" class="add-review-box">
+                                            
+                                                    
+                                                
                                                 <!-- Review Comment -->
-                                                <form id="add-comment" class="add-comment  custom-form" name="rangeCalc" >
+                                                <form id="add-comment" class="add-comment  custom-form" name="rangeCalc" onsubmit="return false;">
                                                     <fieldset>
                                                         <div class="review-score-form fl-wrap">
                                                             <div class="review-range-container">
@@ -619,23 +623,24 @@
                                                                 <!-- review-range-item end -->                                     
                                                             </div>
                                                             <div class="review-total">
-                                                                <span><input type="text" name="rg_total"  data-form="AVG({rgcl})" value="0"></span>    
+                                                                <span><input type="text" name="rg_total" id="rg_total" data-form="AVG({rgcl})" value="0"></span>    
                                                                 <strong>Your Score</strong>
                                                             </div>
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <label><i class="fal fa-user"></i></label>
-                                                                <input type="text" placeholder="Your Name *" value=""/>
+                                                                <input type="text" id="namereview" placeholder="Your Name *" value=""/>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label><i class="fal fa-envelope"></i>  </label>
-                                                                <input type="text" placeholder="Email Address*" value=""/>
+                                                                <input type="text" id="emailreview" placeholder="Email Address*" value=""/>
                                                             </div>
                                                         </div>
-                                                        <textarea cols="40" rows="3" placeholder="Your Review:"></textarea>
+                                                        <textarea cols="40" rows="3" id="comment" placeholder="Your Review:"></textarea>
                                                     </fieldset>
-                                                    <button class="btn  big-btn flat-btn float-btn color2-bg" style="margin-top:30px">Submit Review <i class="fal fa-paper-plane"></i></button>
+                                                    <p id="reviewmessage"></p>
+                                                    <button class="btn  big-btn flat-btn float-btn color2-bg" style="margin-top:30px" onclick="postNewReview()">Submit Review <i class="fal fa-paper-plane"></i></button>
                                                 </form>
                                             </div>
                                             <!-- Add Review Box / End -->
@@ -655,7 +660,7 @@
                                                     <div class="box-widget-item-header">
                                                         <h3> Book This Listing</h3>
                                                     </div>
-                                                    <form name="bookFormCalc"   class="book-form custom-form">
+                                                    <form name="bookFormCalc"   class="book-form custom-form" onsubmit="return false;">
                                                         <fieldset>
                                                             <div class="cal-item">
                                                                 <div class="listsearch-input-item">

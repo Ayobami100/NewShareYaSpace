@@ -10,6 +10,21 @@
     <meta name="robots" content="index, follow" />
     <meta name="keywords" content="" />
     <meta name="description" content="" />
+
+    <script type="module" >
+        
+        $(document).ready(function(){
+            
+        document.getElementById('signout').style.display = 'none';
+        document.getElementById('signin').style.display = 'none';
+        document.getElementById('dropit').style.display = 'none';
+        // document.getElementById('avatar').src = res.data.user.imgProfile;
+        
+        document.getElementById('reg').style.display = 'none';
+        document.getElementById('addlisting').style.display = 'none';
+        })
+        
+    </script>
     <!--=============== css  ===============-->
     <link type="text/css" rel="stylesheet" href="css/reset.css">
     <link type="text/css" rel="stylesheet" href="css/plugins.css">
@@ -37,7 +52,7 @@
                     <div class="logo-holder">
                         <a href="index.html"><img src="images/logo.png" alt=""></a>
                     </div>
-                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Your Space <span><i
+                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Listing <span><i
                                 class="far fa-plus"></i></span></a>
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i
                                 class="far fa-plus"></i></span></a>
@@ -281,7 +296,7 @@
                     <div class="container">
                         <div class="dasboard-wrap fl-wrap">
                             <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">Home</a><a
-                                    href="#">Dashboard</a><span>Profile page</span></div>
+                                    href="#">Add Listing</a></div>
                             <!--dasboard-sidebar-->
                        <div class="dasboard-sidebar">
                                     <div class="dasboard-sidebar-content fl-wrap">
@@ -294,8 +309,8 @@
                                                 
                                             </h3>
                                         </div>
-                                        <a href="ad
-                                        <a href="add-listing.html" class="ed-btn">Add Listing</a>                                        
+                                        
+                                        <a href="add-listing.html" class="ed-btn">Add Listing</a>                                   
                                         <div class="user-stats fl-wrap">
                                             <ul>
                                                 <li>
@@ -317,43 +332,12 @@
                                 </div>
                             <!--dasboard-sidebar end-->
                             <!-- dasboard-menu-->
-                            <div class="dasboard-menu">
+                            <!-- <div class="dasboard-menu">
                                 <div class="dasboard-menu-btn color3-bg">Dashboard Menu <i class="fal fa-bars"></i>
                                 </div>
-                                <ul class="dasboard-menu-wrap">
-                                    <li>
-                                        <a href="dashboard.html"><i class="far fa-user"></i>Profile</a>
-                                        <ul>
-                                            <li><a href="myprofile.html">Edit profile</a></li>
-                                            <li><a href="password.html">Change Password</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="messages.html"><i class="far fa-envelope"></i> Messages
-                                            <span>3</span></a></li>
-                                    <li>
-                                        <a href="listing-table.html" class="user-profile-act"><i
-                                                class="far fa-th-list"></i> My Listings </a>
-                                        <ul>
-                                            <!-- <li><a href="#">Active</a><span>5</span></li>
-                                            <li><a href="#">Pending</a><span>2</span></li>
-                                            <li><a href="#">Expire</a><span>3</span></li> -->
-                                        </ul>
-                                    </li>
-                                    <li><a href="bookings.html"> <i class="far fa-calendar-check"></i>
-                                            Bookings <span>2</span></a></li>
-                                    <li><a href="review.html"><i class="far fa-comments"></i> Reviews </a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <!--dasboard-menu end-->
-                            <!--Tariff Plan menu-->
-                            <!-- <div class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
-                            <div class="tfp-det">
-                                <p>You Are on <a href="#">Extended</a> . Use link bellow to view details or upgrade.
-                                </p>
-                                <a href="#" class="tfp-det-btn color2-bg">Details</a>
+                               
                             </div> -->
-                            <!--Tariff Plan menu end-->
+                           
                         </div>
                     </div>
                 </section>
@@ -365,16 +349,21 @@
                         <div class="dasboard-wrap fl-wrap">
                             <!-- dashboard-content-->
                             <div class="dashboard-content fl-wrap">
-                                <div class="box-widget-item-header">
-                                    <h3> Basic Informations</h3>
+                                <h1 style="font-weight: 800;"> ADD NEW LISTING</h1>
+                                <div class="box-widget-item-header">                                
+                                    <h3> Basic Information</h3>
                                 </div>
                                 <!-- profile-edit-container-->
                                 <div class="profile-edit-container">
                                     <div class="custom-form">
-                                        <label>Listing Title <i class="fal fa-briefcase"></i></label>
-                                        <input type="text" placeholder="Name of your Listing" value=""
-                                            id="spacetitle" />
                                         <div class="row">
+                                            <div class="col-md-6" >
+                                                <label>Listing Title <i class="fal fa-briefcase"></i></label>
+                                                <input type="text" placeholder="Name of your Listing" value=""
+                                                    id="spacetitle" />
+                                            </div>
+                                          
+                                        
                                             <div class="col-md-6">
                                                 <label>Type / Category</label>
                                                 <div class="listsearch-input-item">
@@ -388,12 +377,12 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Entire Space</label>
-                                                <div class="listsearch-input-item">
-                                                    <select id="entirespace" name="">
-                                                        <option value="">Yes</option>
-                                                        <option value="">No</option>
-                                                    </select>
-                                                </div>
+                                                <select data-placeholder="Room Type" name="repopt"   class="chosen-select no-search-select" >
+                                                    <option value="0" selected>Guest Only</option>
+                                                    <option value="81">Yes</option>
+                                                    <option value="122">No</option>
+                                                    
+                                                </select>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Organization <i class="fa fa-key"></i></label>
@@ -401,38 +390,52 @@
                                             </div>
 
                                             <div class="col-md-6">
-                                                <label>Guest Only</label>
-                                                <div class="listsearch-input-item">
-                                                    <select id="guestonly" name="">
-                                                        <option value="">Yes</option>
-                                                        <option value="">No</option>
-                                                    </select>
+                                                <div class="cal-item">
+                                                    <div class="listsearch-input-item">
+                                                        <label>Guest Only</label>
+                                                        <select data-placeholder="Room Type" name="repopt"   class="chosen-select no-search-select" >
+                                                            <option value="0" selected>Guest Only</option>
+                                                            <option value="81">Yes</option>
+                                                            <option value="122">No</option>
+                                                            
+                                                        </select>
+                                                        <!--data-formula -->
+                                                        <input type="text" name="item_total" class="hid-input"  value=""  data-form="{repopt}">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <label>Space Owner</label>
                                                 <div class="listsearch-input-item">
-                                                    <select id="spaceowner" name="">
-                                                        <option value="">Yes</option>
-                                                        <option value="">No</option>
+                                                    <select data-placeholder="Room Type" name="repopt"   class="chosen-select no-search-select" >
+                                                        <option value="0" selected>Guest Only</option>
+                                                        <option value="81">Yes</option>
+                                                        <option value="122">No</option>                                                        
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <label>Space Rules</label>
-                                                <div class="listsearch-input-item">
-                                                    <select id="spacerule" name="">
-                                                        <option value="">Yes</option>
-                                                        <option value="">No</option>
-                                                    </select>
-                                                </div>
+                                                <select data-placeholder="Room Type" name="repopt"   class="chosen-select no-search-select" >
+                                                    <option value="0" selected>Guest Only</option>
+                                                    <option value="81">Yes</option>
+                                                    <option value="122">No</option>
+                                                    
+                                                </select>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6"  >
                                                 <label>Address <i class="fa fa-key"></i></label>
                                                 <input type="text" placeholder="" value="" />
                                             </div>
-
+                                            <div class="col-md-6">       
+                                                    <label for="str">Attachments(you can select more than one file)</label>
+                                                    <input type="file" id="docpicker" name="str"
+                                                    accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                                    multiple class="form-control"/>                                                    
+                                                
+                                            
+                                            </div>
                                             <div class="row">
 
                                                 <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
@@ -465,31 +468,19 @@
                                                 </div>
 
                                             </div>
+                                        
                                             <div class="col-md-6">
                                                 <label>Price <i class="fa fa-key"></i></label>
                                                 <input type="text" placeholder="" value="NGN " />
                                             </div>
                                             <div class="col-sm-6">
-                                                <label for="datetimepickerDemo">Listing Date In<i
-                                                        class="far fa-calendar"></i></label>
-
-                                                        <div class='input-group date' id='datetimepickerDemo1'>
-                                                            <input type='text' class="form-control" />
-                                                            <span class="input-group-addon">
-                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                            </span>
-                                                        </div>
-
-                                                <label for="start">Listing Date Out<i
-                                                        class="far fa-calendar"></i></label>
-
-                                                        <div class='input-group date' id='datetimepickerDemo2'>
-                                                            <input type='text' class="form-control" />
-                                                            <span class="input-group-addon">
-                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                            </span>
-                                                        </div>
-
+                                                <div class="col-md-6">
+                                                    <div class="col-list-search-input-item in-loc-dec date-container  fl-wrap">
+                                                        <label>Listing Period </label>
+                                                        <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                                        <input type="text"   placeholder="When" name="dates"   value=""/>
+                                                    </div>
+                                                </div>
 
                                             </div>
 
@@ -501,36 +492,15 @@
                                                 <label>Price <i class="fa fa-money"></i></label>
                                                 <input type="text" placeholder="" value="" />
                                             </div>
-                                            <div class="col-sm-6">
-                                                <label for="start">Discount Period from<i
-                                                    class="far fa-calendar"></i></label>
-
-                                                    <div class="col-md-3">
-                                                        <div class="col-list-search-input-item in-loc-dec date-container  fl-wrap">
-                                                            <label>Date In-Out </label>
-                                                            <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                                            <input type="text"   placeholder="When" name="dates"   value=""/>
-                                                        </div>
+                                            <div class="col-sm-6">   
+                                                <div class="col-md-6">
+                                                    <div class="col-list-search-input-item in-loc-dec date-container  fl-wrap">
+                                                        <label>Discount Period </label>
+                                                        <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                                        <input type="text"   placeholder="When" name="dates"   value=""/>
                                                     </div>
-                                                    
-                                                <label for="start">To<i class="far fa-calendar"></i></label>
-                                                <div class='input-group date' id='datetimepickerDemo4'>
-                                                    <input type='text' class="form-control" ifFormat= "%Y/%m/%d"/>
-                                                    <span class="input-group-addon">
-                                                        <span class="glyphicon glyphicon-calendar"></span>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">                                               
-                                                <div class='input-group date' id=''>
-                                                    <label for="str">Attachments(you can select more than one file)<i class="far fa-calendar"></i></label>
-                                                    <input type="file" id="docpicker" name="str"
-                                                    accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                                                    multiple class="form-control"/>
-                                                    
-                                                </div>
-                                               
-                                            </div>
+                                                </div>                                            
+                                            </div>                                          
                                            
                                         </div>
                                         <!-- profile-edit-container end-->
@@ -538,41 +508,7 @@
                                         <!-- profile-edit-container-->
                                         <div class="profile-edit-container">
                                             <div class="custom-form">
-                                                <!-- <label>Address<i class="fal fa-map-marker"></i></label>
-                                            <input type="text" placeholder="Address of your Listing" value=""/>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label>Longitude (Drag marker on the map)<i class="fal fa-long-arrow-alt-right"></i>  </label>
-                                                    <input type="text" placeholder="Map Longitude"  id="long" value=""/>                                                
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Latitude (Drag marker on the map) <i class="fal fa-long-arrow-alt-down"></i> </label>
-                                                    <input type="text" placeholder="Map Latitude"  id="lat" value=""/>                                            
-                                                </div>
-                                            </div>
-											<div class="map-container">
-												<div id="singleMap" class="vis-map" data-latitude="40.7427837" data-longitude="-73.11445617675781"></div>
-											</div> -->
-                                                <!-- <label>City / Location</label> -->
-                                                <!-- <div class="listsearch-input-item">
-                                                <select data-placeholder="City" class="chosen-select no-search-select" >
-                                                    <option>All Cities</option>
-                                                    <option>New York</option>
-                                                    <option>London</option>
-                                                    <option>Paris</option>
-                                                    <option>Kiev</option>
-                                                    <option>Moscow</option>
-                                                    <option>Dubai</option>
-                                                    <option>Rome</option>
-                                                    <option>Beijing</option>
-                                                </select>
-                                            </div>
-                                            <label>Email Address<i class="far fa-envelope"></i>  </label>
-                                            <input type="text" placeholder="JessieManrty@domain.com" value=""/>
-                                            <label>Phone<i class="far fa-phone"></i>  </label>
-                                            <input type="text" placeholder="+7(123)987654" value=""/>
-                                            <label> Website <i class="far fa-globe"></i>  </label>
-                                            <input type="text" placeholder="themeforest.net" value=""/> -->
+                                        
                                             </div>
                                         </div>
                                         <!-- profile-edit-container end-->
@@ -581,60 +517,136 @@
                                         <div class="profile-edit-container">
                                             <div class="custom-form">
                                                 <div class="row">
-                                                    <!--col -->
-                                                    <!-- <div class="col-md-4">
-                                                    <div class="add-list-media-header" style="margin-bottom:20px">
-                                                        <label class="radio inline"> 
-                                                        <input type="radio" name="gender"  checked>
-                                                        <span>Background image</span> 
-                                                        </label>
+                                                    <div class="col-md-6">
+                                                        <label>Address <i class="fa fa-key"></i></label>
+                                                        <input type="text" placeholder="" id="address" value="" />
                                                     </div>
-                                                    <div class="add-list-media-wrap">
-                                                        <div class="add-list-media-wrap">
-                                                            <form class="fuzone">
-                                                                <div class="fu-text">
-                                                                    <span><i class="fal fa-image"></i> Click here or drop files to upload</span>
-                                                                </div>
-                                                                <input type="file" class="upload">
-                                                            </form>
+                                                    <div class="col-md-6">
+                                                        <label>Entire Space</label>
+                                                        <select data-placeholder="Room Type" name="repopt"   class="chosen-select no-search-select" >
+                                                            <option value="0" selected>Guest Only</option>
+                                                            <option value="81">Yes</option>
+                                                            <option value="122">No</option>
+                                                            
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Organization <i class="fa fa-key"></i></label>
+                                                        <input type="text" id="organization" placeholder="" value="" />
+                                                    </div>
+        
+                                                    <div class="col-md-6">
+                                                        <div class="cal-item">
+                                                            <div class="listsearch-input-item">
+                                                                <label>Guest Only</label>
+                                                                <select data-placeholder="Room Type" name="repopt"   class="chosen-select no-search-select" >
+                                                                    <option value="0" selected>Guest Only</option>
+                                                                    <option value="81">Yes</option>
+                                                                    <option value="122">No</option>
+                                                                    
+                                                                </select>
+                                                                <!--data-formula -->
+                                                                <input type="text" name="item_total" class="hid-input"  value=""  data-form="{repopt}">
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div> -->
-                                                    <!--col end-->
-                                                    <!--col -->
-                                                    <!-- <div class="col-md-4">
-                                                    <div class="add-list-media-header" style="margin-bottom:20px">
-                                                        <label class="radio inline"> 
-                                                        <input type="radio" name="gender">
-                                                        <span>Carousel</span> 
-                                                        </label>
+                                                    <div class="col-md-6">
+                                                        <label>Space Owner</label>
+                                                        <div class="listsearch-input-item">
+                                                            <select data-placeholder="Room Type" name="repopt"   class="chosen-select no-search-select" >
+                                                                <option value="0" selected>Guest Only</option>
+                                                                <option value="81">Yes</option>
+                                                                <option value="122">No</option>                                                        
+                                                            </select>
+                                                        </div>
                                                     </div>
-                                                    <div class="add-list-media-wrap">
-                                                        <form class="fuzone">
-                                                            <div class="fu-text">
-                                                                <span><i class="fal fa-image"></i> Click here or drop files to upload</span>
+        
+                                                    <div class="col-md-6">
+                                                        <label>Space Rules</label>
+                                                        <select data-placeholder="Room Type" name="repopt"   class="chosen-select no-search-select" >
+                                                            <option value="0" selected>Guest Only</option>
+                                                            <option value="81">Yes</option>
+                                                            <option value="122">No</option>
+                                                            
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-6"  >
+                                                        <label>Address <i class="fa fa-key"></i></label>
+                                                        <input type="text" placeholder="" value="" />
+                                                    </div>
+                                                    <div class="col-md-6">       
+                                                            <label for="str">Attachments(you can select more than one file)</label>
+                                                            <input type="file" id="docpicker" name="str"
+                                                            accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                                                            multiple class="form-control"/>                                                    
+                                                        
+                                                    
+                                                    </div>
+                                                    <div class="row">
+        
+                                                        <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                                                            <label>Number of Rooms</label>
+                                                            <div class="quantity">
+                                                                <input id="numberofrooms" type="number" min="1" max="90"
+                                                                    step="1" value="1">
                                                             </div>
-                                                            <input type="file" class="upload">
-                                                        </form>
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                                                            <label>Number of Guest</label>
+                                                            <div class="quantity">
+                                                                <input id="numberofguest" type="number" min="1" max="90"
+                                                                    step="1" value="1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                                                            <label>Bathrooms</label>
+                                                            <div class="quantity">
+                                                                <input id="bathrooms" type="number" min="1" max="90" step="1"
+                                                                    value="1">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
+                                                            <label>beds</label>
+                                                            <div class="quantity">
+                                                                <input id="beds" type="number" min="1" max="90" step="1"
+                                                                    value="1">
+                                                            </div>
+                                                        </div>
+        
                                                     </div>
-                                                </div> -->
-                                                    <!--col end-->
-                                                    <!--col -->
-                                                    <!-- <div class="col-md-4">
-                                                    <div class="add-list-media-header" style="margin-bottom:20px">
-                                                        <label class="radio inline"> 
-                                                        <input type="radio" name="gender">
-                                                        <span>Video</span> 
-                                                        </label>
+                                                
+                                                    <div class="col-md-6">
+                                                        <label>Price <i class="fa fa-key"></i></label>
+                                                        <input type="text" placeholder="" value="NGN " />
                                                     </div>
-                                                    <div class="add-list-media-wrap">
-                                                        <label>Youtube  <i class="fab fa-youtube"></i></label>
-                                                        <input type="text" placeholder="https://www.youtube.com/" value=""/>   
-                                                        <label>Vimeo <i class="fab fa-vimeo-v"></i></label>
-                                                        <input type="text" placeholder="https://vimeo.com/" value=""/> 
+                                                    <div class="col-sm-6">
+                                                        <div class="col-md-6">
+                                                            <div class="col-list-search-input-item in-loc-dec date-container  fl-wrap">
+                                                                <label>Listing Period </label>
+                                                                <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                                                <input type="text"   placeholder="When" name="dates"   value=""/>
+                                                            </div>
+                                                        </div>
+        
                                                     </div>
-                                                </div> -->
-                                                    <!--col end-->
+        
+                                                    <div class="col-md-6">
+                                                        <label>Discount <i class="fa fa-key"></i></label>
+                                                        <input type="text" placeholder="" value="" />
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label>Price <i class="fa fa-money"></i></label>
+                                                        <input type="text" placeholder="" value="" />
+                                                    </div>
+                                                    <div class="col-sm-6">   
+                                                        <div class="col-md-6">
+                                                            <div class="col-list-search-input-item in-loc-dec date-container  fl-wrap">
+                                                                <label>Discount Period </label>
+                                                                <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                                                <input type="text"   placeholder="When" name="dates"   value=""/>
+                                                            </div>
+                                                        </div>                                            
+                                                    </div>                            
                                                 </div>
                                             </div>
                                         </div>
@@ -1027,61 +1039,22 @@
     </div>
     <!-- Main end -->
     <!--=============== scripts  ===============-->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <script src="js/main.js"></script>
    
     <script type="text/javascript" src="js/plugins.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script> -->
 
     <script type="text/javascript" src="js/map-add.js"></script>
-   
-    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
-
-    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
-    <link rel="stylesheet" type="text/css"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-
-    <script type="text/javascript">
-    var d = new Date();
-
-        $(function () {
-            $('#datetimepickerDemo1').datetimepicker({
-                format: 'DD/MM/YYYY',
-                minDate: new Date()
-            });
-        });
-        $(function () {
-            $('#datetimepickerDemo2').datetimepicker({
-                format: 'DD/MM/YYYY',
-                minDate: new Date()
-            });
-        });
-        $(function () {
-            $('#datetimepickerDemo3').datetimepicker({
-                format: 'DD/MM/YYYY',
-                minDate: new Date()
-            });
-        });
-        $(function () {
-            $('#datetimepickerDemo4').datetimepicker({
-                format: 'DD/MM/YYYY',
-                minDate: new Date()
-            });
-        });
-    </script> -->
-    <!-- 
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script  src="js/main.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/plugins.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>  
+        <script type="text/javascript" src="js/map-single.js"></script> 
 </body>
 
 </html>

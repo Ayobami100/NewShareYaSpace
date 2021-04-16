@@ -27,8 +27,7 @@ axios.interceptors.request.use(function (config) {
 
 //  ===================================================================================================================================================
 const keepsinglelist = localStorage.getItem('keepsinglelisting');
-
-
+var keepsinglehost ;
  //////////////////////////////All Listings Declaration///////////////////////////////////////////
   publicGet=[]
  publicHosting = []
@@ -658,15 +657,85 @@ async function findlisting(){
   })
 }
 async function postNewReview(){
-  await axios.post('https://share.highflierstutors.com/api/review')
-  .then(function (response) {
 
-    console.log(response.data.data)
-    localStorage.setItem('fullnameReview', response.data.data[0].host.firstname +" "+response.data.data[0].host.lastname)
-    localStorage.setItem('spaceInfo', response.data.data[0].listing.additionalInfo )
-    localStorage.setItem('spaceTitle', response.data.data[0].listing.spaceTitle )
-   
-  })
+  var emailreview = document.getElementById("emailreview").value;
+  var namereview = document.getElementById('namereview').value;
+  var comment = document.getElementById('comment').value;
+  rating =  document.getElementById('rg_total').value
+
+
+  if(puser != null && comment != ""){
+      
+       
+      await axios.post('https://share.highflierstutors.com/api/review', {
+
+        comments: comment,
+        rating: rating,
+        hostId : keepsinglehost,
+        listingId: keepsinglelist
+    
+      })  
+      .then(function (response) {
+
+        console.log(response.data.data)
+      
+      
+        frm = document.getElementById("add-comment");
+        document.getElementById("reviewmessage").style.display="block";
+        document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
+        document.getElementById("reviewmessage").style.backgroundColor= "lightgreen"
+        document.getElementById("reviewmessage").style.color= "white"
+        setTimeout(function(){
+          document.getElementById("reviewmessage").style.display="none";
+          },3000);
+          frm.reset();  // 
+      })
+    
+   }
+   else{
+     alert('Only Logged In Users are allowed to review and also put a comment')
+   }
+  
+}
+async function postNewBooking(){
+  // var emailreview = document.getElementById("emailreview").value;
+  // var namereview = document.getElementById('namereview').value;
+  // var comment = document.getElementById('comment').value;
+  // rating =  document.getElementById('rg_total').value
+
+
+  if(puser != null && comment != ""){
+      
+       
+      await axios.post('https://share.highflierstutors.com/api/order', {
+
+        // checkOut,
+        // checkOut
+        // Amount,
+        // paymentMode,
+        listingId: keepsinglelist
+    
+      })  
+      .then(function (response) {
+
+        console.log(response.data.data)
+      
+      
+        frm = document.getElementById("add-comment");
+        document.getElementById("reviewmessage").style.display="block";
+        document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
+        document.getElementById("reviewmessage").style.backgroundColor= "lightgreen"
+        document.getElementById("reviewmessage").style.color= "white"
+        setTimeout(function(){
+          document.getElementById("reviewmessage").style.display="none";
+          },3000);
+          frm.reset();  // 
+      })
+    
+   }
+   else{
+     alert('Only Logged In Users are allowed to review and also put a comment')
+   }
 }
 async function findsinglelisting(){
   loadIt();
@@ -688,6 +757,8 @@ async function findsinglelisting(){
       console.log(response.data.data[0].listing.amenities)
       console.log(response.data.data[0].listing.additionalInfo)
        console.log(response.data.data[0].host.firstname)
+
+       keepsinglehost = response.data.data[0].host.id;
  
 
        document.getElementById("listingspaceTitle").innerHTML = response.data.data[0].listing.spaceTitle;
@@ -770,7 +841,74 @@ async function findsinglelisting(){
    
 
 
- 
+async function postNewListing(){
+
+  var emailreview = document.getElementById("emailreview").value;
+  var namereview = document.getElementById('namereview').value;
+  var comment = document.getElementById('comment').value;
+  rating =  document.getElementById('rg_total').value
+
+
+  if(puser != null ){
+      
+       
+      await axios.post('https://share.highflierstutors.com/api/listing', {
+
+        spaceTitle,
+        address,
+        entireSpace,
+        spaceType,
+        student,
+        guestOnly,
+        organisation,
+        numberOfGuest,
+        numberOfRomms,
+        bathrooms,
+        beds,
+        amenities,
+        attachments,
+        spaceRules,
+        spaceDetails,
+        additionalInfo,
+        startDate,
+        endDate,
+        price,
+        discount,
+        discountStart,
+        discountEnd,
+        lastname,
+        verifiedID,
+        spaceOwner,
+        legalAuthorization,
+        terms,
+        userId,
+        country,
+        state,
+        city,
+
+      })  
+      .then(function (response) {
+
+        console.log(response.data.data)
+      
+      
+        frm = document.getElementById("add-comment");
+        document.getElementById("reviewmessage").style.display="block";
+        document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
+        document.getElementById("reviewmessage").style.backgroundColor= "lightgreen"
+        document.getElementById("reviewmessage").style.color= "white"
+        setTimeout(function(){
+          document.getElementById("reviewmessage").style.display="none";
+          },3000);
+          frm.reset();  // 
+      })
+    
+   }
+   else{
+     alert('Only Logged In Users are allowed to review and also put a comment')
+   }
+  
+}
   
  
  
