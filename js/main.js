@@ -3,9 +3,9 @@
 console.log(localStorage.getItem('token'))
 axios.interceptors.request.use(function (config) {
 
-
+  // config.headers['content-type'] = 'multipart/form-data ','application/json;charset=UTF-8';
  config.headers.authorization = 'Bearer '  + localStorage.getItem('token');
-
+ 
  return config;
 });
 
@@ -838,13 +838,86 @@ async function findsinglelisting(){
   })
 }
      
+   async function pol(){
+
+   
+    
+    // docpicker.addEventListener("change", (event) => {
+    //         const imagefile = event.target.files;
+    //         console.log(event);
+    //         console.log(fileList)
+           
+           
+        // });
+  
+        // var formData = new FormData(); 
+        // var fileList ;
+        
+        // const fileSelector = document.getElementById('docpicker');
+        // fileSelector.addEventListener('change', (event) => {
+        //     fileList = event.target.files;
+        //     console.log(fileList);
+          
+        //     // var imagefile = document.querySelector('#docpicker')
+        //       formData.append('filenames[]',fileList[0]);
+        
+        //     for (var key of formData.entries()){
+        //       console.log(key[0]+', '+key[1]);
+        //     }
+        // });
+   
+  //   await axios.post('https://share.highflierstutors.com/api/file', {
+
+  //     body : formData,
+      
+  //  }).then(function (response){
+  //    console.log(response)
+  //  })
+
+
+//   var dd = new data;
+//   dd.append("ff",fileList[0])
+//   // data.append("key", new Blob("test"), "my file.txt");
+//   dd.getOutputDeferred().then(function(formData){
+//       var oReq = new XMLHttpRequest();
+//       oReq.open("POST",'https://share.highflierstutors.com/api/file' );
+//       oReq.onload = function(oEvent) {
+//         if (oReq.status == 200) {
+//         alert("Uploaded!");
+//         } else {
+//         alert("Error " + oReq.status + " occurred when trying to upload your file.<br \/>");
+//         }
+//       };
+//       oReq.setRequestHeader("Content-Type", "multipart/form-data; boundary=" + data.getBoundry());
+//       oReq.setRequestHeader("Content-Length", formData.length);
+//       oReq.send(formData);
+//       alert("Uploaded!");
+
+// });
+}
    
 
 
-async function postNewListing(){
+// async function postNewListing(){
 
-  alert('tttttttttt')
-  var spacetitle = document.getElementById('spacetitle').value;
+ 
+  
+
+
+ 
+
+ 
+  const inpFile = document.getElementById('docpicker');
+  const btnUpload = document.getElementById('filly');
+
+
+    btnUpload.addEventListener('click', async function(){
+     const formData = new FormData(); 
+     
+  if(puser != null && spacedetails != "" ){
+
+//  =====================================================================================
+var spacetitle = document.getElementById('spacetitle').value;
   var category = document.getElementById('category').value;
   var address = document.getElementById('address').value;
   var entirespace = document.getElementById('entirespace').value;
@@ -873,9 +946,8 @@ async function postNewListing(){
   verifiedID = "1",
   student = "no";
   amenities = "ee";
-  attachments = "po";
  
-  alert('tttttttttt')
+  
 
   var input = discountperiod;
 
@@ -895,115 +967,55 @@ async function postNewListing(){
   discountEnd  = end1,
   startDate = start2,
   endDate = end2;
+  var attachy ;
 
-  if(puser != null && spacedetails != "" ){
+// =====================================================================
+     for(const file of inpFile.files){
+       formData.append('attachments[]',file)
+     }      
+
+        formData.append('spaceTitle' , document.getElementById('spacetitle').value)
+        formData.append('address'  , entirespace);
+          formData.append( 'spaceType' , category);
+            formData.append('student' ,student );
+              formData.append('guestOnly' , guestonly);
+                formData.append( 'organization' ,  document.getElementById('organization').value);
+                formData.append( 'numberOfGuest' , numberofguest);
+                  formData.append( 'numberOfRooms' , numberofrooms);
+                    formData.append( 'bathrooms'  , beds);
+                        formData.append('amenities' ,amenities);
+                            formData.append('spaceRules' , spacerules);
+        formData.append('spaceDetails' , spacedetails);
+        formData.append('additionalInfo' , additionalinfo);
+        formData.append('startDate' , startDate);
+        formData.append('endDate' , endDate);
+        formData.append('price' , price);
+        formData.append('discount' , discount);
+        formData.append('discountStart' , discountStart);
+        formData.append('discountEnd' , discountEnd);
+        formData.append('verifiedID' , verifiedID);
+        formData.append('spaceOwner' , spaceowner);
+        formData.append('legalAuthorization' , legalAuthorization);
+        formData.append('terms' ,terms);
+        formData.append('userId' , userid);
+        formData.append('country' , country);
+        formData.append('state' , state);
+        formData.append('city' ,city);
+
+        alert('youuuuuuuu')
+        await fetch('https://share.highflierstutors.com/api/listing',{
+          method: "post",
+          body: formData
+
+
+         
+
+        }
        
-    // alert(spacetitle);
-    // alert(category);
-    // alert(address);
-    // alert(entirespace);
-    // alert(organization);
-    // alert(guestonly);
-    // alert(spaceowner);
-    // alert(spacerules);
-    // alert(country);
-    // alert(state);
-    // alert(city);
-    // alert(numberofrooms);
-    // alert(numberofguest);
-    // alert(bathrooms);
-    // alert(beds);
-    // alert(price);
-    // alert(listingdate);
-    // alert(discount);
-    // alert(legalAuthorization);
-    // alert(discountStart);
-    // alert(discountEnd);
-    // alert(startDate);
-    // alert(endDate);
-    // alert(spacedetails);
-    // alert(additionalInfo);
-    // alert(terms);
-    // alert(userid);
-    // alert(lastname);
-    // alert(verifiedID);
-    // alert(student);
-    // alert(amenities);
-    // alert(attachments);
+        ) .catch(function (error) {
+          alert('Fetch Error -', error);
+        });
 
-    // frm = document.getElementById("newlisting");
-    // return false
-      await axios.post('https://share.highflierstutors.com/api/listing', {
-
-        address:"65, ajewamiwa",
-        entireSpace:'yes',
-        spaceType:'Space',
-        student:'yes',
-        guestOnly:'no',
-        organization:'Olawhizzy',
-        numberOfGuest:'3',
-        numberOfRooms:'10',
-        bathrooms:'2',
-        beds:'22',
-        amenities:'be',
-        spaceDetails:'th thet thet e the t eht ethet t e ect e.e te te et et e te te t et ette. et et te et et te tet et te' ,
-        spaceRules:'No kids',
-        additionalInfo:'thdt t dtd td td td tdtdttdtdttd t.dttdttdtdttd' ,
-        startDate:'2021-12-04 00:00:00.000',
-        endDate:'2022-11-04 00:00:00.000',
-        price:'40000',
-        discount:'3000',
-        discountStart:'2021-11-04 00:00:00.001',
-        discountEnd:'2022-11-04 00:00:00.000,',
-        lastname:'ismail',
-        verifiedID:'yes',
-        spaceOwner:'yes',
-        legalAuthorization:'2',
-        terms:'1',
-        userId:'2',
-        country:'Nigeria',
-        state:'Lagos',
-        city:'ojo',
-
-
-        // spaceTitle : document.getElementById('spacetitle').value,
-        // address : document.getElementById('address').value,
-        // entireSpace  : entirespace,
-        // spaceType : category,
-        // student : student ,
-        // guestOnly : guestonly,
-        // organization :  document.getElementById('organization').value,
-        // numberOfGuest : numberofguest,
-        // numberOfRooms : numberofrooms,
-        // bathrooms : bathrooms,
-        // beds : beds,
-        // amenities :amenities,
-        // attachments: attachments,
-        // spaceRules : spacerules,
-        // spaceDetails : spacedetails,
-        // additionalInfo : additionalinfo,
-        // startDate : startDate,
-        // endDate : endDate,
-        // price : price,
-        // discount : discount,
-        // discountStart : discountStart,
-        // discountEnd : discountEnd,
-        // lastname : lastname,
-        // verifiedID : verifiedID,
-        // spaceOwner : spaceowner,
-        // legalAuthorization : legalAuthorization,
-        // terms : terms,
-        // userId : userid,
-        // country : country,
-        // state : state,
-        // city : city,
-
-      })  
-      .then(function (response) {
-
-        console.log(response.data.data)
-      
-      
         frm = document.getElementById("newlisting");
         document.getElementById("listmessage").style.display="block";
         document.getElementById("listmessage").innerHTML="Your listing is successfully submitted!"
@@ -1012,19 +1024,21 @@ async function postNewListing(){
         setTimeout(function(){
           document.getElementById("listmessage").style.display="none";
           },3000);
-          // frm.reset();  // 
-      }).catch(function (err) {
-        alert('Fetch Error -', err);
-      });
+        
+           frm.reset();  
+      
+      
+  //     })  
+     
 
     
-   }
-   else{
-     alert('are you a registered user?')
-   }
-  
-}
-  
+  //  }
+  //  else{
+  //    alert('are you a registered user?')
+  //  }
+  }
+// }
+})
  
  
   ///////////////////////////////////////////////////////
