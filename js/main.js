@@ -948,7 +948,6 @@ var additionalinfo = document.getElementById('additionalinfo').value;
         formData.append('state' , state);
         formData.append('city' ,city);
 
-        alert('youuuuuuuu')
         await fetch('https://share.highflierstutors.com/api/listing',{
           method: "post",
           body: formData
@@ -1202,7 +1201,7 @@ function populatestate(){
 }
 const sool = document.getElementById('state');
 sool.addEventListener('change', async function(){
-alert('jjjjj')
+
   const result = keepnigeriastates.filter(city => city.admin_name == sool.value);
   // console.log(result)
   let options = result.map(rl => '<option value="' + rl.city+ '">'+rl.city+'</option>').join('\n')
