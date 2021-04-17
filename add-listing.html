@@ -370,24 +370,21 @@
                                               
                                             
                                                 <div class="col-md-6">
-                                                    <label>Type / Category</label>
+                                                    <label>Type / Category<i class="fa-arrow-down"></i></label>
                                                         <!-- <select id="locality-dropdown" name="locality">
                                                         </select> -->
-                                                        <select data-placeholder="Room Type" name="repopt"   id="category">
-                                                            <!-- <option value="0" selected>Type / Category</option> -->
-                                                            <option value="shareable Home Space">Shareable Home Space</option>
-                                                            <option value="no">Open Space</option>
-                                                            <option value="Bed Space">Bed Space</option>
-                                                            <option value="no">Office Space</option>
+                                                        <select data-placeholder="Room Type" name="repopt" id="category" >
+                                                            <option value="0" selected>Type / Category</option>
+                                                            
                                                         </select>
                                                     
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label>Address <i class="fa fa"></i></label>
+                                                    <label>Address <i class="fa fa-address-book"></i></label>
                                                     <input type="text" placeholder="Enter Contact Address" id="address" />
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label>Entire Space</label>
+                                                    <label>Entire Space<i class="fa fa-asterisk"></i></label>
                                                     <select data-placeholder="Room Type" name="repopt" id="entirespace"   >
                                                         <!-- <option value="0" selected>Guest Only</option> -->
                                                         <option value="yes">Yes</option>
@@ -396,12 +393,12 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label>Organization <i class="fa fa-key"></i></label>
+                                                    <label>Organization <i class="fa fa-sitemap"></i></label>
                                                     <input type="text" id="organization" placeholder="Organization Name"  />
                                                 </div>
     
                                                 <div class="col-md-6">
-                                                    <label>Guest Only</label>
+                                                    <label>Guest Only<i class="fa fa-user"></i></label>
                                                         <div class="listsearch-input-item">
                                                             <select id="guestonly"  >
                                                                 <!-- <option value="0" selected>Guest Only</option> -->
@@ -415,7 +412,7 @@
     
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label>Space Owner</label>
+                                                    <label>Space Owner<i class="fa fa-home"></i></label>
                                                     <!-- <div class="listsearch-input-item"> -->
                                                         <select  id="spaceowner"  >
                                                             <!-- <option value="0" selected>Space Owner</option> -->
@@ -426,19 +423,17 @@
                                                 </div>
     
                                                 <div class="col-md-6">
-                                                    <label>Space Rules</label>
-                                                    <select data-placeholder="Room Type" name="" id="spacerules"   >
-                                                        <!-- <option value="0" selected>Space Rules</option> -->
-                                                        <option value="yes">Yes</option>
-                                                        <option value="no">No</option>
+                                                    <label>Space Rules<i class="fa fa-expand"></i></label>
+                                                    
+                                                        <input type="text" placeholder="Enter Space Rule"  id="spacerules"/>
                                                         
-                                                    </select>
+                                                    
                                                 </div>
                                               
                                                 <div class="row">
     
                                                     <div class="col-md-2 col-sm-2 col-lg-2 col-xs-2">
-                                                        <label>Number of Rooms</label>
+                                                        <label>Number of Rooms<i class="fa fa-sitemap"></i></label>
                                                         <div class="quantity">
                                                             <input id="numberofrooms" type="number" min="1" max="90"
                                                                 step="1" value="1" >
@@ -468,16 +463,25 @@
     
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label>Country</label>
-                                                    <input type="text" placeholder="Country"  id="country" />
+                                                    <label>Country<i class="fa fa-globe"></i></label>
+                                                    <select data-placeholder="Room Type" name="repopt"   id="country" >
+                                                        <option value="0" selected disabled>Nigeria</option>
+                                                        
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label>State <i class="fa fa-cash"></i></label>
-                                                    <input type="text" placeholder="State"  id="state"/>
+                                                    <label>State <i class="fa fa-circle"></i></label>
+                                                    <select data-placeholder="Room Type"  id="state" >
+                                                        <option value="0" selected>Choose State</option>
+                                                        
+                                                    </select>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label>City</label>
-                                                    <input type="text" placeholder="City"  id="city" />
+                                                    <label>City<i class="fa fa-circle"></i></label>
+                                                    <select data-placeholder="Room Type" name="repopt"   id="city" >
+                                                        <option value="0" selected>Choose City</option>
+                                                        
+                                                    </select>
                                                 </div>
                                                 <!-- <div class="col-md-6"  >
                                                     <label>Price <i class="fa fa-key"></i></label>
@@ -485,7 +489,7 @@
                                                 </div> -->
                                                 
                                                 <div class="col-md-6">
-                                                    <label>Price <i class="fa fa-cash"></i></label>
+                                                    <label>Price<i class="fa fa-money"></i></label>
                                                     <input type="text" placeholder="Enter Space Price"  id="price"/>
                                                 </div>
                                                 <div class="col-md-12">
@@ -500,7 +504,7 @@
                                                 </div>
     
                                                 <div class="col-md-6">
-                                                    <label>Discount <i class="fa fa"></i></label>
+                                                    <label>Discount <i class="fa fa-american-sign-language-interpreting"></i></label>
                                                     <select data-placeholder="Room Type" name="repopt"  id="discount" >
                                                         <!-- <option value="0" selected>Space Owner</option> -->
                                                         <option value="yes">Yes</option>
@@ -512,7 +516,7 @@
                                                         <div class="header-search-input-item date-parent">
                                                             <label>Discount Period<i class="fal fa-calendar-check"></i></label>
                                                             <span class="header-search-input-item-icon"></span>
-                                                            <input type="text"   placeholder="n" name="dates" id="discountperiod"   />
+                                                            <input type="text"   placeholder="When" name="dates" id="discountperiod"   />
                                                            
                                                         </div>
                                                         <!-- <div class="header-search-input-item fl-wrap date-parent">
@@ -930,27 +934,15 @@
     </div>
     <!-- Main end -->
     <!--=============== scripts  ===============-->
-    <!-- <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-    <script src="js/main.js"></script>
-   
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script> -->
-
+    
     <!-- <script type="text/javascript" src="js/map-add.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-        <script  src="js/main.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/jquery.min.js"></script> 
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script> 
 
         
-        <script>
-
-           
-           
-        </script>
         <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>   -->
         <!-- <script type="text/javascript" src="js/map-single.js"></script>  -->
 </body>

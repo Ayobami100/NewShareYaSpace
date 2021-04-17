@@ -1,15 +1,13 @@
 
-
 console.log(localStorage.getItem('token'))
 axios.interceptors.request.use(function (config) {
 
-  // config.headers['content-type'] = 'multipart/form-data ','application/json;charset=UTF-8';
  config.headers.authorization = 'Bearer '  + localStorage.getItem('token');
  
  return config;
 });
 
-  var puser = localStorage.getItem('token');
+ var puser = localStorage.getItem('token');
  const userFirstname = localStorage.getItem('firstname');
  const userLastname = localStorage.getItem('lastname');
  const userDOB = localStorage.getItem('DOB');
@@ -28,6 +26,8 @@ axios.interceptors.request.use(function (config) {
 //  ===================================================================================================================================================
 const keepsinglelist = localStorage.getItem('keepsinglelisting');
 var keepsinglehost ;
+// ======================================================================================
+var keepnigeriastates;
  //////////////////////////////All Listings Declaration///////////////////////////////////////////
   publicGet=[]
  publicHosting = []
@@ -281,41 +281,45 @@ function verifyUser() {
 function loadIt() 
 {
   if (puser != null) {
-  
     
-    
+    // alert('treasposs')
+      
     document.getElementById('signout').style.display = 'none';
     document.getElementById('signin').style.display = 'none';
     document.getElementById('reg').style.display = 'none';
     document.getElementById('addlisting').style.display = 'block';
     document.getElementById('dropit').style.display = 'block';
     document.getElementById('avatar').src = userimgProfile;
-
-    
-    // console.log(localStorage.getItem('user'))
+  
+    var category = document.getElementById("category");
+    // console.log(loc var element = document.getElementById("allreview");alStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){
      
       document.getElementById('userValue').innerText = userFirstname + " " + userLastname;
      
     // }
-   
+
     // document.getElementById('userValue').innerText = " ";
-    if(window.location.href == 'register.html')
+    if(window.location.href === 'register.html')
     {
+      
     document.getElementById("studentdetails").style.display = "none";    
     document.getElementById("otp").style.display = "none";
     }
-    if(window.location.href == 'add-listing.html')
+    else if(typeof(category) != 'undefined' && category != null)
     {
+    
     populateCombo()
+    populatecountry()
+    populatestate()
     }
-    if(window.location.href == 'listing-single.html')
+    else if(window.location == 'listing-single.html')
     {
     getUserId()
     }
     // /Attempt to get the element using document.getElementById
     var element = document.getElementById("allreview");
-
+  
     //If it isn't "undefined" and it isn't "null", then it exists.
     if(typeof(element) != 'undefined' && element != null){
         // alert('Element exists!');
@@ -323,11 +327,11 @@ function loadIt()
         document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
     }
   }
-
+  
     else {
-
+  
       console.log(puser)
-
+  
       document.getElementById('signout').style.display = 'none';
       document.getElementById('signin').style.display = 'block';
       document.getElementById('dropit').style.display = 'none';
@@ -340,6 +344,7 @@ function loadIt()
       document.getElementById("otp").style.display = "none";
       }
    } 
+  
 }
 
 
@@ -637,10 +642,6 @@ function loadIt()
 }
     
       
-      
-      // localStorage.setItem('fullnameReview', response.data.data[0].host.firstname +" "+response.data.data[0].host.lastname)
-      // localStorage.setItem('spaceInfo', response.data.data[0].listing.additionalInfo )
-      // localStorage.setItem('spaceTitle', response.data.data[0].listing.spaceTitle )
      
   
   
@@ -837,69 +838,34 @@ async function findsinglelisting(){
 
   })
 }
-     
-   async function pol(){
-
-   
-    
-    // docpicker.addEventListener("change", (event) => {
-    //         const imagefile = event.target.files;
-    //         console.log(event);
-    //         console.log(fileList)
-           
-           
-        // });
   
-        // var formData = new FormData(); 
-        // var fileList ;
-        
-        // const fileSelector = document.getElementById('docpicker');
-        // fileSelector.addEventListener('change', (event) => {
-        //     fileList = event.target.files;
-        //     console.log(fileList);
-          
-        //     // var imagefile = document.querySelector('#docpicker')
-        //       formData.append('filenames[]',fileList[0]);
-        
-        //     for (var key of formData.entries()){
-        //       console.log(key[0]+', '+key[1]);
-        //     }
-        // });
-   
-  //   await axios.post('https://share.highflierstutors.com/api/file', {
 
-  //     body : formData,
-      
-  //  }).then(function (response){
-  //    console.log(response)
-  //  })
+// ==============================================================================================
+if(window.location =="add-listing.html"){
 
 
-//   var dd = new data;
-//   dd.append("ff",fileList[0])
-//   // data.append("key", new Blob("test"), "my file.txt");
-//   dd.getOutputDeferred().then(function(formData){
-//       var oReq = new XMLHttpRequest();
-//       oReq.open("POST",'https://share.highflierstutors.com/api/file' );
-//       oReq.onload = function(oEvent) {
-//         if (oReq.status == 200) {
-//         alert("Uploaded!");
-//         } else {
-//         alert("Error " + oReq.status + " occurred when trying to upload your file.<br \/>");
-//         }
-//       };
-//       oReq.setRequestHeader("Content-Type", "multipart/form-data; boundary=" + data.getBoundry());
-//       oReq.setRequestHeader("Content-Length", formData.length);
-//       oReq.send(formData);
-//       alert("Uploaded!");
+var spacetitle = document.getElementById('spacetitle').value;
+var category = document.getElementById('category').value;
+var address = document.getElementById('address').value;
+var entirespace = document.getElementById('entirespace').value;
+var organization = document.getElementById('organization').value;
+var guestonly = document.getElementById('guestonly').value;
+var spaceowner = document.getElementById("spaceowner").value;
+var spacerules = document.getElementById('spacerules').value;
+var country = document.getElementById('country').value;
+var state = document.getElementById("state").value;
+var city = document.getElementById('city').value;
+var numberofrooms = document.getElementById('numberofrooms').value;
 
-// });
-}
-   
-
-
-// async function postNewListing(){
-
+var numberofguest = document.getElementById('numberofguest').value;
+var bathrooms = document.getElementById('bathrooms').value;
+var beds = document.getElementById('beds').value;
+var price = document.getElementById('price').value;
+var listingdate = document.getElementById('listingdate').value;
+var discount = document.getElementById('discount').value;
+var discountperiod = document.getElementById("discountperiod").value;
+var spacedetails = document.getElementById('spacedetails').value;
+var additionalinfo = document.getElementById('additionalinfo').value;
  
   
 
@@ -914,31 +880,11 @@ async function findsinglelisting(){
     btnUpload.addEventListener('click', async function(){
      const formData = new FormData(); 
      
-  if(puser != null && spacedetails != "" ){
+  if(puser != null && spacedetails != "" && spacetitle != "" && organization != "" && additionalinfo != "" && country != "" && 
+  guestonly != "" && price != "" && listingdate != "" && discountperiod != "" ){
 
 //  =====================================================================================
-var spacetitle = document.getElementById('spacetitle').value;
-  var category = document.getElementById('category').value;
-  var address = document.getElementById('address').value;
-  var entirespace = document.getElementById('entirespace').value;
-  var organization = document.getElementById('organization').value;
-  var guestonly = document.getElementById('guestonly').value;
-  var spaceowner = document.getElementById("spaceowner").value;
-  var spacerules = document.getElementById('spacerules').value;
-  var country = document.getElementById('country').value;
-  var state = document.getElementById("state").value;
-  var city = document.getElementById('city').value;
-  var numberofrooms = document.getElementById('numberofrooms').value;
 
-  var numberofguest = document.getElementById('numberofguest').value;
-  var bathrooms = document.getElementById('bathrooms').value;
-  var beds = document.getElementById('beds').value;
-  var price = document.getElementById('price').value;
-  var listingdate = document.getElementById('listingdate').value;
-  var discount = document.getElementById('discount').value;
-  var discountperiod = document.getElementById("discountperiod").value;
-  var spacedetails = document.getElementById('spacedetails').value;
-  var additionalinfo = document.getElementById('additionalinfo').value;
   legalAuthorization = "1"
   terms = "1"
   userid = "2"
@@ -1020,6 +966,7 @@ var spacetitle = document.getElementById('spacetitle').value;
         document.getElementById("listmessage").style.display="block";
         document.getElementById("listmessage").innerHTML="Your listing is successfully submitted!"
         document.getElementById("listmessage").style.backgroundColor= "lightgreen"
+        document.getElementById("listmessage").style.fontWeight = "bold"
         document.getElementById("listmessage").style.color = "white"
         setTimeout(function(){
           document.getElementById("listmessage").style.display="none";
@@ -1033,58 +980,17 @@ var spacetitle = document.getElementById('spacetitle').value;
 
     
   //  }
-  //  else{
-  //    alert('are you a registered user?')
-  //  }
-  }
+  // 
+  } else{
+       alert('Kindly Fill all inputs')
+     }
 // }
 })
- 
+}
  
   ///////////////////////////////////////////////////////
 
-  function populateCombo() {
-
-    let dropdown = document.getElementById('locality-dropdown');
-    console.log(dropdown)
-    dropdown.length = 0;
-
-
-    let defaultOption = document.createElement('option');
-    defaultOption.text = 'Choose Category';
-
-    dropdown.add(defaultOption);
-    dropdown.selectedIndex = 0;
-
-    axios.get('https://share.highflierstutors.com/api/allCategory')
-
-      .then(function (response) {
-        if (response.status !== 200) {
-          console.warn('Looks like there was a problem. Status Code: ' +
-            response.status);
-          return;
-        }
-
-        // Examine the text in the response  
-        // console.log(response);
-        // .then(function(data) {  
-        let option;
-
-        console.log(response)
-        for (let i = 0; i < response.data.data.length; i++) {
-          option = document.createElement('option');
-          option.text = response.data.data[i].categoryName;
-          option.value = response.data.data[i].id;
-          dropdown.add(option);
-
-        }
-      }
-      )
-
-      .catch(function (err) {
-        console.error('Fetch Error -', err);
-      });
-  }
+ 
 
 
   async function allListing(){
@@ -1237,3 +1143,96 @@ function getUserId(listId){
 window.location.href = 'listing-single.html';
 }
  
+function populatecountry(){
+  // axios.get('https://share.highflierstutors.com/api/allcountry')
+  // .then(function (response) {
+  //   if (response.status !== 200) {
+  //     console.warn('Looks like there was a problem. error: ' +
+  //       response.message);
+  //     return;
+  //   }
+  //   else{
+
+  //     let options = response.data.data.map(country => '<option value="' + country.phonecode+ '">'+country.nicename+'</option>').join('\n')
+  //     let dropdown = document.getElementById('country');
+  //     dropdown.innerHTML = options;
+      
+  //     console.log(response.data.data)
+      // for(let i = 0; i < response.data.data.length; i++){
+       
+       
+      //   console.log(response.data.data[i].iso)
+      //   console.log(response.data.data[i].nicename)
+      //   console.log(response.data.data[i].phonecode)
+      // }
+        
+//     }
+
+// }  )
+}
+function populatestate(){
+  axios.get('https://share.highflierstutors.com/api/ngstatecities')
+  .then(function (response) {
+    if (response.status !== 200) {
+      console.warn('Looks like there was a problem. error: ' +
+        response.message);
+      return;
+    }
+    else{
+
+      let options = response.data.data.map(state => '<option value="' + state.city+ '">'+state.admin_name+'</option>').join('\n')
+      let dropdown = document.getElementById('state');
+      dropdown.innerHTML = options;
+      
+      keepnigeriastates = response.data.data;
+      
+      // console.log(response.data.data)
+      // for(let i = 0; i < response.data.data.length; i++){
+       
+       
+      //   console.log(response.data.data[i].admin_name)
+      //   console.log(response.data.data[i].city)
+      //   console.log(response.data.data[i].lat)
+      //   console.log(response.data.data[i].lng)
+      // }
+        
+    }
+
+}  )
+}
+const sool = document.getElementById('state');
+sool.addEventListener('change', async function(){
+alert('jjjjj')
+  const result = keepnigeriastates.filter(city => city.admin_name == sool.value);
+  // console.log(result)
+  let options = result.map(rl => '<option value="' + rl.city+ '">'+rl.city+'</option>').join('\n')
+  let dropdown = document.getElementById('city');
+  dropdown.innerHTML = options;
+})
+function populatecity(){
+
+}
+function populateCombo() {
+
+  
+
+  axios.get('https://share.highflierstutors.com/api/allCategory')
+
+    .then(function (response) {
+      if (response.status !== 200) {
+        console.warn('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+     console.log(response.data.data)
+    
+      let options = response.data.data.map(category => '<option value="' + category.id+ '">'+category.categoryName+'</option>').join('\n')
+      let dropdown = document.getElementById('category');
+       dropdown.innerHTML = options;
+    } 
+    )
+
+    .catch(function (err) {
+      console.error('Fetch Error -', err);
+    });
+}
