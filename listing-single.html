@@ -37,7 +37,7 @@
     </head>
      <body onload="findsinglelisting()">
         <!--loader-->
-        <div class="loader-wrap">
+      <div class="loader-wrap" id="loader-wrap">
             <div class="pin">
                 <div class="pulse"></div>
             </div>
@@ -537,7 +537,7 @@
                                             <!-- reviews-score-wrap end -->   
                                             <div class="reviews-comments-wrap" id="singlelistreview">
                                                 <!-- reviews-comments-item -->  
-                                                <div class="reviews-comments-item">
+                                                <!-- <div class="reviews-comments-item">
                                                     <div class="review-comments-avatar">
                                                         <img src="images/avatar/2.jpg" alt=""> 
                                                     </div>
@@ -551,22 +551,22 @@
                                                         <p>" Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "</p>
                                                         <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>12 April 2021</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <!--reviews-comments-item end--> 
                                                 <!-- reviews-comments-item -->  
-                                                <div class="reviews-comments-item">
+                                                <div class="reviews-comments-item" id="constantreview" style="display: none;">
                                                     <div class="review-comments-avatar">
-                                                        <img src="images/avatar/5.jpg" alt=""> 
+                                                        <img src="images/avatar/avatar-bg.png" alt=""> 
                                                     </div>
                                                     <div class="reviews-comments-item-text">
-                                                        <h4><a href="#">Adam Koncy</a></h4>
+                                                        <h4><a href="#"></a></h4>
                                                         <div class="review-score-user">
-                                                            <span>4.7</span>
-                                                            <strong>Very Good</strong>
+                                                            <span></span>
+                                                            <strong></strong>
                                                         </div>
                                                         <div class="clearfix"></div>
-                                                        <p>" Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. "</p>
-                                                        <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>03 December 2017</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>
+                                                        <p>NO REVIEW</p>
+                                                        <div class="reviews-comments-item-date"></div>
                                                     </div>
                                                 </div>
                                                 <!--reviews-comments-item end-->                                                                  
@@ -628,14 +628,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label><i class="fal fa-user"></i></label>
-                                                                <input type="text" id="namereview" placeholder="Your Name *" value=""/>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label><i class="fal fa-envelope"></i>  </label>
-                                                                <input type="text" id="emailreview" placeholder="Email Address*" value=""/>
-                                                            </div>
+                                                          
                                                         </div>
                                                         <textarea cols="40" rows="3" id="comment" placeholder="Your Review:"></textarea>
                                                     </fieldset>
@@ -713,31 +706,7 @@
                                         
                                         <!--box-widget-item end -->                                       
                                         <!--box-widget-item -->
-                                        <div class="box-widget-item fl-wrap">
-                                            <div class="box-widget">
-                                                <div class="box-widget-content">
-                                                    <div class="box-widget-item-header">
-                                                        <h3> Contact Information</h3>
-                                                    </div>
-                                                    <div class="box-widget-list">
-                                                        <ul>
-                                                            <li><span><i class="fal fa-map-marker"></i> Adress :</span> <a href="#">No 234 Iyana ipaja Lagos State</a></li>
-                                                            <li><span><i class="fal fa-phone"></i> Phone :</span> <a href="#">+7(123)987654</a></li>
-                                                            <li><span><i class="fal fa-envelope"></i> Mail :</span> <a href="#">AlisaNoory@domain.com</a></li>
-                                                            <li><span><i class="fal fa-browser"></i> Website :</span> <a href="#">shareyaspace.com</a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="list-widget-social">
-                                                        <ul>
-                                                            <li><a href="#" target="_blank" ><i class="fab fa-facebook-f"></i></a></li>
-                                                            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                                            <li><a href="#" target="_blank" ><i class="fab fa-vk"></i></a></li>
-                                                            <li><a href="#" target="_blank" ><i class="fab fa-instagram"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                     
                                         <!--box-widget-item end -->                          
                                       
                                         <!--box-widget-item -->

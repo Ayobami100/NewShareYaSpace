@@ -36,7 +36,8 @@
 
 <body onload="loadIt()">
     <!--loader-->
-    <div class="loader-wrap">
+  <div class="loader-wrap" id="loader-wrap">
+     
         <div class="pin">
             <div class="pulse"></div>
         </div>
@@ -381,12 +382,12 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Address <i class="fa fa-address-book"></i></label>
-                                                    <input type="text" placeholder="Enter Contact Address" id="address" />
+                                                    <input type="text" placeholder="Enter Listing Address" id="address" />
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>Entire Space<i class="fa fa-asterisk"></i></label>
                                                     <select data-placeholder="Room Type" name="repopt" id="entirespace"   >
-                                                        <!-- <option value="0" selected>Guest Only</option> -->
+                                                        <option value="0" selected>---</option>
                                                         <option value="yes">Yes</option>
                                                         <option value="no">No</option>
                                                         
@@ -401,7 +402,7 @@
                                                     <label>Guest Only<i class="fa fa-user"></i></label>
                                                         <div class="listsearch-input-item">
                                                             <select id="guestonly"  >
-                                                                <!-- <option value="0" selected>Guest Only</option> -->
+                                                                <option value="0" selected>---</option>
                                                                 <option value="yes">Yes</option>
                                                                 <option value="no">No</option>
                                                                 
@@ -415,7 +416,7 @@
                                                     <label>Space Owner<i class="fa fa-home"></i></label>
                                                     <!-- <div class="listsearch-input-item"> -->
                                                         <select  id="spaceowner"  >
-                                                            <!-- <option value="0" selected>Space Owner</option> -->
+                                                            <option value="0" selected>---</option>
                                                             <option value="yes">Yes</option>
                                                             <option value="no">No</option>                                                        
                                                         </select>
@@ -471,7 +472,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label>State <i class="fa fa-circle"></i></label>
-                                                    <select data-placeholder="Room Type"  id="state" >
+                                                    <select data-placeholder="Room Type"  id="state" onchange="getCity()" >
                                                         <option value="0" selected>Choose State</option>
                                                         
                                                     </select>
@@ -489,8 +490,8 @@
                                                 </div> -->
                                                 
                                                 <div class="col-md-6">
-                                                    <label>Price<i class="fa fa-money"></i></label>
-                                                    <input type="text" placeholder="Enter Space Price"  id="price"/>
+                                                    <label>Price<i class="fas fa-money-check-alt"></i></label>
+                                                    <input type="text" placeholder="Enter Listing Price"  id="price"/>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="col-md-12">
@@ -505,14 +506,10 @@
     
                                                 <div class="col-md-6">
                                                     <label>Discount <i class="fa fa-american-sign-language-interpreting"></i></label>
-                                                    <select data-placeholder="Room Type" name="repopt"  id="discount" >
-                                                        <!-- <option value="0" selected>Space Owner</option> -->
-                                                        <option value="yes">Yes</option>
-                                                        <option value="no">No</option>                                                        
-                                                    </select>
+                                                    <input type="text" placeholder="Enter Discounted Price"  id="discount"/>
                                                 </div>
                                                
-                                                <div class="col-md-12">   
+                                                <div class="col-md-12" id="showdiscount">   
                                                         <div class="header-search-input-item date-parent">
                                                             <label>Discount Period<i class="fal fa-calendar-check"></i></label>
                                                             <span class="header-search-input-item-icon"></span>

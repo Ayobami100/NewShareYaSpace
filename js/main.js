@@ -97,7 +97,7 @@ async function loginUser() {
     return false
   }
   else
-
+  document.getElementById('loader-wrap').style.display = 'block';
 
   await axios.post('https://share.highflierstutors.com/api/login', {
 
@@ -108,25 +108,31 @@ async function loginUser() {
 
     .then(function (response) {
 
-      localStorage.setItem('token', response.data.token);
+      if (response.data != undefined && response.data != null) {
 
-      console.log(response.data)
-      console.log(response.data.user.id)
-      console.log(response.data.user.firstname)
-      console.log(response.data.user.lastname)
+        document.getElementById('loader-wrap').style.display = 'none';
+        localStorage.setItem('token', response.data.token);
 
+        console.log(response.data)
+        console.log(response.data.user.id)
+        console.log(response.data.user.firstname)
+        console.log(response.data.user.lastname)
+  
+  
+        localStorage.setItem('id', response.data.user.id);
+        localStorage.setItem('firstname', response.data.user.firstname);
+         localStorage.setItem('lastname', response.data.user.lastname);
+         localStorage.setItem('DOB', response.data.user.DOB);
+         localStorage.setItem('imgProfile', response.data.user.imgProfile);
+  
+  
+         alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
+  
+        window.location.reload();
+  
+      }
 
-      localStorage.setItem('id', response.data.user.id);
-      localStorage.setItem('firstname', response.data.user.firstname);
-       localStorage.setItem('lastname', response.data.user.lastname);
-       localStorage.setItem('DOB', response.data.user.DOB);
-       localStorage.setItem('imgProfile', response.data.user.imgProfile);
-
-
-       alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
-
-      window.location.reload();
-
+    
     })
 
     .catch(function (error) {
@@ -166,6 +172,7 @@ async function registerUser() {
   //   return false;
   // }
 
+  document.getElementById('loader-wrap').style.display = 'block';
 
 
   await axios.post('https://share.highflierstutors.com/api/register', {
@@ -189,8 +196,9 @@ async function registerUser() {
 
     .then(function (response) {
 
-      if (response.data.status == "success") {
+      if (response.data != undefined && response.data != null) {
 
+        document.getElementById('loader-wrap').style.display = 'none';
 
         console.log(response.data);
         console.log(response.data.data);
@@ -292,6 +300,7 @@ function loadIt()
     document.getElementById('avatar').src = userimgProfile;
   
     var category = document.getElementById("category");
+    var constantreview = document.getElementById("constantreview");
     // console.log(loc var element = document.getElementById("allreview");alStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){
      
@@ -308,14 +317,18 @@ function loadIt()
     }
     else if(typeof(category) != 'undefined' && category != null)
     {
-    
+      // document.getElementById('showdiscount').style.display = "none"
     populateCombo()
     populatecountry()
     populatestate()
+   
     }
-    else if(window.location == 'listing-single.html')
+    
+    if(location.href.match('/add-listing.html'))
     {
-    getUserId()
+    // getUserId()
+   alert('kkkk')
+      document.getElementById('constantreview').style.display = "none";
     }
     // /Attempt to get the element using document.getElementById
     var element = document.getElementById("allreview");
@@ -403,14 +416,20 @@ function loadIt()
   // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   async function getUserReview() {
-
+    
+    document.getElementById('loader-wrap').style.display = 'block';
     loadIt();
   
     await axios.get('https://share.highflierstutors.com/api/review')
     .then(function (response) {
+      if (response.data != undefined && response.data != null){
+       
+        document.getElementById('loader-wrap').style.display = 'none';
         localStorage.setItem('allreview',response.data.data.length);
+      }
+       
 
-      if (response.status !== 200) {
+    if (response.status !== 200){
         console.warn('Looks like there was a problem. error: ' +
           response.message);
         return;
@@ -422,7 +441,7 @@ function loadIt()
        if(response.data.data != null){
 
         
-
+        
         console.log(response.data.data.length);
 
         
@@ -511,21 +530,21 @@ function loadIt()
 
 
   async function getUserListing() {
-   
+    document.getElementById('loader-wrap').style.display = 'block';
    
     loadIt();
     await axios.get('https://share.highflierstutors.com/api/listing')
 
     .then(function (response) {
-      console.log(response)
-    if (response.status !== 200) {
+      // console.log(response)
+  if (response.status !== 200){
       console.warn('Looks like there was a problem. error: ' +
         response.message);
       return;
     }
     else
     {
-    
+      document.getElementById('loader-wrap').style.display = 'none';
   
       console.log(response)
 
@@ -572,20 +591,21 @@ function loadIt()
 
 
   async function getUserBooking() {
+    document.getElementById('loader-wrap').style.display = 'block';
     loadIt();
 
     await axios.get('https://share.highflierstutors.com/api/order')
   
     .then(function (response) {
       console.log(response)
-    if (response.status !== 200) {
+  if (response.status !== 200){
       console.warn('Looks like there was a problem. error: ' +
         response.message);
       return;
     }
     else
     {
-    
+      document.getElementById('loader-wrap').style.display = 'none';
   
       console.log(response)
 
@@ -647,13 +667,17 @@ function loadIt()
   
 
 async function findlisting(){
+  document.getElementById('loader-wrap').style.display = 'block';
   await axios.get('https://share.highflierstutors.com/api/listingfind/'+keeplist+'')
   .then(function (response) {
+if(response.status == 200){
 
-    console.log(response.data.data)
-    localStorage.setItem('fullnameReview', response.data.data[0].host.firstname +" "+response.data.data[0].host.lastname)
-    localStorage.setItem('spaceInfo', response.data.data[0].listing.additionalInfo )
-    localStorage.setItem('spaceTitle', response.data.data[0].listing.spaceTitle )
+  document.getElementById('loader-wrap').style.display = 'none';  
+  localStorage.setItem('fullnameReview', response.data.data[0].host.firstname +" "+response.data.data[0].host.lastname)
+  localStorage.setItem('spaceInfo', response.data.data[0].listing.additionalInfo )
+  localStorage.setItem('spaceTitle', response.data.data[0].listing.spaceTitle )
+}
+   
    
   })
 }
@@ -667,6 +691,7 @@ async function postNewReview(){
 
   if(puser != null && comment != ""){
       
+  document.getElementById('loader-wrap').style.display = 'block';
        
       await axios.post('https://share.highflierstutors.com/api/review', {
 
@@ -678,18 +703,21 @@ async function postNewReview(){
       })  
       .then(function (response) {
 
-        console.log(response.data.data)
+        if(response.status == 200){
+          document.getElementById('loader-wrap').style.display = 'none';
+          frm = document.getElementById("add-comment");
+          document.getElementById("reviewmessage").style.display="block";
+          document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
+          document.getElementById("reviewmessage").style.backgroundColor= "lightgreen"
+          document.getElementById("reviewmessage").style.color= "white"
+          setTimeout(function(){
+            document.getElementById("reviewmessage").style.display="none";
+            },3000);
+            frm.reset();  // 
+        }
       
       
-        frm = document.getElementById("add-comment");
-        document.getElementById("reviewmessage").style.display="block";
-        document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
-        document.getElementById("reviewmessage").style.backgroundColor= "lightgreen"
-        document.getElementById("reviewmessage").style.color= "white"
-        setTimeout(function(){
-          document.getElementById("reviewmessage").style.display="none";
-          },3000);
-          frm.reset();  // 
+       
       })
     
    }
@@ -707,6 +735,7 @@ async function postNewBooking(){
 
   if(puser != null && comment != ""){
       
+  document.getElementById('loader-wrap').style.display = 'block';
        
       await axios.post('https://share.highflierstutors.com/api/order', {
 
@@ -719,18 +748,22 @@ async function postNewBooking(){
       })  
       .then(function (response) {
 
-        console.log(response.data.data)
+        if(response.status == 200){
+  document.getElementById('loader-wrap').style.display = 'none';
+
+          frm = document.getElementById("add-comment");
+          document.getElementById("reviewmessage").style.display="block";
+          document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
+          document.getElementById("reviewmessage").style.backgroundColor= "lightgreen"
+          document.getElementById("reviewmessage").style.color= "white"
+          setTimeout(function(){
+            document.getElementById("reviewmessage").style.display="none";
+            },3000);
+            frm.reset();  // 
+        }
       
       
-        frm = document.getElementById("add-comment");
-        document.getElementById("reviewmessage").style.display="block";
-        document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
-        document.getElementById("reviewmessage").style.backgroundColor= "lightgreen"
-        document.getElementById("reviewmessage").style.color= "white"
-        setTimeout(function(){
-          document.getElementById("reviewmessage").style.display="none";
-          },3000);
-          frm.reset();  // 
+        
       })
     
    }
@@ -739,17 +772,21 @@ async function postNewBooking(){
    }
 }
 async function findsinglelisting(){
+  document.getElementById('loader-wrap').style.display = 'block';
+
   loadIt();
   console.log(keepsinglelist);
   await axios.get('https://share.highflierstutors.com/api/listingfind/'+keepsinglelist+'')
   .then(function (response) {
-    if (response.status !== 200) {
+  if (response.status !== 200){
       console.warn('Looks like there was a problem. error: ' +
         response.message);
       return;
     }
     else
     {
+  document.getElementById('loader-wrap').style.display = 'none';
+
       console.log(response.data.data[0])
       console.log(response.data.data[0].host.number)
       console.log(response.data.data[0].host.email)
@@ -806,21 +843,7 @@ async function findsinglelisting(){
         '</div>'+
     '</div>'
  
-//    ' <div class="reviews-comments-item">'+
-//    '<div class="review-comments-avatar">'+
-//        '<img src="images/avatar/2.jpg" alt=""> '+
-//   ' </div>'+
-//    '<div class="reviews-comments-item-text">'+
-//        '<h4><a href="#">ttttttttttttttttt</a> on <a href="listing-single.html" class="reviews-comments-item-link">yyyyyyyyyyyyyyyyyyyy</a></h4>'+
-//       '<div class="review-score-user">'+
-//            '<span>555555555555</span>'+
-//            '<strong>uuuuuuuuuuuuuuuuuuuuuuuuuuuuu</strong>'+
-//        '</div>'+
-//        '<div class="clearfix"></div>'+
-//        '<p> 77777777777777777777777777777777777777777</p>'+
-//        '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
-//    '</div>'+
-//  '</div>'
+
  
     // var element = document.getElementById("showreview");
     var element = document.getElementById("singlelistreview");
@@ -830,8 +853,12 @@ async function findsinglelisting(){
       element.appendChild(div);
     }
   }
+ 
      }
-       
+     else
+     {
+       document.getElementById('constantreview').style.display = "block";
+     }
 
        }
 
@@ -841,173 +868,193 @@ async function findsinglelisting(){
   
 
 // ==============================================================================================
-if(window.location =="add-listing.html"){
 
 
-var spacetitle = document.getElementById('spacetitle').value;
-var category = document.getElementById('category').value;
-var address = document.getElementById('address').value;
-var entirespace = document.getElementById('entirespace').value;
-var organization = document.getElementById('organization').value;
-var guestonly = document.getElementById('guestonly').value;
-var spaceowner = document.getElementById("spaceowner").value;
-var spacerules = document.getElementById('spacerules').value;
-var country = document.getElementById('country').value;
-var state = document.getElementById("state").value;
-var city = document.getElementById('city').value;
-var numberofrooms = document.getElementById('numberofrooms').value;
 
-var numberofguest = document.getElementById('numberofguest').value;
-var bathrooms = document.getElementById('bathrooms').value;
-var beds = document.getElementById('beds').value;
-var price = document.getElementById('price').value;
-var listingdate = document.getElementById('listingdate').value;
-var discount = document.getElementById('discount').value;
-var discountperiod = document.getElementById("discountperiod").value;
-var spacedetails = document.getElementById('spacedetails').value;
-var additionalinfo = document.getElementById('additionalinfo').value;
- 
+
+ async function postNewListing(){  
   
-
-
- 
-
  
   const inpFile = document.getElementById('docpicker');
   const btnUpload = document.getElementById('filly');
-
-
-    btnUpload.addEventListener('click', async function(){
-     const formData = new FormData(); 
-     
-  if(puser != null && spacedetails != "" && spacetitle != "" && organization != "" && additionalinfo != "" && country != "" && 
-  guestonly != "" && price != "" && listingdate != "" && discountperiod != "" ){
-
-//  =====================================================================================
-
-  legalAuthorization = "1"
-  terms = "1"
-  userid = "2"
-  lastname = "ismail",
-  verifiedID = "1",
-  student = "no";
-  amenities = "ee";
  
-  
 
+
+
+// btnUpload.addEventListener('click', async function(){
+let spacetitle = document.getElementById('spacetitle').value;
+let category = document.getElementById('category').value;
+let address = document.getElementById('address').value;
+let entirespace = document.getElementById('entirespace').value;
+let organization = document.getElementById('organization').value;
+let guestonly = document.getElementById('guestonly').value;
+let spaceowner = document.getElementById("spaceowner").value;
+let spacerules = document.getElementById('spacerules').value;
+let country = document.getElementById('country').value;
+let state = document.getElementById("state").value;
+let city = document.getElementById('city').value;
+let numberofrooms = document.getElementById('numberofrooms').value;
+
+let numberofguest = document.getElementById('numberofguest').value;
+let bathrooms = document.getElementById('bathrooms').value;
+let beds = document.getElementById('beds').value;
+let price = document.getElementById('price').value;
+let listingdate = document.getElementById('listingdate').value;
+let discount = document.getElementById('discount').value;
+let discountperiod = document.getElementById("discountperiod").value;
+let spacedetails = document.getElementById('spacedetails').value;
+let additionalinfo = document.getElementById('additionalinfo').value;
+
+
+  const formData = new FormData(); 
+  alert(spacedetails);
+  alert(spacetitle);
+  alert(organization);
+  alert(discountperiod);
+       
+      if(puser != null && spacedetails != "" && spacetitle != "" && organization != "" && additionalinfo != "" && country != "" && 
+      guestonly != "" && price != "" && listingdate != "" )
+      
+      {
+
+    //  =====================================================================================
+
+        legalAuthorization = "1"
+        terms = "1"
+        userid = "2"
+        lastname = "ismail",
+        verifiedID = "1",
+        student = "no";
+        amenities = "ee";
+      
+        
+if(discountperiod != null && discountperiod != ""){
   var input = discountperiod;
 
   var fields = input.split('-');
 
   var start1 = fields[0];
   var end1 = fields[1]
-
-  var input = listingdate;
-
-  var fields = input.split('-');
-
-  var start2 = fields[0];
-  var end2 = fields[1];
-
-  discountStart = start1;
-  discountEnd  = end1,
-  startDate = start2,
-  endDate = end2;
-  var attachy ;
-
-// =====================================================================
-     for(const file of inpFile.files){
-       formData.append('attachments[]',file)
-     }      
-
-        formData.append('spaceTitle' , document.getElementById('spacetitle').value)
-        formData.append('address'  , entirespace);
-          formData.append( 'spaceType' , category);
-            formData.append('student' ,student );
-              formData.append('guestOnly' , guestonly);
-                formData.append( 'organization' ,  document.getElementById('organization').value);
-                formData.append( 'numberOfGuest' , numberofguest);
-                  formData.append( 'numberOfRooms' , numberofrooms);
-                    formData.append( 'bathrooms'  , beds);
-                        formData.append('amenities' ,amenities);
-                            formData.append('spaceRules' , spacerules);
-        formData.append('spaceDetails' , spacedetails);
-        formData.append('additionalInfo' , additionalinfo);
-        formData.append('startDate' , startDate);
-        formData.append('endDate' , endDate);
-        formData.append('price' , price);
-        formData.append('discount' , discount);
-        formData.append('discountStart' , discountStart);
-        formData.append('discountEnd' , discountEnd);
-        formData.append('verifiedID' , verifiedID);
-        formData.append('spaceOwner' , spaceowner);
-        formData.append('legalAuthorization' , legalAuthorization);
-        formData.append('terms' ,terms);
-        formData.append('userId' , userid);
-        formData.append('country' , country);
-        formData.append('state' , state);
-        formData.append('city' ,city);
-
-        await fetch('https://share.highflierstutors.com/api/listing',{
-          method: "post",
-          body: formData
-
-
-         
-
-        }
-       
-        ) .catch(function (error) {
-          alert('Fetch Error -', error);
-        });
-
-        frm = document.getElementById("newlisting");
-        document.getElementById("listmessage").style.display="block";
-        document.getElementById("listmessage").innerHTML="Your listing is successfully submitted!"
-        document.getElementById("listmessage").style.backgroundColor= "lightgreen"
-        document.getElementById("listmessage").style.fontWeight = "bold"
-        document.getElementById("listmessage").style.color = "white"
-        setTimeout(function(){
-          document.getElementById("listmessage").style.display="none";
-          },3000);
-        
-           frm.reset();  
-      
-      
-  //     })  
-     
-
-    
-  //  }
-  // 
-  } else{
-       alert('Kindly Fill all inputs')
-     }
-// }
-})
 }
+        
+
+        var input = listingdate;
+
+        var fields = input.split('-');
+
+        var start2 = fields[0];
+        var end2 = fields[1];
+
+        discountStart = start1;
+        discountEnd  = end1,
+        startDate = start2,
+        endDate = end2;
+
+      // =====================================================================
+          for(const file of inpFile.files){
+            formData.append('attachments[]',file)
+          }      
+
+              formData.append('spaceTitle' , document.getElementById('spacetitle').value)
+              formData.append('address'  , address);
+              formData.append('beds'  , beds);
+                formData.append( 'spaceType' , category);
+                  formData.append('student' ,student );
+                    formData.append('guestOnly' , guestonly);
+                      formData.append( 'organization' ,  document.getElementById('organization').value);
+                      formData.append( 'numberOfGuest' , numberofguest);
+                        formData.append( 'numberOfRooms' , numberofrooms);
+                          formData.append( 'bathrooms'  , bathrooms);
+                              formData.append('amenities' ,amenities);
+                                  formData.append('spaceRules' , spacerules);
+              formData.append('spaceDetails' , spacedetails);
+              formData.append('additionalInfo' , additionalinfo);
+              formData.append('startDate' , startDate);
+              formData.append('endDate' , endDate);
+              formData.append('price' , price);
+              formData.append('discount' , discount);
+              formData.append('discountStart' , discountStart);
+              formData.append('discountEnd' , discountEnd);
+              formData.append('verifiedID' , verifiedID);
+              formData.append('spaceOwner' , spaceowner);
+              formData.append('legalAuthorization' , legalAuthorization);
+              formData.append('terms' ,terms);
+              formData.append('userId' , userid);
+              formData.append('country' , country);
+              formData.append('state' , state);
+              formData.append('city' ,city);
+
+              document.getElementById('loader-wrap').style.display = 'block';
+
+              await fetch('https://share.highflierstutors.com/api/listing',{
+                method: "post",
+                body: formData
+              }
+            
+              )  .then(function (response) {
+                if (response == 200){
+                  document.getElementById('loader-wrap').style.display = 'none';
+                  frm = document.getElementById("newlisting");
+                  document.getElementById("listmessage").style.display="block";
+                  document.getElementById("listmessage").innerHTML="Your listing is successfully submitted!"
+                  document.getElementById("listmessage").style.backgroundColor= "lightgreen"
+                  document.getElementById("listmessage").style.fontWeight = "bold"
+                  document.getElementById("listmessage").style.color = "white"
+                  setTimeout(function(){
+                    document.getElementById("listmessage").style.display="none";
+                    },3000);
+                  
+                    frm.reset();  
+                }
+                else{
+                  alert(response.error)
+                }
+              }).catch(function (error) {
+                alert('Fetch Error -', error);
+              });
+
+             
+            
+            
+        //     })  
+          
+
+          
+        //  }
+        // 
+        } else{
+            alert('Kindly Fill all inputs')
+          }
+  }
+// })
+
  
   ///////////////////////////////////////////////////////
-
- 
+  
 
 
   async function allListing(){
-    loadIt();
+    document.getElementById('loader-wrap').style.display = 'block';
+    loadIt();   
+
     axios.get('https://share.highflierstutors.com/api/listing')
     .then(function (response) {
-      if (response.status !== 200) {
+    if (response.status !== 200){
         console.warn('Looks like there was a problem. error: ' +
           response.message);
         return;
       }
       else
       {
+
+       
         console.log(response.data.data)
         for (let i = 0;i < response.data.data.length;i++){
           console.log(response.data.data[i].listing.address)
           console.log(response.data.data[i].listing.id)
           publicId = response.data.data[i].listing.id;
+
+        console.log(response.data.data[i].reviews[i].rating + response.data.data[i].listing.spaceTitle)
 
           if(Object.values(response.data.data[i].reviews).length > 1){
 
@@ -1125,7 +1172,7 @@ var additionalinfo = document.getElementById('additionalinfo').value;
         
 
         document.getElementById('totalListing').innerHTML = "TOTAL AVAILABLE LISTING " + "   "+response.data.data.length;
-
+        document.getElementById('loader-wrap').style.display = 'none';
        
       }
     })
@@ -1145,7 +1192,7 @@ window.location.href = 'listing-single.html';
 function populatecountry(){
   // axios.get('https://share.highflierstutors.com/api/allcountry')
   // .then(function (response) {
-  //   if (response.status !== 200) {
+  // if (response.status !== 200){
   //     console.warn('Looks like there was a problem. error: ' +
   //       response.message);
   //     return;
@@ -1170,16 +1217,17 @@ function populatecountry(){
 // }  )
 }
 function populatestate(){
+  document.getElementById('loader-wrap').style.display = 'block';
   axios.get('https://share.highflierstutors.com/api/ngstatecities')
   .then(function (response) {
-    if (response.status !== 200) {
+  if (response.status !== 200){
       console.warn('Looks like there was a problem. error: ' +
         response.message);
       return;
     }
     else{
-
-      let options = response.data.data.map(state => '<option value="' + state.city+ '">'+state.admin_name+'</option>').join('\n')
+      document.getElementById('loader-wrap').style.display = 'none';
+      let options = response.data.data.map(state => '<option value="' + state.admin_name+ '">'+state.admin_name+'</option>').join('\n')
       let dropdown = document.getElementById('state');
       dropdown.innerHTML = options;
       
@@ -1199,30 +1247,38 @@ function populatestate(){
 
 }  )
 }
-const sool = document.getElementById('state');
-sool.addEventListener('change', async function(){
+function getCity(){
+  let sool = document.getElementById('state');
+ 
+  
+    let result = keepnigeriastates.filter(city => city.admin_name == sool.value);
+    // console.log(result)
+    let options = result.map(rl => '<option value="' + rl.city+ '">'+rl.city+'</option>').join('\n')
+    let dropdown = document.getElementById('city');
+    // alert('retweet')
+    // alert(sool.value)
+    // console.log(keepnigeriastates)
+    // console.log(result)
+    dropdown.innerHTML = options;
 
-  const result = keepnigeriastates.filter(city => city.admin_name == sool.value);
-  // console.log(result)
-  let options = result.map(rl => '<option value="' + rl.city+ '">'+rl.city+'</option>').join('\n')
-  let dropdown = document.getElementById('city');
-  dropdown.innerHTML = options;
-})
+}
+
 function populatecity(){
 
 }
 function populateCombo() {
 
   
-
+  document.getElementById('loader-wrap').style.display = 'block';
   axios.get('https://share.highflierstutors.com/api/allCategory')
 
     .then(function (response) {
-      if (response.status !== 200) {
+    if (response.status !== 200){
         console.warn('Looks like there was a problem. Status Code: ' +
           response.status);
         return;
       }
+      document.getElementById('loader-wrap').style.display = 'none';
      console.log(response.data.data)
     
       let options = response.data.data.map(category => '<option value="' + category.id+ '">'+category.categoryName+'</option>').join('\n')
@@ -1235,3 +1291,4 @@ function populateCombo() {
       console.error('Fetch Error -', err);
     });
 }
+
