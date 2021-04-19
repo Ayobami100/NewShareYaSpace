@@ -327,7 +327,7 @@ function loadIt()
     if(location.href.match('/add-listing.html'))
     {
     // getUserId()
-   alert('kkkk')
+   
       document.getElementById('constantreview').style.display = "none";
     }
     // /Attempt to get the element using document.getElementById
