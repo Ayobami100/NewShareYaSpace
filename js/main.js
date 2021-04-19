@@ -3,10 +3,12 @@ console.log(localStorage.getItem('token'))
 axios.interceptors.request.use(function (config) {
 
  config.headers.authorization = 'Bearer '  + localStorage.getItem('token');
- 
+
  return config;
 });
 
+let fav = 0 ;
+document.getElementById('favoritecounter').innerHTML = localStorage.getItem('fav');
  var puser = localStorage.getItem('token');
  const userFirstname = localStorage.getItem('firstname');
  const userLastname = localStorage.getItem('lastname');
@@ -151,6 +153,7 @@ async function loginUser() {
 
 async function registerUser() {
 
+
   
   var firstname = document.getElementById("firstname").value
   var lastname = document.getElementById("lastname").value
@@ -217,7 +220,7 @@ async function registerUser() {
         document.getElementById("profileinfo").style.display = "none";
     
      
-        document.getElementById("otpnumber").value = userOtp;
+        document.getElementById("otpnumber").value = response.data.data.otp;
       }
 
       else{
@@ -243,9 +246,9 @@ async function registerUser() {
 
 
 function findStudent() {
-  var yes = document.getElementById("yes").checked;
+  var school = document.getElementById("school").value;
 
-  if (yes == true) {
+  if (school == "yes") {
     document.getElementById("studentdetails").style.display = "block";
   }
   else
@@ -324,12 +327,12 @@ function loadIt()
    
     }
     
-    if(location.href.match('/add-listing.html'))
-    {
-    // getUserId()
+    // if(location.href.match('/listing-single.html'))
+    // {
+    // // getUserId()
    
-      document.getElementById('constantreview').style.display = "none";
-    }
+    //   document.getElementById('constantreview').style.display = "none";
+    // }
     // /Attempt to get the element using document.getElementById
     var element = document.getElementById("allreview");
   
@@ -617,36 +620,36 @@ function loadIt()
         '<div class="dashboard-message">'+
         '<span class="new-dashboard-item">New</span>'+
        ' <div class="dashboard-message-avatar">'+
-           '<img src="images/avatar/3.jpg" alt="">'+
+           '<img src="images/avatar/avatar-bg.png" alt="">'+
         '</div>'+
         '<div class="dashboard-message-text">'+
-           '<h4>Andy <span>27 December 2021</span></h4>'+
+           '<h4>hupo <span>27 December 2021</span></h4>'+
             '<div class="booking-details fl-wrap">'+
                '<span class="booking-title">Listing Item :</span> :'+
                 '<span class="booking-text"><a href="listing-sinle.html">'+response.data.data[i].listingDetails.listing.spaceTitle+'</a></span>'+
             '</div>'+
             '<div class="booking-details fl-wrap">'+
                 '<span class="booking-title">Persons :</span>   '+
-                '<span class="booking-text">4 Peoples</span>'+
+                '<span class="booking-text">'+response.data.data[i].listingDetails.listing.bathrooms+' Peoples</span>'+
             '</div>'+
             '<div class="booking-details fl-wrap">'+
                 '<span class="booking-title">Booking Date :</span>   '+
                 '<span class="booking-text">'+response.data.data[i].order.checkIn+" - "+response.data.data[i].order.checkOut+'</span>'+
-            '</div>'+
+            '</div>'+ 
             '<div class="booking-details fl-wrap">                       '+                                        
                 '<span class="booking-title">Mail :</span>  '+
-                '<span class="booking-text"><a href="#" target="_top">yormail@domain.com</a></span>'+
+                '<span class="booking-text"><a href="#" target="_top">'+response.data.data[i].User.email+'</a></span>'+
             '</div>'+
             '<div class="booking-details fl-wrap">'+
                 '<span class="booking-title">Phone :</span>   '+
-                '<span class="booking-text"><a href="tel:+496170961709" target="_top">+496170961709</a></span>'+
+                '<span class="booking-text"><a href="tel:+496170961709" target="_top">'+response.data.data[i].User.number+'</a></span>'+
             '</div>'+
             '<div class="booking-details fl-wrap">'+
                 '<span class="booking-title">Payment State :</span> '+
-                '<span class="booking-text"> <strong class="done-paid">Paid  </strong>  using Paypal</span>'+
+                '<span class="booking-text"> <strong class="done-paid">Paid  </strong>'+response.data.data[i].order.paymentMode+'</span>'+
             '</div>'+
             '<span class="fw-separator"></span>'+
-            '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc posuere convallis purus non cursus. Cras metus neque, gravida sodales massa ut. </p>'+
+            '<p></p>'+
         '</div>'+
     '</div>'
 
@@ -683,8 +686,7 @@ if(response.status == 200){
 }
 async function postNewReview(){
 
-  var emailreview = document.getElementById("emailreview").value;
-  var namereview = document.getElementById('namereview').value;
+ 
   var comment = document.getElementById('comment').value;
   rating =  document.getElementById('rg_total').value
 
@@ -705,6 +707,7 @@ async function postNewReview(){
 
         if(response.status == 200){
           document.getElementById('loader-wrap').style.display = 'none';
+
           frm = document.getElementById("add-comment");
           document.getElementById("reviewmessage").style.display="block";
           document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
@@ -714,6 +717,7 @@ async function postNewReview(){
             document.getElementById("reviewmessage").style.display="none";
             },3000);
             frm.reset();  // 
+            location.reload();
         }
       
       
@@ -809,9 +813,9 @@ async function findsinglelisting(){
        document.getElementById("listingPrice").innerHTML = "NGN "+response.data.data[0].listing.price;
 
 
-       document.getElementById("listingReview").innerHTML = (response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews.length + " Reviews" : "0 Review";
-       document.getElementById("listingRating").innerHTML = (response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews[0].rating  : "No Rating";
-       document.getElementById("listingComment").innerHTML = (response.data.data[0].reviews.length > 1) ? response.data.data[0].reviews[0].comments  : "No Comment";
+       document.getElementById("listingReview").innerHTML = (response.data.data[0].reviews.length >= 1) ? response.data.data[0].reviews.length + " Reviews" : "0 Review";
+       document.getElementById("listingRating").innerHTML = (response.data.data[0].reviews.length >= 1) ? response.data.data[0].reviews[0].rating  : "No Rating";
+       document.getElementById("listingComment").innerHTML = (response.data.data[0].reviews.length >= 1) ? response.data.data[0].reviews[0].comments  : "No Comment";
 
 
        if(response.data.data[0].reviews.length >= 1){
@@ -881,150 +885,161 @@ async function findsinglelisting(){
 
 
 
-// btnUpload.addEventListener('click', async function(){
-let spacetitle = document.getElementById('spacetitle').value;
-let category = document.getElementById('category').value;
-let address = document.getElementById('address').value;
-let entirespace = document.getElementById('entirespace').value;
-let organization = document.getElementById('organization').value;
-let guestonly = document.getElementById('guestonly').value;
-let spaceowner = document.getElementById("spaceowner").value;
-let spacerules = document.getElementById('spacerules').value;
-let country = document.getElementById('country').value;
-let state = document.getElementById("state").value;
-let city = document.getElementById('city').value;
-let numberofrooms = document.getElementById('numberofrooms').value;
+    // btnUpload.addEventListener('click', async function(){
+    let spacetitle = document.getElementById('spacetitle').value;
+    let category = document.getElementById('category').value;
+    let address = document.getElementById('address').value;
+    let entirespace = document.getElementById('entirespace').value;
+    let organization = document.getElementById('organization').value;
+    let guestonly = document.getElementById('guestonly').value;
+    let spaceowner = document.getElementById("spaceowner").value;
+    let spacerules = document.getElementById('spacerules').value;
+    let country = document.getElementById('country').value;
+    let state = document.getElementById("state").value;
+    let city = document.getElementById('city').value;
+    let numberofrooms = document.getElementById('numberofrooms').value;
 
-let numberofguest = document.getElementById('numberofguest').value;
-let bathrooms = document.getElementById('bathrooms').value;
-let beds = document.getElementById('beds').value;
-let price = document.getElementById('price').value;
-let listingdate = document.getElementById('listingdate').value;
-let discount = document.getElementById('discount').value;
-let discountperiod = document.getElementById("discountperiod").value;
-let spacedetails = document.getElementById('spacedetails').value;
-let additionalinfo = document.getElementById('additionalinfo').value;
+    let numberofguest = document.getElementById('numberofguest').value;
+    let bathrooms = document.getElementById('bathrooms').value;
+    let beds = document.getElementById('beds').value;
+    let price = document.getElementById('price').value;
+    let listingdate = document.getElementById('listingdate').value;
+    let discount = document.getElementById('discount').value;
+    let discountperiod = document.getElementById("discountperiod").value;
+    let spacedetails = document.getElementById('spacedetails').value;
+    let additionalinfo = document.getElementById('additionalinfo').value;
+    frm = document.getElementById("newlisting");
 
+      const formData = new FormData(frm); 
+      // alert(spacedetails);
+      // alert(spacetitle);
+      // alert(organization);
+      // alert(discountperiod);
+          
+          if(puser != null && spacedetails != "" && spacetitle != "" && organization != "" && additionalinfo != "" && country != "" && 
+          guestonly != "" && price != "" && listingdate != "" )
+          
+          {
 
-  const formData = new FormData(); 
-  alert(spacedetails);
-  alert(spacetitle);
-  alert(organization);
-  alert(discountperiod);
-       
-      if(puser != null && spacedetails != "" && spacetitle != "" && organization != "" && additionalinfo != "" && country != "" && 
-      guestonly != "" && price != "" && listingdate != "" )
-      
-      {
+        //  =====================================================================================
 
-    //  =====================================================================================
+            legalAuthorization = "1"
+            terms = "1"
+            lastname = "ismail",
+            verifiedID = "1",
+            student = "no";
+            amenities = "ee";
+          
+            
+    if(discountperiod != null && discountperiod != ""){
+      var input = discountperiod;
 
-        legalAuthorization = "1"
-        terms = "1"
-        userid = "2"
-        lastname = "ismail",
-        verifiedID = "1",
-        student = "no";
-        amenities = "ee";
-      
-        
-if(discountperiod != null && discountperiod != ""){
-  var input = discountperiod;
+      var fields = input.split('-');
 
-  var fields = input.split('-');
+      var start1 = fields[0];
+      var end1 = fields[1]
+    }
+            
 
-  var start1 = fields[0];
-  var end1 = fields[1]
-}
-        
+            var input = listingdate;
 
-        var input = listingdate;
+            var fields = input.split('-');
 
-        var fields = input.split('-');
+            var start2 = fields[0];
+            var end2 = fields[1];
 
-        var start2 = fields[0];
-        var end2 = fields[1];
+            discountStart = start1;
+            discountEnd  = end1,
+            startDate = start2,
+            endDate = end2;
 
-        discountStart = start1;
-        discountEnd  = end1,
-        startDate = start2,
-        endDate = end2;
+          // =====================================================================
+              for(const file of inpFile.files){
+                formData.append('attachments[]',file)
+              }      
 
-      // =====================================================================
-          for(const file of inpFile.files){
-            formData.append('attachments[]',file)
-          }      
-
-              formData.append('spaceTitle' , document.getElementById('spacetitle').value)
-              formData.append('address'  , address);
-              formData.append('beds'  , beds);
+                formData.append('spaceTitle' , document.getElementById('spacetitle').value)
+                formData.append('address'  , address);
+                formData.append( 'entireSpace' , entirespace);
+              
                 formData.append( 'spaceType' , category);
-                  formData.append('student' ,student );
-                    formData.append('guestOnly' , guestonly);
-                      formData.append( 'organization' ,  document.getElementById('organization').value);
-                      formData.append( 'numberOfGuest' , numberofguest);
-                        formData.append( 'numberOfRooms' , numberofrooms);
-                          formData.append( 'bathrooms'  , bathrooms);
-                              formData.append('amenities' ,amenities);
-                                  formData.append('spaceRules' , spacerules);
-              formData.append('spaceDetails' , spacedetails);
-              formData.append('additionalInfo' , additionalinfo);
-              formData.append('startDate' , startDate);
-              formData.append('endDate' , endDate);
-              formData.append('price' , price);
-              formData.append('discount' , discount);
-              formData.append('discountStart' , discountStart);
-              formData.append('discountEnd' , discountEnd);
-              formData.append('verifiedID' , verifiedID);
-              formData.append('spaceOwner' , spaceowner);
-              formData.append('legalAuthorization' , legalAuthorization);
-              formData.append('terms' ,terms);
-              formData.append('userId' , userid);
-              formData.append('country' , country);
-              formData.append('state' , state);
-              formData.append('city' ,city);
+                formData.append('student' ,student );
+                formData.append('guestOnly' , guestonly);
+                formData.append( 'organization' ,  document.getElementById('organization').value);
+                formData.append( 'numberOfGuest' , numberofguest);
+                formData.append( 'numberOfRooms' , numberofrooms);
+                formData.append( 'bathrooms'  , bathrooms);
+                formData.append('beds'  , beds);
+                formData.append('amenities' ,amenities);
+                formData.append('spaceRules' , spacerules);
+                formData.append('spaceDetails' , spacedetails);
+                formData.append('additionalInfo' , additionalinfo);
+                formData.append('startDate' , startDate);
+                formData.append('endDate' , endDate);
+                formData.append('price' , price);
+                formData.append('discount' , discount);
+                formData.append('discountStart' , discountStart);
+                formData.append('discountEnd' , discountEnd);
+                formData.append('lastname' ,'deewhy');
+                formData.append('verifiedID' , verifiedID);
+                formData.append('spaceOwner' , spaceowner);
+                formData.append('legalAuthorization' , legalAuthorization);
+                formData.append('terms' ,terms);
+                formData.append('userId' , userId);
+                formData.append('country' , country);
+                formData.append('state' , state);
+                formData.append('city' ,city);
+                formData.append('longtitude' ,'236');
+                formData.append('lagtitude' ,'245');
 
-              document.getElementById('loader-wrap').style.display = 'block';
+                  document.getElementById('loader-wrap').style.display = 'block';
 
-              await fetch('https://share.highflierstutors.com/api/listing',{
-                method: "post",
-                body: formData
+                  await fetch('https://share.highflierstutors.com/api/listing',{
+                    method: "POST",        
+                    body: formData,
+                    // credentials: 'include',
+                  headers:{
+                    Authorization : 'Bearer '  + localStorage.getItem('token')
+                  }
+                    // headers['content-type'] = 'multipart/form-data; boundary'
+                  }
+                
+                  )  .then(function (response) {
+                    if (response == 200){
+                      document.getElementById('loader-wrap').style.display = 'none';
+                      
+                      document.getElementById("listmessage").style.display="block";
+                      document.getElementById("listmessage").innerHTML="Your listing is successfully submitted!"
+                      document.getElementById("listmessage").style.backgroundColor= "lightgreen"
+                      document.getElementById("listmessage").style.fontWeight = "bold"
+                      document.getElementById("listmessage").style.color = "white"
+                      setTimeout(function(){
+                        document.getElementById("listmessage").style.display="none";
+                        },3000);
+                      
+                        frm.reset();  
+                    }
+                    else{
+                      document.getElementById('loader-wrap').style.display = 'none';
+                      alert(response.error)
+                    }
+                  }).catch(function (error) {
+                    document.getElementById('loader-wrap').style.display = 'none';
+                    alert('Fetch Error -', error);
+                  });
+
+                
+                
+                
+            //     })  
+              
+
+              
+            //  }
+            // 
+            } else{
+                alert('Kindly Fill all inputs')
               }
-            
-              )  .then(function (response) {
-                if (response == 200){
-                  document.getElementById('loader-wrap').style.display = 'none';
-                  frm = document.getElementById("newlisting");
-                  document.getElementById("listmessage").style.display="block";
-                  document.getElementById("listmessage").innerHTML="Your listing is successfully submitted!"
-                  document.getElementById("listmessage").style.backgroundColor= "lightgreen"
-                  document.getElementById("listmessage").style.fontWeight = "bold"
-                  document.getElementById("listmessage").style.color = "white"
-                  setTimeout(function(){
-                    document.getElementById("listmessage").style.display="none";
-                    },3000);
-                  
-                    frm.reset();  
-                }
-                else{
-                  alert(response.error)
-                }
-              }).catch(function (error) {
-                alert('Fetch Error -', error);
-              });
-
-             
-            
-            
-        //     })  
-          
-
-          
-        //  }
-        // 
-        } else{
-            alert('Kindly Fill all inputs')
-          }
   }
 // })
 
@@ -1068,8 +1083,8 @@ if(discountperiod != null && discountperiod != ""){
             '<div class="listing-item">'+
             '<article class = geodir-category-listing fl-wrap">'+
                 '<div class="geodir-category-img">'+
-                    '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
-                    '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="images/avatar/3.jpg" alt="">'+'</a>'+
+                    '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
+                    '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
                       '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                     '</div>'+
                     '<div class="sale-window">Sale 20%</div>'+
@@ -1105,9 +1120,9 @@ if(discountperiod != null && discountperiod != ""){
                     '<div class="geodir-category-footer fl-wrap">'+
                         '<div class="geodir-category-price">Awg/Night <span>'+"NGN  "+  response.data.data[i].listing.price +'</span></div>'+
                         '<div class="geodir-opt-list">'+
-                            '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
-                            '<a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>'+
-                            '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
+                            // '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
+                            '<a class="geodir-js-favorite" id="'+response.data.data[i].listing.id+'" onclick="postNewFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favorite</span></a>'+
+                            // '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
                         '</div>'+
                     '</div>'+
                 '</div>'+
@@ -1127,8 +1142,8 @@ if(discountperiod != null && discountperiod != ""){
           '<div class="listing-item">'+
           '<article class = geodir-category-listing fl-wrap">'+
               '<div class="geodir-category-img">'+
-                  '<a href="#" id="'+response.data.data[i].listing.id+'" onclick="getUserId(id)" return false;>'+'<img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">'+'</a>'+
-                  '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="images/avatar/3.jpg" alt="">'+'</a>'+
+                  '<a href="#" id="'+response.data.data[i].listing.id+'" onclick="getUserId(id)" return false;>'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[1]+'" alt="">'+'</a>'+
+                  '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png " alt="">'+'</a>'+
                     '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                   '</div>'+
                   '<div class="sale-window">Sale 20%</div>'+
@@ -1164,9 +1179,9 @@ if(discountperiod != null && discountperiod != ""){
                   '<div class="geodir-category-footer fl-wrap">'+
                       '<div class="geodir-category-price">Awg/Night <span>'+"NGN  "+  response.data.data[i].listing.price +'</span></div>'+
                       '<div class="geodir-opt-list">'+
-                          '<a  class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
-                          '<a class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>'+
-                          '<a class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
+                          // '<a  class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
+                          '<a class="geodir-js-favorite" id="'+response.data.data[i].listing.id+'" onclick="postNewFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favorite</span></a>'+
+                          // '<a class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
                       '</div>'+
                   '</div>'+
               '</div>'+
@@ -1236,7 +1251,7 @@ function populatestate(){
       document.getElementById('loader-wrap').style.display = 'none';
       let options = response.data.data.map(state => '<option value="' + state.admin_name+ '">'+state.admin_name+'</option>').join('\n')
       let dropdown = document.getElementById('state');
-      dropdown.innerHTML = options;
+      dropdown.innerHTML ='<option value="0" selected>Choose State</option>\n' + options;
       
       keepnigeriastates = response.data.data;
       
@@ -1266,13 +1281,11 @@ function getCity(){
     // alert(sool.value)
     // console.log(keepnigeriastates)
     // console.log(result)
-    dropdown.innerHTML = options;
+    dropdown.innerHTML = '<option value="0" selected>Choose State</option>\n' + options;
 
 }
 
-function populatecity(){
 
-}
 function populateCombo() {
 
   
@@ -1299,3 +1312,87 @@ function populateCombo() {
     });
 }
 
+async function postNewFavorite(vid){
+
+  document.getElementById('loader-wrap').style.display = 'block';
+
+  axios.get('https://share.highflierstutors.com/api/favorite',{
+    userId:userId,
+    listingId : vid
+  })
+
+    .then(function (response) {
+    if (response.status !== 200){
+        console.warn('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
+      document.getElementById('loader-wrap').style.display = 'none';
+      favorite = document.getElementById('favoritecounter');
+
+      
+      fav++
+      localStorage.setItem('fav',fav);
+      
+      
+      console.log(fav)
+
+     console.log(response.data.data)
+    
+    
+    } 
+    )
+
+    .catch(function (err) {
+      console.error('Fetch Error -', err);
+    });
+}
+
+async function allfavorite(){
+  loadIt()
+}
+async function getHomeStates(){
+  // var emailreview = document.getElementById("emailreview").value;
+  // var namereview = document.getElementById('namereview').value;
+  // var comment = document.getElementById('comment').value;
+  // rating =  document.getElementById('rg_total').value
+
+
+  if(puser != null && comment != ""){
+      
+  document.getElementById('loader-wrap').style.display = 'block';
+       
+      await axios.get('https://share.highflierstutors.com/api/ngstatecities', {
+
+        // checkOut,
+        // checkOut
+        // Amount,
+        // paymentMode,
+        listingId: keepsinglelist
+    
+      })  
+      .then(function (response) {
+
+        if(response.status == 200){
+          document.getElementById('loader-wrap').style.display = 'none';
+
+          frm = document.getElementById("add-comment");
+          document.getElementById("reviewmessage").style.display="block";
+          document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
+          document.getElementById("reviewmessage").style.backgroundColor= "lightgreen"
+          document.getElementById("reviewmessage").style.color= "white"
+          setTimeout(function(){
+            document.getElementById("reviewmessage").style.display="none";
+            },3000);
+            frm.reset();  // 
+        }
+      
+      
+        
+      })
+    
+   }
+   else{
+     alert('Only Logged In Users are allowed to review and also put a comment')
+   }
+}

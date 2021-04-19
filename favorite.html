@@ -3,12 +3,13 @@
     <head>
         <!--=============== basic  ===============-->
         <meta charset="UTF-8">
-        <title>ShareYaSpace - Listing Booking Directory Listing Template</title>
+        <title>ShareYaSpace</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="robots" content="index, follow"/>
         <meta name="keywords" content=""/>
         <meta name="description" content=""/>
 
+        <!-- =========================================================================== -->
 
         <script type="module" >
         
@@ -24,7 +25,8 @@
             })
             
         </script>
-        <!--=============== css  ===============-->
+
+
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/plugins.css">
         <link type="text/css" rel="stylesheet" href="css/style.css">
@@ -32,9 +34,9 @@
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
     </head>
-    <body onload="getUserReview()">
+     <body onload="allfavorite()">
         <!--loader-->
-        <div class="loader-wrap" id="loader-wrap">
+       <div class="loader-wrap" id="loader-wrap">
             <div class="pin">
                 <div class="pulse"></div>
             </div>
@@ -52,9 +54,25 @@
                         </div>
                     <a href="add-listing.html" id="addlisting" class="add-Listing">Add Listing <span><i class="far fa-plus"></i></span></a>
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
-                        <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
+                        <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>                       
                         <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
-                      
+                        <!-- <div class="lang-wrap">
+                            <div class="show-lang"><img src="images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
+                            <ul class="lang-tooltip green-bg">
+                                <li><a href="#"><img src="images/lan/4.png" alt=""> De</a></li>
+                                <li><a href="#"><img src="images/lan/5.png" alt=""> It</a></li>
+                                <li><a href="#"><img src="images/lan/2.png" alt=""> Fr</a></li>
+                                <li><a href="#"><img src="images/lan/3.png" alt=""> Es</a></li>
+                            </ul>
+                        </div> -->
+                        <!-- <div class="currency-wrap">
+                            <div class="show-currency-tooltip"><i class="fas fa-dollar-sign"></i> <span>USD <i class="fa fa-caret-down"></i> </span></div>
+                            <ul class="currency-tooltip">
+                                <li><a href="#"><i class="far fa-euro-sign"></i> EUR</a></li>
+                                <li><a href="#"><i class="far fa-pound-sign"></i> GBP</a></li>
+                                <li><a href="#"><i class="far fa-ruble-sign"></i>RUR</a></li>
+                            </ul>
+                        </div> -->
                     </div>
                 </div>
                 <!-- header-top end-->
@@ -62,15 +80,13 @@
                 <div class="header-inner fl-wrap">
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-
                          <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></div>
-
                         <div class="header-user-menu">
                             <div class="header-user-name" id="dropit">
-                                <span><img  id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
+                                <span><img  id="avatar" alt="images/avatar/avatar-bg.png"></span>
                                 <div id="userValue"></div>
                             </div>
-                                 <ul>
+                             <ul>
                                 <li><a href="myprofile.html"> Edit profile</a></li>
                                 <li><a href="listing-table.html"> My Listing</a></li>
                                 <li><a href="favorite.html"> My Favourite </a></li>
@@ -93,89 +109,73 @@
                                 <ul>
                                     <li>
                                         <a href="index.html" class="act-link">Home </a>
-                                   
+                                        <!--second level -->
+                                        <!-- <ul>
+                                            <li><a href="index.html">Parallax Image</a></li>
+                                            <li><a href="index2.html">Slider</a></li>
+                                            <li><a href="index3.html">Video</a></li>
+                                            <li><a href="index4.html">Slideshow</a></li>
+                                        </ul> -->
+                                        <!--second level end-->
                                     </li>
                                     <li>
                                         <a href="listing.html">Listings </a>
-                                      
-                                        
+                                        <!--second level -->
+                                        <!-- <ul> -->
+                                            <!-- <li><a href="listing.html">Column map</a></li>
+                                            <li><a href="listing6.html">Column map 2</a></li>
+                                            <li><a href="listing2.html">Fullwidth Map</a></li>
+                                            <li><a href="listing3.html">Fullwidth Map 2</a></li>
+                                            <li><a href="listing4.html">Without Map</a></li>
+                                            <li><a href="listing5.html">Without Map 2</a></li>
+                                            <li>
+                                                <a href="#">Single <i class="fas fa-caret-down"></i></a> -->
+                                                <!--third  level  -->
+                                                <!-- <ul>
+                                                    <li><a href="listing-single.html">Style 1</a></li>
+                                                    <li><a href="listing-single2.html">Style 2</a></li>
+                                                    <li><a href="listing-single3.html">Style 3</a></li>
+                                                    <li><a href="listing-single4.html">Style 4</a></li>
+                                                </ul> -->
+                                                <!--third  level end-->
+                                            <!-- </li>
+                                        </ul> -->
                                         <!--second level end-->
                                     </li>
-                                 
+                                    <!-- <li>
+                                        <a href="blog.html">News</a>
+                                    </li> -->
                                     <li>
                                         <a href="#">Pages <i class="fas fa-caret-down"></i></a>
                                         <!--second level -->
                                         <ul>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="contacts.html">Contacts</a></li>
-                                          
+                                            <!-- <li><a href="author-single.html">User single</a></li>
+                                            <li><a href="help.html">Help FAQ</a></li>
+                                            <li><a href="pricing-tables.html">Pricing</a></li>
+                                            <li><a href="booking-single.html">Booking</a></li>
+                                            <li><a href="dashboard.html">User Dashboard</a></li>
+                                            <li><a href="blog2.html">Blog Classik</a></li>
+                                            <li><a href="blog-single.html">Blog Single</a></li>
+                                            <li><a href="add-listing.html">Add Listing</a></li>
+                                            <li><a href="404.html">404</a></li>
+                                            <li><a href="invoice.html">Invoice</a></li>
+                                            <li><a href="coming-soon.html">Coming Soon</a></li> -->
                                         </ul>                                      
                                     </li>
                                 </ul>
                             </nav>
                         </div>
-                      
+                        <!-- navigation  end -->
+                        <!-- wishlist-wrap-->
+                        
+                        <!-- wishlist-wrap end-->
                     </div>
                 </div>
                 <!-- header-inner end-->
                 <!-- header-search -->
-                <div class="header-search vis-search">
-                    <div class="container">
-                        <div class="row">
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-4">
-                                <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Destination or Listing Name</label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
-                                    <input type="text" placeholder="Location" class="autocomplete-input" id="autocompleteid" value=""/>
-                                    <a href="#"><i class="fal fa-dot-circle"></i></a>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap date-parent">
-                                    <label>Date In-Out </label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="When" name="header-search"   value=""/>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap">
-                                    <div class="quantity-item">
-                                        <label>Rooms</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Adults</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Children</label>
-                                        <div class="quantity">
-                                            <input type="number" min="0" max="3" step="1" value="0">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-2">
-                                <div class="header-search-input-item fl-wrap">
-                                    <button class="header-search-button" onclick="window.location.href='listing.html'">Search <i class="far fa-search"></i></button>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                        </div>
-                    </div>
-                    <div class="close-header-search"><i class="fal fa-angle-double-up"></i></div>
-                </div>
+                
                 <!-- header-search  end -->
             </header>
             <!--  header end -->
@@ -183,115 +183,137 @@
             <div id="wrapper">
                 <!-- content-->
                 <div class="content">
-                    <!-- section-->
-                    <section class="flat-header color-bg adm-header">
-                        <div class="wave-bg wave-bg2"></div>
-                        <div class="container">
-                            <div class="dasboard-wrap fl-wrap">
-                                <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">Home</a><a href="#">Dashboard</a><span>Profile page</span></div>
-                                <!--dasboard-sidebar-->
-                                <div class="dasboard-sidebar">
-                                    <div class="dasboard-sidebar-content fl-wrap">
-                                        <div class="dasboard-avatar">
-                                           <img src="https://share.highflierstutors.com/images/1276705039.jpg" alt="">
-                                        </div>
-                                        <div class="dasboard-sidebar-item fl-wrap">
-                                            <h3 id="fullname">
-                                                <span>Welcome </span>
-                                                
-                                            </h3>
-                                        </div>
-                                        <a href="add-listing.html" class="ed-btn">Add Listing</a>                                        
-                                        <div class="user-stats fl-wrap">
-                                            <ul>
-                                                <li>
-                                                    Listings	
-                                                    <span id="alllisting">4</span>
-                                                </li>
-                                                <li>
-                                                    Bookings
-                                                    <span id="allbookings">32</span>	
-                                                </li>
-                                                <li>
-                                                    Reviews	
-                                                    <span id="allreview"></span>	
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <a href="#" class="log-out-btn color-bg" onclick="logOff()">Log Out <i class="far fa-sign-out"></i></a>
-                                    </div>
-                                </div>
-                                <!--dasboard-sidebar end--> 
-                                <!-- dasboard-menu-->
-                                <div class="dasboard-menu">
-                                    <div class="dasboard-menu-btn color3-bg">Dashboard Menu <i class="fal fa-bars"></i></div>
-                                    <ul class="dasboard-menu-wrap">
-                                        <li>
-                                            <a href="dashboard.html"><i class="far fa-user"></i>Profile</a>
-                                            <ul>
-                                                <li><a href="myprofile.html">Edit profile</a></li>
-                                                <li><a href="password.html">Change Password</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="messages.html"><i class="far fa-envelope"></i> Messages <span>3</span></a></li>
-                                        <li>
-                                            <a href="listing-table.html"><i class="far fa-th-list"></i> My Listings  </a>
-                                            <ul>
-                                                <!-- <li><a href="#">Active</a><span>5</span></li>
-                                                <li><a href="#">Pending</a><span>2</span></li>
-                                                <li><a href="#">Expire</a><span>3</span></li> -->
-                                            </ul>
-                                        </li>
-                                        <li><a href="bookings.html"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
-                                        <li><a href="review.html" class="user-profile-act"><i class="far fa-comments"></i> Reviews </a></li>
-                                    </ul>
-                                </div>
-                                <!--dasboard-menu end-->
-                                <!--Tariff Plan menu-->
-                                <!-- <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
-                                <div class="tfp-det">
-                                    <p>You Are on <a href="#">Extended</a> . Use link bellow to view details or upgrade. </p>
-                                    <a href="#" class="tfp-det-btn color2-bg">Details</a>
+                    <!-- Map -->
+<!-- 
+                       
+                        <div class="map-container column-map right-pos-map fix-map hid-mob-map">
+                            <div id="map-main"></div>
+                            <ul class="mapnavigation">
+                                <li><a href="#" class="prevmap-nav"><i class="fas fa-caret-left"></i> Prev</a></li>
+                                <li><a href="#" class="nextmap-nav">Next <i class="fas fa-caret-right"></i></a></li>
+                            </ul>
+                            <div class="map-close"><i class="fas fa-times"></i></div>
+                            <input id="pac-input" name="pacint" class="controls fl-wrap controls-mapwn" type="text" placeholder="What Nearby?">
+                        </div> --> 
+
+                    <!-- Map end -->
+                    <!--col-list-wrap -->
+                    <div class="col-list-wrap left-list">
+                        <div class="mobile-list-controls fl-wrap">
+                            <div class="container">
+                                <!-- <div class="mlc show-hidden-column-map schm"><i class="fal fa-map-marked-alt"></i> Show Map</div>
+                                <div class="mlc show-list-wrap-search"><i class="fal fa-filter"></i> Filter</div> -->
+                            </div>
+                        </div>
+                        <!--list-wrap-search   -->
+                       
+                        <!--list-wrap-search end -->
+                        <!-- list-main-wrap-->
+                        <div class="list-main-wrap fl-wrap card-listing">
+                            <!-- <a class="custom-scroll-link back-to-filters" href="#lisfw"><i class="fas fa-angle-up"></i><span>Back to Filters</span></a> -->
+                            <div class="container">
+                                <!-- list-main-wrap-title-->
+                                <!-- <div class="list-main-wrap-title fl-wrap">
+                                    <h2>Results For : <span>New York </span></h2>
                                 </div> -->
-                                <!--Tariff Plan menu end-->
-                            </div>
-                        </div>
-                    </section>
-                    <!-- section end-->
-                    <!-- section-->
-                    <section class="middle-padding">
-                        <div class="container">
-                            <!--dasboard-wrap-->
-                            <div class="dasboard-wrap fl-wrap">
-                                <!-- dashboard-content--> 
-                                <div class="dashboard-content fl-wrap">
-                                    <div class="dashboard-list-box fl-wrap">
-                                        <div class="dashboard-header fl-wrap">
-                                            <h3>Reviews</h3>
+                                <!-- list-main-wrap-title end-->
+                                <!-- list-main-wrap-opt-->
+                                <div class="list-main-wrap-opt fl-wrap">
+                                    <!-- price-opt-->
+                                    <!-- <div class="price-opt">
+                                        <span class="price-opt-title">Sort results by:</span>
+                                        <div class="listsearch-input-item">
+                                            <select data-placeholder="Popularity" class="chosen-select no-search-select" >
+                                                <option>Popularity</option>
+                                                <option>Average rating</option>
+                                                <option>Price: low to high</option>
+                                                <option>Price: high to low</option>
+                                            </select>
                                         </div>
-                                        <div class="reviews-comments-wrap" id="showreview">
-                                            <!-- reviews-comments-item -->  
-                                           
-                                            <!--reviews-comments-item end--> 
-                                           
-                                                                                                                                                       
-                                        </div>
+                                    </div> -->
+                                    <!-- price-opt end-->
+                                    <!-- price-opt-->
+                                    <div class="grid-opt">
+                                        <ul>
+                                            <li><span class="two-col-grid act-grid-opt"><i class="fas fa-th-large"></i></span></li>
+                                            <li><span class="one-col-grid"><i class="fas fa-bars"></i></span></li>
+                                        </ul>
                                     </div>
-                                    <!-- pagination-->
-                                    <div class="pagination">
-                                        <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                                        <a href="#">1</a>
-                                        <a href="#" class="current-page">2</a>
-                                        <a href="#">3</a>
-                                        <a href="#">4</a>
-                                        <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-                                    </div>
+                                   
+                                    <!-- price-opt end-->
                                 </div>
-                                <!-- dashboard-list-box end--> 
+                                <div id="totalListing">
+                                   
+                                </div>
+                                <!-- list-main-wrap-opt end-->
+                                <!-- listing-item-container -->
+                                <div class="listing-item-container init-grid-items fl-wrap" id="listing-item">
+                                    <!-- listing-item  -->                                    
+                                    <!-- listing-item  -->
+                                    <!-- <div class="listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                            <div class="geodir-category-img">
+                                                <a href="listing-single.html"><img src="images/gal/6.jpg" alt=""></a>
+                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/3.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong>Andy Moore</strong></span>
+                                                </div>
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong>Good</strong>6 Reviews </div>
+                                                        <span>4.7</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item">
+                                                        <h3 class="title-sin_map"><a href="listing-single.html">Park Central</a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#2" class="map-item"><i class="fas fa-map-marker-alt"></i>40 Journal Square Plaza, NJ,  USA</a></div>
+                                                    </div>
+                                                </div>
+                                                <p> Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa.</p>
+                                                <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul>
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-opt-link">
+                                                        <div class="geodir-category-price">Awg/Night <span>$ 80</span></div>
+                                                    </div>
+                                                    <div class="geodir-opt-list">
+                                                        <a href="#2" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>3</strong></span></a>
+                                                        <a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>
+                                                        <a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div> -->
+                                    <!-- listing-item end -->
+                                    <!-- listing-item  -->
+                                    
+                                   
+                                    <!-- listing-item end -->
+                                </div>
+                                <!-- listing-item-container end-->
+                                <!-- pagination-->
+                                <div class="pagination">
+                                    <!-- <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a> -->
+                                    <a href="#" class="current-page" >1</a>
+                                    <!-- <a href="#" >2</a>
+                                    <a href="#">3</a>
+                                    <a href="#">4</a>
+                                    <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a> -->
+                                </div>
+                                <!-- pagination end-->
                             </div>
-                            <!-- dasboard-wrap end-->
                         </div>
-                    </section>
+                        <!-- list-main-wrap end-->
+                    </div>
+                    <!--col-list-wrap end -->
                     <div class="limit-box fl-wrap"></div>
                 </div>
                 <!-- content end-->
@@ -353,7 +375,7 @@
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/2.png" alt=""></a>
                                             </div>
-                                            <!--footer-carousel-item end-->                             
+                                            <!--footer-carousel-item end-->
                                             <!--footer-carousel-item-->
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/3.png" alt=""></a>
@@ -363,7 +385,7 @@
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/4.png" alt=""></a>
                                             </div>
-                                            <!--footer-carousel-item end-->      
+                                            <!--footer-carousel-item end-->
                                             <!--footer-carousel-item-->
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/5.png" alt=""></a>
@@ -373,7 +395,7 @@
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/6.png" alt=""></a>
                                             </div>
-                                            <!--footer-carousel-item end-->                                     
+                                            <!--footer-carousel-item end-->
                                         </div>
                                         <div class="fc-cont  fc-cont-prev"><i class="fal fa-angle-left"></i></div>
                                         <div class="fc-cont  fc-cont-next"><i class="fal fa-angle-right"></i></div>
@@ -466,21 +488,6 @@
                 <!--sub-footer end -->
             </footer>
             <!--footer end -->
-            <!--map-modal -->
-            <div class="map-modal-wrap">
-                <div class="map-modal-wrap-overlay"></div>
-                <div class="map-modal-item">
-                    <div class="map-modal-container fl-wrap">
-                        <h3>Listing Title</h3>
-                        <div class="map-modal fl-wrap">
-                            <div id="singleMap" data-latitude="40.7" data-longitude="-73.1"></div>
-                        </div>
-                        <a href="#" class="btn color2-bg">View Details <i class="fal fa-angle-right"></i></a>
-                        <div class="map-modal-close"><i class="far fa-times"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!--map-modal end -->            
             <!--register form -->
             <div class="main-register-wrap modal">
                 <div class="reg-overlay"></div>
@@ -490,7 +497,7 @@
                         <ul class="tabs-menu">
                             <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
                         </ul>
-                        <!--tabs -->                       
+                        <!--tabs -->
                         <div id="tabs-container">
                             <div class="tab">
                                 <!--tab -->
@@ -551,14 +558,21 @@
         </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->
-        <script src="./node_modules/axios/dist/axios.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script  src="js/main.js"></script> -->
+        <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+        <!-- <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="js/plugins.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
+        <script type="text/javascript" src="js/mapplugins.js"></script>
+        <script type="text/javascript" src="js/maps.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
         <script  src="js/main.js"></script>
-
+        
+        
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>    
-       
-         <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>      -->
     </body>
 </html>

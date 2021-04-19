@@ -80,15 +80,16 @@
                 <div class="header-inner fl-wrap">
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-                        <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter">3</span></div>
+                         <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></div>
                         <div class="header-user-menu">
                             <div class="header-user-name" id="dropit">
                                 <span><img  id="avatar" alt="images/avatar/avatar-bg.png"></span>
                                 <div id="userValue"></div>
                             </div>
-                             <ul>
+                               <ul>
                                 <li><a href="myprofile.html"> Edit profile</a></li>
                                 <li><a href="listing-table.html"> My Listing</a></li>
+                                <li><a href="favorite.html"> My Favourite </a></li>
                                 <li><a href="bookings.html">  Bookings  </a></li>
                                 <li><a href="review.html"> Reviews </a></li>
                                  <li><a href="#" onclick="logOff()">Log Out</a></li>
@@ -184,6 +185,7 @@
                 <div class="content">
                     <!-- Map -->
 
+                       <!-- 
                         <div class="map-container column-map right-pos-map fix-map hid-mob-map">
                             <div id="map-main"></div>
                             <ul class="mapnavigation">
@@ -192,7 +194,7 @@
                             </ul>
                             <div class="map-close"><i class="fas fa-times"></i></div>
                             <input id="pac-input" name="pacint" class="controls fl-wrap controls-mapwn" type="text" placeholder="What Nearby?">
-                        </div>
+                        </div> -->
 
                     <!-- Map end -->
                     <!--col-list-wrap -->
@@ -208,7 +210,7 @@
                         <!--list-wrap-search end -->
                         <!-- list-main-wrap-->
                         <div class="list-main-wrap fl-wrap card-listing">
-                            <a class="custom-scroll-link back-to-filters" href="#lisfw"><i class="fas fa-angle-up"></i><span>Back to Filters</span></a>
+                            <!-- <a class="custom-scroll-link back-to-filters" href="#lisfw"><i class="fas fa-angle-up"></i><span>Back to Filters</span></a> -->
                             <div class="container">
                                 <!-- list-main-wrap-title-->
                                 <!-- <div class="list-main-wrap-title fl-wrap">
@@ -449,7 +451,7 @@
                                 <div class="col-md-8">
                                     <div class="customer-support-widget fl-wrap">
                                         <h4>Customer support : </h4>
-                                        <a href="tel:+19012300888" class="cs-mumber">+1(901)2300888</a>
+                                        <a href="tel:+19012300888" class="cs-mumber">+234</a>
                                         <a href="tel:+19012300888" class="cs-mumber-button color2-bg">Call Now <i class="far fa-phone-volume"></i></a>
                                     </div>
                                 </div>

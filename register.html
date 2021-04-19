@@ -1,220 +1,175 @@
 <!DOCTYPE HTML>
 <html lang="en">
-    <head>
-        <!--=============== basic  ===============-->
-        <meta charset="UTF-8">
-        <title>ShareYaSpace - Listing Booking Directory Listing Template</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-        <meta name="robots" content="index, follow"/>
-        <meta name="keywords" content=""/>
-        <meta name="description" content=""/>
-        <!--=============== css  ===============-->
-        <link type="text/css" rel="stylesheet" href="css/reset.css">
-        <link type="text/css" rel="stylesheet" href="css/plugins.css">
-        <link type="text/css" rel="stylesheet" href="css/style.css">
-        <link type="text/css" rel="stylesheet" href="css/color.css">
-        <!--=============== favicons ===============-->
-        <link rel="shortcut icon" href="images/favicon.ico">
 
-        <style>
-            #profile-container{
-                width: 150px;
-                height: 150px;
-                overflow: hidden;
-                -webkit-border-radius: 50%;
-                -moz-border-radius: 50%;
-                -ms-border-radius: 50%;
-                -o-border-radius: 50%;
-                border-radius: 50%;
-            }
-            #profile-container img{
-                width: 150px;
-                height: 150px;
-            }
-        </style>
-    </head>
-     <body onload="loadIt()">
-        <!--loader-->
-      <div class="loader-wrap" id="loader-wrap">
-     
-            <div class="pin">
-                <div class="pulse"></div>
-            </div>
+<head>
+    <!--=============== basic  ===============-->
+    <meta charset="UTF-8">
+    <title>ShareYaSpace - Listing Booking Directory Listing Template</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="robots" content="index, follow" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <!--=============== css  ===============-->
+    <script type="module" >
+        
+        $(document).ready(function(){
+            
+        document.getElementById('signout').style.display = 'none';
+        document.getElementById('signin').style.display = 'none';
+        document.getElementById('dropit').style.display = 'none';
+        // document.getElementById('avatar').src = res.data.user.imgProfile;
+        
+        document.getElementById('reg').style.display = 'none';
+        document.getElementById('addlisting').style.display = 'none';
+        })
+        
+    </script>
+
+
+
+    <link type="text/css" rel="stylesheet" href="css/reset.css">
+    <link type="text/css" rel="stylesheet" href="css/plugins.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/color.css">
+    <!--=============== favicons ===============-->
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <style>
+        #profile-container {
+            width: 150px;
+            height: 150px;
+            overflow: hidden;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+            border-radius: 50%;
+        }
+
+        #profile-container img {
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body onload="loadIt()">
+    <!--loader-->
+    <div class="loader-wrap" id="loader-wrap">
+
+        <div class="pin">
+            <div class="pulse"></div>
         </div>
-        <!--loader end-->
-        <!-- Main  -->
-        <div id="main">
-            <!-- header-->
-            <header class="main-header">
-                <!-- header-top-->
-                <div class="header-top fl-wrap">
-                    <div class="container">
-                        <div class="logo-holder">
-                            <a href="index.html"><img src="images/logo.png" alt=""></a>
-                        </div>
-                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Listing <span><i class="far fa-plus"></i></span></a>
-                    <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
-                        <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
-                        <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
-                     
+    </div>
+    <!--loader end-->
+    <!-- Main  -->
+    <div id="main">
+        <!-- header-->
+        <header class="main-header">
+            <!-- header-top-->
+            <div class="header-top fl-wrap">
+                <div class="container">
+                    <div class="logo-holder">
+                        <a href="index.html"><img src="images/logo.png" alt=""></a>
                     </div>
-                </div>
-                <!-- header-top end-->
-                <!-- header-inner-->
-                <div class="header-inner fl-wrap">
-                    <div class="container">
-                        <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-                        <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter">3</span></div>
-                        <div class="header-user-menu">
-                            <div class="header-user-name" id="dropit">
-                                <span><img  id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
-                                <div id="userValue"></div>
-                            </div>
-                             <ul>
-                                <li><a href="myprofile.html"> Edit profile</a></li>
-                                <li><a href="listing-table.html"> My Listing</a></li>
-                                <li><a href="bookings.html">  Bookings  </a></li>
-                                <li><a href="review.html"> Reviews </a></li>
-                                 <li><a href="#" onclick="logOff()">Log Out</a></li>
-                            </ul>
-                        </div>
-                        <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
-                        <!-- nav-button-wrap-->
-                        <div class="nav-button-wrap color-bg">
-                            <div class="nav-button">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                        <!-- nav-button-wrap end-->
-                        <!--  navigation -->
-                        <div class="nav-holder main-menu">
-                            <nav>
-                                <ul>
-                                    <li>
-                                        <a href="index.html" class="act-link">Home </a>
-                                     
-                                    </li>
-                                    <li>
-                                        <a href="listing.html">Listings </a>
-                                     
-                                    </li>
-                                   
-                                    <li>
-                                        <a href="#">Pages <i class="fas fa-caret-down"></i></a>
-                                        <!--second level -->
-                                        <ul>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="contacts.html">Contacts</a></li>
-                                          
-                                        </ul>                                      
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- navigation  end -->
-                        <!-- wishlist-wrap-->
-                        <!--  -->
-                        <!-- wishlist-wrap end-->
+                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Listing <span><i
+                                class="far fa-plus"></i></span></a>
+                    <a href="register.html" id="reg" class="add-Listing">Register <span><i
+                                class="far fa-plus"></i></span></a>
+                    <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
+                    <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out
                     </div>
-                </div>
-                <!-- header-inner end-->
-                <!-- header-search -->
-                
-                <!-- header-search  end -->
-            </header>
-            <!--  header end -->
-            <!--  wrapper  -->
-            <div id="wrapper">
-                <!-- content-->
-                <div class="content">
-                    <!-- section-->
-                    <section class="flat-header color-bg adm-header">
-                        <div class="wave-bg wave-bg2"></div>
-                        <div class="container">
-                            <div class="dasboard-wrap fl-wrap">
-                                <div class="dasboard-breadcrumbs breadcrumbs"><a href="#">Home</a><a href="#">Register</a></div>
-                                <!--dasboard-sidebar-->
-                                 <!-- <div class="dasboard-sidebar">
-                                    <div class="dasboard-sidebar-content fl-wrap">
-                                        <div class="dasboard-avatar">
-                                           <img src="images/avatar/avatar-bg.png" alt="">
-                                        </div>
-                                        <div class="dasboard-sidebar-item fl-wrap">
-                                            <h3>
-                                                <span>Welcome</span>
-                                              
-                                            </h3>
-                                        </div>
-                                        <a href="add-listing.html" class="ed-btn">Add Listing</a>                                        
-                                        <div class="user-stats fl-wrap">
-                                            <ul>
-                                                <li>
-                                                    Listings	
-                                                
-                                                </li>
-                                                <li>
-                                                    Bookings
-                                                  
-                                                </li>
-                                               
-                                            </ul>
-                                        </div>
-                                        <a href="#" class="log-out-btn color-bg" onclick="logOff()">Log Out <i class="far fa-sign-out"></i></a>
-                                    </div>
-                                </div> -->
-                                <!--dasboard-sidebar end--> 
-                                <!-- dasboard-menu-->
-                                <!-- <div class="dasboard-menu">
-                                    <div class="dasboard-menu-btn color3-bg">Dashboard Menu <i class="fal fa-bars"></i></div>
-                                    <ul class="dasboard-menu-wrap">
-                                        <li>
-                                            <a href="dashboard.html" class="user-profile-act"><i class="far fa-user"></i>Profile</a>
-                                            <ul>
-                                                <li><a href="myprofile.html">Edit profile</a></li>
-                                                <li><a href="password.html">Change Password</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="messages.html"><i class="far fa-envelope"></i> Messages <span>3</span></a></li>
-                                        <li>
-                                            <a href="listing-table.html"><i class="far fa-th-list"></i> My Listings  </a>
-                                            <ul>
-                                                <!-- <li><a href="#">Active</a><span>5</span></li>
-                                                <li><a href="#">Pending</a><span>2</span></li>
-                                                <li><a href="#">Expire</a><span>3</span></li> -->
-                                            </ul>
-                                        </li>
-                                        <li><a href="bookings.html"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
-                                        <li><a href="review.html"><i class="far fa-comments"></i> Reviews </a></li>
-                                    </ul>
-                                </div>
-                                dasboard-menu end-->
-                                <!--Tariff Plan menu-->
-                                <!-- <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
-                                <div class="tfp-det">
-                                    <p>You Are on <a href="#">Extended</a> . Use link bellow to view details or upgrade. </p>
-                                    <a href="#" class="tfp-det-btn color2-bg">Details</a>
-                                </div>
-                                Tariff Plan menu end-->
-                            </div>
-                        </div>
-                    </section>
-                    <!-- section end-->
-                    <!-- section-->
 
-                    <section class="middle-padding" id="profileinfo">
-                        <div class="container">
-                            <!--dasboard-wrap-->
-                            <div class="dasboard-wrap fl-wrap">
-                                <!-- dashboard-content--> 
-                                <div class="dashboard-content fl-wrap">
-                                    <div class="box-widget-item-header">
-                                        <h3> Profile</h3>
-                                    </div>
-                                    <!-- profile-edit-container--> 
-                                    <div class="profile-edit-container">
-                                        <div class="custom-form">
-                                            <div class="col-sm-3">
-                                                <!-- <label>Upload Image</label> 
+                </div>
+            </div>
+            <!-- header-top end-->
+            <!-- header-inner-->
+            <div class="header-inner fl-wrap">
+                <div class="container">
+                    <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
+                    <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter"
+                            id="favoritecounter">0</span></div>
+                    <div class="header-user-menu">
+                        <div class="header-user-name" id="dropit">
+                            <span><img id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
+                            <div id="userValue"></div>
+                        </div>
+                        <ul>
+                            <li><a href="myprofile.html"> Edit profile</a></li>
+                            <li><a href="listing-table.html"> My Listing</a></li>
+                            <li><a href="bookings.html"> Bookings </a></li>
+                            <li><a href="review.html"> Reviews </a></li>
+                            <li><a href="#" onclick="logOff()">Log Out</a></li>
+                        </ul>
+                    </div>
+                    <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
+                    <!-- nav-button-wrap-->
+                    <div class="nav-button-wrap color-bg">
+                        <div class="nav-button">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <!-- nav-button-wrap end-->
+                    <!--  navigation -->
+                    <div class="nav-holder main-menu">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="index.html" class="act-link">Home </a>
+
+                                </li>
+                                <li>
+                                    <a href="listing.html">Listings </a>
+
+                                </li>
+
+                                <li>
+                                    <a href="#">Pages <i class="fas fa-caret-down"></i></a>
+                                    <!--second level -->
+                                    <ul>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="contacts.html">Contacts</a></li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- navigation  end -->
+                    <!-- wishlist-wrap-->
+                    <!--  -->
+                    <!-- wishlist-wrap end-->
+                </div>
+            </div>
+            <!-- header-inner end-->
+            <!-- header-search -->
+
+            <!-- header-search  end -->
+        </header>
+        <!--  header end -->
+        <!--  wrapper  -->
+        <div id="wrapper">
+            <!-- content-->
+            
+        
+            <!-- section end-->
+            <!-- section-->
+
+            <section class="middle-padding" id="profileinfo">
+                <div class="container">
+                    <!--dasboard-wrap-->
+                    <div class="">
+                        <!-- dashboard-content-->
+                        <div class="dashboard-content fl-wrap">
+                            <div class="box-widget-item-header">
+                                <h3> Profile</h3>
+                            </div>
+                            <!-- profile-edit-container-->
+                            <div class="profile-edit-container">
+                                <div class="custom-form">
+                                    <div class="col-sm-3">
+                                        <!-- <label>Upload Image</label> 
                                                 <div class="add-list-media-wrap">
                                                     <form class="fuzone">
                                                         <div class="fu-text">
@@ -225,390 +180,414 @@
                                                 </div> -->
 
 
-                                                <!-- <div id="profile-container">
+                                        <!-- <div id="profile-container">
                                                     <img id="profileImage" src=""/>
                                                 </div>
                                                 <input id="imageUpload" type="file" name="profile_photo" placeholder="photo" required="" capture> -->
-                                            <form method="post"  name="registerform" onsubmit="return false;">
-                                                <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-                                                <!-- <button><label for="file" style="cursor: pointer;">Upload Image</label></button> -->
-                                                <p><img id="output" width="200" /></p>
-                                                <input type="file" id="img" onchange="validateImage()" >
-                                                <p id="imageUrl"></p>
-                                            </div>
-
-                                            <label>Your First Name <i class="far fa-user"></i></label>
-                                            <input type="text" placeholder="Jessie" value=""  id="firstname" required/>
-                                            <label>Your Last Name <i class="far fa-user"></i></label>
-                                            <input type="text" placeholder="Manrty" value="" id="lastname" required/>
-                                            <label>Email Address<i class="far fa-envelope"></i>  </label>
-                                            <input type="email" placeholder="JessieManrty@domain.com" value="" id="emailreg" required/>
-                                            <label for="start">Date of Birth<i class="far fa-calendar"></i></label>
-
-                                            <input type="date" id="start" name="trip-start"
-                                                value="2021-01-01"
-                                                min="1930-01-01" max="2020-01-01" required>
-
-                                        
-
-
-                                            <label> Country <i class="far fa-globe"></i>  </label>
-                                            <select required name="country" id="country" selected disabled id="country">
-                                                <option value="nigeria">Nigeria</option>
-                                            
-                                              </select>
-                                            <label>Phone<i class="far fa-phone"></i>  </label>
-                                            <input type="text" value="+234" id="phone" required/>
-                                            <label> Address <i class="fas fa-map-marker"></i>  </label>
-                                            <input type="text" placeholder="No 234 Iyana ipaja Lagos State" value="" id="address" required/>
-                                            <label> Password <i class="far fa-globe"></i>  </label>
-                                            <input type="password" placeholder=".........." value="" id="password" required/>
-                                            <label> Confirm Password <i class="far fa-globe"></i>  </label>
-                                            <input type="password" placeholder=".........." value="" required/>
-                                           
-                                        </div>
+                                        <form method="post" name="registerform" onsubmit="return false;">
+                                            <p><input type="file" accept="image/*" name="image" id="file"
+                                                    onchange="loadFile(event)" style="display: none;"></p>
+                                            <!-- <button><label for="file" style="cursor: pointer;">Upload Image</label></button> -->
+                                            <p><img id="output" width="200" /></p>
+                                            <input type="file" id="img" onchange="validateImage()">
+                                            <p id="imageUrl"></p>
                                     </div>
-                                    <!-- profile-edit-container end--> 
-                                    <div class="box-widget-item-header mat-top">
-                                        <h3>Are you a student?</h3>
-                                    </div>
-                                    <!-- profile-edit-container--> 
-                                    <div class="profile-edit-container add-list-container">
-                                        <div class="custom-form">
-                                            <div class="row">
-                                                <!--col --> 
-                                                <div class="col-md-4">
-                                                    <div class="add-list-media-header">
-                                                        <label class="radio inline"> 
-                                                        <input type="radio" name="gender" id="yes" onclick="findStudent()">
-                                                        <span>Yes</span> 
-                                                        </label>
-                                                    </div>
-                                                    <div id="studentdetails">
-                                                        <label> Choose Your School <i class="far fa-globe"></i>  </label>
-                                                        <select name="school" id="school">
-                                                        <option value="nigeria">Ekiti State University</option>
-                                                        <option value="nigeria">University of Ilorin</option>
-                                                        <option value="nigeria">University of Ibadan</option></select>
 
-                                                        <label> Course of Study <i class="fas fa-map-marker"></i>  </label>
-                                                        <input type="text" placeholder="Mass Communication" value="" id="cos"/>
-                                                        <label> Matriculation Number<i class="fas fa-map-marker"></i>  </label>
-                                                        <input type="text" placeholder="Nas/13062" value="" id="mat"/>
-                                                    </div>
-                                                </div>
-                                                <!--col end--> 
-                                                <!--col --> 
-                                                <div class="col-md-4">
-                                                    <div class="add-list-media-header">
-                                                        <label class="radio inline"> 
-                                                        <input type="radio" name="gender" onclick="findStudent()" checked>
-                                                        <span>No</span> 
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <!--col end--> 
-                                              
-                                                <!--col end-->                                                   
-                                            </div>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="profile-edit-container">
-                                        <div class="custom-form">
-                                            <button class="btn color2-bg  float-btn" onclick="registerUser()">Submit<i class="fal fa-save"></i></button>
-                                           
-                                        </div>
-                                    </div>
-                                    <!-- profile-edit-container end-->     
-                                </form>                                
+                                    <label>Your First Name <i class="far fa-user"></i></label>
+                                    <input type="text" placeholder="Enter First Name" value="" id="firstname" required />
+                                    <label>Your Last Name <i class="far fa-user"></i></label>
+                                    <input type="text" placeholder="Enter Last Name" value="" id="lastname" required />
+                                    <label>Email Address<i class="far fa-envelope"></i> </label>
+                                    <input type="email" placeholder="username@example.com" value="" id="emailreg"
+                                        required />
+                                    <label for="start">Date of Birth<i class="far fa-calendar"></i></label>
+
+                                    <input type="date" id="start" name="trip-start" value="2021-01-01" min="1930-01-01"
+                                        max="2020-01-01" required>
+
+                                    <label> Country <i class="far fa-globe"></i> </label>
+                                        <select required name="country" id="country" selected disabled id="country">
+                                            <option value="nigeria">Nigeria</option>
+                                        </select>
+
+                                    <label>Phone<i class="far fa-phone"></i> </label>
+                                        <input type="text" value="+234" id="phone" required />
+
+                                    <label> Address <i class="fas fa-map-marker"></i> </label>
+                                    <input type="text" placeholder="No 234 Iyana ipaja Lagos State" value=""
+                                        id="address" required />
+
+                                    <label> Password <i class="far fa-lock"></i> </label>
+                                    <input type="password" placeholder="Enter Password" value="" id="password" required />
+
+                                    <label> Confirm Password <i class="far fa-lock"></i> </label>
+                                    <input type="password" placeholder="Confirm Password" value="" required />
+
                                 </div>
-                                <!-- dashboard-list-box end--> 
                             </div>
-                            <!-- dasboard-wrap end-->
-                        </div>
-                    </section>
+                            <!-- profile-edit-container end-->
+                            <div class="box-widget-item-header mat-top">
+                                <h3>Student Information</h3>
+                            </div>
+                            <!-- profile-edit-container-->
+                            <div class="profile-edit-container add-list-container">
+                                <div class="custom-form">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="" style="margin-top: -10px;">
+                                                <label> Are you a Student? <i class="far fa-unlock"></i> </label>
+                                                <select name="school" id="school" onchange="findStudent()">
+                                                    <option value="0" selected>Are you?</option>
+                                                    <option value="yes">Yes</option>
+                                                    <option value="no">No</option>
+                                                </select> 
+                                            </div>
 
-                    <section id="otp">
-                        <div class="custom-form">
+                                            <div id="studentdetails" style="padding:70px; margin-top: 30px; display: none;">
+                                                <label> Choose Your School <i class="far fa-school"></i> </label>
+                                                <select name="school" id="school">
+                                                    <option value="nigeria">Ekiti State University</option>
+                                                    <option value="nigeria">University of Ilorin</option>
+                                                    <option value="nigeria">University of Ibadan</option>
+                                                </select>
 
-                           <div class="container">
-                               <div class="col-md-8">
-                                <label>Enter OTP<i class="far fa-phone"></i>  </label>
-                                <input type="text" id="otpnumber" disabled/>
-                                <button class="btn color2-bg  float-btn"  onclick="verifyUser()">Verify<i class="fal fa-save"></i></button>
-                               </div>
-                           </div>
+                                                <label> Course of Study <i class="fas fa-book"></i> </label>
+                                                <input type="text" placeholder="Mass Communication" value="" id="cos" />
+
+                                                <label> Matriculation Number<i class="fas fa-book"></i> </label>
+                                                <input type="text" placeholder="Nas/13062" value="" id="mat" />
+                                            </div>
+                                        </div>
+                                        <!--col end-->
+                                        <!--col -->
+                                        <div class="col-md-4">
+                                            <!-- <div class="add-list-media-header">
+                                                <label class="radio inline">
+                                                    <input type="radio" name="gender" onclick="findStudent()" checked>
+                                                    <span>No</span>
+                                                </label>
+                                            </div> -->
+                                        </div>
+                                        <!--col end-->
+
+                                        <!--col end-->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="profile-edit-container">
+                                <div class="custom-form">
+                                    <button class="btn color2-bg  float-btn" onclick="registerUser()">Submit<i class="fal fa-save"></i></button>
+
+                                </div>
+                            </div>
+                            <!-- profile-edit-container end-->
+                            </form>
                         </div>
-                       
-                    </section>
-                 
-                    <div class="limit-box fl-wrap"></div>
+                        <!-- dashboard-list-box end-->
+                    </div>
+                    <!-- dasboard-wrap end-->
                 </div>
-                <!-- content end-->
-            </div>
-            <!--wrapper end -->
-            <!--footer -->
-            <footer class="main-footer">
-                <!--subscribe-wrap-->
-                <div class="subscribe-wrap color-bg  fl-wrap">
+            </section>
+
+            <section id="otp" style="display: none;">
+                <div class="custom-form">
+
                     <div class="container">
-                        <div class="sp-bg"> </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="subscribe-header">
-                                    <h3>Subscribe</h3>
-                                    <p>Want to be notified when we launch a new template or an udpate. Just sign up and we'll send you a notification by email.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-1"></div>
-                            <div class="col-md-5">
-                                <div class="footer-widget fl-wrap">
-                                    <div class="subscribe-widget fl-wrap">
-                                        <div class="subcribe-form">
-                                            <form id="subscribe">
-                                                <input class="enteremail fl-wrap" name="email" id="subscribe-email" placeholder="Enter Your Email" spellcheck="false" type="text">
-                                                <button type="submit" id="subscribe-button" class="subscribe-button"><i class="fas fa-rss-square"></i> Subscribe</button>
-                                                <label for="subscribe-email" class="subscribe-message"></label>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="wave-bg"></div>
-                </div>
-                <!--subscribe-wrap end -->
-                <!--footer-inner-->
-                <div class="footer-inner">
-                    <div class="container">
-                        <!--footer-fw-widget-->
-                        <div class="footer-fw-widget fl-wrap">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="footer-carousel-title">
-                                        Our partners
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <!--footer-carousel-wrap-->
-                                    <div class="footer-carousel-wrap fl-wrap">
-                                        <div class="footer-carousel fl-wrap">
-                                            <!--footer-carousel-item-->
-                                            <div class="footer-carousel-item">
-                                                <a href="#"><img src="images/partners/1.png" alt=""></a>
-                                            </div>
-                                            <!--footer-carousel-item end-->
-                                            <!--footer-carousel-item-->
-                                            <div class="footer-carousel-item">
-                                                <a href="#"><img src="images/partners/2.png" alt=""></a>
-                                            </div>
-                                            <!--footer-carousel-item end-->                             
-                                            <!--footer-carousel-item-->
-                                            <div class="footer-carousel-item">
-                                                <a href="#"><img src="images/partners/3.png" alt=""></a>
-                                            </div>
-                                            <!--footer-carousel-item end-->
-                                            <!--footer-carousel-item-->
-                                            <div class="footer-carousel-item">
-                                                <a href="#"><img src="images/partners/4.png" alt=""></a>
-                                            </div>
-                                            <!--footer-carousel-item end-->      
-                                            <!--footer-carousel-item-->
-                                            <div class="footer-carousel-item">
-                                                <a href="#"><img src="images/partners/5.png" alt=""></a>
-                                            </div>
-                                            <!--footer-carousel-item end-->
-                                            <!--footer-carousel-item-->
-                                            <div class="footer-carousel-item">
-                                                <a href="#"><img src="images/partners/6.png" alt=""></a>
-                                            </div>
-                                            <!--footer-carousel-item end-->                                     
-                                        </div>
-                                        <div class="fc-cont  fc-cont-prev"><i class="fal fa-angle-left"></i></div>
-                                        <div class="fc-cont  fc-cont-next"><i class="fal fa-angle-right"></i></div>
-                                    </div>
-                                    <!--footer-carousel-wrap end-->
-                                </div>
-                            </div>
-                        </div>
-                        <!--footer-fw-widget end-->
-                        <div class="row">
-                            <!--footer-widget -->
-                            <div class="col-md-4">
-                                <div class="footer-widget fl-wrap">
-                                    <h3>About Us</h3>
-                                    <div class="footer-contacts-widget fl-wrap">
-                                        <p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam. </p>
-                                        <ul  class="footer-contacts fl-wrap">
-                                            <li><span><i class="fal fa-envelope"></i> Mail :</span><a href="#" target="_blank">yourmail@domain.com</a></li>
-                                            <li> <span><i class="fal fa-map-marker-alt"></i> Adress :</span><a href="#" target="_blank">No 234 Iyana ipaja Lagos State</a></li>
-                                            <li><span><i class="fal fa-phone"></i> Phone :</span><a href="#">+234</a></li>
-                                        </ul>
-                                        <div class="footer-social">
-                                            <span>Find us : </span>
-                                            <ul>
-                                                <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                                                <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                                <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                                                <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--footer-widget end-->
-                            <!--footer-widget -->
-                           
-                            <!--footer-widget end-->
-                            <!--footer-widget -->
-                            <div class="col-md-4">
-                                <div class="footer-widget fl-wrap">
-                                    <h3>Our  Twitter</h3>
-                                    <div id="footer-twiit" class="fl-wrap"></div>
-                                    <a href="#" class="twitter-link" target="_blank">Follow</a>
-                                </div>
-                            </div>
-                            <!--footer-widget end-->
-                        </div>
-                        <div class="clearfix"></div>
-                        <!--footer-widget -->
-                        <div class="footer-widget">
-                            <div class="row">
-                                <div class="col-md-4"><a class="contact-btn color-bg" href="contact.html">Get In Touch<i class="fal fa-envelope"></i></a></div>
-                                <div class="col-md-8">
-                                    <div class="customer-support-widget fl-wrap">
-                                        <h4>Customer support : </h4>
-                                        <a href="tel:+19012300888" class="cs-mumber">2300888</a>
-                                        <a href="tel:+19012300888" class="cs-mumber-button color2-bg">Call Now <i class="far fa-phone-volume"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--footer-widget end -->
-                    </div>
-                </div>
-                <!--footer-inner end -->
-                <div class="footer-bg">
-                </div>
-                <!--sub-footer-->
-                <div class="sub-footer">
-                    <div class="container">
-                        <div class="copyright"> &#169; ShareYaSpace 2021 .  All rights reserved.</div>
-                        <div class="subfooter-lang">
-                            <div class="subfooter-show-lang"><span>Eng</span><i class="fa fa-caret-up"></i></div>
-                            <ul class="subfooter-lang-tooltip">
-                                <li><a href="#">Dutch</a></li>
-                                <li><a href="#">Italian</a></li>
-                                <li><a href="#">French</a></li>
-                                <li><a href="#">Spanish</a></li>
-                            </ul>
-                        </div>
-                        <div class="subfooter-nav">
-                            <ul>
-                                <li><a href="#">Terms of use</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Blog</a></li>
-                            </ul>
+                        <div class="col-md-8">
+                            <label>Enter OTP<i class="far fa-phone"></i> </label>
+                            <input type="text" id="otpnumber" disabled />
+                            <button class="btn color2-bg  float-btn" onclick="verifyUser()">Verify<i
+                                    class="fal fa-save"></i></button>
                         </div>
                     </div>
                 </div>
-                <!--sub-footer end -->
-            </footer>
-            <!--footer end -->
-            <!--map-modal -->
-            <div class="map-modal-wrap">
-                <div class="map-modal-wrap-overlay"></div>
-                <div class="map-modal-item">
-                    <div class="map-modal-container fl-wrap">
-                        <h3>Listing Title</h3>
-                        <div class="map-modal fl-wrap">
-                            <div id="singleMap" data-latitude="40.7" data-longitude="-73.1"></div>
-                        </div>
-                        <a href="#" class="btn color2-bg">View Details <i class="fal fa-angle-right"></i></a>
-                        <div class="map-modal-close"><i class="far fa-times"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!--map-modal end -->            
-            <!--register form -->
-            <div class="main-register-wrap modal">
-                <div class="reg-overlay"></div>
-                <div class="main-register-holder">
-                    <div class="main-register fl-wrap">
-                        <div class="close-reg color-bg"><i class="fal fa-times"></i></div>
-                        <ul class="tabs-menu">
-                            <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
-                        </ul>
-                        <!--tabs -->                       
-                        <div id="tabs-container">
-                            <div class="tab">
-                                <!--tab -->
-                                <div id="tab-1" class="tab-content">
-                                       <h3>Sign-in to  <span>ShareYa<strong>Space</strong></span></h3>
-                                    <div class="custom-form">
-                                      <form method="post"  name="registerform" onsubmit="return false;">
-                                             <label>Username or Email Address <span>*</span> </label>
-                                            <input name="email" type="email"  id="email1" onClick="this.select()" value="" required>
-                                            <label class="formerror">Please enter a valid email <span></span></label>
-                                            
-                                            <label >Password <span>*</span> </label>
-                                            <input name="password" type="password" id="password1"  onClick="this.select()" value="" required>
-                                             <button  type="submit" class="log-submit-btn color-bg" onClick="loginUser()"><span>Log In</span></button>
-                                            <div class="clearfix"></div>
-                                            <div class="filter-tags">
-                                                <input id="check-a" type="checkbox" name="check">
-                                                <label for="check-a">Remember me</label>
-                                            </div>
-                                        </form>
-                                        <div class="lost_password">
-                                            <a href="#">Lost Your Password?</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--tab end -->
-                                <!--tab -->
-                                <div class="tab">
-                                    <div id="tab-2" class="tab-content">
-                                        <h3>Sign Up <span>Easy<strong>Book</strong></span></h3>
-                                        <div class="custom-form">
-                                            <form method="post"   name="registerform" class="main-register-form" id="main-register-form2">
-                                                <label >Full Name <span>*</span> </label>
-                                                <input name="name" type="text"   onClick="this.select()" value="">
-                                                <label>Email Address <span>*</span></label>
-                                                <input name="email" type="text"  onClick="this.select()" value="">
-                                                <label >Password <span>*</span></label>
-                                                <input name="password" type="password"   onClick="this.select()" value="" >
-                                                <button type="submit"     class="log-submit-btn"  ><span>Register</span></button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--tab end -->
-                            </div>
-                            <!--tabs end -->
-                            <div class="log-separator fl-wrap"><span>or</span></div>
-                            <div class="soc-log fl-wrap">
-                                <p>For faster login or register use your social account.</p>
-                                <a href="#" class="facebook-log"><i class="fab fa-facebook-f"></i>Connect with Facebook</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--register form end -->
-            <a class="to-top"><i class="fas fa-caret-up"></i></a>
+
+            </section>
+
+            <div class="limit-box fl-wrap"></div>
         </div>
-        <!-- Main end -->
-        
+        <!-- content end-->  
+        <!--footer -->
+        <footer class="main-footer">
+            <!--subscribe-wrap-->
+            <div class="subscribe-wrap color-bg  fl-wrap">
+                <div class="container">
+                    <div class="sp-bg"> </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="subscribe-header">
+                                <h3>Subscribe</h3>
+                                <p>Want to be notified when we launch a new template or an udpate. Just sign up and we'll send you a notification by email.</p>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-5">
+                            <div class="footer-widget fl-wrap">
+                                <div class="subscribe-widget fl-wrap">
+                                    <div class="subcribe-form">
+                                        <form id="subscribe">
+                                            <input class="enteremail fl-wrap" name="email" id="subscribe-email" placeholder="Enter Your Email" spellcheck="false" type="text">
+                                            <button type="submit" id="subscribe-button" class="subscribe-button"><i class="fas fa-rss-square"></i> Subscribe</button>
+                                            <label for="subscribe-email" class="subscribe-message"></label>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wave-bg"></div>
+            </div>
+            <!--subscribe-wrap end -->
+            <!--footer-inner-->
+            <div class="footer-inner">
+                <div class="container">
+                    <!--footer-fw-widget-->
+                    <div class="footer-fw-widget fl-wrap">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="footer-carousel-title">
+                                    Our partners
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <!--footer-carousel-wrap-->
+                                <div class="footer-carousel-wrap fl-wrap">
+                                    <div class="footer-carousel fl-wrap">
+                                        <!--footer-carousel-item-->
+                                        <div class="footer-carousel-item">
+                                            <a href="#"><img src="images/partners/1.png" alt=""></a>
+                                        </div>
+                                        <!--footer-carousel-item end-->
+                                        <!--footer-carousel-item-->
+                                        <div class="footer-carousel-item">
+                                            <a href="#"><img src="images/partners/2.png" alt=""></a>
+                                        </div>
+                                        <!--footer-carousel-item end-->
+                                        <!--footer-carousel-item-->
+                                        <div class="footer-carousel-item">
+                                            <a href="#"><img src="images/partners/3.png" alt=""></a>
+                                        </div>
+                                        <!--footer-carousel-item end-->
+                                        <!--footer-carousel-item-->
+                                        <div class="footer-carousel-item">
+                                            <a href="#"><img src="images/partners/4.png" alt=""></a>
+                                        </div>
+                                        <!--footer-carousel-item end-->
+                                        <!--footer-carousel-item-->
+                                        <div class="footer-carousel-item">
+                                            <a href="#"><img src="images/partners/5.png" alt=""></a>
+                                        </div>
+                                        <!--footer-carousel-item end-->
+                                        <!--footer-carousel-item-->
+                                        <div class="footer-carousel-item">
+                                            <a href="#"><img src="images/partners/6.png" alt=""></a>
+                                        </div>
+                                        <!--footer-carousel-item end-->
+                                    </div>
+                                    <div class="fc-cont  fc-cont-prev"><i class="fal fa-angle-left"></i></div>
+                                    <div class="fc-cont  fc-cont-next"><i class="fal fa-angle-right"></i></div>
+                                </div>
+                                <!--footer-carousel-wrap end-->
+                            </div>
+                        </div>
+                    </div>
+                    <!--footer-fw-widget end-->
+                    <div class="row">
+                        <!--footer-widget -->
+                        <div class="col-md-4">
+                            <div class="footer-widget fl-wrap">
+                                <h3>About Us</h3>
+                                <div class="footer-contacts-widget fl-wrap">
+                                    <p>In ut odio libero, at vulputate urna. Nulla tristique mi a massa convallis cursus. Nulla eu mi magna. Etiam suscipit commodo gravida. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam. </p>
+                                    <ul  class="footer-contacts fl-wrap">
+                                        <li><span><i class="fal fa-envelope"></i> Mail :</span><a href="#" target="_blank">yourmail@domain.com</a></li>
+                                        <li> <span><i class="fal fa-map-marker-alt"></i> Adress :</span><a href="#" target="_blank">No 234 Iyana ipaja Lagos State</a></li>
+                                        <li><span><i class="fal fa-phone"></i> Phone :</span><a href="#">+234</a></li>
+                                    </ul>
+                                    <div class="footer-social">
+                                        <span>Find us : </span>
+                                        <ul>
+                                            <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                            <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--footer-widget end-->
+                        <!--footer-widget -->
+                       
+                        <!--footer-widget end-->
+                        <!--footer-widget -->
+                        <div class="col-md-4">
+                            <div class="footer-widget fl-wrap">
+                                <h3>Our  Twitter</h3>
+                                <div id="footer-twiit" class="fl-wrap"></div>
+                                <a href="#" class="twitter-link" target="_blank">Follow</a>
+                            </div>
+                        </div>
+                        <!--footer-widget end-->
+                    </div>
+                    <div class="clearfix"></div>
+                    <!--footer-widget -->
+                    <div class="footer-widget">
+                        <div class="row">
+                            <div class="col-md-4"><a class="contact-btn color-bg" href="contacts.html">Get In Touch<i class="fal fa-envelope"></i></a></div>
+                            <div class="col-md-8">
+                                <div class="customer-support-widget fl-wrap">
+                                    <h4>Customer support : </h4>
+                                    <a href="tel:+19012300888" class="cs-mumber">+234</a>
+                                    <a href="tel:+19012300888" class="cs-mumber-button color2-bg">Call Now <i class="far fa-phone-volume"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--footer-widget end -->
+                </div>
+            </div>
+            <!--footer-inner end -->
+            <div class="footer-bg">
+            </div>
+            <!--sub-footer-->
+            <div class="sub-footer">
+                <div class="container">
+                    <div class="copyright"> &#169; ShareYaSpace 2021 .  All rights reserved.</div>
+                    <!-- <div class="subfooter-lang">
+                        <div class="subfooter-show-lang"><span>Eng</span><i class="fa fa-caret-up"></i></div>
+                        <ul class="subfooter-lang-tooltip">
+                            <li><a href="#">Dutch</a></li>
+                            <li><a href="#">Italian</a></li>
+                            <li><a href="#">French</a></li>
+                            <li><a href="#">Spanish</a></li>
+                        </ul>
+                    </div> -->
+                    <div class="subfooter-nav">
+                        <ul>
+                            <li><a href="#">Terms of use</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--sub-footer end -->
+        </footer>
+        <!--footer end -->
+        <!--map-modal -->
+        <div class="map-modal-wrap">
+            <div class="map-modal-wrap-overlay"></div>
+            <div class="map-modal-item">
+                <div class="map-modal-container fl-wrap">
+                    <div class="map-modal fl-wrap">
+                        <div id="singleMap" data-latitude="40.7" data-longitude="-73.1"></div>
+                    </div>
+                    <h3><i class="fal fa-location-arrow"></i><a href="#">Listing Title</a></h3>
+                    <input id="pac-input" class="controls fl-wrap controls-mapwn" type="text" placeholder="What Nearby ?   Bar , Gym , Restaurant ">
+                    <div class="map-modal-close"><i class="fal fa-times"></i></div>
+                </div>
+            </div>
+        </div>
 
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/plugins.js"></script>
-        <script type="text/javascript" src="js/scripts.js"></script>  
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-        <script  src="js/main.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>         
-    </body>
+        <!--map-modal end -->
+        <!--register form -->
+        <div class="main-register-wrap modal">
+            <div class="reg-overlay"></div>
+            <div class="main-register-holder">
+                <div class="main-register fl-wrap">
+                    <div class="close-reg color-bg"><i class="fal fa-times"></i></div>
+                    <ul class="tabs-menu">
+                        <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
+                        <!-- <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Register</a></li> -->
+                    </ul>
+                    <!--tabs -->
+                    <div id="tabs-container">
+                        <div class="tab">
+                            <!--tab -->
+                            <div id="tab-1" class="tab-content">
+                                   <h3>Sign-in to  <span>ShareYa<strong>Space</strong></span></h3>
+
+                                <div class="custom-form">
+                                    <form method="post"  name="registerform" onsubmit="return false;">
+                                        <label>Username or Email Address <span>*</span> </label>
+                                        <input name="email" type="email"  id="email1" onClick="this.select()" value="" required>
+                                        <label class="formerror">Please enter a valid email <span></span></label>
+                                        
+                                        <label >Password <span>*</span> </label>
+                                        <input name="password" type="password" id="password1"  onClick="this.select()" value="" required>
+
+                                        <button  type="submit" class="log-submit-btn color-bg" onClick="loginUser()"><span>Log In</span></button>
+
+                                        <div class="clearfix" id="message"></div>
+                                        <div class="filter-tags">
+                                            <input id="check-a" type="checkbox" name="check">
+                                            <label for="check-a">Remember me</label>
+                                        </div>
+                                    </form>
+                                    <div class="lost_password">
+                                        <a href="#">Lost Your Password?</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--tab end -->
+                            <!--tab -->
+                            <div class="tab">
+                                <div id="tab-2" class="tab-content">
+                                    <h3>Sign Up <span>Share<strong>YaSpace</strong></span></h3>
+                                    <div class="custom-form">
+                                        <form method="post"   name="registerform" class="main-register-form" id="main-register-form2" >
+                                            <ul class="tabs-menu">
+
+                                                <li class="current"><a href="#tab-1"><i class="fal fa-user-plus"></i> Step 1</a></li>
+                                                <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Step 2</a></li>
+                                                <li><a href="#tab-2"><i class="fal fa-user-plus"></i> Step 3</a></li>
+                                            </ul>
+
+
+                                            <label >Full Name <span>*</span> </label>
+                                            <input name="name" type="text"   onClick="this.select()" value="">
+                                            <label>Email Address <span>*</span></label>
+                                            <input name="email" type="text"  onClick="this.select()" value="">
+                                            <label >Password <span>*</span></label>
+                                            <input name="password" type="password"   onClick="this.select()" value="" >
+                                            <button type="submit"     class="log-submit-btn color-bg"  ><span>Register</span></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--tab end -->
+                        </div>
+                        <!--tabs end -->
+                        <div class="log-separator fl-wrap"><span>or</span></div>
+                        <div class="soc-log fl-wrap">
+                            <p>For faster login or register use your social account.</p>
+                            <a href="#" class="facebook-log"><i class="fab fa-facebook-f"></i>Connect with Facebook</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--register form end -->
+        <a class="to-top"><i class="fas fa-caret-up"></i></a> 
+    </div>
+    <!-- Main end -->
+    <!--wrapper end -->
+  
+    <!--register form end -->
+    <a class="to-top"><i class="fas fa-caret-up"></i></a>
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+   
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
+</body>
+
 </html>
