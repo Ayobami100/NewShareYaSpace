@@ -1098,7 +1098,7 @@ function cardRaining() {
 cardRaining();
 var cr2 = $(".card-popup-rainingvis");
 cr2.each(function (cr) {
-    var starcount2 = $(this).attr("data-starrating2");
+    var starcount2 = $(this).attr("data-starrating1");
     $("<i class='fa fa-star'></i>").duplicate(starcount2).prependTo(this);
 });
 $(".location a , .loc-act").on("click", function (e) {
