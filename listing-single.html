@@ -65,7 +65,7 @@
                 <div class="header-inner fl-wrap">
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-                         <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter">0</span></div>
+                          <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></div>
                         <div class="header-user-menu">
                             <div class="header-user-name" id="dropit">
                                 <span><img  id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
@@ -114,9 +114,17 @@
                             </nav>
                         </div>
                         <!-- navigation  end -->
-                        <!-- wishlist-wrap-->
-                        <!--  -->
-                        <!-- wishlist-wrap end-->
+                      <!-- wishlist-wrap-->
+                   <div class="wishlist-wrap scrollbar-inner novis_wishlist" >
+                    <div class="box-widget-content">
+                        <div class="widget-posts fl-wrap">
+                            <ul id="favoritelist">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- wishlist-wrap end-->
                     </div>
                 </div>
                 <!-- header-inner end-->
@@ -537,22 +545,7 @@
                                           
                                             <!-- reviews-score-wrap end -->   
                                             <div class="reviews-comments-wrap" id="singlelistreview">
-                                                <!-- reviews-comments-item -->  
-                                                <!-- <div class="reviews-comments-item">
-                                                    <div class="review-comments-avatar">
-                                                        <img src="images/avatar/2.jpg" alt=""> 
-                                                    </div>
-                                                    <div class="reviews-comments-item-text">
-                                                        <h4><a href="#">Liza Rose</a></h4>
-                                                        <div class="review-score-user">
-                                                            <span>4.4</span>
-                                                            <strong>Good</strong>
-                                                        </div>
-                                                        <div class="clearfix"></div>
-                                                        <p>" Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. "</p>
-                                                        <div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>12 April 2021</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>
-                                                    </div>
-                                                </div> -->
+                                                
                                                 <!--reviews-comments-item end--> 
                                                 <!-- reviews-comments-item -->  
                                                 <div class="reviews-comments-item" id="constantreview" style="display: none;">
@@ -648,61 +641,7 @@
                                     <!--box-widget-wrap -->  
                                     <div class="box-widget-wrap">
                                         <!--box-widget-item -->
-                                        <div class="box-widget-item fl-wrap">
-                                            <div class="box-widget">
-                                                <div class="box-widget-content">
-                                                    <div class="box-widget-item-header">
-                                                        <h3> Book This Listing</h3>
-                                                    </div>
-                                                    <form name="bookFormCalc"   class="book-form custom-form" onsubmit="return false;">
-                                                        <fieldset>
-                                                            <div class="cal-item">
-                                                                <div class="listsearch-input-item">
-                                                                    <label>Room Type</label>
-                                                                    <select data-placeholder="Room Type" name="repopt"   class="chosen-select no-search-select" >
-                                                                        <option value="0" selected>Select Room</option>
-                                                                        <option value="81">Standard Family Room - 81NGN</option>
-                                                                        <option value="122">Superior Double Room - 122NGN</option>
-                                                                        <option value="310">Deluxe Single Room - 310NGN</option>
-                                                                    </select>
-                                                                    <!--data-formula -->
-                                                                    <input type="text" name="item_total" class="hid-input"  value=""  data-form="{repopt}">
-                                                                </div>
-                                                            </div>
-                                                            <div class="cal-item">
-                                                                <div class="bookdate-container  fl-wrap">
-                                                                    <label><i class="fal fa-calendar-check"></i> When </label>
-                                                                    <input type="text"    placeholder="Date In-Out" name="bookdates"   value=""/>
-                                                                    <div class="bookdate-container-dayscounter"><i class="far fa-question-circle"></i><span>Days : <strong>0</strong></span></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cal-item">
-                                                                <div class="quantity-item fl-wrap">
-                                                                    <label> Adults</label>
-                                                                    <div class="quantity">
-                                                                        <input type="number" name="qty3" min="0" max="3" step="1" value="0">
-                                                                        <input type="text" name="item_total" class="hid-input" value="0" data-form="{qty3} * {repopt} - {repopt}">
-                                                                    </div>
-                                                                </div>
-                                                                <div class="quantity-item fl-wrap fcit">
-                                                                    <label> Children</label>
-                                                                    <div class="quantity">
-                                                                        <input type="number"  name="qty2" min="0" max="3" step="1" value="0">
-                                                                        <select name="sale" class="hid-input">
-                                                                            <option value=".7"  selected>sale</option>
-                                                                        </select>
-                                                                        <input type="text" name="item_total" class="hid-input" value="0" data-form="({repopt} * {sale})*{qty2}">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </fieldset>
-                                                        <input type="number"  id="totaldays" name="qty5" class="hid-input">
-                                                        <div class="total-coast fl-wrap"><strong>Total Cost</strong> <span>NGN <input type="text" name="grand_total" value="" data-form="SUM({item_total}) * {qty5}"></span></div>
-                                                        <button class="btnaplly color2-bg book-btn">Book Now<i class="fal fa-paper-plane"></i></button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
+                                      
                                         <!--box-widget-item end -->                                      
                                         
                                         <!--box-widget-item end -->                                       
@@ -817,6 +756,87 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                        
+                                        <!--box-widget-item end -->                            
+                                    </div>
+                                    <!--box-widget-wrap end -->  
+                                </div>
+
+                                <div class="col-md-4">
+                                    <!--box-widget-wrap -->  
+                                    <div class="box-widget-wrap">
+                                        <!--box-widget-item -->
+                                        <div class="box-widget-item fl-wrap">
+                                            <div class="box-widget">
+                                                <div class="box-widget-content">
+                                                    <div class="box-widget-item-header">
+                                                        <h3> Check Availability</h3>
+                                                    </div>
+                                                    <form name="bookFormCalc"   class="book-form custom-form" onsubmit="return false;">
+                                                        <fieldset>
+                                                            <div class="cal-item">
+                                                                
+                                                            </div>
+                                                            <div class="cal-item">
+                                                                <div class="bookdate-container  fl-wrap">
+                                                                    <label><i class="fal fa-calendar-check"></i> When </label>
+                                                                    <input type="text"  id="bookeddate"  placeholder="Date In-Out" name="bookdates"   value=""/>
+                                                                    <!-- <div class="bookdate-container-dayscounter"><i class="far fa-question-circle"></i><span>Days : <strong>0</strong></span></div> -->
+                                                                </div>
+                                                            </div>
+                                                            <div class="cal-item">
+                                                                
+                                                            </div>
+                                                        </fieldset>
+                                                        <!-- <input type="number"  id="totaldays" name="qty5" class="hid-input"> -->
+                                                        <!-- <div class="total-coast fl-wrap"><strong>Total Cost</strong> <span>NGN <input type="text" name="grand_total" id="bookedprice" value="" data-form="SUM({item_total})"></span></div> -->
+                                                        <button class="btnaplly color2-bg book-btn" onclick="checkAvailable()">Check Now<i class="fal fa-paper-plane"></i></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--box-widget-item end -->                                      
+                                        <div class="box-widget-item fl-wrap">
+                                            <div class="box-widget">
+                                                <div class="box-widget-content">
+                                                    <div class="box-widget-item-header">
+                                                        <h3> Book This Listing</h3>
+                                                    </div>
+                                                    <form name="bookFormCalc"   class="book-form custom-form" onsubmit="return false;">
+                                                        <fieldset>
+                                                            <div class="cal-item" style="margin-bottom: 15ch;">
+                                                                <div class="listsearch-input-item" > 
+                                                                    <label>Listing Name</label>
+                                                                    <!-- <input type="text" name="" id="bookedlisting" value=""> -->
+                                                                    <select  name="repopt" id="bookedlisting"  class="" >
+                                                                    
+                                                                       
+                                                                    </select>
+                                                                    <!--data-formula -->
+                                                                    <!-- <input type="text" name="item_total" class="hid-input"  value=""  data-form="{repopt}"> -->
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="cal-item">
+                                                                <div class="bookdate-container  fl-wrap">
+                                                                    <label><i class="fal fa-calendar-check"></i> When </label>
+                                                                    <input type="text"  id="bookeddate"  placeholder="Date In-Out" name="bookdates"   value=""/>
+                                                                    <div class="bookdate-container-dayscounter"><i class="far fa-question-circle"></i><span>Days : <strong>0</strong></span></div>
+                                                                </div>
+                                                            </div> -->
+                                                            <div class="cal-item">
+                                                                
+                                                            </div>
+                                                        </fieldset>
+                                                        <input type="number"  id="totaldays" name="qty5" class="hid-input">
+                                                        <!-- <div class="total-coast fl-wrap"><strong>Total Cost</strong> <span>NGN <input type="text" name="grand_total" id="bookedPrice" value=""></span></div> -->
+                                                        <button class="btnaplly color2-bg book-btn">Book Now<i class="fal fa-paper-plane"></i></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       
+                                        
                                         <!--box-widget-item end -->                            
                                     </div>
                                     <!--box-widget-wrap end -->  
@@ -1011,11 +1031,11 @@
                             <div class="bg"  data-bg="images/bg/24.jpg" ></div>
                             <div class="overlay"></div>
                             <div class="booking-modal-info_content fl-wrap">
-                                <h4>Luxury Listing Spa</h4>
+
+                                <h4 id="orderspacetitle">Luxury Listing Spa</h4>
                                 <ul>
-                                    <li>Date : <span>05.05.2020</span></li>
-                                    <li>Persons : <span>2</span></li>
-                                    <li>Price : <span>NGN120</span> </li>
+                                    <li>Date : <span id="datetoday">05.05.2020</span></li>
+                                    <li>Price : <span id="orderprice">NGN120</span> </li>
                                 </ul>
                             </div>
                         </div>
@@ -1038,29 +1058,29 @@
                                                             <div class="row">
                                                                 <div class="col-sm-6">
                                                                     <label>First Name <i class="far fa-user"></i></label>
-                                                                    <input type="text" placeholder="Your Name" value=""/>                                                  
+                                                                    <input type="text" placeholder="Your Name" id="orderfirstname" value=""/>                                                  
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <label>Last Name <i class="far fa-user"></i></label>
-                                                                    <input type="text" placeholder="Your Last Name" value=""/> 
+                                                                    <input type="text" id="orderlastname" placeholder="Your Last Name" value=""/> 
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-sm-6">
                                                                     <label>Email Address<i class="far fa-envelope"></i>  </label>
-                                                                    <input type="text" placeholder="yourmail@domain.com" value=""/>                                                  
+                                                                    <input type="text" id="orderemail" placeholder="yourmail@domain.com" value=""/>                                                  
                                                                 </div>
                                                                 <div class="col-sm-6">
                                                                     <label>Phone<i class="far fa-phone"></i>  </label>
-                                                                    <input type="text" placeholder="87945612233" value=""/>
+                                                                    <input type="text" id="orderphone" placeholder="87945612233" value=""/>
                                                                 </div>
                                                             </div>
-                                                            <div class="log-massage">Existing Customer? <a href="#" class="modal-open">Click here to login</a></div>
+                                                            <!-- <div class="log-massage">Existing Customer? <a href="#" class="modal-open">Click here to login</a></div>
                                                             <div class="log-separator fl-wrap"><span>or</span></div>
                                                             <div class="soc-log fl-wrap">
                                                                 <p>For faster login or register use your social account.</p>
                                                                 <a href="#" class="facebook-log"><i class="fab fa-facebook-f"></i>Connect with Facebook</a>
-                                                            </div>
+                                                            </div> -->
                                                             <div class="filter-tags">
                                                                 <input id="check-a" type="checkbox" name="check">
                                                                 <label for="check-a">By continuing, you agree to the<a href="#" target="_blank">Terms and Conditions</a>.</label>
@@ -1201,7 +1221,7 @@
                                 <div id="tab-1" class="tab-content">
                                        <h3>Sign-in to  <span>ShareYa<strong>Space</strong></span></h3>
                                     <div class="custom-form">
-                                      <form method="post"  name="registerform" onsubmit="return false;">
+                                       <form method="post" id="loginform"  name="registerform" onsubmit="return false;">
                                              <label>Username or Email Address <span>*</span> </label>
                                             <input name="email" type="email"  id="email1" onClick="this.select()" value="" required>
                                             <label class="formerror">Please enter a valid email <span></span></label>

@@ -3560,7 +3560,8 @@ input[type=number]
 }
 .geodir-category-img {
 	float:left;
-	width:100%;
+	max-width: 50%;
+	max-height: 50%; 
 	position:relative;
 	overflow:hidden;
 	z-index:1;

@@ -1037,7 +1037,15 @@ function  initShareYaSpace() {
     });
     $(".book-btn").on("click", function (e) {
 		e.preventDefault();
-  		showBookingForm ();
+        // document.getElementById('userValue') != null ;
+        if(document.getElementById('userValue').innerText == null){
+            // showBookingForm ();
+            alert('yes')
+        }
+        else{
+            alert('no')
+        }
+  		
     });	
 }
 //   Parallax ------------------

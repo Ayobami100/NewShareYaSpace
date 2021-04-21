@@ -8,7 +8,7 @@ axios.interceptors.request.use(function (config) {
 });
 
 let fav = 0 ;
-document.getElementById('favoritecounter').innerHTML = localStorage.getItem('fav');
+// document.getElementById('favoritecounter').innerHTML = localStorage.getItem('fav');
  var puser = localStorage.getItem('token');
  const userFirstname = localStorage.getItem('firstname');
  const userLastname = localStorage.getItem('lastname');
@@ -28,6 +28,8 @@ document.getElementById('favoritecounter').innerHTML = localStorage.getItem('fav
 //  ===================================================================================================================================================
 const keepsinglelist = localStorage.getItem('keepsinglelisting');
 var keepsinglehost ;
+var keepsinglespacetitle;
+var keepsinglespaceprice;
 // ======================================================================================
 var keepnigeriastates;
  //////////////////////////////All Listings Declaration///////////////////////////////////////////
@@ -129,8 +131,11 @@ async function loginUser() {
   
   
          alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
-  
-        window.location.reload();
+        
+         form = document.getElementById('loginform');
+         window.location.reload();
+         form.reset();
+       
   
       }
 
@@ -140,7 +145,7 @@ async function loginUser() {
     .catch(function (error) {
       //  alert('You are not Logged in  ')
      // res = error.response.data.message[0];
-      alert(error)
+      console.log(error)
     });
 
 
@@ -308,7 +313,7 @@ function loadIt()
     // if(localStorage.getItem('user') == Object){
      
       document.getElementById('userValue').innerText = userFirstname + " " + userLastname;
-     
+      allfavorite();
     // }
 
     // document.getElementById('userValue').innerText = " ";
@@ -730,30 +735,23 @@ async function postNewReview(){
    }
   
 }
+
+
 async function postNewBooking(){
-  // var emailreview = document.getElementById("emailreview").value;
-  // var namereview = document.getElementById('namereview').value;
-  // var comment = document.getElementById('comment').value;
-  // rating =  document.getElementById('rg_total').value
 
-
-  if(puser != null && comment != ""){
+ 
       
   document.getElementById('loader-wrap').style.display = 'block';
        
       await axios.post('https://share.highflierstutors.com/api/order', {
 
-        // checkOut,
-        // checkOut
-        // Amount,
-        // paymentMode,
-        listingId: keepsinglelist
+       
     
       })  
       .then(function (response) {
 
         if(response.status == 200){
-  document.getElementById('loader-wrap').style.display = 'none';
+      document.getElementById('loader-wrap').style.display = 'none';
 
           frm = document.getElementById("add-comment");
           document.getElementById("reviewmessage").style.display="block";
@@ -771,10 +769,10 @@ async function postNewBooking(){
       })
     
    }
-   else{
-     alert('Only Logged In Users are allowed to review and also put a comment')
-   }
-}
+  
+
+    
+  
 async function findsinglelisting(){
   document.getElementById('loader-wrap').style.display = 'block';
 
@@ -801,13 +799,27 @@ async function findsinglelisting(){
        console.log(response.data.data[0].host.firstname)
 
        keepsinglehost = response.data.data[0].host.id;
- 
+      keepsinglespacetitle = response.data.data[0].listing.spaceTitle;
+      keepsinglespaceprice = response.data.data[0].listing.price
 
+      // '<option value="'+response.data.data[0].listing.price+'" selected disabled>'+response.data.data[0].listing.spaceTitle+'</option>';
        document.getElementById("listingspaceTitle").innerHTML = response.data.data[0].listing.spaceTitle;
        document.getElementById("listingEmail").innerHTML = response.data.data[0].host.email;
        document.getElementById("listingPhone").innerHTML = response.data.data[0].host.number;
        document.getElementById("listingAddress").innerHTML = response.data.data[0].listing.address;
-      //  document.getElementById("listing-item").innerHTML = response.data.data[0].listing.amenities;
+     //
+    //  document.getElementById("orderfirstname").value = response.data.data[0].user.firstname;
+    //  document.getElementById("orderlastname").value = response.data.data[0].user.lastname;
+    //  document.getElementById("orderemail").value = response.data.data[0].user.email;
+    // document.getElementById("orderphonee").value = response.data.data[0].user.phone;
+ 
+       document.getElementById("orderspacetitle").innerHTML = response.data.data[0].listing.spaceTitle;
+       document.getElementById("datetoday").innerHTML = new Date().toLocaleDateString();
+       document.getElementById("orderprice").innerHTML = response.data.data[0].listing.price;
+  
+   
+      //  document.getElementById('bookedprice').value = response.data.data[0].listing.price;
+       document.getElementById('bookedlisting').innerHTML =  '<option value="" selected disabled>'+response.data.data[0].listing.spaceTitle+'</option>'
        document.getElementById("listingAbout").innerHTML = response.data.data[0].listing.additionalInfo;
        document.getElementById("listingFullname").innerHTML = response.data.data[0].host.firstname+" "+response.data.data[0].host.lastname;
        document.getElementById("listingPrice").innerHTML = "NGN "+response.data.data[0].listing.price;
@@ -870,7 +882,34 @@ async function findsinglelisting(){
   })
 }
   
+function addBooking(){
 
+  var bookedlisting = document.getElementById("bookedlisting").value;
+  var CheckIn = document.getElementById('bookeddate').value.split('-')[0];
+  var CheckOut = document.getElementById('bookeddate').value.split('-')[1];
+  var Amount = document.getElementById('bookedprice').value;
+  // rating =  document.getElementById('rg_total').value
+
+
+  if(puser != null && comment != ""){
+
+
+  }
+    else{
+      if (confirm('Kindly login before you proceed')) {
+      
+        $('.modal-open').on("click", function (e) {
+          e.preventDefault();
+          $('.modal , .reg-overlay').fadeIn(200);
+          $("html, body").addClass("hid-body");
+        });
+  
+      } else {
+        // Do nothing!
+       
+      }
+}
+}
 // ==============================================================================================
 
 
@@ -1004,8 +1043,11 @@ async function findsinglelisting(){
                     // headers['content-type'] = 'multipart/form-data; boundary'
                   }
                 
-                  )  .then(function (response) {
-                    if (response == 200){
+                  )  .then(response =>  response.json())
+                  .then(json => {
+                  
+                  
+                    if (json == 200){
                       document.getElementById('loader-wrap').style.display = 'none';
                       
                       document.getElementById("listmessage").style.display="block";
@@ -1021,11 +1063,11 @@ async function findsinglelisting(){
                     }
                     else{
                       document.getElementById('loader-wrap').style.display = 'none';
-                      alert(response.error)
+                      // alert(response.error)
                     }
                   }).catch(function (error) {
                     document.getElementById('loader-wrap').style.display = 'none';
-                    alert('Fetch Error -', error);
+                    console.log('Fetch Error -', error);
                   });
 
                 
@@ -1049,6 +1091,7 @@ async function findsinglelisting(){
 
 
   async function allListing(){
+
     document.getElementById('loader-wrap').style.display = 'block';
     loadIt();   
 
@@ -1082,9 +1125,9 @@ async function findsinglelisting(){
             div.innerHTML = 
             '<div class="listing-item">'+
             '<article class = geodir-category-listing fl-wrap">'+
-                '<div class="geodir-category-img">'+
-                    '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
-                    '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
+                '<div class="geodir-category-img" style="max-height:100%; max-width:100%;" >'+
+                    '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="" >'+'</a>'+
+                    // '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
                       '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                     '</div>'+
                     '<div class="sale-window">Sale 20%</div>'+
@@ -1118,7 +1161,7 @@ async function findsinglelisting(){
                         '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
                     '</ul>'+
                     '<div class="geodir-category-footer fl-wrap">'+
-                        '<div class="geodir-category-price">Awg/Night <span>'+"NGN  "+  response.data.data[i].listing.price +'</span></div>'+
+                        '<div class="geodir-category-price">Per Day <span>'+"NGN  "+  response.data.data[i].listing.price +'</span></div>'+
                         '<div class="geodir-opt-list">'+
                             // '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
                             '<a class="geodir-js-favorite" id="'+response.data.data[i].listing.id+'" onclick="postNewFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favorite</span></a>'+
@@ -1140,9 +1183,9 @@ async function findsinglelisting(){
           var div =  document.createElement("div");
           div.innerHTML = 
           '<div class="listing-item">'+
-          '<article class = geodir-category-listing fl-wrap">'+
-              '<div class="geodir-category-img">'+
-                  '<a href="#" id="'+response.data.data[i].listing.id+'" onclick="getUserId(id)" return false;>'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[1]+'" alt="">'+'</a>'+
+          '<article class = geodir-category-listing fl-wrap" >'+
+              '<div class="geodir-category-img" style="max-height:100%; max-width:100%;" >'+
+                  '<a href="#" id="'+response.data.data[i].listing.id+'" onclick="getUserId(id)" return false;>'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
                   '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png " alt="">'+'</a>'+
                     '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                   '</div>'+
@@ -1277,10 +1320,6 @@ function getCity(){
     // console.log(result)
     let options = result.map(rl => '<option value="' + rl.city+ '">'+rl.city+'</option>').join('\n')
     let dropdown = document.getElementById('city');
-    // alert('retweet')
-    // alert(sool.value)
-    // console.log(keepnigeriastates)
-    // console.log(result)
     dropdown.innerHTML = '<option value="0" selected>Choose State</option>\n' + options;
 
 }
@@ -1349,50 +1388,107 @@ async function postNewFavorite(vid){
 }
 
 async function allfavorite(){
-  loadIt()
+
+  // loadIt()
+  // axios.get('https://share.highflierstutors.com/api/favorite')
+ 
+  await fetch('https://share.highflierstutors.com/api/favorite',{
+  
+    headers: {
+      Authorization: 'Bearer '  + localStorage.getItem('token')}
+})
+.then(response =>  response.json())
+.then(json => {
+//   console.log(json)
+console.log(json)
+
+  for (let i = 0;i < json.data.length;i++){
+
+     fetch('https://share.highflierstutors.com/api/listingfind/'+json.data[i].listingId+'',{
+
+    
+    headers: {
+      Authorization: 'Bearer '  + localStorage.getItem('token')}
+})
+.then(response =>  response.json())
+.then(res => {
+  console.log(res)
+
+  var li =  document.createElement("li");
+
+      li.innerHTML = 
+      '<li class="clearfix" style="cursor: pointer;">'+
+        '<a  id="'+res.data[0].listing.id+'" onclick=getUserId(id) class="widget-posts-img"><img src="images/gal/7.jpg" class="respimg"alt="">'+
+          '<div class="widget-posts-descr">'+
+              '<a >'+res.data[0].listing.spaceTitle+'</a>'+
+              '<div class="listing-rating card-popup-rainingvis" data-starrating2="5">'+
+              '</div>'+
+              '<div class="geodir-category-location fl-wrap"><a ><i class="fas fa-map-marker-alt"></i>'+res.data[0].listing.spaceDetails+'</a></div>'+
+              '<span class="rooms-price">NGN '+res.data[0].listing.price+' <strong> / Day</strong></span>'+
+          '</div>'+
+          '</a>'+
+      '</li>'
+   
+      var ele = document.getElementById('favoritelist');
+  
+      ele.append(li);
+      document.getElementById('favoritecounter').innerText = json.data.length;
+});
+    // if(response.data.data[i] != undefined){
+
+ 
+   
+      
+     }
+
+  
+ 
+  
+  })
+    .catch(function (err) {
+      console.error('Fetch Error -', err);
+   } );
+  
 }
+
 async function getHomeStates(){
+  loadIt();
   // var emailreview = document.getElementById("emailreview").value;
   // var namereview = document.getElementById('namereview').value;
   // var comment = document.getElementById('comment').value;
   // rating =  document.getElementById('rg_total').value
 
 
-  if(puser != null && comment != ""){
-      
   document.getElementById('loader-wrap').style.display = 'block';
        
       await axios.get('https://share.highflierstutors.com/api/ngstatecities', {
 
-        // checkOut,
-        // checkOut
-        // Amount,
-        // paymentMode,
-        listingId: keepsinglelist
-    
+       
       })  
       .then(function (response) {
 
         if(response.status == 200){
           document.getElementById('loader-wrap').style.display = 'none';
+          console.log(response.data.data);
+          // for (let i = 1;i < 9;i++){
 
-          frm = document.getElementById("add-comment");
-          document.getElementById("reviewmessage").style.display="block";
-          document.getElementById("reviewmessage").innerHTML="Your review is successfully submitted!"
-          document.getElementById("reviewmessage").style.backgroundColor= "lightgreen"
-          document.getElementById("reviewmessage").style.color= "white"
-          setTimeout(function(){
-            document.getElementById("reviewmessage").style.display="none";
-            },3000);
-            frm.reset();  // 
+          document.getElementById('state1').innerText = response.data.data[0].admin_name;
+          document.getElementById('state2').innerText = response.data.data[14].admin_name;
+          document.getElementById('state3').innerText = response.data.data[12].admin_name;     
+          document.getElementById('state4').innerText = response.data.data[3].admin_name;
+          document.getElementById('state5').innerText = response.data.data[22].admin_name;
+          document.getElementById('state6').innerText = response.data.data[5].admin_name;
+          document.getElementById('state7').innerText = response.data.data[25].admin_name;
         }
       
       
         
       })
     
-   }
-   else{
-     alert('Only Logged In Users are allowed to review and also put a comment')
-   }
+   
+ 
+}
+
+async function cityListing(cityid){
+alert(cityid)
 }

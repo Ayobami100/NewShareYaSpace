@@ -79,7 +79,8 @@
                 <div class="header-inner fl-wrap">
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-                         <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter">0</span></div>
+                         <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></div>
+
                         <div class="header-user-menu">
                             <div class="header-user-name" id="dropit">
                                 <span><img  id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
@@ -168,7 +169,15 @@
                         </div>
                         <!-- navigation  end -->
                         <!-- wishlist-wrap-->
-                        
+                       <div class="wishlist-wrap scrollbar-inner novis_wishlist" >
+                    <div class="box-widget-content">
+                        <div class="widget-posts fl-wrap">
+                            <ul id="favoritelist">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                         <!-- wishlist-wrap end-->
                     </div>
                 </div>
@@ -731,7 +740,7 @@
                                 <div id="tab-1" class="tab-content">
                                        <h3>Sign-in to  <span>ShareYa<strong>Space</strong></span></h3>
                                     <div class="custom-form">
-                                      <form method="post"  name="registerform" onsubmit="return false;">
+                                       <form method="post" id="loginform"  name="registerform" onsubmit="return false;">
                                              <label>Username or Email Address <span>*</span> </label>
                                             <input name="email" type="email"  id="email1" onClick="this.select()" value="" required>
                                             <label class="formerror">Please enter a valid email <span></span></label>
