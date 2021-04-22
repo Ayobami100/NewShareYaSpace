@@ -3558,6 +3558,31 @@ input[type=number]
 	padding:20px;
 	z-index:2;
 }
+/* =========================================================================================== */
+.input-container input {
+    /* border: none;
+    box-sizing: border-box;
+    outline: 0;
+    padding: .75rem;
+    position: relative;
+    width: 100%; */
+}
+
+.daty::-webkit-calendar-picker-indicator {
+    /* background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto; */
+}
+
+
+/* ======================================================================================== */
 .geodir-category-img {
 	float:left;
 	width:100%;

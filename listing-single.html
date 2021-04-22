@@ -781,7 +781,7 @@
                                                             <div class="cal-item">
                                                                 <div class="bookdate-container  fl-wrap">
                                                                     <label><i class="fal fa-calendar-check"></i> When </label>
-                                                                    <input type="text"  id="bookeddate"  placeholder="Date In-Out" name="bookdates"   value=""/>
+                                                                    <input type="text"  id="checkdate"  placeholder="Date In-Out" name="bookdates"   value="" readonly/>
                                                                     <!-- <div class="bookdate-container-dayscounter"><i class="far fa-question-circle"></i><span>Days : <strong>0</strong></span></div> -->
                                                                 </div>
                                                             </div>
@@ -791,7 +791,7 @@
                                                         </fieldset>
                                                         <!-- <input type="number"  id="totaldays" name="qty5" class="hid-input"> -->
                                                         <!-- <div class="total-coast fl-wrap"><strong>Total Cost</strong> <span>NGN <input type="text" name="grand_total" id="bookedprice" value="" data-form="SUM({item_total})"></span></div> -->
-                                                        <button class="btnaplly color2-bg book-btn" onclick="checkAvailable()">Check Now<i class="fal fa-paper-plane"></i></button>
+                                                        <button class="" onclick="checkAvailable()">Check Now<i class="fal fa-paper-plane"></i></button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -1101,12 +1101,7 @@
                                                                     <label>Country </label>
                                                                     <div class="listsearch-input-item ">
                                                                         <select data-placeholder="Your Country" class="chosen-select no-search-select" >
-                                                                            <option>United states</option>
-                                                                            <option>Asia</option>
-                                                                            <option>Australia</option>
-                                                                            <option>Europe</option>
-                                                                            <option>South America</option>
-                                                                            <option>Africa</option>
+                                                                            
                                                                         </select>
                                                                     </div>
                                                                 </div>

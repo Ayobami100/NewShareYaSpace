@@ -88,7 +88,7 @@
             <div class="header-inner fl-wrap">
                 <div class="container">
                     <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-                        <div class="wishlist-link"><a href="favorite.html"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></a></div>
+                        <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></div>
 
                     <div class="header-user-menu">
                         <div class="header-user-name" id="dropit">
@@ -168,125 +168,118 @@
                             <!-- profile-edit-container-->
                             <div class="profile-edit-container">
                                 <div class="custom-form">
-                                    <div class="col-sm-3">
-                                        <!-- <label>Upload Image</label> 
-                                                <div class="add-list-media-wrap">
-                                                    <form class="fuzone">
-                                                        <div class="fu-text">
-                                                            <span><i class="fal fa-image"></i> Click here or drop image to upload</span>
-                                                        </div>
-                                                        <input type="file" class="uplnb oad">
-                                                    </form>
-                                                </div> -->
-
-
-                                        <!-- <div id="profile-container">
-                                                    <img id="profileImage" src=""/>
-                                                </div>
-                                                <input id="imageUpload" type="file" name="profile_photo" placeholder="photo" required="" capture> -->
+                                    <div class="">
+                                     
                                         <form method="post" name="registerform" onsubmit="return false;">
-                                            <p><input type="file" accept="image/*" name="image" id="file"
-                                                    onchange="loadFile(event)" style="display: none;"></p>
-                                            <!-- <button><label for="file" style="cursor: pointer;">Upload Image</label></button> -->
-                                            <p><img id="output" width="200" /></p>
-                                            <input type="file" id="img" onchange="validateImage()">
-                                            <p id="imageUrl"></p>
-                                    </div>
+                                            <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>
+                                                    <!-- <button><label for="file" style="cursor: pointer;">Upload Image</label></button> -->
+                                                    <p><img id="output" width="200" /></p>
+                                                    <input type="file" id="img" onchange="validateImage()">
+                                                    <p id="imageUrl"></p>
+                                        
 
-                                    <label>Your First Name <i class="far fa-user"></i></label>
-                                    <input type="text" placeholder="Enter First Name" value="" id="firstname" required />
-                                    <label>Your Last Name <i class="far fa-user"></i></label>
-                                    <input type="text" placeholder="Enter Last Name" value="" id="lastname" required />
-                                    <label>Email Address<i class="far fa-envelope"></i> </label>
-                                    <input type="email" placeholder="username@example.com" value="" id="emailreg"
-                                        required />
-                                    <label for="start">Date of Birth<i class="far fa-calendar"></i></label>
+                                            <label>Your First Name <i class="far fa-user"></i></label>
+                                            <input type="text" placeholder="Enter First Name" value="" id="firstname" required />
+                                            <label>Your Last Name <i class="far fa-user"></i></label>
+                                            <input type="text" placeholder="Enter Last Name" value="" id="lastname" required />
+                                            <label>Email Address<i class="far fa-envelope"></i> </label>
+                                            <input type="email" placeholder="username@example.com" value="" id="emailreg"
+                                                required />
+                                           
+                                                <label for="start">Date of Birth<i class="far fa-calendar"></i></label>
 
-                                    <input type="date" id="start" name="trip-start" value="2021-01-01" min="1930-01-01"
-                                        max="2020-01-01" required>
+                                                <div class="datepicker-toggle">
+                                                    <span class="datepicker-toggle-button"></span>
+                                                    <input type="date" class="datepicker-input">
+                                                </div>
+                                          
+                                            <!-- <input type="date" id="start" name="trip-start" value="2021-01-01" min="1930-01-01"
+                                                max="2020-01-01" required> -->
 
-                                    <label> Country <i class="far fa-globe"></i> </label>
-                                        <select required name="country" id="country" selected disabled id="country">
-                                            <option value="nigeria">Nigeria</option>
-                                        </select>
-
-                                    <label>Phone<i class="far fa-phone"></i> </label>
-                                        <input type="text" value="+234" id="phone" required />
-
-                                    <label> Address <i class="fas fa-map-marker"></i> </label>
-                                    <input type="text" placeholder="No 234 Iyana ipaja Lagos State" value=""
-                                        id="address" required />
-
-                                    <label> Password <i class="far fa-lock"></i> </label>
-                                    <input type="password" placeholder="Enter Password" value="" id="password" required />
-
-                                    <label> Confirm Password <i class="far fa-lock"></i> </label>
-                                    <input type="password" placeholder="Confirm Password" value="" required />
-
-                                </div>
-                            </div>
-                            <!-- profile-edit-container end-->
-                            <div class="box-widget-item-header mat-top">
-                                <h3>Student Information</h3>
-                            </div>
-                            <!-- profile-edit-container-->
-                            <div class="profile-edit-container add-list-container">
-                                <div class="custom-form">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="" style="margin-top: -10px;">
-                                                <label> Are you a Student? <i class="far fa-unlock"></i> </label>
-                                                <select name="school" id="school" onchange="findStudent()">
-                                                    <option value="0" selected>Are you?</option>
-                                                    <option value="yes">Yes</option>
-                                                    <option value="no">No</option>
-                                                </select> 
-                                            </div>
-
-                                            <div id="studentdetails" style="padding:70px; margin-top: 30px; display: none;">
-                                                <label> Choose Your School <i class="far fa-school"></i> </label>
-                                                <select name="school" id="school">
-                                                    <option value="nigeria">Ekiti State University</option>
-                                                    <option value="nigeria">University of Ilorin</option>
-                                                    <option value="nigeria">University of Ibadan</option>
+                                            <label> Country <i class="far fa-globe"></i> </label>
+                                                <select required name="country" id="country" selected disabled id="country">
+                                                    <option value="nigeria">Nigeria</option>
                                                 </select>
 
-                                                <label> Course of Study <i class="fas fa-book"></i> </label>
-                                                <input type="text" placeholder="Mass Communication" value="" id="cos" />
+                                            <label>Phone<i class="far fa-phone"></i> </label>
+                                                <input type="text" value="+234" id="phone" required />
 
-                                                <label> Matriculation Number<i class="fas fa-book"></i> </label>
-                                                <input type="text" placeholder="Nas/13062" value="" id="mat" />
+                                            <label> Address <i class="fas fa-map-marker"></i> </label>
+                                            <input type="text" placeholder="No 234 Iyana ipaja Lagos State" value=""
+                                                id="address" required />
+
+                                            <label> Password <i class="far fa-lock"></i> </label>
+                                            <input type="password" placeholder="Enter Password" value="" id="password" required />
+
+                                            <label> Confirm Password <i class="far fa-lock"></i> </label>
+                                            <input type="password" placeholder="Confirm Password" value="" required />
+
+                                     
+                                            <!-- profile-edit-container end-->
+                                            <div class="box-widget-item-header mat-top">
+                                                <h3>Student Information</h3>
                                             </div>
-                                        </div>
-                                        <!--col end-->
-                                        <!--col -->
-                                        <div class="col-md-4">
-                                            <!-- <div class="add-list-media-header">
-                                                <label class="radio inline">
-                                                    <input type="radio" name="gender" onclick="findStudent()" checked>
-                                                    <span>No</span>
-                                                </label>
-                                            </div> -->
-                                        </div>
-                                        <!--col end-->
+                                            <!-- profile-edit-container-->
+                                            <div class="profile-edit-container add-list-container">
+                                                <div class="custom-form">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="" style="margin-top: -10px;">
+                                                                <label> Are you a Student? <i class="far fa-unlock"></i> </label>
+                                                                <select name="school" id="school" onchange="findStudent()">
+                                                                    <option value="0" selected>Are you?</option>
+                                                                    <option value="yes">Yes</option>
+                                                                    <option value="no">No</option>
+                                                                </select> 
+                                                            </div>
 
-                                        <!--col end-->
+                                                            <div id="studentdetails" style="padding:70px; margin-top: 30px; display: none;">
+                                                                <label> Choose Your School <i class="far fa-school"></i> </label>
+                                                                <select name="school" id="school">
+                                                                    <option value="nigeria">Ekiti State University</option>
+                                                                    <option value="nigeria">University of Ilorin</option>
+                                                                    <option value="nigeria">University of Ibadan</option>
+                                                                </select>
+
+                                                                <label> Course of Study <i class="fas fa-book"></i> </label>
+                                                                <input type="text" placeholder="Mass Communication" value="" id="cos" />
+
+                                                                <label> Matriculation Number<i class="fas fa-book"></i> </label>
+                                                                <input type="text" placeholder="Nas/13062" value="" id="mat" />
+                                                            </div>
+                                                        </div>
+                                                        <!--col end-->
+                                                        <!--col -->
+                                                        <div class="col-md-4">
+                                                            <!-- <div class="add-list-media-header">
+                                                                <label class="radio inline">
+                                                                    <input type="radio" name="gender" onclick="findStudent()" checked>
+                                                                    <span>No</span>
+                                                                </label>
+                                                            </div> -->
+                                                        </div>
+                                                        <!--col end-->
+
+                                                        <!--col end-->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="profile-edit-container">
+                                                <div class="custom-form">
+                                                    <button class="btn color2-bg  float-btn" onclick="registerUser()">Submit<i class="fal fa-save"></i></button>
+
+                                                </div>
+                                            </div>
+                                            <!-- profile-edit-container end-->
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="profile-edit-container">
-                                <div class="custom-form">
-                                    <button class="btn color2-bg  float-btn" onclick="registerUser()">Submit<i class="fal fa-save"></i></button>
-
-                                </div>
-                            </div>
-                            <!-- profile-edit-container end-->
-                            </form>
+                            <!-- dashboard-list-box end-->
                         </div>
-                        <!-- dashboard-list-box end-->
+                        <!-- dasboard-wrap end-->
                     </div>
-                    <!-- dasboard-wrap end-->
                 </div>
             </section>
 

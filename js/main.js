@@ -270,9 +270,8 @@ function logOff() {
   if (confirm('Are you sure you want to sign out?')) {
     
     localStorage.clear();
-    location.reload();
     window.location.href = 'index.html';
-   
+   loadIt();
   } else {
     // Do nothing!
    
@@ -1130,7 +1129,7 @@ function addBooking(){
             '<div class="listing-item" id="listing-item">'+
             '<article class="geodir-category-listing fl-wrap">'+
                 '<div class="geodir-category-img">'+
-                    '<a onclick="crosscheckFavorite(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
+                    '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
                     '<div class="listing-avatar">'+'<a id="crosscheckFavorite(id)">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
                       '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                     '</div>'+
@@ -1148,10 +1147,10 @@ function addBooking(){
                     '<div class="geodir-category-content-title fl-wrap">'+
                         '<div class="geodir-category-content-title-item">'+
                             '<h3 class="title-sin_map">'+
-                            '<a href="#" onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
+                            '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
                             '</h3>'+
                             '<div class="geodir-category-location fl-wrap">'+
-                            '<a  id="'+response.data.data[i].listing.id+' onclick="crosscheckFavorite(id)" class="map-item">'+
+                            '<a  id="'+response.data.data[i].listing.id+' onclick="getUserId(id)" class="map-item">'+
                               '<i class="fas fa-map-marker-alt"></i>'+
                               response.data.data[i].listing.address+
                               '</a>'+
@@ -1193,7 +1192,7 @@ function addBooking(){
           '<div class="listing-item" id="listing-item">'+
           '<article class="geodir-category-listing fl-wrap">'+
           '<div class="geodir-category-img">'+
-              '<a onclick="crosscheckFavorite(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
+              '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
               '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
                 '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
               '</div>'+
@@ -1210,7 +1209,7 @@ function addBooking(){
               '<div class="geodir-category-content-title fl-wrap">'+
                   '<div class="geodir-category-content-title-item">'+
                       '<h3 class="title-sin_map">'+
-                      '<a onclick="crosscheckFavorite(id)" id="'+response.data.data[i].listing.id+'" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
+                      '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
                       '</h3>'+
                       '<div class="geodir-category-location fl-wrap">'+
                       '<a  id="'+response.data.data[i].listing.id+' onclick="crosscheckFavorite(id)" class="map-item">'+
@@ -1381,7 +1380,9 @@ async function postNewFavorite(vid){
               }
               favoptions.push(response.data.data)
               document.getElementById('loader-wrap').style.display = 'none';
-              window.location.reload()
+              // window.location.reload()
+
+              
               // favorite = document.getElementById('favoritecounter');
         
               // document.getElementById(vid).style.display = "none";
@@ -1552,4 +1553,24 @@ async function getHomeStates(){
 
 async function cityListing(cityid){
 alert(cityid)
+}
+function checkAvailable(){
+var checkbegin = document.getElementById('checkdate').value.split('-')[0];
+var checkend = document.getElementById('checkdate').value.split('-')[1];
+
+// To calculate the time difference of two dates
+var Difference_In_Time = checkend - checkbegin;
+  
+// To calculate the no. of days between two dates
+var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+  
+//To display the final no. of days (result)
+console.log("Total number of days between dates  <br>"
+               + checkbegin + "<br> and <br>" 
+               + checkend + " is: <br> " 
+               + Difference_In_Days);
+
+               alert(checkbegin)
+               alert(checkend)
+               alert(Difference_In_Days)
 }

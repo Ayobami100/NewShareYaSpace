@@ -407,13 +407,14 @@ function  initShareYaSpace() {
         decimalPlaces: 1,
         emptyAsZero: false
     });
-
+    var dateToday = new Date();
     $('input[name="header-search"]').daterangepicker({
         autoUpdateInput: false,
         parentEl: $(".date-parent"),
         locale: {
             cancelLabel: 'Clear'
-        }
+        },
+        minDate: dateToday
     });
     $('input[name="header-search"]').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
@@ -426,7 +427,8 @@ function  initShareYaSpace() {
         parentEl: $(".date-container"),
         locale: {
             cancelLabel: 'Clear'
-        }
+        },
+        minDate: dateToday
     });
     $('input[name="dates"]').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
@@ -439,7 +441,8 @@ function  initShareYaSpace() {
         parentEl: $(".bookdate-container"),
         locale: {
             cancelLabel: 'Clear'
-        }
+        },
+        minDate: dateToday
     });
     $('input[name="bookdates"]').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
@@ -460,8 +463,33 @@ function  initShareYaSpace() {
         parentEl: $(".main-date-parent"),
         locale: {
             cancelLabel: 'Clear'
-        }
+        },
+        minDate: dateToday
     });
+    // ============================================================
+
+   
+    // $('input[name="birthdates"]').on('apply.datepicker', function (ev, picker) {
+    //     $(this).val(picker.date.format('MM/DD/YYYY'));
+    // });
+    // $('input[name="birthdates"]').on('cancel.datepicker', function (ev, picker) {
+    //     $(this).val('');
+    // });
+    // $('input[name="birthdates"]').daterangepicker({
+    //     autoUpdateInput: false,
+    //     drops: "up",
+    //     parentEl: $(".main-date-parent3"),
+    //     locale: {
+    //         cancelLabel: 'Clear'
+    //     }
+    // });
+    // $('input[name="birthdates"]').on('apply.datepicker', function (ev, picker) {
+    //     $(this).val(picker.date.format('MM/DD/YYYY'));
+    // });
+    // $('input[name="birthdates"]').on('cancel.datepicker', function (ev, picker) {
+    //     $(this).val('');
+    // });
+    // ==========================================
     $('input[name="main-input-search"]').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
     });
@@ -474,7 +502,8 @@ function  initShareYaSpace() {
         parentEl: $(".main-date-parent3"),
         locale: {
             cancelLabel: 'Clear'
-        }
+        },
+        minDate: dateToday
     });
     $('input[name="main-input-search_slider"]').on('apply.daterangepicker', function (ev, picker) {
         $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
@@ -1037,14 +1066,23 @@ function  initShareYaSpace() {
     });
     $(".book-btn").on("click", function (e) {
 		e.preventDefault();
-        // document.getElementById('userValue') != null ;
-        if(document.getElementById('userValue').innerText == null){
-            // showBookingForm ();
-            alert('yes')
-        }
+        $(document).ready(function(){
+            if ($("#userValue").html().length > 0) {
+                showBookingForm ();
+             
+          
+            }   
+            
         else{
-            alert('no')
-        }
+           
+       
+            $('.modal , .reg-overlay').fadeIn(200);
+            $("html, body").addClass("hid-body");
+          
+        }                                        
+          })
+           
+       
   		
     });	
 }
