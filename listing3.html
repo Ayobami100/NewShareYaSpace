@@ -9,15 +9,34 @@
         <meta name="keywords" content=""/>
         <meta name="description" content=""/>
         <!--=============== css  ===============-->
+
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/plugins.css">
         <link type="text/css" rel="stylesheet" href="css/style.css">
         <link type="text/css" rel="stylesheet" href="css/color.css">
+
+
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
+
+        <style>
+            /* .read-more{
+                cursor:pointer;
+                margin-bottom: 20px;
+                color: red;
+                padding: 10px;
+            }
+            .content{
+                background-color: #fff;
+                min-height: 300px;
+                margin: 0 auto;
+                /* width: 600px; */
+           
+        </style>
     </head>
-     <body onload="loadIt()">
-        <!--loader-->
+    
+     <body onload="allListing()">
+        <!--loader-->    
       <div class="loader-wrap" id="loader-wrap">
      
             <div class="pin">
@@ -28,185 +47,102 @@
         <!-- Main  -->
         <div id="main">
             <!-- header-->
-            <header class="main-header">
-                <!-- header-top-->
-                <div class="header-top fl-wrap">
-                    <div class="container">
-                        <div class="logo-holder">
-                            <a href="index.html"><img src="images/logo.png" alt=""></a>
-                        </div>
-                        <a href="add-listing.html" class="add-Listing">Add Your Listing <span><i class="far fa-plus"></i></span></a>                     
-                        <div class="show-reg-form modal-open"><i class="fa fa-sign-in"></i>Sign In</div>
-                       
+        <header class="main-header">
+            <!-- header-top-->
+            <div class="header-top fl-wrap">
+                <div class="container">
+                    <div class="logo-holder">
+                        <a href="index.html"><img src="images/logo.png" alt=""></a>
                     </div>
-                </div>
-                <!-- header-top end-->
-                <!-- header-inner-->
-                <div class="header-inner fl-wrap">
-                    <div class="container">
-                        <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-                                                  <div class="wishlist-link"><a href="favorite.html"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></a></div>
+                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Listing <span><i
+                                class="far fa-plus"></i></span></a>
+                    <a href="register.html" id="reg" class="add-Listing">Register <span><i
+                                class="far fa-plus"></i></span></a>
+                    <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
+                    <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out
+                    </div>
 
-                        <div class="header-user-menu">
-                            <div class="header-user-name">
-                                <span><img src="images/avatar/4.jpg" alt=""></span>
-                                My account
-                            </div>
-                             <ul>
-                                <li><a href="myprofile.html"> Edit profile</a></li>
-                                <li><a href="listing-table.html"> My Listing</a></li>
-                                <li><a href="bookings.html">  Bookings  </a></li>
-                                <li><a href="review.html"> Reviews </a></li>
-                                 <li><a href="#" onclick="logOff()">Log Out</a></li>
+                </div>
+            </div>
+            <!-- header-top end-->
+            <!-- header-inner-->
+            <div class="header-inner fl-wrap">
+                <div class="container">
+                    <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
+                        <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></div>
+
+                    <div class="header-user-menu">
+                        <div class="header-user-name" id="dropit">
+                            <span><img id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
+                            <div id="userValue"></div>
+                        </div>
+                        <ul>
+                            <li><a href="myprofile.html"> Edit profile</a></li>
+                            <li><a href="listing-table.html"> My Listing</a></li>
+                            <li><a href="bookings.html"> Bookings </a></li>
+                            <li><a href="review.html"> Reviews </a></li>
+                            <li><a href="#" onclick="logOff()">Log Out</a></li>
+                        </ul>
+                    </div>
+                    <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
+                    <!-- nav-button-wrap-->
+                    <div class="nav-button-wrap color-bg">
+                        <div class="nav-button">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <!-- nav-button-wrap end-->
+                    <!--  navigation -->
+                    <div class="nav-holder main-menu">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="index.html" class="act-link">Home </a>
+
+                                </li>
+                                <li>
+                                   <a href="listing.html">Listings </a>
+
+                                </li>
+
+                                <li>
+                                    <a href="#">Pages <i class="fas fa-caret-down"></i></a>
+                                    <!--second level -->
+                                    <ul>
+                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="contacts.html">Contacts</a></li>
+
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- navigation  end -->
+                    <!-- wishlist-wrap-->
+                    <div class="wishlist-wrap scrollbar-inner novis_wishlist" >
+                        <div class="box-widget-content">
+                        <div class="widget-posts fl-wrap">
+                            <ul id="favoritelist">
+                                
                             </ul>
                         </div>
-                        <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
-                        <!-- nav-button-wrap-->
-                        <div class="nav-button-wrap color-bg">
-                            <div class="nav-button">
-                                <span></span><span></span><span></span>
-                            </div>
-                        </div>
-                        <!-- nav-button-wrap end-->
-                        <!--  navigation -->
-                        <div class="nav-holder main-menu">
-                            <nav>
-                                <ul>
-                                    <li>
-                                        <a href="#">Home <i class="fas fa-caret-down"></i></a>
-                                        <!--second level -->
-                                        <ul>
-                                            <li><a href="index.html">Parallax Image</a></li>
-                                            <li><a href="index2.html">Slider</a></li>
-                                            <li><a href="index3.html">Video</a></li>
-                                            <li><a href="index4.html">Slideshow</a></li>
-                                        </ul>
-                                        <!--second level end-->
-                                    </li>
-                                    <li>
-                                        <a href="#" class="act-link">Listings <i class="fas fa-caret-down"></i></a>
-                                        <!--second level -->
-                                        <ul>
-                                            <li><a href="listing.html">Column map</a></li>
-                                            <li><a href="listing6.html">Column map 2</a></li>
-                                            <li><a href="listing2.html">Fullwidth Map</a></li>
-                                            <li><a href="listing3.html">Fullwidth Map 2</a></li>
-                                            <li><a href="listing4.html">Without Map</a></li>
-                                            <li><a href="listing5.html">Without Map 2</a></li>
-                                            <li>
-                                                <a href="#">Single <i class="fas fa-caret-down"></i></a>
-                                                <!--third  level  -->
-                                                <ul>
-                                                    <li><a href="listing-single.html">Style 1</a></li>
-                                                    <li><a href="listing-single2.html">Style 2</a></li>
-                                                    <li><a href="listing-single3.html">Style 3</a></li>
-                                                    <li><a href="listing-single4.html">Style 4</a></li>
-                                                </ul>
-                                                <!--third  level end-->
-                                            </li>
-                                        </ul>
-                                        <!--second level end-->
-                                    </li>
-                                    <li>
-                                        <a href="blog.html">News</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Pages <i class="fas fa-caret-down"></i></a>
-                                        <!--second level -->
-                                        <ul>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="contacts.html">Contacts</a></li>
-                                            <li><a href="author-single.html">User single</a></li>
-                                            <li><a href="help.html">Help FAQ</a></li>
-                                            <li><a href="pricing-tables.html">Pricing</a></li>
-                                            <li><a href="booking-single.html">Booking</a></li>
-                                            <li><a href="dashboard.html">User Dashboard</a></li>
-                                            <li><a href="blog2.html">Blog Classik</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                            <li><a href="add-listing.html">Add Listing</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                            <li><a href="invoice.html">Invoice</a></li>
-                                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                                        </ul>
-                                        <!--second level end-->
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                        <!-- navigation  end -->
-                        <!-- wishlist-wrap-->            
-                        
-                        <!-- wishlist-wrap end--> 
                     </div>
                 </div>
-                <!-- header-inner end-->
-                <!-- header-search -->
-                <div class="header-search vis-search">
-                    <div class="container">
-                        <div class="row">
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-4">
-                                <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Destination or Listing Name</label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
-                                    <input type="text" placeholder="Location" class="autocomplete-input" id="autocompleteid" value=""/>
-                                    <a href="#"><i class="fal fa-dot-circle"></i></a>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap date-parent">
-                                    <label>Date In-Out </label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="When" name="header-search"   value=""/>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->                             
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap">
-                                    <div class="quantity-item">
-                                        <label>Rooms</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Adults</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Children</label>
-                                        <div class="quantity">
-                                            <input type="number" min="0" max="3" step="1" value="0">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->                             
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-2">
-                                <div class="header-search-input-item fl-wrap">
-                                    <button class="header-search-button" onclick="window.location.href='listing.html'">Search <i class="far fa-search"></i></button>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->                                                          
-                        </div>
-                    </div>
-                    <div class="close-header-search"><i class="fal fa-angle-double-up"></i></div>
+                    <!-- wishlist-wrap end-->
                 </div>
-                <!-- header-search  end -->
-            </header>
+            </div>
+            <!-- header-inner end-->
+            <!-- header-search -->
+
+            <!-- header-search  end -->
+        </header>
             <!--  header end -->
             <!--  wrapper  -->
             <div id="wrapper">
                 <!-- content-->
                 <div class="content">
                     <!-- Map -->
-                    <div class="map-container  fw-map big_map hid-mob-map">
+                    <!-- <div class="map-container  fw-map big_map hid-mob-map">
                         <div id="map-main"></div>
                         <ul class="mapnavigation">
                             <li><a href="#" class="prevmap-nav">Prev</a></li>
@@ -214,7 +150,7 @@
                         </ul>
                         <div class="map-close"><i class="fas fa-times"></i></div>
 						<input id="pac-input" class="controls fl-wrap controls-mapwn" type="text" placeholder="What Nearby ?">
-                    </div>
+                    </div> -->
                     <!-- Map end -->
                     <div class="breadcrumbs-fs fl-wrap">
                         <div class="container">
@@ -227,10 +163,10 @@
                             <div class="row">
                                 <!--listing -->
                                 <div class="col-md-12">
-                                    <div class="mobile-list-controls fl-wrap mar-bot-cont">
+                                    <!-- <div class="mobile-list-controls fl-wrap mar-bot-cont">
                                         <div class="mlc show-hidden-column-map schm"><i class="fal fa-map-marked-alt"></i> Show Map</div>
                                         <div class="mlc show-list-wrap-search"><i class="fal fa-filter"></i> Filter</div>
-                                    </div>
+                                    </div> -->
                                     <!--list-wrap-search   -->
                                     <div class="list-wrap-search lisfw fl-wrap lws_mobile">
                                         <div class="container">
@@ -404,7 +340,7 @@
                                                     <h2>Results For : <span>New York </span></h2>
                                                 </div> -->
                                                 <!-- price-opt-->
-                                                <div class="price-opt">
+                                                <!-- <div class="price-opt">
                                                     <span class="price-opt-title">Sort results by:</span>
                                                     <div class="listsearch-input-item">
                                                         <select data-placeholder="Popularity" class="chosen-select no-search-select" >
@@ -414,7 +350,7 @@
                                                             <option>Price: high to low</option>
                                                         </select>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <!-- price-opt end-->
                                                 <!-- price-opt-->
                                                 <div class="grid-opt">
@@ -425,9 +361,12 @@
                                                 </div>
                                                 <!-- price-opt end-->                               
                                             </div>
+                                            <div id="totalListing">
+                                   
+                                            </div>
                                             <!-- list-main-wrap-opt end-->
                                             <!-- listing-item-container -->
-                                            <div class="listing-item-container init-grid-items fl-wrap three-columns-grid">
+                                            <div class="listing-item-container init-grid-items fl-wrap three-columns-grid" id="listingsy">
                                                 <!-- listing-item  -->
                                                 <div class="listing-item">
                                                     <article class="geodir-category-listing fl-wrap">
@@ -452,7 +391,24 @@
                                                                     <div class="geodir-category-location fl-wrap"><a href="#0" class="map-item"><i class="fas fa-map-marker-alt"></i> 27th Brooklyn New York, USA</a></div>
                                                                 </div>
                                                             </div>
-                                                            <p>Sed interdum metus at nisi tempor laoreet. Integer gravida orci a justo sodales.</p>
+                                                         
+                                                              <div>
+                                                                <p>
+                                                                    ppppppppppppppppppppppppp
+                                                                    pppppppppppppppppppppppppppppppppp
+                                                                    pppppppppppppppppppppppppppppppppppp
+                                                                    pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+                                                                    ppppppppppppppppppppppppp
+                                                                    ppppppppppppppppppppppppppppppppppp
+                                                                    pppppppppppppppppppppppppppppppppppppp
+                                                                    pppppppppppppppppppppppppppppppppppppp
+                                                                    pppppppppppppppppppppppppppppppppppppp
+                                                                    pppppppppppppSed interdum metus at nis
+                                                                    i tempor laoreet. Integer gravida orci a justo sodales.
+                                                                </p>
+                                                              </div>
+                                                            
+                                                            
                                                             <ul class="facilities-list fl-wrap">
                                                                 <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
                                                                 <li><i class="fal fa-parking"></i><span>Parking</span></li>
@@ -460,7 +416,7 @@
                                                                 <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
                                                             </ul>
                                                             <div class="geodir-category-footer fl-wrap">
-                                                                <div class="geodir-category-price">Awg/Night <span>$ 320</span></div>
+                                                                <div class="geodir-category-price">Per/Day <span>$ 320</span></div>
                                                                 <div class="geodir-opt-list">
                                                                     <a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>
                                                                     <a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>
@@ -504,7 +460,93 @@
                                                             </ul>
                                                             <div class="geodir-category-footer fl-wrap">
                                                                 <div class="geodir-opt-link">
-                                                                    <div class="geodir-category-price">Awg/Night <span>$ 120</span></div>
+                                                                    <div class="geodir-category-price">Per/Day <span>$ 120</span></div>
+                                                                </div>
+                                                                <div class="geodir-opt-list">
+                                                                    <a href="#1" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>2</strong></span></a>
+                                                                    <a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>
+                                                                    <a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                                <div class="listing-item">
+                                                    <article class="geodir-category-listing fl-wrap">
+                                                        <div class="geodir-category-img">
+                                                            <a href="listing-single.html"><img src="images/gal/4.jpg" alt=""></a>
+                                                            <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/2.jpg" alt=""></a>
+                                                                <span class="avatar-tooltip">Added By  <strong>Julie Cramp</strong></span>
+                                                            </div>
+                                                            <div class="sale-window big-sale">Sale 50%</div>
+                                                            <div class="geodir-category-opt">
+                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
+                                                                <div class="rate-class-name">
+                                                                    <div class="score"><strong>Good</strong>12 Reviews </div>
+                                                                    <span>4.2</span>                                             
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="geodir-category-content fl-wrap">
+                                                            <div class="geodir-category-content-title fl-wrap">
+                                                                <div class="geodir-category-content-title-item">
+                                                                    <h3 class="title-sin_map"><a href="listing-single.html">Grand Hero Palace</a></h3>
+                                                                    <div class="geodir-category-location fl-wrap"><a href="#1" class="map-item"><i class="fas fa-map-marker-alt"></i> W 85th St, New York,  USA</a></div>
+                                                                </div>
+                                                            </div>
+                                                            <p> Morbi suscipit erat in diam bibendum rutrum in nisl. Aliquam et purus ante.</p>
+                                                            <ul class="facilities-list fl-wrap">
+                                                                <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                                <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                                <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                                <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                            </ul>
+                                                            <div class="geodir-category-footer fl-wrap">
+                                                                <div class="geodir-opt-link">
+                                                                    <div class="geodir-category-price">Per/Day <span>$ 120</span></div>
+                                                                </div>
+                                                                <div class="geodir-opt-list">
+                                                                    <a href="#1" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>2</strong></span></a>
+                                                                    <a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>
+                                                                    <a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </article>
+                                                </div>
+                                                <div class="listing-item">
+                                                    <article class="geodir-category-listing fl-wrap">
+                                                        <div class="geodir-category-img">
+                                                            <a href="listing-single.html"><img src="images/gal/4.jpg" alt=""></a>
+                                                            <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/2.jpg" alt=""></a>
+                                                                <span class="avatar-tooltip">Added By  <strong>Julie Cramp</strong></span>
+                                                            </div>
+                                                            <div class="sale-window big-sale">Sale 50%</div>
+                                                            <div class="geodir-category-opt">
+                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
+                                                                <div class="rate-class-name">
+                                                                    <div class="score"><strong>Good</strong>12 Reviews </div>
+                                                                    <span>4.2</span>                                             
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="geodir-category-content fl-wrap">
+                                                            <div class="geodir-category-content-title fl-wrap">
+                                                                <div class="geodir-category-content-title-item">
+                                                                    <h3 class="title-sin_map"><a href="listing-single.html">Grand Hero Palace</a></h3>
+                                                                    <div class="geodir-category-location fl-wrap"><a href="#1" class="map-item"><i class="fas fa-map-marker-alt"></i> W 85th St, New York,  USA</a></div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="read-more" > Morbi suscipit erat in diam bibendum rutrum in nisl. Aliquam et purus ante.</p>
+                                                            <ul class="facilities-list fl-wrap">
+                                                                <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                                <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                                <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                                <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                            </ul>
+                                                            <div class="geodir-category-footer fl-wrap">
+                                                                <div class="geodir-opt-link">
+                                                                    <div class="geodir-category-price">Per/Day <span>$ 120</span></div>
                                                                 </div>
                                                                 <div class="geodir-opt-list">
                                                                     <a href="#1" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>2</strong></span></a>
@@ -516,185 +558,7 @@
                                                     </article>
                                                 </div>
                                                 <!-- listing-item end -->                                                  
-                                                <!-- listing-item  -->
-                                                <div class="listing-item">
-                                                    <article class="geodir-category-listing fl-wrap">
-                                                        <div class="geodir-category-img">
-                                                            <a href="listing-single.html"><img src="images/gal/6.jpg" alt=""></a>
-                                                            <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/3.jpg" alt=""></a>
-                                                                <span class="avatar-tooltip">Added By  <strong>Andy Moore</strong></span>
-                                                            </div>
-                                                            <div class="geodir-category-opt">
-                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                                                <div class="rate-class-name">
-                                                                    <div class="score"><strong>Good</strong>6 Reviews </div>
-                                                                    <span>4.7</span>                                             
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="geodir-category-content fl-wrap title-sin_item">
-                                                            <div class="geodir-category-content-title fl-wrap">
-                                                                <div class="geodir-category-content-title-item">
-                                                                    <h3 class="title-sin_map"><a href="listing-single.html">Park Central</a></h3>
-                                                                    <div class="geodir-category-location fl-wrap"><a href="#2" class="map-item"><i class="fas fa-map-marker-alt"></i>40 Journal Square Plaza, NJ,  USA</a></div>
-                                                                </div>
-                                                            </div>
-                                                            <p> Sed tempor iaculis massa faucibus feugiat. In fermentum facilisis massa.</p>
-                                                            <ul class="facilities-list fl-wrap">
-                                                                <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                                                <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                                                <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                                                <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                                            </ul>
-                                                            <div class="geodir-category-footer fl-wrap">
-                                                                <div class="geodir-opt-link">
-                                                                    <div class="geodir-category-price">Awg/Night <span>$ 80</span></div>
-                                                                </div>
-                                                                <div class="geodir-opt-list">
-                                                                    <a href="#2" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>3</strong></span></a>
-                                                                    <a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>
-                                                                    <a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                </div>
-                                                <!-- listing-item end -->                            
-                                                <!-- listing-item  -->
-                                                <div class="listing-item">
-                                                    <article class="geodir-category-listing fl-wrap">
-                                                        <div class="geodir-category-img">
-                                                            <a href="listing-single.html"><img src="images/gal/2.jpg" alt=""></a>
-                                                            <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/4.jpg" alt=""></a>
-                                                                <span class="avatar-tooltip">Added By  <strong>Mary Jones</strong></span>
-                                                            </div>
-                                                            <div class="sale-window">Sale 20%</div>
-                                                            <div class="geodir-category-opt">
-                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="3"></div>
-                                                                <div class="rate-class-name">
-                                                                    <div class="score"><strong>Pleasant</strong>10 Reviews </div>
-                                                                    <span>3.2</span>                                             
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="geodir-category-content fl-wrap title-sin_item">
-                                                            <div class="geodir-category-content-title fl-wrap">
-                                                                <div class="geodir-category-content-title-item">
-                                                                    <h3 class="title-sin_map"><a href="listing-single.html">Holiday Home</a></h3>
-                                                                    <div class="geodir-category-location fl-wrap"><a href="#3" class="map-item"><i class="fas fa-map-marker-alt"></i> 75 Prince St,  NY, USA</a></div>
-                                                                </div>
-                                                            </div>
-                                                            <p>  Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend.</p>
-                                                            <ul class="facilities-list fl-wrap">
-                                                                <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                                                <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                                                <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                                                <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                                            </ul>
-                                                            <div class="geodir-category-footer fl-wrap">
-                                                                <div class="geodir-opt-link">
-                                                                    <div class="geodir-category-price">Awg/Night <span>$ 50</span></div>
-                                                                </div>
-                                                                <div class="geodir-opt-list">
-                                                                    <a href="#3" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>4</strong></span></a>
-                                                                    <a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>
-                                                                    <a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                </div>
-                                                <!-- listing-item end -->                                                          
-                                                <!-- listing-item  -->
-                                                <div class="listing-item">
-                                                    <article class="geodir-category-listing fl-wrap">
-                                                        <div class="geodir-category-img">
-                                                            <a href="listing-single.html"><img src="images/gal/3.jpg" alt=""></a>
-                                                            <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/5.jpg" alt=""></a>
-                                                                <span class="avatar-tooltip">Added By  <strong>Fider Mamby</strong></span>
-                                                            </div>
-                                                            <div class="sale-window">Sale 10%</div>
-                                                            <div class="geodir-category-opt">
-                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                                                <div class="rate-class-name">
-                                                                    <div class="score"><strong>Very Good</strong>102 Reviews </div>
-                                                                    <span>4.7</span>                                             
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="geodir-category-content fl-wrap title-sin_item">
-                                                            <div class="geodir-category-content-title fl-wrap">
-                                                                <div class="geodir-category-content-title-item">
-                                                                    <h3 class="title-sin_map"><a href="listing-single.html">Gold Plaza Listing</a></h3>
-                                                                    <div class="geodir-category-location fl-wrap"><a href="#4" class="map-item"><i class="fas fa-map-marker-alt"></i> 34-42 Montgomery St , NY, USA</a></div>
-                                                                </div>
-                                                            </div>
-                                                            <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut nec tincidunt arcu, sit amet . </p>
-                                                            <ul class="facilities-list fl-wrap">
-                                                                <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                                                <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                                                <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                                                <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                                            </ul>
-                                                            <div class="geodir-category-footer fl-wrap">
-                                                                <div class="geodir-opt-link">
-                                                                    <div class="geodir-category-price">Awg/Night <span>$ 210</span></div>
-                                                                </div>
-                                                                <div class="geodir-opt-list">
-                                                                    <a href="#4" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>5</strong></span></a>
-                                                                    <a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>
-                                                                    <a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                </div>
-                                                <!-- listing-item end -->
-                                                <!-- listing-item  -->
-                                                <div class="listing-item">
-                                                    <article class="geodir-category-listing fl-wrap">
-                                                        <div class="geodir-category-img">
-                                                            <a href="listing-single.html"><img src="images/gal/5.jpg" alt=""></a>
-                                                            <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
-                                                                <span class="avatar-tooltip">Added By  <strong>Alisa Noory</strong></span>
-                                                            </div>
-                                                            <div class="sale-window big-sale">Sale 70%</div>
-                                                            <div class="geodir-category-opt">
-                                                                <div class="listing-rating card-popup-rainingvis" data-starrating2="4"></div>
-                                                                <div class="rate-class-name">
-                                                                    <div class="score"><strong> Good</strong>8 Reviews </div>
-                                                                    <span>4.1</span>                                             
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="geodir-category-content fl-wrap title-sin_item">
-                                                            <div class="geodir-category-content-title fl-wrap">
-                                                                <div class="geodir-category-content-title-item">
-                                                                    <h3 class="title-sin_map"><a href="listing-single.html">Moonlight Listing</a></h3>
-                                                                    <div class="geodir-category-location fl-wrap"><a href="#5" class="map-item"><i class="fas fa-map-marker-alt"></i> 70 Bright St New York, USA</a></div>
-                                                                </div>
-                                                            </div>
-                                                            <p> Class aptent taciti  Mauris ac maximus neque. Nam in mauris quis libero sodales eleifend.</p>
-                                                            <ul class="facilities-list fl-wrap">
-                                                                <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                                                <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                                                <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                                                <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                                            </ul>
-                                                            <div class="geodir-category-footer fl-wrap">
-                                                                <div class="geodir-opt-link">
-                                                                    <div class="geodir-category-price">Awg/Night <span>$ 105</span></div>
-                                                                </div>
-                                                                <div class="geodir-opt-list">
-                                                                    <a href="#5" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>6</strong></span></a>
-                                                                    <a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>
-                                                                    <a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </article>
-                                                </div>
-                                                <!-- listing-item end -->                         
+                                                                     
                                             </div>
                                             <!-- listing-item-container end-->
                                             <!-- pagination-->
@@ -960,10 +824,43 @@
         </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->
+       
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script src="js/main.js"></script>
+
         <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script> -->
+        <script>
+            // $(document).ready(function(){
+               
+                // var readMoreHtml =  $(".read-more").html();console.log(readMoreHtml)
+                // var lessText = readMoreHtml.substr(0,7);
+
+                // if(readMoreHtml.length > 10){
+                // $(".read-more").html(lessText).append("<a  class='read-more-link'>Show more</a>")
+                // console.log($(this).parent())
+                // console.log($(this))
+                // }
+                // else{
+                //     $(".read-more").html(readmorehtml)
+                // }
+
+                // $("body").on("click",'.read-more-link', function(){
+                //     alert('yyyyy')
+                //     $(".read-more").html(lessText).append("<a  class='show-less-link'>Show less</a>")
+                    // $(this).parent("read-more").html(readMoreHtml).append("<a href='' class='show-less-link'>Show less</a>")
+            //         alert('yyyyy')
+            //     });
+
+            //     $("body").on("click",".show-less-link", function(){
+            //         $(this).parent("read-more").html(readMoreHtml.substr(0,4)).append("<a class='read-more-link'>read-more</a>")
+            //     });
+            // })
+        </script>
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
+        
         <script type="text/javascript" src="js/mapplugins.js"></script>  
         <script type="text/javascript" src="js/maps.js"></script>        
     </body>

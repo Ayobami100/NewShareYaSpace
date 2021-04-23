@@ -1,4 +1,5 @@
 
+
 console.log(localStorage.getItem('token'))
 console.log(localStorage.getItem('favUser'))
 axios.interceptors.request.use(function (config) {
@@ -7,6 +8,8 @@ axios.interceptors.request.use(function (config) {
 
  return config;
 });
+
+
 
 let fav = 0 ;
 // document.getElementById('favoritecounter').innerHTML = localStorage.getItem('fav');
@@ -92,33 +95,70 @@ async function loginUser() {
 
   var email = document.getElementById("email1").value;
   var password = document.getElementById('password1').value;
+  // const form = document.querySelector("form[name='contact-form']");
+  // const nameInput = document.querySelector("input[name='password']");
+  // const emailInput = document.querySelector("input[name='email']");
+  // // const phoneInput = document.querySelector("input[name='phone']");
+  // // const messageInput = document.querySelector("textarea[name='message']");
+  
+  // nameInput.isValid = () => !!nameInput.value;
+  // emailInput.isValid = () => isValidEmail(emailInput.value);
+  // // phoneInput.isValid = () => isValidPhone(phoneInput.value);
+  // // messageInput.isValid = () => !!messageInput.value;
+  
+  // const inputFields = [nameInput, emailInput];
+  
+  // const isValidEmail = (email) => {
+  //   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  //   return re.test(String(email).toLowerCase());
+  // };
+  
+  // const isValidPhone = (phone) => {
+  //   const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+  //   return re.test(String(phone).toLowerCase());
+  // };
+  
+  // let shouldValidate = false;
+  // let isFormValid = false;
+  
+  // const validateInputs = () => {
+  //   console.log("we are here");
+  //   if (!shouldValidate) return;
+  
+  //   isFormValid = true;
+  //   inputFields.forEach((input) => {
+  //     input.classList.remove("invalid");
+  //     // input.nextElementSibling.classList.add("hide");
+  
+  //     if (!input.isValid()) {
+  //       input.classList.add("invalid");
+  //       isFormValid = false;
+  //       // input.nextElementSibling.classList.remove("hide");
+  //     }
+  //   });
+  // };
+  
+  // form.addEventListener("submit", (e) => {
+  //   e.preventDefault();
+    // shouldValidate = true;
+    // validateInputs();
+    if (email != "" && password != "") {
+   
+ 
+      document.getElementById('loader-wrap').style.display = 'block';
 
-  if (email == '') {
-    $('#email').next().show();
-    return false;
-  }
-  // if (IsEmail(email) == false) {
-  //   // $('.formerror').css('display', "block");
-  //   return false;
-  // }
-  if (password == '') {
-    return false
-  }
-  else
-  document.getElementById('loader-wrap').style.display = 'block';
 
   await axios.post('https://share.highflierstutors.com/api/login', {
 
     email: email,
-    password: password,
+    password: password
 
-  })
+  }) .then(function (response) {
+      console.log(response)
+      // alert(response)
+      if (response.status == 200) {
 
-    .then(function (response) {
-
-      if (response.data != undefined && response.data != null) {
-
-        document.getElementById('loader-wrap').style.display = 'none';
+       
         localStorage.setItem('token', response.data.token);
 
         console.log(response.data)
@@ -133,7 +173,7 @@ async function loginUser() {
          localStorage.setItem('DOB', response.data.user.DOB);
          localStorage.setItem('imgProfile', response.data.user.imgProfile);
   
-  
+         document.getElementById('loader-wrap').style.display = 'none';
          alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
         
          form = document.getElementById('loginform');
@@ -142,20 +182,34 @@ async function loginUser() {
        
   
       }
+      else{
+        document.getElementById('loader-wrap').style.display = 'none';
+        alert('These details does not match our record')
+      }
 
     
     })
 
     .catch(function (error) {
+      if(error){
+        document.getElementById('loader-wrap').style.display = 'none';
+        alert(error);
+        console.log(error)
+      }
       //  alert('You are not Logged in  ')
      // res = error.response.data.message[0];
-      console.log(error)
+     
     });
 
 
 
 }
+else{
+  document.getElementById('loader-wrap').style.display = 'none';
+        alert('Kindly fill all inputs')
 
+}
+}
 
 
 
@@ -1113,6 +1167,10 @@ function addBooking(){
         
       document.getElementById('loader-wrap').style.display = 'none';
         console.log(response.data)
+      
+          // var readMore = new ReadMore('#more');
+
+        
         for (let i = 0;i < response.data.data.length;i++){
           // console.log(response.data.data[i].listing.address)
           // console.log(response.data.data[i].listing.id)
@@ -1126,11 +1184,11 @@ function addBooking(){
          
             var div =  document.createElement("div");
             div.innerHTML = 
-            '<div class="listing-item" id="listing-item">'+
+            '<div class="listing-item">'+
             '<article class="geodir-category-listing fl-wrap">'+
                 '<div class="geodir-category-img">'+
                     '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
-                    '<div class="listing-avatar">'+'<a id="crosscheckFavorite(id)">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
+                    '<div class="listing-avatar">'+'<a id="getUserId(id)">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
                       '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                     '</div>'+
                    
@@ -1143,27 +1201,28 @@ function addBooking(){
                             '</div>'+
                         '</div>'+
                   '</div>'+
-                '<div class="geodir-category-content fl-wrap">'+
+                  '<div class="geodir-category-content fl-wrap">'+
                     '<div class="geodir-category-content-title fl-wrap">'+
-                        '<div class="geodir-category-content-title-item">'+
-                            '<h3 class="title-sin_map">'+
-                            '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
-                            '</h3>'+
-                            '<div class="geodir-category-location fl-wrap">'+
-                            '<a  id="'+response.data.data[i].listing.id+' onclick="getUserId(id)" class="map-item">'+
-                              '<i class="fas fa-map-marker-alt"></i>'+
-                              response.data.data[i].listing.address+
-                              '</a>'+
-                              '</div>'+
+                      '<div class="geodir-category-content-title-item">'+
+                        '<h3 class="title-sin_map">'+
+                        '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
+                        '</h3>'+
+                        '<div class="geodir-category-location fl-wrap">'+
+                          '<a  id="'+response.data.data[i].listing.id+' onclick="getUserId(id)" class="map-item">'+
+                            '<i class="fas fa-map-marker-alt"></i>'+
+                            response.data.data[i].listing.address+
+                          '</a>'+
+                        '</div>'+
                       '</div>'+
                     '</div>'+
+                  '</div>'+
                     '<p>'+  response.data.data[i].listing.spaceDetails +'</p>'+
-                    '<ul class="facilities-list fl-wrap">'+
-                        '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
-                      '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
-                        '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
-                        '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
-                    '</ul>'+
+                    // '<ul class="facilities-list fl-wrap">'+
+                    //     '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
+                    //   '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
+                    //     '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
+                    //     '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
+                    // '</ul>'+
                     '<div class="geodir-category-footer fl-wrap">'+
                         '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  response.data.data[i].listing.price +'</span></div>'+
                         '<div class="geodir-opt-list">'+
@@ -1175,10 +1234,11 @@ function addBooking(){
                 '</div>'+
                 '</article>'+
                 '</div>'
-            var element = document.getElementById("listing-item");
+            var element = document.getElementById("listingsy");
           
-            element.appendChild(div);
-            // alert('jjjj')
+            element.append(div);
+            // alert('jjjj')  
+           
             console.log(div)
             break;
           }
@@ -1188,19 +1248,20 @@ function addBooking(){
         else{
           
           var div1 =  document.createElement("div");
+          div1.id = 'more'
           div1.innerHTML = 
-          '<div class="listing-item" id="listing-item">'+
-          '<article class="geodir-category-listing fl-wrap">'+
-          '<div class="geodir-category-img">'+
-              '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
-              '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
-                '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
-              '</div>'+
-              '<div class="sale-window">Sale 20%</div>'+
-              ' <div class="geodir-category-opt">'+
-                '<div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>'+
-                  '<div class="rate-class-name">'+
-                      '<div class="score" id="score"><strong>Very Good</strong>No Reviews</div>'+
+          '<div class="gallery-item listing-item">'+
+            '<article class="geodir-category-listing fl-wrap">'+
+              '<div class="geodir-category-img">'+
+                '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
+                '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
+                  '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
+                '</div>'+
+              // '<div class="sale-window">Sale 20%</div>'+
+                  ' <div class="geodir-category-opt">'+
+                    '<div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>'+
+                      '<div class="rate-class-name">'+
+                          '<div class="score" id="score"><strong>No Comment</strong>No Reviews</div>'+
                           '<span>No Rating</span>'+
                       '</div>'+
                   '</div>'+
@@ -1212,20 +1273,31 @@ function addBooking(){
                       '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
                       '</h3>'+
                       '<div class="geodir-category-location fl-wrap">'+
-                      '<a  id="'+response.data.data[i].listing.id+' onclick="crosscheckFavorite(id)" class="map-item">'+
+                      '<a  id="'+response.data.data[i].listing.id+' onclick="getUserId(id)" class="map-item">'+
                         '<i class="fas fa-map-marker-alt"></i>'+
                         response.data.data[i].listing.address+
                         '</a>'+
                         '</div>'+
                 '</div>'+
               '</div>'+
-              '<p>'+  response.data.data[i].listing.spaceDetails +'</p>'+
-              '<ul class="facilities-list fl-wrap">'+
-                  '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
-                '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
-                  '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
-                  '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
-              '</ul>'+
+              // '<div  class="content">'+
+                // '<div >'+
+                    
+                      '<div id="more">'+ response.data.data[i].listing.spaceDetails +'</div>'+
+                     
+                    
+                // '<p></p>'+
+                
+                // '</div>'+
+               
+              // '</div>'+
+              
+              // '<ul class="facilities-list fl-wrap">'+
+              //     '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
+              //   '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
+              //     '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
+              //     '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
+              // '</ul>'+
               '<div class="geodir-category-footer fl-wrap">'+
                   '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  response.data.data[i].listing.price +'</span></div>'+
                   '<div class="geodir-opt-list">'+
@@ -1240,7 +1312,7 @@ function addBooking(){
 
           var ele = document.getElementById("listing-item");
         
-          ele.appendChild(div1);
+          ele.append(div1);
           
         }
       }
@@ -1251,6 +1323,7 @@ function addBooking(){
       }
     })
   .catch(function (err) {
+    document.getElementById('loader-wrap').style.display = 'none';
     console.error('Fetch Error -', err);
   });
 }
@@ -1292,6 +1365,7 @@ function populatecountry(){
 }
 function populatestate(){
   document.getElementById('loader-wrap').style.display = 'block';
+
   axios.get('https://share.highflierstutors.com/api/ngstatecities')
   .then(function (response) {
   if (response.status !== 200){
@@ -1319,7 +1393,10 @@ function populatestate(){
         
     }
 
-}  )
+}  )  .catch(function (err) {
+  document.getElementById('loader-wrap').style.display = 'none';
+  console.error('Fetch Error -', err);
+});
 }
 function getCity(){
   let sool = document.getElementById('state');
@@ -1395,9 +1472,10 @@ async function postNewFavorite(vid){
             } 
             )
         
-            .catch(function (err) {
-              console.error('Fetch Error -', err);
-            });
+             .catch(function (err) {
+    document.getElementById('loader-wrap').style.display = 'none';
+    console.error('Fetch Error -', err);
+  });
         
 
     
@@ -1407,23 +1485,29 @@ async function postNewFavorite(vid){
 
   
 }
-async function crosscheckFavorite(vid){
+function crosscheckFavorite(vid){
 
- 
-    for (let i = 0;i < favoptions.length;i++){
+   
+    console.log(favoptions)
+    if(puser != null){
+      for (let i = 0;i < favoptions.data.length;i++){
 
-        if(favoptions[i].listingId == vid){
+        if(favoptions.listingId == vid){
       
           alert('This listing is already your favourite')
           break;
         }
 
 
-        else if(favoptions[i].listingId != vid && i == favoptions.length-1){ 
+        else if(favoptions.data[i].listing.id != vid && i == favoptions.data.length-1){ 
           postNewFavorite(vid)
-         alert('000')
+        
         }
-       
+    }
+   
+    }
+    else{
+      alert('Kndly, login to proceed')
   }
 
 }
@@ -1440,13 +1524,13 @@ async function allfavorite(){
         })
         .then(response =>  response.json())
         .then(json => {
-          console.log(json)
+          console.log(json.data)
           console.log(userId)
 
-         favoptions = json.data.filter(favorites => favorites.userId == userId)
-        localStorage.setItem('favUser',json.data[0].userId)
-        console.log(json.data[0].userId)
-          console.log(favoptions.length)
+         favoptions = json.data.filter(favorites => favorites.listingDetails.listing.userId == userId)
+         localStorage.setItem('favUser',favoptions.length)
+        // console.log(json.data)
+          console.log(favoptions)
           document.getElementById('favoritecounter').innerText = favoptions.length;
 
           // for (let i = 0;i < favoptions.length;i++){
@@ -1454,22 +1538,23 @@ async function allfavorite(){
           //   groupedFav = favoptions[i];
            
           // }
-          console.log(favoptions[0]);loadAllFavoriteListing();
+         loadAllFavoriteListing();
   })
-    .catch(function (err) {
-      console.error('Fetch Error -', err);
-   });
+  .catch(function (err) {
+    document.getElementById('loader-wrap').style.display = 'none';
+    console.error('Fetch Error -', err);
+  });
   
 }
 async function loadAllFavoriteListing(){
 
 
-  for (let i = 0;i < favoptions.length;i++){
+  for (let i = 0;i < favoptions.data.length;i++){
 
     
     
   
-  await fetch('https://share.highflierstutors.com/api/listingfind/'+favoptions[i].listingId+'',{
+  await fetch('https://share.highflierstutors.com/api/listingfind/'+favoptions[i].listingDetails.listing.id+'',{
               
               
     headers: {
@@ -1491,7 +1576,7 @@ async function loadAllFavoriteListing(){
                         '<a >'+res.data[j].listing.spaceTitle+'</a>'+
                         '<div class="listing-rating card-popup-rainingvis" data-starrating2="5">'+
                         '</div>'+
-                        '<div class="geodir-category-location fl-wrap"><a ><i class="fas fa-map-marker-alt"></i>'+res.data[j].listing.spaceDetails+'</a></div>'+
+                        '<div class="geodir-category-location fl-wrap addReadMore showlesscontent"><a ><i class="fas fa-map-marker-alt"></i>'+res.data[j].listing.spaceDetails+'</a></div>'+
                         '<span class="rooms-price">NGN '+res.data[j].listing.price+' <strong> / Day</strong></span>'+
                     '</div>'+
                     '</a>'+
@@ -1506,9 +1591,10 @@ async function loadAllFavoriteListing(){
     
     
           // document.getElementById('favoritecounter').innerText = json.data.length;
-    }).catch(function (err) {
+    })  .catch(function (err) {
+      document.getElementById('loader-wrap').style.display = 'none';
       console.error('Fetch Error -', err);
-  })
+    });
 
 }
 }
@@ -1545,7 +1631,10 @@ async function getHomeStates(){
       
       
         
-      })
+      })  .catch(function (err) {
+        document.getElementById('loader-wrap').style.display = 'none';
+        console.error('Fetch Error -', err);
+      });
     
    
  
@@ -1574,3 +1663,8 @@ console.log("Total number of days between dates  <br>"
                alert(checkend)
                alert(Difference_In_Days)
 }
+
+// ==============================================================================
+
+
+

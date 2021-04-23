@@ -10,7 +10,7 @@
         <meta name="description" content=""/>
 
         <!-- =========================================================================== -->
-
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script type="module" >
         
             $(document).ready(function(){
@@ -119,7 +119,7 @@
                                         <!--second level end-->
                                     </li>
                                     <li>
-                                        <a href="listing.html">Listings </a>
+                                       <a href="listing.html">Listings </a>
                                         <!--second level -->
                                         <!-- <ul> -->
                                             <!-- <li><a href="listing.html">Column map</a></li>
@@ -255,11 +255,64 @@
                                 </div>
                                 <!-- list-main-wrap-opt end-->
                                 <!-- listing-item-container -->
-                                <div class="listing-item-container init-grid-items fl-wrap" id="listing-item" >
+                                <div class="listing-item-container init-grid-items fl-wrap col-list-wrap left-list" id="listing-item" >
                                     <!-- listing-item  -->                                    
                                     <!-- listing-item  -->
                               
-                               
+                                    <!-- <div class="gallery-item listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                            <div class="geodir-category-img">
+                                                <a href="listing-single.html"><img src="images/gal/8.jpg" alt=""></a>
+                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong>Alisa Noory</strong></span>
+                                                </div>
+                                                <div class="sale-window">Sale 20%</div>
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong>Very Good</strong>27 Reviews </div>
+                                                        <span>5.0</span>                                             
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item">
+                                                        <h3 class="title-sin_map"><a href="listing-single.html">Premium Plaza Listing</a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a href="#0" class="map-item"><i class="fas fa-map-marker-alt"></i> 27th Brooklyn New York, USA</a></div>
+                                                    </div>
+                                                </div>
+                                             
+                                                  <div id="more">
+                                                    
+                                                        ppppppppppppppppppppppppp
+                                                        pppppppppppppppppppppppppppppppppp
+                                                        pppppppppppppppppppppppppppppppppppp
+                                                        pppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp
+                                                        ppppppppppppppppppppppppp
+                                                        ppppppppppppppppppppppppppppppppppp
+                                                        pppppppppppppppppppppppppppppppppppppp.
+                                                    
+                                                  </div>
+                                                
+                                                
+                                                <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul>
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-category-price">Per/Day <span>$ 320</span></div>
+                                                    <div class="geodir-opt-list">
+                                                        <a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>
+                                                        <a href="#" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save</span></a>
+                                                        <a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div> -->
                                     <!-- listing-item end -->
                                     <!-- listing-item  -->
                                     
@@ -282,7 +335,7 @@
                         <!-- list-main-wrap end-->
                     </div>
                     <!--col-list-wrap end -->
-                    <div class="limit-box fl-wrap"></div>
+                    <!-- <div class="limit-box fl-wrap"></div> -->
                 </div>
                 <!-- content end-->
             </div>
@@ -544,5 +597,22 @@
         <script type="text/javascript" src="js/scripts.js"></script>
 
         <script  src="js/main.js"></script>
+
+       
+        <script>
+         
+        $(document).ready(function(){
+            var readMore = new ReadMore('#more', {
+            openText: 'Read more...', // Opening link text
+            closeText: 'Show less...', // Closing link text
+            speed: '1' // Transition speed in seconds
+          })
+         
+        })
+        </script>	
+        
+         <script src="./js/read-more-text.js">
+        
+        </script>
     </body>
 </html>
