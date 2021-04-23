@@ -17,12 +17,22 @@
 'use strict'
   function ReadMore(el, options) {
     var link, moreText, height
+<<<<<<< HEAD
     link = document.createElement('a')
     moreText = document.querySelector(el)
 
     moreText.style.cssText = 'max-height:0; overflow:hidden; border:1px solid transparent;'
 
     height = moreText.scrollHeight
+=======
+    // link = document.createElement('a')
+    moreText = document.querySelectorAll(el)
+    console.log(moreText)
+
+    moreText.forEach(function (element) {
+      element.style.cssText = 'max-height: 20px; min-height: 20px; overflow:hidden; border:1px solid transparent;'
+    })
+>>>>>>> 2e817b7e68872bb658b772e8c002529fa6f510ab
 
     this.options = {
       openText: 'Read more...',
@@ -36,23 +46,41 @@
 
     options = this.options
 
-    link.classList.add('show-more')
-    link.setAttribute('href', '#')
-    link.innerHTML = options.openText
-    moreText.parentNode.insertBefore(link, moreText.nextSibling);
+    
+    for(var c = 0; c < moreText.length; c++) {
+      let element = moreText[c]
+      link = document.createElement('a')
+      link.classList.add('show-more')
+      link.setAttribute('href', '#')
+      link.innerHTML = options.openText
+      element.parentNode.insertBefore(link, element.nextSibling);
+    }
 
-    link = document.querySelectorAll('.show-more')
-    for (var i = 0; i < link.length; i++) {
-      link[i].addEventListener('click', function(e) {
+    var showMore = document.querySelectorAll('.show-more')
+    for (var i = 0; i < showMore.length; i++) {
+      showMore[i].addEventListener('click', function(e) {
         e.preventDefault()
-        if (this.previousSibling.clientHeight == 0) {
+        console.log(this.previousSibling.clientHeight)
+        console.log(this.previousSibling.scrollHeight)
+        if (this.previousSibling.style.maxHeight == this.previousSibling.scrollHeight + 'px') {
+          console.log('here!')
+          this.innerHTML = options.openText
+          this.previousSibling.style.maxHeight = '20px'
+          return
+        }
+        if (this.previousSibling.clientHeight < this.previousSibling.scrollHeight) {
           this.innerHTML = options.closeText
           this.previousSibling.style.transition = options.speed + 's'
-          this.previousSibling.style.maxHeight = height + 'px'
-        } else {
-          this.innerHTML = options.openText
-          this.previousSibling.style.maxHeight = 0
-        }
+          this.previousSibling.style.maxHeight = this.previousSibling.scrollHeight + 'px'
+          console.log('not here')
+        } 
+        // else {
+        //   console.log('here!')
+        //   this.innerHTML = options.openText
+        //   this.previousSibling.style.maxHeight = '20px'
+        // }
+          
+        
       })
     }
 
