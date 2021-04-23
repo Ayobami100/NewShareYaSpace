@@ -2916,6 +2916,14 @@ input[type=number]
 .book-form  .quantity-item.fcit {
 	padding-left:20px;
 }
+.btncheck{
+	color:#fff;
+	width:100%;
+	background:#F8BB11;
+	padding:15px 0;
+	border-radius:4px;
+	padding-left:10px;
+}
 .book-form .btnaplly {
 	color:#fff;
 	width:100%;

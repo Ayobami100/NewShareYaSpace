@@ -9,6 +9,23 @@
         <meta name="keywords" content=""/>
         <meta name="description" content=""/>
         <!--=============== css  ===============-->
+        <script type="module" >
+        
+            $(document).ready(function(){
+                
+            document.getElementById('signout').style.display = 'none';
+            document.getElementById('signin').style.display = 'none';
+            document.getElementById('dropit').style.display = 'none';
+            // document.getElementById('avatar').src = res.data.user.imgProfile;
+            
+            document.getElementById('reg').style.display = 'none';
+            document.getElementById('addlisting').style.display = 'none';
+            })
+            
+        </script>
+
+
+
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/plugins.css">
         <link type="text/css" rel="stylesheet" href="css/style.css">
@@ -16,7 +33,7 @@
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
     </head>
-     <body onload="loadIt()">
+     <body onload="findsinglehosting()">
         <!--loader-->
       <div class="loader-wrap" id="loader-wrap">
      

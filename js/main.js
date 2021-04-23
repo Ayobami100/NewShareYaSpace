@@ -873,12 +873,14 @@ async function findsinglelisting(){
        document.getElementById("orderspacetitle").innerHTML = response.data.data[0].listing.spaceTitle;
        document.getElementById("datetoday").innerHTML = new Date().toLocaleDateString();
        document.getElementById("orderprice").innerHTML = response.data.data[0].listing.price;
-  
+      // console.log(keepsinglehost)
    
       //  document.getElementById('bookedprice').value = response.data.data[0].listing.price;
        document.getElementById('bookedlisting').innerHTML =  '<option value="" selected disabled>'+response.data.data[0].listing.spaceTitle+'</option>'
        document.getElementById("listingAbout").innerHTML = response.data.data[0].listing.additionalInfo;
        document.getElementById("listingFullname").innerHTML = response.data.data[0].host.firstname+" "+response.data.data[0].host.lastname;
+       document.getElementById("holdhostid").innerHTML = keepsinglehost
+
        document.getElementById("listingPrice").innerHTML = "NGN "+response.data.data[0].listing.price;
 
 
@@ -930,13 +932,17 @@ async function findsinglelisting(){
      }
      else
      {
+      document.getElementById('loader-wrap').style.display = 'none';
        document.getElementById('constantreview').style.display = "block";
      }
 
        }
 
 
-  })
+  }) .catch(function (err) {
+    document.getElementById('loader-wrap').style.display = 'none';
+    console.error('Fetch Error -', err);
+  });
 }
   
 function addBooking(){
@@ -1335,7 +1341,48 @@ function getUserId(listId){
   console.log(listId);
 window.location.href = 'listing-single.html';
 }
- 
+function gerHostId(){
+
+  // console.log(listId);
+  localStorage.setItem('keepsinglehost', keepsinglehost)
+  alert(hostid);
+// window.location.href = 'listing-single.html';
+}
+
+
+async function findsinglehosting(){
+
+  document.getElementById('loader-wrap').style.display = 'block';
+  loadIt();   
+
+  await axios.get('https://share.highflierstutors.com/api/listing')
+  .then(function (response) {
+
+  if (response.status !== 200){
+      console.warn('Looks like there was a problem. error: ' +
+        response.message);
+      return;
+    }
+
+
+    else
+    {
+      
+    document.getElementById('loader-wrap').style.display = 'none';
+    
+      console.log(response.data)
+    const hostsingle = response.data.filter(hosty => hosty.host.id == keepsinglehost)
+    console.log(hostsingle)
+
+    }
+  }) .catch(function (err) {
+    document.getElementById('loader-wrap').style.display = 'none';
+    console.error('Fetch Error -', err);
+  });
+
+
+}
+
 function populatecountry(){
   // axios.get('https://share.highflierstutors.com/api/allcountry')
   // .then(function (response) {
@@ -1363,6 +1410,7 @@ function populatecountry(){
 
 // }  )
 }
+
 function populatestate(){
   document.getElementById('loader-wrap').style.display = 'block';
 
