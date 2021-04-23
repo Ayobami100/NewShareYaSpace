@@ -17,14 +17,6 @@
 'use strict'
   function ReadMore(el, options) {
     var link, moreText, height
-<<<<<<< HEAD
-    link = document.createElement('a')
-    moreText = document.querySelector(el)
-
-    moreText.style.cssText = 'max-height:0; overflow:hidden; border:1px solid transparent;'
-
-    height = moreText.scrollHeight
-=======
     // link = document.createElement('a')
     moreText = document.querySelectorAll(el)
     console.log(moreText)
@@ -32,7 +24,6 @@
     moreText.forEach(function (element) {
       element.style.cssText = 'max-height: 20px; min-height: 20px; overflow:hidden; border:1px solid transparent;'
     })
->>>>>>> 2e817b7e68872bb658b772e8c002529fa6f510ab
 
     this.options = {
       openText: 'Read more...',

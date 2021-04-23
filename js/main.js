@@ -1222,15 +1222,6 @@ function addBooking(){
                       '</div>'+
                     '</div>'+
                   '</div>'+
-<<<<<<< HEAD
-                    '<p>'+  response.data.data[i].listing.spaceDetails +'</p>'+
-                    // '<ul class="facilities-list fl-wrap">'+
-                    //     '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
-                    //   '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
-                    //     '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
-                    //     '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
-                    // '</ul>'+
-=======
                     '<div class="more">'+  response.data.data[i].listing.spaceDetails +'</div>'+
                     '<ul class="facilities-list fl-wrap">'+
                         '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
@@ -1238,7 +1229,6 @@ function addBooking(){
                         '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
                         '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
                     '</ul>'+
->>>>>>> 2e817b7e68872bb658b772e8c002529fa6f510ab
                     '<div class="geodir-category-footer fl-wrap">'+
                         '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  response.data.data[i].listing.price +'</span></div>'+
                         '<div class="geodir-opt-list">'+
@@ -1264,11 +1254,7 @@ function addBooking(){
         else{
           
           var div1 =  document.createElement("div");
-<<<<<<< HEAD
-          div1.id = 'more'
-=======
           // div1.id = 'more'
->>>>>>> 2e817b7e68872bb658b772e8c002529fa6f510ab
           div1.innerHTML = 
           '<div class="gallery-item listing-item">'+
             '<article class="geodir-category-listing fl-wrap">'+
@@ -1303,11 +1289,7 @@ function addBooking(){
               // '<div  class="content">'+
                 // '<div >'+
                     
-<<<<<<< HEAD
-                      '<div id="more">'+ response.data.data[i].listing.spaceDetails +'</div>'+
-=======
                       '<div class="more">'+ response.data.data[i].listing.spaceDetails +'</div>'+
->>>>>>> 2e817b7e68872bb658b772e8c002529fa6f510ab
                      
                     
                 // '<p></p>'+
@@ -1391,7 +1373,7 @@ async function findsinglehosting(){
     {
       
     document.getElementById('loader-wrap').style.display = 'none';
-    
+
       console.log(response.data)
     const hostsingle = response.data.filter(hosty => hosty.host.id == keepsinglehost)
     console.log(hostsingle)
