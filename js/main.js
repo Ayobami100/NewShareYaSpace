@@ -34,7 +34,7 @@ let fav = 0 ;
 
 //  ===================================================================================================================================================
 const keepsinglelist = localStorage.getItem('keepsinglelisting');
-var keepsinglehost ;
+var keepsinglehost = localStorage.getItem('keepsinglehost') ;
 var keepsinglespacetitle;
 var keepsinglespaceprice;
 // ======================================================================================
@@ -156,7 +156,7 @@ async function loginUser() {
   }) .then(function (response) {
       console.log(response)
       // alert(response)
-      if (response.status == 200) {
+      if (response != "success") {
 
        
         localStorage.setItem('token', response.data.token);
@@ -831,6 +831,7 @@ async function postNewBooking(){
     
   
 async function findsinglelisting(){
+
   document.getElementById('loader-wrap').style.display = 'block';
 
   loadIt();
@@ -855,10 +856,11 @@ async function findsinglelisting(){
       console.log(response.data.data[0].listing.additionalInfo)
        console.log(response.data.data[0].host.firstname)
 
-       keepsinglehost = response.data.data[0].host.id;
+       localStorage.setItem('keepsinglehost',response.data.data[0].host.id)      
       keepsinglespacetitle = response.data.data[0].listing.spaceTitle;
       keepsinglespaceprice = response.data.data[0].listing.price
 
+      alert(keepsinglehost)
       // '<option value="'+response.data.data[0].listing.price+'" selected disabled>'+response.data.data[0].listing.spaceTitle+'</option>';
        document.getElementById("listingspaceTitle").innerHTML = response.data.data[0].listing.spaceTitle;
        document.getElementById("listingEmail").innerHTML = response.data.data[0].host.email;
@@ -879,7 +881,7 @@ async function findsinglelisting(){
        document.getElementById('bookedlisting').innerHTML =  '<option value="" selected disabled>'+response.data.data[0].listing.spaceTitle+'</option>'
        document.getElementById("listingAbout").innerHTML = response.data.data[0].listing.additionalInfo;
        document.getElementById("listingFullname").innerHTML = response.data.data[0].host.firstname+" "+response.data.data[0].host.lastname;
-       document.getElementById("holdhostid").innerHTML = keepsinglehost
+      //  document.getElementById("holdhostid").innerHTML = keepsinglehost
 
        document.getElementById("listingPrice").innerHTML = "NGN "+response.data.data[0].listing.price;
 
@@ -1156,6 +1158,7 @@ function addBooking(){
   async function allListing(){
 
     document.getElementById('loader-wrap').style.display = 'block';
+
     loadIt();   
 
     axios.get('https://share.highflierstutors.com/api/listing')
@@ -1190,7 +1193,7 @@ function addBooking(){
          
             var div =  document.createElement("div");
             div.innerHTML = 
-            '<div class="listing-item">'+
+            '<div class="gallery-item listing-item">'+
             '<article class="geodir-category-listing fl-wrap">'+
                 '<div class="geodir-category-img">'+
                     '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
@@ -1223,6 +1226,7 @@ function addBooking(){
                     '</div>'+
                   '</div>'+
                     '<div class="more">'+  response.data.data[i].listing.spaceDetails +'</div>'+
+
                     '<ul class="facilities-list fl-wrap">'+
                         '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
                       '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
@@ -1240,7 +1244,7 @@ function addBooking(){
                 '</div>'+
                 '</article>'+
                 '</div>'
-            var element = document.getElementById("listingsy");
+            var element = document.getElementById("listing-item");
           
             element.append(div);
             // alert('jjjj')  
@@ -1325,9 +1329,9 @@ function addBooking(){
         
         document.getElementById('totalListing').innerHTML = "TOTAL AVAILABLE LISTING " + "   "+response.data.data.length;
        new ReadMore('.more', {
-         openText: 'Read more...',
-         closeText: 'Show less...',
-         speed: '1'
+        //  openText: 'Read more...',
+        //  closeText: 'Show less...',
+        //  speed: '3'
        })
        
       }
@@ -1374,9 +1378,160 @@ async function findsinglehosting(){
       
     document.getElementById('loader-wrap').style.display = 'none';
 
-      console.log(response.data)
-    const hostsingle = response.data.filter(hosty => hosty.host.id == keepsinglehost)
+      console.log(response.data.data)
+
+   hostsingle = response.data.data.filter(hosty => hosty.host.id == keepsinglehost)
+
     console.log(hostsingle)
+    document.getElementById('totalListing').innerHTML = "TOTAL LISTING " + "   "+hostsingle.length;
+    document.getElementById('hostname').innerHTML = hostsingle[0].host.firstname +" "+hostsingle[0].host.lastname;
+    document.getElementById('hostname-top').innerHTML = hostsingle[0].host.firstname +" "+hostsingle[0].host.lastname;
+    document.getElementById('hostname-below').innerHTML = hostsingle[0].host.firstname +" "+hostsingle[0].host.lastname;
+    document.getElementById('hostaddress').innerHTML = hostsingle[0].host.country;
+    document.getElementById('hostphone').innerHTML = hostsingle[0].host.number;
+    document.getElementById('hostemail').innerHTML = hostsingle[0].host.email;
+
+   
+
+      for (let i = 0;i < hostsingle.length;i++){
+
+        if(hostsingle[i].reviews[0] != undefined){
+
+        var div =  document.createElement("div");
+        div.innerHTML = 
+        '<div class="listing-item">'+
+        '<article class="geodir-category-listing fl-wrap">'+
+            '<div class="geodir-category-img">'+
+                '<a onclick="getUserId(id)" id="'+hostsingle[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+hostsingle[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
+                '<div class="listing-avatar">'+'<a id="getUserId(id)">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
+                  '<span class="avatar-tooltip">Added By<strong> '+hostsingle[i].host.firstname+" "+hostsingle[i].host.lastname+' </strong></span>'+
+                '</div>'+
+               
+                // '<div class="sale-window">Sale 20%</div>'+
+                '<div class="geodir-category-opt">'+
+                  '<div class="listing-rating card-popup-rainingvis" data-starrating2 ="'+hostsingle[i].reviews[0].rating.split('.')[0]+'"></div>'+
+                    '<div class="rate-class-name">'+
+                        '<div class="score" id="score"><strong>Very Good</strong>'+ Object.values(hostsingle[i].reviews).length +" Reviews"+'</div>'+
+                            '<span>'+hostsingle[i].reviews[j].rating+'</span>'+
+                        '</div>'+
+                    '</div>'+
+              '</div>'+
+              '<div class="geodir-category-content fl-wrap">'+
+                '<div class="geodir-category-content-title fl-wrap">'+
+                  '<div class="geodir-category-content-title-item">'+
+                    '<h3 class="title-sin_map">'+
+                    '<a onclick="getUserId(id)" id="'+hostsingle[i].listing.id+'" return false;>'+hostsingle[i].listing.spaceTitle+'</a>'+
+                    '</h3>'+
+                    '<div class="geodir-category-location fl-wrap">'+
+                      '<a  id="'+hostsingle[i].listing.id+' onclick="getUserId(id)" class="map-item">'+
+                        '<i class="fas fa-map-marker-alt"></i>'+
+                        hostsingle[i].listing.address+
+                      '</a>'+
+                    '</div>'+
+                  '</div>'+
+                '</div>'+
+              '</div>'+
+                '<div class="more">'+  hostsingle[i].listing.spaceDetails +'</div>'+
+                '<ul class="facilities-list fl-wrap">'+
+                    '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
+                  '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
+                    '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
+                    '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
+                '</ul>'+
+                '<div class="geodir-category-footer fl-wrap">'+
+                    '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  hostsingle[i].listing.price +'</span></div>'+
+                    '<div class="geodir-opt-list">'+
+                        // '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
+                        '<a class="geodir-js-favorite" id="'+hostsingle[i].listing.id+'" onclick="crosscheckFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favorite</span></a>'+
+                        // '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
+            '</article>'+
+            '</div>'
+        var element = document.getElementById("host-listing");
+      
+        element.append(div);
+        // alert('jjjj')  
+
+      }
+      else{
+        
+        var div1 =  document.createElement("div");
+        // div1.id = 'more'
+        div1.innerHTML = 
+        '<div class="listing-item">'+
+          '<article class="geodir-category-listing fl-wrap">'+
+            '<div class="geodir-category-img">'+
+              '<a onclick="getUserId(id)" id="'+hostsingle[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+hostsingle[i].listing.attachments.split(',')[0]+'" alt="">'+'</a>'+
+              '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
+                '<span class="avatar-tooltip">Added By<strong> '+hostsingle[i].host.firstname+" "+hostsingle[i].host.lastname+' </strong></span>'+
+              '</div>'+
+            // '<div class="sale-window">Sale 20%</div>'+
+                ' <div class="geodir-category-opt">'+
+                  '<div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>'+
+                    '<div class="rate-class-name">'+
+                        '<div class="score" id="score"><strong>No Comment</strong>No Reviews</div>'+
+                        '<span>No Rating</span>'+
+                    '</div>'+
+                '</div>'+
+          '</div>'+
+        '<div class="geodir-category-content fl-wrap">'+
+            '<div class="geodir-category-content-title fl-wrap">'+
+                '<div class="geodir-category-content-title-item">'+
+                    '<h3 class="title-sin_map">'+
+                    '<a onclick="getUserId(id)" id="'+hostsingle[i].listing.id+'" return false;>'+hostsingle[i].listing.spaceTitle+'</a>'+
+                    '</h3>'+
+                    '<div class="geodir-category-location fl-wrap">'+
+                    '<a  id="'+hostsingle[i].listing.id+' onclick="getUserId(id)" class="map-item">'+
+                      '<i class="fas fa-map-marker-alt"></i>'+
+                      hostsingle[i].listing.address+
+                      '</a>'+
+                      '</div>'+
+              '</div>'+
+            '</div>'+
+            // '<div  class="content">'+
+              // '<div >'+
+                  
+                    '<div class="more">'+ hostsingle[i].listing.spaceDetails +'</div>'+
+                   
+                  
+              // '<p></p>'+
+              
+              // '</div>'+
+             
+            // '</div>'+
+            
+            // '<ul class="facilities-list fl-wrap">'+
+            //     '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
+            //   '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
+            //     '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
+            //     '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
+            // '</ul>'+
+            '<div class="geodir-category-footer fl-wrap">'+
+                '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  hostsingle[i].listing.price +'</span></div>'+
+                '<div class="geodir-opt-list">'+
+                    // '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
+                    '<a class="geodir-js-favorite" id="'+hostsingle[i].listing.id+'" onclick="crosscheckFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favorite</span></a>'+
+                    // '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
+                '</div>'+
+            '</div>'+
+        '</div>'+
+        '</article>'+
+        '</div>'
+  
+        var ele = document.getElementById("host-listing");
+      
+        ele.append(div1);
+        
+      }
+       
+        // console.log(div)
+        // break;
+      }
+        
+       
+   
 
     }
   }) .catch(function (err) {
@@ -1600,8 +1755,9 @@ async function allfavorite(){
 }
 async function loadAllFavoriteListing(){
 
+  console.log(favoptions)
 
-  for (let i = 0;i < favoptions.data.length;i++){
+  for (let i = 0;i < favoptions.length;i++){
 
     
     
@@ -1628,7 +1784,7 @@ async function loadAllFavoriteListing(){
                         '<a >'+res.data[j].listing.spaceTitle+'</a>'+
                         '<div class="listing-rating card-popup-rainingvis" data-starrating2="5">'+
                         '</div>'+
-                        '<div class="geodir-category-location fl-wrap addReadMore showlesscontent"><a ><i class="fas fa-map-marker-alt"></i>'+res.data[j].listing.spaceDetails+'</a></div>'+
+                        '<div class="geodir-category-location fl-wrap"><a ><i class="fas fa-map-marker-alt"></i>'+res.data[j].listing.spaceDetails+'</a></div>'+
                         '<span class="rooms-price">NGN '+res.data[j].listing.price+' <strong> / Day</strong></span>'+
                     '</div>'+
                     '</a>'+
@@ -1667,7 +1823,7 @@ async function getHomeStates(){
       })  
       .then(function (response) {
 
-        if(response.status == 200){
+        if(response.status == 200 || response.status == 201){
           document.getElementById('loader-wrap').style.display = 'none';
           console.log(response.data.data);
           // for (let i = 1;i < 9;i++){

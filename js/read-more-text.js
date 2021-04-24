@@ -22,7 +22,7 @@
     console.log(moreText)
 
     moreText.forEach(function (element) {
-      element.style.cssText = 'max-height: 20px; min-height: 20px; overflow:hidden; border:1px solid transparent;'
+      element.style.cssText = 'max-height: 30px; min-height: 20px; overflow:hidden;border:1px solid transparent; '
     })
 
     this.options = {
@@ -53,9 +53,10 @@
         e.preventDefault()
         console.log(this.previousSibling.clientHeight)
         console.log(this.previousSibling.scrollHeight)
+        
         if (this.previousSibling.style.maxHeight == this.previousSibling.scrollHeight + 'px') {
           console.log('here!')
-          this.innerHTML = options.openText
+          // this.innerHTML = options.openText
           this.previousSibling.style.maxHeight = '20px'
           return
         }
@@ -66,9 +67,9 @@
           console.log('not here')
         } 
         // else {
-        //   console.log('here!')
-        //   this.innerHTML = options.openText
-        //   this.previousSibling.style.maxHeight = '20px'
+        //   console.log('ahah!')
+        //   this.innerHTML = moreText[i]
+        //   // this.previousSibling.style.maxHeight = '20px'
         // }
           
         
