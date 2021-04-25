@@ -5578,16 +5578,22 @@ article.post-article .list-single-main-item {
 	border-radius:0 0 10px 10px;
 }
 .listing-counter   {
+	/* left: inherit; */
+	/* right:15px; */
+	/* z-index:100;
+	top:200px; */
+
+
 	position:absolute;
-	left:35px;
-	top:40px;
+	/* left:50px; */
+	/* top:1px; */
 	color:#fff;
 	z-index:20;
 	font-size:11px;
     border-radius: 4px;
     background: #0a844a;
     color: #fff;
-	padding: 9px 12px;
+	padding: 6px 8px;
     box-shadow: 0px 0px 0px 5px rgba(255,255,255,0.2);
 }
 .listing-item-cat h3 {
@@ -8422,9 +8428,9 @@ article.post-article .list-single-main-item {
 }
 .home-grid .gallery-item.gallery-item-second .listing-counter {
 	left: inherit;
-	right:15px;
+	/* right:15px; */
 	z-index:100;
-	top:10px;
+	/* top:10px; */
 }
 .home-grid .gallery-item  .listing-item-cat{
 	padding: 30px 15px 10px;

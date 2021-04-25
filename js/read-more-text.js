@@ -22,7 +22,7 @@
     console.log(moreText)
 
     moreText.forEach(function (element) {
-      element.style.cssText = 'max-height: 30px; min-height: 20px; overflow:hidden;border:1px solid transparent; '
+      element.style.cssText = 'max-height: 20px; min-height: 20px; overflow:hidden;border:1px solid transparent; '
     })
 
     this.options = {
