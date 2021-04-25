@@ -231,13 +231,12 @@ async function registerUser() {
   var matricNo = document.getElementById("mat").value;
   var cos = document.getElementById("cos").value;
 
-  // if (firstname == '' || lastname == '' || emailreg == '' || country == '' || phone == '' || start == ''
-  //   || address == '' || password == ''
-  // ) {
-  // alert("Ensure you fill out all the needed information")
-  //   return false;
-  // }
-
+  if (firstname == '' & lastname == '' & emailreg == '' & country == '' & phone == '' & start == ''
+  & address == '' & password == '') {
+  alert("Ensure you fill out all the needed information")
+    return false;
+  }
+else{
   document.getElementById('loader-wrap').style.display = 'block';
 
 
@@ -303,6 +302,8 @@ async function registerUser() {
       console.log(error)
       alert(error);
     });
+}
+ 
 
 
 }
@@ -2164,8 +2165,8 @@ async function allfavorite(){
         .then(json => {
           console.log(json.data)
           console.log(userId)
-
-         favoptions = json.data.filter(favorites => favorites.listingDetails.listing.userId == userId)
+if(json.data != null & json.data != undefined){
+  favoptions = json.data.filter(favorites => favorites.listingDetails.listing.userId == userId)
          localStorage.setItem('favUser',favoptions.length)
         // console.log(json.data)
           console.log(favoptions)
@@ -2177,6 +2178,8 @@ async function allfavorite(){
            
           // }
          loadAllFavoriteListing();
+}
+       
   })
   .catch(function (err) {
     document.getElementById('loader-wrap').style.display = 'none';
@@ -2327,7 +2330,7 @@ async function getHomeStates(){
 }
 
 async function cityListing(cityid){
-alert(cityid)
+// alert(cityid)
 window.location.href = "listing.html?id="+cityid
 }
 function checkAvailable(){
