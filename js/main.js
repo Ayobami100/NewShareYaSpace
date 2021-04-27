@@ -3,6 +3,9 @@
 console.log(localStorage.getItem('token'))
 console.log(localStorage.getItem('favUser'))
 
+
+
+
 axios.interceptors.request.use(function (config) {
 
  config.headers.authorization = 'Bearer '  + localStorage.getItem('token');
@@ -396,7 +399,10 @@ function loadIt()
   
     //If it isn't "undefined" and it isn't "null", then it exists.
     if(typeof(element) != 'undefined' && element != null){
-      
+      getreviewlength();
+    getlistinglength();
+    getbookinglength()
+
     }
   }
   
@@ -474,12 +480,190 @@ function loadIt()
 
   // /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+async function getreviewlength(){
+
+  await axios.get('https://share.highflierstutors.com/api/review',{
+
+    // headers: {
+    //   'Authorization': `Bearer ${puser}` 
+    // }
+
+  })
+
+    
+  .then(function (response) {
+    if(response.status == 200){
+       // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
+        // document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
+        // alert(userId)
+        console.log(response.data)
+        // localStorage.setItem('allreview',response.data.data.length);
+       totalreview = response.data.data.filter(ttb => ttb.hostId == userId)
+        
+          document.getElementById('allreview').innerHTML = totalreview.length;
+    }
+
+  }).catch(function (err) {
+        console.error('Fetch Error -', err);
+      });
+
+
+
+}
+async function getlistinglength(){
+
+  
+
+  await axios.get('https://share.highflierstutors.com/api/listing')
+
+    
+  .then(function (response) {
+
+    if(response.status == 200){
+      // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
+       // document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
+      //  alert(userId)
+       console.log(response.data)
+       // localStorage.setItem('allreview',response.data.data.length);
+       totallisting = response.data.data.filter(ttb => ttb.host.id == userId)
+         document.getElementById('alllisting').innerHTML = totallisting.length;
+   }
+  }).catch(function (err) {
+    console.error('Fetch Error -', err);
+  });
+
+
+ 
+
+}
+async function getbookinglength(){
+
+ 
+
+
+    await axios.get('https://share.highflierstutors.com/api/order',{
+
+    // headers: {
+    //   'Authorization': `Bearer ${puser}` }
+    })
+    .then(function (response) {
+
+      if(response.status == 200){
+        // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
+         // document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
+        //  alert(userId)
+         console.log(response.data)
+         // localStorage.setItem('allreview',response.data.data.length);
+          totalbooking = response.data.data.filter(ttb => ttb.order.hostId == userId)
+           document.getElementById('allbookings').innerHTML = totalbooking.length;
+     }
+    }).catch(function (err) {
+          console.error('Fetch Error -', err);
+        });
+            
+
+
+ 
+
+}
+
+  async function getUserListing() {
+
+    document.getElementById('loader-wrap').style.display = 'block';
+   
+    loadIt();
+    await axios.get('https://share.highflierstutors.com/api/listing')
+
+    .then(function (response) {
+      // console.log(response)
+  if (response.status !== 200){
+      console.warn('Looks like there was a problem. error: ' +
+        response.message);
+      return;
+    }
+    else
+    {
+      // document.getElementById('loader-wrap').style.display = 'none';
+      alert('pppp')
+     
+
+      totallisting = response.data.data.filter(ttb => ttb.host.id == userId)
+      console.log(totallisting)
+
+      if(totallisting.length > 1){
+
+        for(let i = 0;i < totallisting.length;i++){
+
+          var input = totallisting[i].listing.attachments;
+  
+          var fields = input.split(',');
+  
+          var name = fields[0];
+          var div =  document.createElement("div");
+            div.innerHTML = 
+            '<div class="dashboard-list">'+
+            '<div class="dashboard-message">'+
+               ' <span class="new-dashboard-item">New</span>'+
+                '<div class="listing-table-image">'+
+                    '<a href="listing-single.html"><img src="https://share.highflierstutors.com/images/'+name+'" alt="" class="respimg"></a>'+
+                '</div>'+
+                '<div class="listing-table-text">'+
+                    '<h4><a href="listing-single.html">'+totallisting[i].listing.spaceTitle+'</a></a></h4>'+
+                    '<span class="listing-table-address"><i class="far fa-map-marker"></i><a  href="#">'+totallisting[i].listing.address+'</a></span>'+
+                    '<ul class="listing-table-opt  fl-wrap">'+
+                        '<li><a href="#">Edit <i class="fal fa-edit"></i></a></li>'+
+                        '<li><a href="#" class="del-btn">Delete <i class="fal fa-trash-alt"></i></a></li>'+
+                    '</ul>'+
+                '</div>'+
+            '</div>'+
+        '</div>'
+  
+      var element = document.getElementById("showuserlisting");
+           
+           element.appendChild(div);
+  
+        }
+      }
+      else{
+
+              var div =  document.createElement("div");
+              div.innerHTML = 
+            '<div class="dashboard-message">'+
+           '<h1 style="color: red; margin-top: 60px">No Listing Available</h1>'
+            '</div>'
+        alert('pppp')
+          
+            var et = document.getElementById("showuserlisting");
+         
+            
+          et.appendChild(div);
+        }
+
+          // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
+
+       
+          document.getElementById('loader-wrap').style.display = 'none';
+
+
+  }})
+  .catch(function (err) {
+    console.error('Fetch Error -', err);
+  });
+
+  }
+
+
+
   async function getUserReview() {
     
 
     document.getElementById('loader-wrap').style.display = 'block';
     loadIt();
   
+   
+
+
     await axios.get('https://share.highflierstutors.com/api/review')
 
     
@@ -491,7 +675,6 @@ function loadIt()
       var element = document.getElementById("showreview"); 
 
     if (response.status !== 200){
-     document.getElementById('loader-wrap').style.display = 'none';
 
         console.warn('Looks like there was a problem. error: ' +
           response.message);
@@ -500,85 +683,80 @@ function loadIt()
       else
       {
     
+        totalreview = response.data.data.filter(ttb => ttb.hostId == userId)
 
-        if(response.data.data != null){
+        if(totalreview.length > 1){
         
           console.log(response.data.data.length);
           
-          localStorage.setItem('allreview',response.data.data.length);
+          // localStorage.setItem('allreview',response.data.data.length);
   
-          
-          for (let i = 0;i < response.data.data.length;i++){
-  
-            keeplist = response.data.data[i].listingId;
-            console.log(keeplist);
-    
-            // findlisting()
-  
-            // =========================split date created on the API==================================================================
-            var input = response.data.data[i].created_at;
-  
-            var fields = input.split('T');
-    
-            var name = fields[0];
-  
-            var div =  document.createElement("div");
-            div.innerHTML = 
-  
-           ' <div class="reviews-comments-item">'+
-            '<div class="review-comments-avatar">'+
-                '<img src="images/avatar/2.jpg" alt=""> '+
-           ' </div>'+
-            '<div class="reviews-comments-item-text">'+
-                '<h4><a href="#">'+reviewFullname+'</a> on <a href="listing-single.html" class="reviews-comments-item-link">'+reviewspaceTitle+'</a></h4>'+
-               '<div class="review-score-user">'+
-                    '<span>'+response.data.data[i].rating+'</span>'+
-                    '<strong>'+response.data.data[i].comments+'</strong>'+
-                '</div>'+
-                '<div class="clearfix"></div>'+
-                '<p> '+reviewspaceInfo+'</p>'+
-                '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
-            '</div>'+
-        '</div>'
-  
-  
-        document.getElementById('loader-wrap').style.display = 'none';
-  
-        // var element = document.getElementById("showreview");
-       
-        if(element != null && element != 'undefined')
-        {
-          element.appendChild(div);
-        }
         
-          
-        }
-      }
-      else{
+
+         
+            for (let i = 0;i < totalreview.length;i++){
+  
+              keeplist = totalreview[i].listingId;
+              console.log(keeplist);
+      
+              // findlisting()
+    
+              // =========================split date created on the API==================================================================
+              var input = totalreview[i].created_at;
+    
+              var fields = input.split('T');
+      
+              var name = fields[0];
+    
               var div =  document.createElement("div");
               div.innerHTML = 
-        
-            ' <div class="reviews-comments-item">'+
+    
+             ' <div class="reviews-comments-item">'+
               '<div class="review-comments-avatar">'+
-                  // '<img src="images/avatar/2.jpg" alt=""> '+
-            ' </div>'+
+                  '<img src="images/avatar/2.jpg" alt="" class="respimg"> '+
+             ' </div>'+
               '<div class="reviews-comments-item-text">'+
-                  // '<h4><a href="#">'+reviewFullname+'</a> on <a href="listing-single.html" class="reviews-comments-item-link">'+reviewspaceTitle+'</a></h4>'+
-                '<div class="review-score-user">'+
-                      '<span></span>'+
-                      '<strong></strong>'+
+                  '<h4><a href="#">Segun Ola</a> on <a href="listing-single.html" class="reviews-comments-item-link">'+reviewspaceTitle+'</a></h4>'+
+                 '<div class="review-score-user">'+
+                      '<span>'+totalreview[i].rating+'</span>'+
+                      '<strong>'+totalreview[i].comments+'</strong>'+
                   '</div>'+
                   '<div class="clearfix"></div>'+
-                  '<p> No Review Available</p>'+
-                  '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i></span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
+                  '<p> '+reviewspaceInfo+'</p>'+
+                  '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
               '</div>'+
           '</div>'
+    
+    
+          document.getElementById('loader-wrap').style.display = 'none';
+    
+          var element = document.getElementById("showreview");
+         
+          if(element != null && element != 'undefined')
+          {
+            element.appendChild(div);
+          }
+          
+            
+        }
+          
+          
         
+      }
+      else{
+
+              var div =  document.createElement("div");
+              div.innerHTML = 
+            '<div class="dashboard-message">'+
+           '<h1 style="color: red; margin-top: 60px">No Review Available</h1>'
+            '</div>'
         
-          // var element = document.getElementById("showreview");
+          
+        
+          var element = document.getElementById("showreview");
             
           element.appendChild(div);
-            }
+        }
 
           // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
 
@@ -598,114 +776,6 @@ function loadIt()
 
       
   }
-
-async function getall(){
-
-  await axios.get('https://share.highflierstutors.com/api/review')
-
-    
-  .then(function (response) {
-    if(response.status == 200){
-       // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
-        document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
-
-        console.log(response.data)
-        localStorage.setItem('allreview',response.data.data.length);
-          document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
-    }
-
-  }).catch(function (err) {
-        console.error('Fetch Error -', err);
-      });
-
-
-  await axios.get('https://share.highflierstutors.com/api/review')
-
-    
-  .then(function (response) {
-
-  }).catch(function (err) {
-        console.error('Fetch Error -', err);
-      });
-
-
-
-    await axios.get('https://share.highflierstutors.com/api/order')
-
-
-  .then(function (response) {
-
-  }).catch(function (err) {
-        console.error('Fetch Error -', err);
-      });
-            
-
-
- 
-
-}
-
-
-  async function getUserListing() {
-    document.getElementById('loader-wrap').style.display = 'block';
-   
-    loadIt();
-    await axios.get('https://share.highflierstutors.com/api/listing')
-
-    .then(function (response) {
-      // console.log(response)
-  if (response.status !== 200){
-      console.warn('Looks like there was a problem. error: ' +
-        response.message);
-      return;
-    }
-    else
-    {
-      document.getElementById('loader-wrap').style.display = 'none';
-  
-      console.log(response)
-
-
-      for(let i = 0;i < response.data.data.length;i++){
-
-        var input = response.data.data[i].listing.attachments;
-
-        var fields = input.split(',');
-
-        var name = fields[0];
-        var div =  document.createElement("div");
-          div.innerHTML = 
-          '<div class="dashboard-list">'+
-          '<div class="dashboard-message">'+
-             ' <span class="new-dashboard-item">New</span>'+
-              '<div class="listing-table-image">'+
-                  '<a href="listing-single.html"><img src="https://share.highflierstutors.com/images/'+name+'" alt=""></a>'+
-              '</div>'+
-              '<div class="listing-table-text">'+
-                  '<h4><a href="listing-single.html">'+response.data.data[i].listing.spaceTitle+'</a></a></h4>'+
-                  '<span class="listing-table-address"><i class="far fa-map-marker"></i><a  href="#">'+response.data.data[i].listing.address+'</a></span>'+
-                  '<ul class="listing-table-opt  fl-wrap">'+
-                      '<li><a href="#">Edit <i class="fal fa-edit"></i></a></li>'+
-                      '<li><a href="#" class="del-btn">Delete <i class="fal fa-trash-alt"></i></a></li>'+
-                  '</ul>'+
-              '</div>'+
-          '</div>'+
-      '</div>'
-
-    var element = document.getElementById("showuserlisting");
-         
-         element.appendChild(div);
-
-      }
-  }})
-  .catch(function (err) {
-    console.error('Fetch Error -', err);
-  });
-
-  }
-
-
-
 
   async function getUserBooking() {
 
@@ -727,7 +797,7 @@ async function getall(){
   
       console.log(userId)
 
-      filteredbooking = response.data.data.filter(book => book.User.id == userId); console.log(filteredbooking)
+      filteredbooking = response.data.data.filter(book => book.listingDetails.host.id == userId); console.log(filteredbooking)
 
       if(filteredbooking != null & filteredbooking != "")
       {
@@ -778,6 +848,15 @@ async function getall(){
         }
       }
       else{
+         var div =  document.createElement("div");
+      div.innerHTML = 
+    '<div class="dashboard-message">'+
+   '<h1 style="color: red; margin-top: 60px">No Order Available</h1>'
+    '</div>'
+
+      var element = document.getElementById("dashboard-listing");
+     
+     element.appendChild(div);
 
       }
 
@@ -796,6 +875,7 @@ async function getall(){
 async function findlisting(){
 
   document.getElementById('loader-wrap').style.display = 'block';
+
   await axios.get('https://share.highflierstutors.com/api/listingfind/'+keeplist+'')
   .then(function (response) {
 if(response.status == 200){
@@ -1604,7 +1684,7 @@ function addBooking(){
                                   '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  response.data.data[i].listing.price +'</span></div>'+
                                   '<div class="geodir-opt-list">'+
                                       // '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
-                                      '<a class="geodir-js-favorite" id="'+response.data.data[i].listing.id+'" onclick="crosscheckFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favorite</span></a>'+
+                                      '<a class="geodir-js-favorite" id = "'+response.data.data[i].listing.id+'" onclick="crosscheckFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip" >Save as Favorite</span></a>'+
                                       // '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
                                   '</div>'+
                               '</div>'+
@@ -1993,9 +2073,9 @@ async function postNewFavorite(vid){
               }
               // favoptions.push(response.data.data)
               document.getElementById('loader-wrap').style.display = 'none';
-              // window.location.reload()
+              allfavorite()
 
-              
+             
               // favorite = document.getElementById('favoritecounter');
         
               // document.getElementById(vid).style.display = "none";
@@ -2015,7 +2095,13 @@ async function postNewFavorite(vid){
         
 
     
+  // checking = document.querySelectorAll("i.fa-heart")[4].style.backgroundColor = "red"
 
+  // chkn = document.getElementById(vid).child[1];
+
+  // console.log(checking)
+  // console.log(checking[1])
+  // console.log(chkn)
 
 
 
@@ -2028,14 +2114,14 @@ function crosscheckFavorite(vid){
     if(puser != null & favoptions != undefined){
       for (let i = 0;i < favoptions.length;i++){
 
-        if(favoptions.listing.id == vid){
+        if(favoptions[i].listingDetails.listing.id == vid){
       
           alert('This listing is already your favourite')
           break;
         }
 
 
-        else if(favoptions.data[i].listing.id != vid && i == favoptions.data.length-1){ 
+        else if(favoptions[i].listingDetails.listing.id != vid && i == favoptions.length-1){ 
           postNewFavorite(vid)
         
         }
@@ -2108,7 +2194,7 @@ async function loadAllFavoriteListing(){
                 
               
                 ele.append(li);
-                console.log(li)
+                // console.log(li)
                 // alert('78')
   }
  
