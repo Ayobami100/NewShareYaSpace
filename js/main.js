@@ -20,6 +20,7 @@ let fav = 0 ;
  var puser = localStorage.getItem('token');
  let favoptions
  let groupedFav
+ let keeplistingfromhome;
  const userFirstname = localStorage.getItem('firstname');
  const userLastname = localStorage.getItem('lastname');
  const userDOB = localStorage.getItem('DOB');
@@ -41,6 +42,11 @@ const keepsinglelist = localStorage.getItem('keepsinglelisting');
 var keepsinglehost = localStorage.getItem('keepsinglehost') ;
 var keepsinglespacetitle;
 var keepsinglespaceprice;
+
+let totalreview;
+let totallisting;
+let totalbooking;
+
 // ======================================================================================
 var keepnigeriastates;
  //////////////////////////////All Listings Declaration///////////////////////////////////////////
@@ -220,7 +226,7 @@ else{
 
 
 async function registerUser() {
-
+loadIt();
 
   
   var firstname = document.getElementById("firstname").value
@@ -266,7 +272,7 @@ else{
 
     .then(function (response) {
 
-      if (response.status == 200) {
+      if (response.status == 200 && response.data != undefined) {
 
         document.getElementById('loader-wrap').style.display = 'none';
 
@@ -274,7 +280,7 @@ else{
         console.log(response.data.data);
 
         localStorage.setItem('token', response.data.token);
-        // localStorage.setItem('id', response.data.user.id);
+        localStorage.setItem('id', response.data.data.id);
         localStorage.setItem('firstname', response.data.data.firstname);
         localStorage.setItem('lastname', response.data.data.lastname);
         localStorage.setItem('DOB', response.data.data.DOB);
@@ -293,6 +299,7 @@ else{
       else{
         alert(response.data.message);
       }
+
       // loadIt()
       // clearOff();
 
@@ -359,7 +366,7 @@ function verifyUser() {
 
 function loadIt() 
 {
-  if (puser != null) {
+  if (puser) {
     
     // alert('treasposs')
       
@@ -416,7 +423,8 @@ function loadIt()
     // document.getElementById('avatar').src = res.data.user.imgProfile;
     document.getElementById('reg').style.display = 'block';
     document.getElementById('addlisting').style.display = 'none';
-    if(window.location.href == 'register.html')
+
+    if(window.location.href === 'register.html')
     {
     document.getElementById("studentdetails").style.display = "none";    
     document.getElementById("otp").style.display = "none";
@@ -573,22 +581,16 @@ async function getbookinglength(){
     document.getElementById('loader-wrap').style.display = 'block';
    
     loadIt();
-    await axios.get('https://share.highflierstutors.com/api/listing')
+    // await axios.get('https://share.highflierstutors.com/api/listing')
 
-    .then(function (response) {
+    // .then(function (response) {
       // console.log(response)
-  if (response.status !== 200){
-      console.warn('Looks like there was a problem. error: ' +
-        response.message);
-      return;
-    }
-    else
-    {
+  
+   
       // document.getElementById('loader-wrap').style.display = 'none';
-      alert('pppp')
+     
      
 
-      totallisting = response.data.data.filter(ttb => ttb.host.id == userId)
       console.log(totallisting)
 
       if(totallisting.length > 1){
@@ -632,8 +634,7 @@ async function getbookinglength(){
             '<div class="dashboard-message">'+
            '<h1 style="color: red; margin-top: 60px">No Listing Available</h1>'
             '</div>'
-        alert('pppp')
-          
+            
             var et = document.getElementById("showuserlisting");
          
             
@@ -646,14 +647,11 @@ async function getbookinglength(){
           document.getElementById('loader-wrap').style.display = 'none';
 
 
-  }})
-  .catch(function (err) {
-    console.error('Fetch Error -', err);
-  });
+ 
+
+  
 
   }
-
-
 
   async function getUserReview() {
     
@@ -664,30 +662,21 @@ async function getbookinglength(){
    
 
 
-    await axios.get('https://share.highflierstutors.com/api/review')
+    // await axios.get('https://share.highflierstutors.com/api/review')
 
     
-    .then(function (response) {
+    // .then(function (response) {
       // if (response.data != undefined && response.data != null){
        
       
       // }
       var element = document.getElementById("showreview"); 
 
-    if (response.status !== 200){
-
-        console.warn('Looks like there was a problem. error: ' +
-          response.message);
-        return;
-      }
-      else
-      {
-    
-        totalreview = response.data.data.filter(ttb => ttb.hostId == userId)
+   
 
         if(totalreview.length > 1){
         
-          console.log(response.data.data.length);
+          // console.log(response.data.data.length);
           
           // localStorage.setItem('allreview',response.data.data.length);
   
@@ -765,14 +754,8 @@ async function getbookinglength(){
 
          
         
-      }
-    }
-   
-
-     
-      ).catch(function (err) {
-        console.error('Fetch Error -', err);
-      });
+      
+    
 
       
   }
@@ -782,22 +765,16 @@ async function getbookinglength(){
     document.getElementById('loader-wrap').style.display = 'block';
     loadIt();
 
-    await axios.get('https://share.highflierstutors.com/api/order')
+    // await axios.get('https://share.highflierstutors.com/api/order')
   
-    .then(function (response) {
-      console.log(response)
-  if (response.status !== 200){
-      console.warn('Looks like there was a problem. error: ' +
-        response.message);
-      return;
-    }
-    else
-    {
+    // .then(function (response) {
+    //   console.log(response)
+  
       document.getElementById('loader-wrap').style.display = 'none';
   
       console.log(userId)
 
-      filteredbooking = response.data.data.filter(book => book.listingDetails.host.id == userId); console.log(filteredbooking)
+      
 
       if(filteredbooking != null & filteredbooking != "")
       {
@@ -861,12 +838,7 @@ async function getbookinglength(){
       }
 
      
-  }})
-  .catch(function (err) {
-    console.error('Fetch Error -', err);
-  });
-}
-    
+    }
       
      
   
@@ -1258,18 +1230,18 @@ function addBooking(){
                 formData.append('country' , country);
                 formData.append('state' , state);
                 formData.append('city' ,city);
-                formData.append('longtitude' ,'236');
-                formData.append('lagtitude' ,'245');
+
+
 
                   document.getElementById('loader-wrap').style.display = 'block';
 
-                  await fetch('https://share.highflierstutors.com/api/listing',{
+                  await fetch('https://share.highflierstutors.com/api/listingsave',{
                     method: "POST",        
                     body: formData,
                     // credentials: 'include',
-                  headers:{
-                    Authorization : 'Bearer '  + localStorage.getItem('token')
-                  }
+                  // headers:{
+                  //   Authorization : 'Bearer '  + localStorage.getItem('token')
+                  // }
                     // headers['content-type'] = 'multipart/form-data; boundary'
                   }
                 
@@ -1988,13 +1960,15 @@ function populatestate(){
       return;
     }
     else{
+      console.log(response.data.data)
       document.getElementById('loader-wrap').style.display = 'none';
       let options = response.data.data.map(state => '<option value="' + state.admin_name+ '">'+state.admin_name+'</option>').join('\n')
       let dropdown = document.getElementById('state');
       dropdown.innerHTML ='<option value="0" selected>Choose State</option>\n' + options;
       
       keepnigeriastates = response.data.data;
-      
+      // console.log(options) ;
+      console.log(dropdown)
       // console.log(response.data.data)
       // for(let i = 0; i < response.data.data.length; i++){
        
@@ -2248,6 +2222,8 @@ async function getHomeStates(){
         else{
           // document.getElementById('loader-wrap').style.display = 'none';
           console.log(response.data.data)
+
+          keeplistingfromhome = response.data.data;
           allhomestates = response.data.data.filter(homestate => homestate.listing.state)
 
           console.log(allhomestates);
@@ -2311,6 +2287,9 @@ console.log("Total number of days between dates  <br>"
                alert(checkbegin)
                alert(checkend)
                alert(Difference_In_Days)
+}
+async function recentAdded(){
+  filteredkeeplistingfromhome = keeplistingfromhome.filter(hg => hg.listingDetails) 
 }
 
 // ==============================================================================
