@@ -1507,8 +1507,8 @@ function addBooking(){
                       }
                     
                         
-                        document.getElementById('totalListing').innerHTML = "TOTAL AVAILABLE LISTING " + "   "+filteredStates.length;
-                      
+                        document.getElementById('totalListing').innerHTML = "TOTAL AVAILABLE LISTINGS " + "   "+filteredStates.length;
+                        document.getElementById('totalListing').style.marginBottom = '100px'
                     
                   }
                                      
@@ -1699,8 +1699,8 @@ function addBooking(){
                         }
                       
                         
-                        document.getElementById('totalListing').innerHTML = "TOTAL AVAILABLE LISTING " + "   "+response.data.data.length;
-                                         
+                        document.getElementById('totalListing').innerHTML = "TOTAL AVAILABLE LISTINGS" + "   "+response.data.data.length;
+                        document.getElementById('totalListing').style.marginBottom = '100px'           
                       
                     } // var readMore = new ReadMore('#more');
                  
