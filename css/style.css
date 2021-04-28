@@ -3137,7 +3137,7 @@ input[type=number]
 }
 #singleMap    {
 	width:100%;
-	position: ;
+	/* position: ; */
 	height:300px;
 	float:left;
 	margin-bottom:30px;

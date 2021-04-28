@@ -59,6 +59,7 @@ var keepnigeriastates;
 
 
 
+ 
 
  function validateImage() {
   var formData = new FormData();
@@ -357,7 +358,7 @@ function logOff() {
 
 function verifyUser() {
 
-  alert('You have successfully registered ' + userFirstname)
+  alert('You have successfully registered ' + localStorage.getItem('firstname'))
   window.location.href = 'index.html';
 
 }
@@ -491,6 +492,9 @@ function loadIt()
 
 async function getreviewlength(){
 
+
+  document.getElementById('loader-wrap').style.display = 'block';
+
   await axios.get('https://share.highflierstutors.com/api/review',{
 
     // headers: {
@@ -508,172 +512,12 @@ async function getreviewlength(){
         console.log(response.data)
         // localStorage.setItem('allreview',response.data.data.length);
        totalreview = response.data.data.filter(ttb => ttb.hostId == userId)
+       document.getElementById('allreview').innerHTML = totalreview.length;
         
-          document.getElementById('allreview').innerHTML = totalreview.length;
-    }
+       if( document.getElementById("showreview") != undefined)
+       {
 
-  }).catch(function (err) {
-        console.error('Fetch Error -', err);
-      });
-
-
-
-}
-async function getlistinglength(){
-
-  
-
-  await axios.get('https://share.highflierstutors.com/api/listing')
-
-    
-  .then(function (response) {
-
-    if(response.status == 200){
-      // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
-       // document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
-      //  alert(userId)
-       console.log(response.data)
-       // localStorage.setItem('allreview',response.data.data.length);
-       totallisting = response.data.data.filter(ttb => ttb.host.id == userId)
-         document.getElementById('alllisting').innerHTML = totallisting.length;
-   }
-  }).catch(function (err) {
-    console.error('Fetch Error -', err);
-  });
-
-
- 
-
-}
-async function getbookinglength(){
-
- 
-
-
-    await axios.get('https://share.highflierstutors.com/api/order',{
-
-    // headers: {
-    //   'Authorization': `Bearer ${puser}` }
-    })
-    .then(function (response) {
-
-      if(response.status == 200){
-        // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
-         // document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
-        //  alert(userId)
-         console.log(response.data)
-         // localStorage.setItem('allreview',response.data.data.length);
-          totalbooking = response.data.data.filter(ttb => ttb.order.hostId == userId)
-           document.getElementById('allbookings').innerHTML = totalbooking.length;
-     }
-    }).catch(function (err) {
-          console.error('Fetch Error -', err);
-        });
-            
-
-
- 
-
-}
-
-  async function getUserListing() {
-
-    document.getElementById('loader-wrap').style.display = 'block';
-   
-    loadIt();
-    // await axios.get('https://share.highflierstutors.com/api/listing')
-
-    // .then(function (response) {
-      // console.log(response)
-  
-   
-      // document.getElementById('loader-wrap').style.display = 'none';
-     
-     
-
-      console.log(totallisting)
-
-      if(totallisting.length > 1){
-
-        for(let i = 0;i < totallisting.length;i++){
-
-          var input = totallisting[i].listing.attachments;
-  
-          var fields = input.split(',');
-  
-          var name = fields[0];
-          var div =  document.createElement("div");
-            div.innerHTML = 
-            '<div class="dashboard-list">'+
-            '<div class="dashboard-message">'+
-               ' <span class="new-dashboard-item">New</span>'+
-                '<div class="listing-table-image">'+
-                    '<a href="listing-single.html"><img src="https://share.highflierstutors.com/images/'+name+'" alt="" class="respimg"></a>'+
-                '</div>'+
-                '<div class="listing-table-text">'+
-                    '<h4><a href="listing-single.html">'+totallisting[i].listing.spaceTitle+'</a></a></h4>'+
-                    '<span class="listing-table-address"><i class="far fa-map-marker"></i><a  href="#">'+totallisting[i].listing.address+'</a></span>'+
-                    '<ul class="listing-table-opt  fl-wrap">'+
-                        '<li><a href="#">Edit <i class="fal fa-edit"></i></a></li>'+
-                        '<li><a href="#" class="del-btn">Delete <i class="fal fa-trash-alt"></i></a></li>'+
-                    '</ul>'+
-                '</div>'+
-            '</div>'+
-        '</div>'
-  
-      var element = document.getElementById("showuserlisting");
-           
-           element.appendChild(div);
-  
-        }
-      }
-      else{
-
-              var div =  document.createElement("div");
-              div.innerHTML = 
-            '<div class="dashboard-message">'+
-           '<h1 style="color: red; margin-top: 60px">No Listing Available</h1>'
-            '</div>'
-            
-            var et = document.getElementById("showuserlisting");
-         
-            
-          et.appendChild(div);
-        }
-
-          // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
-
-       
-          document.getElementById('loader-wrap').style.display = 'none';
-
-
- 
-
-  
-
-  }
-
-  async function getUserReview() {
-    
-
-    document.getElementById('loader-wrap').style.display = 'block';
-    loadIt();
-  
-   
-
-
-    // await axios.get('https://share.highflierstutors.com/api/review')
-
-    
-    // .then(function (response) {
-      // if (response.data != undefined && response.data != null){
-       
-      
-      // }
-      var element = document.getElementById("showreview"); 
-
-   
-
+          
         if(totalreview.length > 1){
         
           // console.log(response.data.data.length);
@@ -752,31 +596,129 @@ async function getbookinglength(){
        
           document.getElementById('loader-wrap').style.display = 'none';
 
+       }
          
-        
-      
+    }
+
+    document.getElementById('loader-wrap').style.display = 'none';
+
+
+  }).catch(function (err) {
+        console.error('Fetch Error -', err);
+      });
+
+
+
+}
+async function getlistinglength(){
+
+  document.getElementById('loader-wrap').style.display = 'block';
+
+  await axios.get('https://share.highflierstutors.com/api/listing')
+
     
+  .then(function (response) {
 
+    if(response.status == 200){
+      // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
+       // document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
+      //  alert(userId)
+       console.log(response.data)
+       // localStorage.setItem('allreview',response.data.data.length);
+       totallisting = response.data.data.filter(ttb => ttb.host.id == userId)
+         document.getElementById('alllisting').innerHTML = totallisting.length;
+
+         if(document.getElementById("showuserlisting") != undefined){
+          if(totallisting.length > 1){
+
+            for(let i = 0;i < totallisting.length;i++){
+    
+              var input = totallisting[i].listing.attachments;
       
-  }
-
-  async function getUserBooking() {
-
-    document.getElementById('loader-wrap').style.display = 'block';
-    loadIt();
-
-    // await axios.get('https://share.highflierstutors.com/api/order')
-  
-    // .then(function (response) {
-    //   console.log(response)
-  
-      document.getElementById('loader-wrap').style.display = 'none';
-  
-      console.log(userId)
-
+              var fields = input.split(',');
       
+              var name = fields[0];
+              var div =  document.createElement("div");
+                div.innerHTML = 
+                '<div class="dashboard-list">'+
+                '<div class="dashboard-message">'+
+                   ' <span class="new-dashboard-item">New</span>'+
+                    '<div class="listing-table-image">'+
+                        '<a href="listing-single.html"><img src="https://share.highflierstutors.com/images/'+name+'" alt="" class="respimg"></a>'+
+                    '</div>'+
+                    '<div class="listing-table-text">'+
+                        '<h4><a href="listing-single.html">'+totallisting[i].listing.spaceTitle+'</a></a></h4>'+
+                        '<span class="listing-table-address"><i class="far fa-map-marker"></i><a  href="#">'+totallisting[i].listing.address+'</a></span>'+
+                        '<ul class="listing-table-opt  fl-wrap">'+
+                            '<li><a href="#">Edit <i class="fal fa-edit"></i></a></li>'+
+                            '<li><a href="#" class="del-btn">Delete <i class="fal fa-trash-alt"></i></a></li>'+
+                        '</ul>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'
+      
+          var element = document.getElementById("showuserlisting");
+               
+               element.appendChild(div);
+      
+            }
+          }
+          else{
+    
+                  var div =  document.createElement("div");
+                  div.innerHTML = 
+                '<div class="dashboard-message">'+
+               '<h1 style="color: red; margin-top: 60px">No Listing Available</h1>'
+                '</div>'
+                
+                var et = document.getElementById("showuserlisting");
+             
+                
+              et.appendChild(div);
+            }
+    
+              // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
+    
+           
+             
+    
+         }
+         document.getElementById('loader-wrap').style.display = 'none';
+   }
+  }).catch(function (err) {
+    console.error('Fetch Error -', err);
+  });
 
-      if(filteredbooking != null & filteredbooking != "")
+
+ 
+
+}
+async function getbookinglength(){
+
+  document.getElementById('loader-wrap').style.display = 'block';
+ 
+
+
+    await axios.get('https://share.highflierstutors.com/api/order',{
+
+    // headers: {
+    //   'Authorization': `Bearer ${puser}` }
+    })
+    .then(function (response) {
+
+      if(response.status == 200){
+        // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
+         // document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
+        //  alert(userId)
+         console.log(response.data)
+         // localStorage.setItem('allreview',response.data.data.length);
+          totalbooking = response.data.data.filter(ttb => ttb.order.hostId == userId)
+           document.getElementById('allbookings').innerHTML = totalbooking.length;
+
+
+           if(document.getElementById("dashboard-listing") != undefined){
+             
+      if(totalbooking != null & totalbooking != "")
       {
         for(let i = 0;i < filteredbooking.length;i++){
 
@@ -836,6 +778,168 @@ async function getbookinglength(){
      element.appendChild(div);
 
       }
+
+           }
+           document.getElementById('loader-wrap').style.display = 'none';
+
+
+     }
+    }).catch(function (err) {
+          console.error('Fetch Error -', err);
+        });
+            
+
+
+ 
+
+}
+
+function getUserListing() {
+
+    document.getElementById('loader-wrap').style.display = 'block';
+   
+    loadIt();
+    // await axios.get('https://share.highflierstutors.com/api/listing')
+
+    // .then(function (response) {
+      // console.log(response)
+  
+   
+      // document.getElementById('loader-wrap').style.display = 'none';
+     
+     
+
+      console.log(totallisting)
+
+    
+
+ 
+
+  
+
+  }
+
+function getUserReview() {
+    
+
+    document.getElementById('loader-wrap').style.display = 'block';
+    loadIt();
+  
+   
+
+
+    // await axios.get('https://share.highflierstutors.com/api/review')
+
+    
+    // .then(function (response) {
+      // if (response.data != undefined && response.data != null){
+       
+      
+      // // }
+      // var element = document.getElementById("showreview"); 
+
+   
+
+      //   if(totalreview.length > 1){
+        
+      //     // console.log(response.data.data.length);
+          
+      //     // localStorage.setItem('allreview',response.data.data.length);
+  
+        
+
+         
+      //       for (let i = 0;i < totalreview.length;i++){
+  
+      //         keeplist = totalreview[i].listingId;
+      //         console.log(keeplist);
+      
+      //         // findlisting()
+    
+      //         // =========================split date created on the API==================================================================
+      //         var input = totalreview[i].created_at;
+    
+      //         var fields = input.split('T');
+      
+      //         var name = fields[0];
+    
+      //         var div =  document.createElement("div");
+      //         div.innerHTML = 
+    
+      //        ' <div class="reviews-comments-item">'+
+      //         '<div class="review-comments-avatar">'+
+      //             '<img src="images/avatar/2.jpg" alt="" class="respimg"> '+
+      //        ' </div>'+
+      //         '<div class="reviews-comments-item-text">'+
+      //             '<h4><a href="#">Segun Ola</a> on <a href="listing-single.html" class="reviews-comments-item-link">'+reviewspaceTitle+'</a></h4>'+
+      //            '<div class="review-score-user">'+
+      //                 '<span>'+totalreview[i].rating+'</span>'+
+      //                 '<strong>'+totalreview[i].comments+'</strong>'+
+      //             '</div>'+
+      //             '<div class="clearfix"></div>'+
+      //             '<p> '+reviewspaceInfo+'</p>'+
+      //             '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
+      //         '</div>'+
+      //     '</div>'
+    
+    
+      //     document.getElementById('loader-wrap').style.display = 'none';
+    
+      //     var element = document.getElementById("showreview");
+         
+      //     if(element != null && element != 'undefined')
+      //     {
+      //       element.appendChild(div);
+      //     }
+          
+            
+      //   }
+          
+          
+        
+      // }
+      // else{
+
+      //         var div =  document.createElement("div");
+      //         div.innerHTML = 
+      //       '<div class="dashboard-message">'+
+      //      '<h1 style="color: red; margin-top: 60px">No Review Available</h1>'
+      //       '</div>'
+        
+          
+        
+      //     var element = document.getElementById("showreview");
+            
+      //     element.appendChild(div);
+      //   }
+
+      //     // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
+
+       
+      //     document.getElementById('loader-wrap').style.display = 'none';
+
+         
+        
+      
+    
+
+      
+  }
+function getUserBooking() {
+
+    document.getElementById('loader-wrap').style.display = 'block';
+    loadIt();
+
+    // await axios.get('https://share.highflierstutors.com/api/order')
+  
+    // .then(function (response) {
+    //   console.log(response)
+  
+      document.getElementById('loader-wrap').style.display = 'none';
+  
+      console.log(userId)
+
+      
 
      
     }
@@ -2229,19 +2333,19 @@ async function getHomeStates(){
           console.log(allhomestates);
 
           kwara = allhomestates.filter(kw => kw.listing.state == "Kwara").length
-          console.log(kwara)
+          // console.log(kwara)
           lagos = allhomestates.filter(lg => lg.listing.state == "Lagos").length
-          console.log(lagos)
+          // console.log(lagos)
           oyo = allhomestates.filter(oy => oy.listing.state == "Oyo").length
-          console.log(oyo)
+          // console.log(oyo)
           osun = allhomestates.filter(os => os.listing.state == "Osun").length
-          console.log(osun)
+          // console.log(osun)
           fed = allhomestates.filter(fd => fd.listing.state == "Federal Capital Territory").length
-          console.log(fed)
+          // console.log(fed)
           ekiti = allhomestates.filter(ek => ek.listing.state == "Ekiti").length
-          console.log(ekiti)
+          // console.log(ekiti)
           ogun = allhomestates.filter(og => og.listing.state == "Ogun").length
-          console.log(ogun)
+          // console.log(ogun)
 
           document.getElementById('statelisting1').innerText = lagos;
           document.getElementById('statelisting2').innerText = kwara;
@@ -2254,7 +2358,61 @@ async function getHomeStates(){
           document.getElementById('loader-wrap').style.display = 'none';
 
 
-        }
+          if(allhomestates != ""){
+
+            const items = allhomestates.slice(0, 10)
+
+            if(items != null & items != ""){
+             
+  
+              for(let i = 1; i <= items.length; )
+              {
+                // alert('1')
+                
+                  console.log(items[i].listing.created_at)
+                  // console.log(allhomestates[i].listing.id)
+                  // publicId = allhomestates[i].listing.id;
+                      
+          
+                  
+                      document.getElementById('popularUser'+i).innerText = items[i].host.firstname;
+                      document.getElementById('popularComment'+i).innerText = (items[i].reviews != "") ? items[i].reviews[0].comments : "No Comments";
+                      document.getElementById('popularReview'+i).innerText = (items[i].reviews != "") ? items[i].reviews.length : "No Review";
+                      document.getElementById('popularRating'+i).innerText = (items[i].reviews != "") ? items[i].reviews[0].rating : "No Rating";
+                      document.getElementById('popularTitle'+i).innerText = items[i].listing.spaceTitle;
+                      document.getElementById('popularAddress'+i).innerText = items[i].listing.address;
+                      document.getElementById('popularDetails'+i).innerText = items[i].listing.spaceDetails;
+                      document.getElementById('popularPrice'+i).innerText = "NGN "+ items[i].listing.price;
+                      // document.getElementById('popularUser'+i).className = items[i].listing.id;
+
+                     
+                    
+                      document.getElementById('popularDetails'+i).style.height = '100px'
+                      document.getElementById('popularDetails'+i).style.border = '1px solid transparent'
+                      document.getElementById('popularDetails'+i).style.overflow = 'hidden'
+                 
+                   var li =  document.createElement("a");
+
+                    li.innerHTML = 
+                            '<a  id="'+items[i].listing.id+'" onclick="pool(id)">click me</a>'
+                           
+                    var ele = document.getElementById('popularDetails'+i);
+                
+              
+                ele.append(li);
+                i++
+                }
+              }
+          }
+        
+          }
+            
+               
+              
+          document.getElementById('loader-wrap').style.display = 'none';
+
+
+        
         
       }).catch(function (err) {
         document.getElementById('loader-wrap').style.display = 'none';
@@ -2263,7 +2421,9 @@ async function getHomeStates(){
    
  
 }
-
+function pool(yh){
+  href="listing-single.html?id="+yh
+}
 async function cityListing(cityid){
 // alert(cityid)
 window.location.href = "listing.html?id="+cityid
