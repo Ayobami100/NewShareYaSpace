@@ -1081,7 +1081,7 @@ if(parsedUrlId ){
   
          document.getElementById('loader-wrap').style.display = 'none';
   
-        console.log(response.data.data[0])
+        console.log(response.data.data)
         console.log(response.data.data[0].host.number)
         console.log(response.data.data[0].host.email)
         console.log(response.data.data[0].listing.spaceTitle)
@@ -1125,6 +1125,26 @@ if(parsedUrlId ){
          document.getElementById("listingRating").innerHTML = (response.data.data[0].reviews.length >= 1) ? response.data.data[0].reviews[0].rating  : "No Rating";
          document.getElementById("listingComment").innerHTML = (response.data.data[0].reviews.length >= 1) ? response.data.data[0].reviews[0].comments  : "No Comment";
   
+
+         if(response.data.data[0].listing.attachments){
+           getImages = response.data.data[0].listing.attachments.split(',');
+          //  alert(getImages.length)
+          for (let i = 0; i < getImages.length-1; i++){
+
+              var putImages = document.createElement('a')
+              
+              document.getElementById('tagImages'+i).src = "https://share.highflierstutors.com/images/"+getImages[i]
+              putImages.innerHTML =
+              
+                      '<a href="https://share.highflierstutors.com/images/'+getImages[i]+'" class="gal-link popup-image"><i class="fa fa-search"></i></a>'
+        
+
+          document.getElementById('tagImages'+i).append(putImages)
+          }
+         }
+         else{
+
+         }
   
          if(response.data.data[0].reviews.length >= 1){
   
@@ -2365,7 +2385,7 @@ async function getHomeStates(){
             if(items != null & items != ""){
              
   
-              for(let i = 1; i <= items.length; )
+              for(let i = 1; i <= items.length;i++ )
               {
                 // alert('1')
                 
@@ -2379,7 +2399,7 @@ async function getHomeStates(){
                       document.getElementById('popularComment'+i).innerText = (items[i].reviews != "") ? items[i].reviews[0].comments : "No Comments";
                       document.getElementById('popularReview'+i).innerText = (items[i].reviews != "") ? items[i].reviews.length : "No Review";
                       document.getElementById('popularRating'+i).innerText = (items[i].reviews != "") ? items[i].reviews[0].rating : "No Rating";
-                      document.getElementById('popularTitle'+i).innerText = items[i].listing.spaceTitle;
+                      // document.getElementById('popularTitle'+i).innerText = items[i].listing.spaceTitle;
                       document.getElementById('popularAddress'+i).innerText = items[i].listing.address;
                       document.getElementById('popularDetails'+i).innerText = items[i].listing.spaceDetails;
                       document.getElementById('popularPrice'+i).innerText = "NGN "+ items[i].listing.price;
@@ -2391,17 +2411,32 @@ async function getHomeStates(){
                       document.getElementById('popularDetails'+i).style.border = '1px solid transparent'
                       document.getElementById('popularDetails'+i).style.overflow = 'hidden'
                  
-                   var li =  document.createElement("a");
+                   var li =  document.createElement("div");
 
                     li.innerHTML = 
-                            '<a  id="'+items[i].listing.id+'" onclick="pool(id)">click me</a>'
+                            '<h3 class="title-sin_map"><a id="'+items[i].listing.id+'" onclick="pool(id)" style="cursor:pointer;">'+items[i].listing.spaceTitle+'</a></h3>'
                            
-                    var ele = document.getElementById('popularDetails'+i);
+                    var ele = document.getElementById('popularTitle'+i);
                 
               
-                ele.append(li);
-                i++
+                ele.appendChild(li);
+
+                var di =  document.createElement("div");
+
+                di.innerHTML = 
+                    '<a id="'+items[i].listing.id+'" onclick="pool(id)" style="cursor:pointer;"><img src="images/gal/8.jpg" alt=""></a>'
+                       
+                var ele = document.getElementById('tryit'+i);
+            
+          
+            ele.append(di);
+
+              
+                
+
                 }
+
+              
               }
           }
         
@@ -2421,14 +2456,16 @@ async function getHomeStates(){
    
  
 }
-function pool(yh){
-  href="listing-single.html?id="+yh
+function pool(singleId){
+  window.location.href = "listing-single.html?id="+singleId
 }
+
 async function cityListing(cityid){
 // alert(cityid)
-window.location.href = "listing.html?id="+cityid
+  window.location.href = "listing.html?id="+cityid
 }
 function checkAvailable(){
+
 var checkbegin = document.getElementById('checkdate').value.split('-')[0];
 var checkend = document.getElementById('checkdate').value.split('-')[1];
 
