@@ -5996,7 +5996,7 @@ article.post-article .list-single-main-item {
 	width:auto;
 	height:500px !important;
 	float:left;
-	cursor: w-resize;
+	/* cursor: w-resize; */
 }
 .fw-carousel .slick-slide-item img {
 	width:auto  ;

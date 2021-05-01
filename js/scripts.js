@@ -725,6 +725,8 @@ function  initShareYaSpace() {
             }
         });
     } else $(".fixed-bar").removeClass("fixbar-action");
+
+
     //   Slick------------------
     var sbp = $('.swiper-button-prev'),
         sbn = $('.swiper-button-next');
@@ -787,7 +789,7 @@ function  initShareYaSpace() {
     });
     $('.single-carousel').slick({
         infinite: true,
-        slidesToShow: 3,
+        slidesToShow: 5,
         dots: true,
         arrows: false,
         centerMode: true,
@@ -927,7 +929,7 @@ function  initShareYaSpace() {
         asNavFor: '.slider-nav'
     });
     $('.slider-nav').slick({
-        slidesToShow: 5,
+        slidesToShow: 3,
         slidesToScroll: 1,
         asNavFor: '.slider-for',
         dots: false,

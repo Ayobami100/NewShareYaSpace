@@ -11,7 +11,8 @@
 
         <!-- =========================================================================== -->
 
-        <script type="module">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script type="module" >
         
             $(document).ready(function(){
                 
@@ -25,7 +26,6 @@
             })
             
         </script>
-
       
       
         <!--=============== css  ===============-->
@@ -484,453 +484,456 @@
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas in pulvinar neque. Nulla finibus lobortis pulvinar.</p>
                             </div>
                         </div>
+                        
                         <!-- container end-->
-                        <!-- carousel -->
-                        <div class="list-carousel fl-wrap card-listing ">
+                        <div class="list-carousel fl-wrap card-listing">
                             <!--listing-carousel-->
                             <div class="listing-carousel fl-wrap">
+                                                <!--slick-slide-item-->
+                                <div class="slick-slide-item">
+                                    <!-- listing-item  -->
+                                    <div class="listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                            <div class="geodir-category-img" id="tryit1">
+                                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
+                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong id="popularUser1"></strong></span>
+                                                </div>
+                                                <!-- <div class="sale-window">Sale 20%</div> -->
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong id="popularComment1"></strong><strong id="popularReview1"></strong> </div>
+                                                        <span id="popularRating1"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item">
+                                                        <h3 class="title-sin_map"><a id="popularTitle1"></a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress1"><i class="fas fa-map-marker-alt"></i></a></div>
+                                                    </div>
+                                                </div>
+                                                <p id="popularDetails1">.</p>
+                                                <!-- <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul> -->
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-category-price">Per Day <span id="popularPrice1"></span></div>
+                                                    <div class="geodir-opt-list">
+                                                        <!-- <a  class="single-map-item" data-newlatitude="40.72956781" data-newlongitude="-73.99726866"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
+                                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
+                                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <!-- listing-item end -->
+                                </div>
+                                                <!--slick-slide-item end-->
+                            
                                 <!--slick-slide-item-->
-                <div class="slick-slide-item">
-                    <!-- listing-item  -->
-                    <div class="listing-item">
-                        <article class="geodir-category-listing fl-wrap">
-                            <div class="geodir-category-img" id="tryit1">
-                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
-                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
-                                    <span class="avatar-tooltip">Added By  <strong id="popularUser1"></strong></span>
-                                </div>
-                                <!-- <div class="sale-window">Sale 20%</div> -->
-                                <div class="geodir-category-opt">
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                    <div class="rate-class-name">
-                                        <div class="score"><strong id="popularComment1"></strong><strong id="popularReview1"></strong> </div>
-                                        <span id="popularRating1"></span>
+                                <div class="slick-slide-item">
+                                    <!-- listing-item  -->
+                                    <div class="listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                            <div class="geodir-category-img" id="tryit2">
+                                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
+                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong id="popularUser2"></strong></span>
+                                                </div>
+                                                <!-- <div class="sale-window">Sale 20%</div> -->
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong id="popularComment2"></strong><strong id="popularReview2"></strong> </div>
+                                                        <span id="popularRating2"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item">
+                                                        <h3 class="title-sin_map"><a id="popularTitle2"></a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress2"><i class="fas fa-map-marker-alt"></i></a></div>
+                                                    </div>
+                                                </div>
+                                                <p id="popularDetails2">.</p>
+                                                <!-- <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul> -->
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-opt-link">
+                                                        <div class="geodir-category-price">Per/Day <span id="popularPrice2"></span></div>
+                                                    </div>
+                                                    <div class="geodir-opt-list">
+                                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
+                                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
+                                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                     </div>
+                                    <!-- listing-item end -->
                                 </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                                <div class="geodir-category-content-title fl-wrap">
-                                    <div class="geodir-category-content-title-item">
-                                        <h3 class="title-sin_map"><a id="popularTitle1"></a></h3>
-                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress1"><i class="fas fa-map-marker-alt"></i></a></div>
-                                    </div>
-                                </div>
-                                <p id="popularDetails1">.</p>
-                                <!-- <ul class="facilities-list fl-wrap">
-                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                </ul> -->
-                                <div class="geodir-category-footer fl-wrap">
-                                    <div class="geodir-category-price">Per Day <span id="popularPrice1"></span></div>
-                                    <div class="geodir-opt-list">
-                                        <!-- <a  class="single-map-item" data-newlatitude="40.72956781" data-newlongitude="-73.99726866"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
-                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
-                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <!-- listing-item end -->
-                </div>
-                                <!--slick-slide-item end-->
-             
-                   <!--slick-slide-item-->
-                <div class="slick-slide-item">
-                    <!-- listing-item  -->
-                    <div class="listing-item">
-                        <article class="geodir-category-listing fl-wrap">
-                            <div class="geodir-category-img" id="tryit2">
-                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
-                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
-                                    <span class="avatar-tooltip">Added By  <strong id="popularUser2"></strong></span>
-                                </div>
-                                <!-- <div class="sale-window">Sale 20%</div> -->
-                                <div class="geodir-category-opt">
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                    <div class="rate-class-name">
-                                        <div class="score"><strong id="popularComment2"></strong><strong id="popularReview2"></strong> </div>
-                                        <span id="popularRating2"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                                <div class="geodir-category-content-title fl-wrap">
-                                    <div class="geodir-category-content-title-item">
-                                        <h3 class="title-sin_map"><a id="popularTitle2"></a></h3>
-                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress2"><i class="fas fa-map-marker-alt"></i></a></div>
-                                    </div>
-                                </div>
-                                <p id="popularDetails2">.</p>
-                                <!-- <ul class="facilities-list fl-wrap">
-                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                </ul> -->
-                                <div class="geodir-category-footer fl-wrap">
-                                    <div class="geodir-opt-link">
-                                        <div class="geodir-category-price">Per/Day <span id="popularPrice2"></span></div>
-                                    </div>
-                                    <div class="geodir-opt-list">
-                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
-                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
-                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <!-- listing-item end -->
-                </div>
-                <!--slick-slide-item end-->
-                <!--slick-slide-item-->
-                <div class="slick-slide-item">
-                    <!-- listing-item  -->
-                    <div class="listing-item">
-                        <article class="geodir-category-listing fl-wrap">
-                            <div class="geodir-category-img" id="tryit3">
-                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
-                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
-                                    <span class="avatar-tooltip">Added By  <strong id="popularUser3"></strong></span>
-                                </div>
-                                <!-- <div class="sale-window">Sale 20%</div> -->
-                                <div class="geodir-category-opt">
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                    <div class="rate-class-name">
-                                        <div class="score"><strong id="popularComment3"></strong><strong id="popularReview3"></strong> </div>
-                                        <span id="popularRating3"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                                <div class="geodir-category-content-title fl-wrap">
-                                    <div class="geodir-category-content-title-item" id="popularTitle3">
-                                        <div class="geodir-category-location fl-wrap"><a class="map-item" id="popularAddress3"><i class="fas fa-map-marker-alt"></i></a></div>
-                                    </div>
-                                </div>
-                                <p id="popularDetails3">.</p>
-                                <!-- <ul class="facilities-list fl-wrap">
-                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                </ul> -->
-                                <div class="geodir-category-footer fl-wrap">
-                                    <div class="geodir-opt-link">
-                                        <div class="geodir-category-price">Per/Day <span id="popularPrice3"></span></div>
-                                    </div>
-                                    <div class="geodir-opt-list">
-                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
-                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
-                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <!-- listing-item end -->
-                </div>
                                 <!--slick-slide-item end-->
                                 <!--slick-slide-item-->
-                              
-                <div class="slick-slide-item">
-                    <!-- listing-item  -->
-                    <div class="listing-item">
-                        <article class="geodir-category-listing fl-wrap">
-                           <div class="geodir-category-img" id="tryit4">
-                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
-                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
-                                    <span class="avatar-tooltip">Added By  <strong id="popularUser4"></strong></span>
-                                </div>
-                                <!-- <div class="sale-window">Sale 20%</div> -->
-                                <div class="geodir-category-opt">
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                    <div class="rate-class-name">
-                                        <div class="score"><strong id="popularComment4"></strong><strong id="popularReview4"></strong> </div>
-                                        <span id="popularRating4"></span>
+                                <div class="slick-slide-item">
+                                    <!-- listing-item  -->
+                                    <div class="listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                            <div class="geodir-category-img" id="tryit3">
+                                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
+                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong id="popularUser3"></strong></span>
+                                                </div>
+                                                <!-- <div class="sale-window">Sale 20%</div> -->
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong id="popularComment3"></strong><strong id="popularReview3"></strong> </div>
+                                                        <span id="popularRating3"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item" id="popularTitle3">
+                                                        <div class="geodir-category-location fl-wrap"><a class="map-item" id="popularAddress3"><i class="fas fa-map-marker-alt"></i></a></div>
+                                                    </div>
+                                                </div>
+                                                <p id="popularDetails3">.</p>
+                                                <!-- <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul> -->
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-opt-link">
+                                                        <div class="geodir-category-price">Per/Day <span id="popularPrice3"></span></div>
+                                                    </div>
+                                                    <div class="geodir-opt-list">
+                                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
+                                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
+                                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                     </div>
+                                    <!-- listing-item end -->
                                 </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                                <div class="geodir-category-content-title fl-wrap">
-                                    <div class="geodir-category-content-title-item">
-                                        <h3 class="title-sin_map"><a id="popularTitle4"></a></h3>
-                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress4"><i class="fas fa-map-marker-alt"></i></a></div>
+                                                <!--slick-slide-item end-->
+                                                <!--slick-slide-item-->
+                                            
+                                <div class="slick-slide-item">
+                                    <!-- listing-item  -->
+                                    <div class="listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                        <div class="geodir-category-img" id="tryit4">
+                                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
+                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong id="popularUser4"></strong></span>
+                                                </div>
+                                                <!-- <div class="sale-window">Sale 20%</div> -->
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong id="popularComment4"></strong><strong id="popularReview4"></strong> </div>
+                                                        <span id="popularRating4"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item">
+                                                        <h3 class="title-sin_map"><a id="popularTitle4"></a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress4"><i class="fas fa-map-marker-alt"></i></a></div>
+                                                    </div>
+                                                </div>
+                                                <p id="popularDetails4">.</p>
+                                                <!-- <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul> -->
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-opt-link">
+                                                        <div class="geodir-category-price">Per/Day <span id="popularPrice4"></span></div>
+                                                    </div>
+                                                    <div class="geodir-opt-list">
+                                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
+                                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
+                                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                     </div>
+                                    <!-- listing-item end -->
                                 </div>
-                                <p id="popularDetails4">.</p>
-                                <!-- <ul class="facilities-list fl-wrap">
-                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                </ul> -->
-                                <div class="geodir-category-footer fl-wrap">
-                                    <div class="geodir-opt-link">
-                                        <div class="geodir-category-price">Per/Day <span id="popularPrice4"></span></div>
-                                    </div>
-                                    <div class="geodir-opt-list">
-                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
-                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
-                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <!-- listing-item end -->
-                </div>
 
-                <div class="slick-slide-item">
-                    <!-- listing-item  -->
-                    <div class="listing-item">
-                        <article class="geodir-category-listing fl-wrap">
-                           <div class="geodir-category-img" id="tryit5">
-                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
-                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
-                                    <span class="avatar-tooltip">Added By  <strong id="popularUser5"></strong></span>
-                                </div>
-                                <!-- <div class="sale-window">Sale 20%</div> -->
-                                <div class="geodir-category-opt">
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                    <div class="rate-class-name">
-                                        <div class="score"><strong id="popularComment5"></strong><strong id="popularReview5"></strong> </div>
-                                        <span id="popularRating5"></span>
+                                <div class="slick-slide-item">
+                                    <!-- listing-item  -->
+                                    <div class="listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                        <div class="geodir-category-img" id="tryit5">
+                                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
+                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong id="popularUser5"></strong></span>
+                                                </div>
+                                                <!-- <div class="sale-window">Sale 20%</div> -->
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong id="popularComment5"></strong><strong id="popularReview5"></strong> </div>
+                                                        <span id="popularRating5"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item">
+                                                        <h3 class="title-sin_map"><a id="popularTitle5"></a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress5"><i class="fas fa-map-marker-alt"></i></a></div>
+                                                    </div>
+                                                </div>
+                                                <p id="popularDetails5">.</p>
+                                                <!-- <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul> -->
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-opt-link">
+                                                        <div class="geodir-category-price">Per/Day <span id="popularPrice5"></span></div>
+                                                    </div>
+                                                    <div class="geodir-opt-list">
+                                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
+                                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
+                                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                     </div>
+                                    <!-- listing-item end -->
                                 </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                                <div class="geodir-category-content-title fl-wrap">
-                                    <div class="geodir-category-content-title-item">
-                                        <h3 class="title-sin_map"><a id="popularTitle5"></a></h3>
-                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress5"><i class="fas fa-map-marker-alt"></i></a></div>
-                                    </div>
-                                </div>
-                                <p id="popularDetails5">.</p>
-                                <!-- <ul class="facilities-list fl-wrap">
-                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                </ul> -->
-                                <div class="geodir-category-footer fl-wrap">
-                                    <div class="geodir-opt-link">
-                                        <div class="geodir-category-price">Per/Day <span id="popularPrice5"></span></div>
-                                    </div>
-                                    <div class="geodir-opt-list">
-                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
-                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
-                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <!-- listing-item end -->
-                </div>
 
-                <div class="slick-slide-item">
-                    <!-- listing-item  -->
-                    <div class="listing-item">
-                        <article class="geodir-category-listing fl-wrap">
-                           <div class="geodir-category-img" id="tryit6">
-                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
-                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
-                                    <span class="avatar-tooltip">Added By  <strong id="popularUser6"></strong></span>
-                                </div>
-                                <!-- <div class="sale-window">Sale 20%</div> -->
-                                <div class="geodir-category-opt">
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                    <div class="rate-class-name">
-                                        <div class="score"><strong id="popularComment6"></strong><strong id="popularReview6"></strong> </div>
-                                        <span id="popularRating6"></span>
+                                <div class="slick-slide-item">
+                                    <!-- listing-item  -->
+                                    <div class="listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                        <div class="geodir-category-img" id="tryit6">
+                                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
+                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong id="popularUser6"></strong></span>
+                                                </div>
+                                                <!-- <div class="sale-window">Sale 20%</div> -->
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong id="popularComment6"></strong><strong id="popularReview6"></strong> </div>
+                                                        <span id="popularRating6"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item">
+                                                        <h3 class="title-sin_map"><a id="popularTitle6" ></a></h3>/
+                                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress6"><i class="fas fa-map-marker-alt"></i></a></div>
+                                                    </div>
+                                                </div>
+                                                <p id="popularDetails6">.</p>
+                                                <!-- <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul> -->
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-opt-link">
+                                                        <div class="geodir-category-price">Per/Day <span id="popularPrice6"></span></div>
+                                                    </div>
+                                                    <div class="geodir-opt-list">
+                                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
+                                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
+                                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                     </div>
+                                    <!-- listing-item end -->
                                 </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                                <div class="geodir-category-content-title fl-wrap">
-                                    <div class="geodir-category-content-title-item">
-                                        <h3 class="title-sin_map"><a id="popularTitle6" ></a></h3>/
-                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress6"><i class="fas fa-map-marker-alt"></i></a></div>
-                                    </div>
-                                </div>
-                                <p id="popularDetails6">.</p>
-                                <!-- <ul class="facilities-list fl-wrap">
-                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                </ul> -->
-                                <div class="geodir-category-footer fl-wrap">
-                                    <div class="geodir-opt-link">
-                                        <div class="geodir-category-price">Per/Day <span id="popularPrice6"></span></div>
-                                    </div>
-                                    <div class="geodir-opt-list">
-                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
-                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
-                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <!-- listing-item end -->
-                </div>
 
-                <div class="slick-slide-item">
-                    <!-- listing-item  -->
-                    <div class="listing-item">
-                        <article class="geodir-category-listing fl-wrap">
-                           <div class="geodir-category-img" id="tryit7">
-                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
-                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
-                                    <span class="avatar-tooltip">Added By  <strong id="popularUser7"></strong></span>
-                                </div>
-                                <!-- <div class="sale-window">Sale 20%</div> -->
-                                <div class="geodir-category-opt">
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                    <div class="rate-class-name">
-                                        <div class="score"><strong id="popularComment7"></strong><strong id="popularReview7"></strong> </div>
-                                        <span id="popularRating7"></span>
+                                <div class="slick-slide-item">
+                                    <!-- listing-item  -->
+                                    <div class="listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                        <div class="geodir-category-img" id="tryit7">
+                                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
+                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong id="popularUser7"></strong></span>
+                                                </div>
+                                                <!-- <div class="sale-window">Sale 20%</div> -->
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong id="popularComment7"></strong><strong id="popularReview7"></strong> </div>
+                                                        <span id="popularRating7"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item">
+                                                        <h3 class="title-sin_map"><a id="popularTitle7"></a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress7"><i class="fas fa-map-marker-alt"></i></a></div>
+                                                    </div>
+                                                </div>
+                                                <p id="popularDetails7"></p>
+                                                <!-- <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul> -->
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-opt-link">
+                                                        <div class="geodir-category-price">Per/Day <span id="popularPrice7"></span></div>
+                                                    </div>
+                                                    <div class="geodir-opt-list">
+                                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
+                                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
+                                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                     </div>
+                                    <!-- listing-item end -->
                                 </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                                <div class="geodir-category-content-title fl-wrap">
-                                    <div class="geodir-category-content-title-item">
-                                        <h3 class="title-sin_map"><a id="popularTitle7"></a></h3>
-                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress7"><i class="fas fa-map-marker-alt"></i></a></div>
+                                <div class="slick-slide-item">
+                                    <!-- listing-item  -->
+                                    <div class="listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                        <div class="geodir-category-img" id="tryit8">
+                                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
+                                                <div class="listing-avatar"><a><img src="images/avatar/1.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong id="popularUser8"></strong></span>
+                                                </div>
+                                                <!-- <div class="sale-window">Sale 20%</div> -->
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong id="popularComment8"></strong><strong id="popularReview8"></strong> </div>
+                                                        <span id="popularRating8"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item">
+                                                        <h3 class="title-sin_map"><a id="popularTitle8"></a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress8"><i class="fas fa-map-marker-alt"></i></a></div>
+                                                    </div>
+                                                </div>
+                                                <p id="popularDetails8">.</p>
+                                                <!-- <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul> -->
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-opt-link">
+                                                        <div class="geodir-category-price">Per/Day <span id="popularPrice8"></span></div>
+                                                    </div>
+                                                    <div class="geodir-opt-list">
+                                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
+                                                        <a onclick="crosscheckfavorite()" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
+                                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                     </div>
+                                    <!-- listing-item end -->
                                 </div>
-                                <p id="popularDetails7">999999999999999999999999</p>
-                                <!-- <ul class="facilities-list fl-wrap">
-                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                </ul> -->
-                                <div class="geodir-category-footer fl-wrap">
-                                    <div class="geodir-opt-link">
-                                        <div class="geodir-category-price">Per/Day <span id="popularPrice7"></span></div>
+                                
+                                <div class="slick-slide-item">
+                                    <!-- listing-item  -->
+                                    <div class="listing-item">
+                                        <article class="geodir-category-listing fl-wrap">
+                                            <div class="geodir-category-img" id="tryit9">
+                                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
+                                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
+                                                    <span class="avatar-tooltip">Added By  <strong id="popularUser9"></strong></span>
+                                                </div>
+                                                <!-- <div class="sale-window">Sale 20%</div> -->
+                                                <div class="geodir-category-opt">
+                                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
+                                                    <div class="rate-class-name">
+                                                        <div class="score"><strong id="popularComment9"></strong><strong id="popularReview9"></strong> </div>
+                                                        <span id="popularRating9"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="geodir-category-content fl-wrap title-sin_item">
+                                                <div class="geodir-category-content-title fl-wrap">
+                                                    <div class="geodir-category-content-title-item">
+                                                        <h3 class="title-sin_map"><a id="popularTitle9"></a></h3>
+                                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress9"><i class="fas fa-map-marker-alt"></i></a></div>
+                                                    </div>
+                                                </div>
+                                                <p id="popularDetails9"></p>
+                                                <!-- <ul class="facilities-list fl-wrap">
+                                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
+                                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
+                                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
+                                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
+                                                </ul> -->
+                                                <div class="geodir-category-footer fl-wrap">
+                                                    <div class="geodir-opt-link">
+                                                        <div class="geodir-category-price">Per/Day<span id="popularPrice9"></span></div>
+                                                    </div>
+                                                    <div class="geodir-opt-list">
+                                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
+                                                        <a class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
+                                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </article>
                                     </div>
-                                    <div class="geodir-opt-list">
-                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
-                                        <a  class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
-                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
-                                    </div>
+                                    <!-- listing-item end -->
                                 </div>
-                            </div>
-                        </article>
-                    </div>
-                    <!-- listing-item end -->
-                </div>
-                <div class="slick-slide-item">
-                    <!-- listing-item  -->
-                    <div class="listing-item">
-                        <article class="geodir-category-listing fl-wrap">
-                           <div class="geodir-category-img" id="tryit8">
-                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
-                                <div class="listing-avatar"><a><img src="images/avatar/1.jpg" alt=""></a>
-                                    <span class="avatar-tooltip">Added By  <strong id="popularUser8"></strong>haaaa</span>
-                                </div>
-                                <!-- <div class="sale-window">Sale 20%</div> -->
-                                <div class="geodir-category-opt">
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                    <div class="rate-class-name">
-                                        <div class="score"><strong id="popularComment8"></strong><strong id="popularReview8"></strong> </div>
-                                        <span id="popularRating8"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                                <div class="geodir-category-content-title fl-wrap">
-                                    <div class="geodir-category-content-title-item">
-                                        <h3 class="title-sin_map"><a id="popularTitle8"></a></h3>
-                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress8"><i class="fas fa-map-marker-alt"></i></a></div>
-                                    </div>
-                                </div>
-                                <p id="popularDetails8">.</p>
-                                <!-- <ul class="facilities-list fl-wrap">
-                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                </ul> -->
-                                <div class="geodir-category-footer fl-wrap">
-                                    <div class="geodir-opt-link">
-                                        <div class="geodir-category-price">Per/Day <span id="popularPrice8"></span></div>
-                                    </div>
-                                    <div class="geodir-opt-list">
-                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
-                                        <a onclick="crosscheckfavorite()" class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
-                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <!-- listing-item end -->
-                </div>
-                
-                <div class="slick-slide-item">
-                    <!-- listing-item  -->
-                    <div class="listing-item">
-                        <article class="geodir-category-listing fl-wrap">
-                            <div class="geodir-category-img" id="tryit9">
-                                <!-- <a><img src="images/gal/8.jpg" alt=""></a> -->
-                                <div class="listing-avatar"><a href="author-single.html"><img src="images/avatar/1.jpg" alt=""></a>
-                                    <span class="avatar-tooltip">Added By  <strong id="popularUser9"></strong></span>
-                                </div>
-                                <!-- <div class="sale-window">Sale 20%</div> -->
-                                <div class="geodir-category-opt">
-                                    <div class="listing-rating card-popup-rainingvis" data-starrating2="5"></div>
-                                    <div class="rate-class-name">
-                                        <div class="score"><strong id="popularComment9"></strong><strong id="popularReview9"></strong> </div>
-                                        <span id="popularRating9"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="geodir-category-content fl-wrap title-sin_item">
-                                <div class="geodir-category-content-title fl-wrap">
-                                    <div class="geodir-category-content-title-item">
-                                        <h3 class="title-sin_map"><a id="popularTitle9"></a></h3>
-                                        <div class="geodir-category-location fl-wrap"><a  class="map-item" id="popularAddress9"><i class="fas fa-map-marker-alt"></i></a></div>
-                                    </div>
-                                </div>
-                                <p id="popularDetails9"></p>
-                                <!-- <ul class="facilities-list fl-wrap">
-                                    <li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>
-                                    <li><i class="fal fa-parking"></i><span>Parking</span></li>
-                                    <li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>
-                                    <li><i class="fal fa-utensils"></i><span> Restaurant</span></li>
-                                </ul> -->
-                                <div class="geodir-category-footer fl-wrap">
-                                    <div class="geodir-opt-link">
-                                        <div class="geodir-category-price">Per/Day<span id="popularPrice9"></span></div>
-                                    </div>
-                                    <div class="geodir-opt-list">
-                                        <!-- <a  class="single-map-item" data-newlatitude="40.76221766" data-newlongitude="-73.96511769"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map</span></a> -->
-                                        <a class="geodir-js-favorite"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favourite</span></a>
-                                        <!-- <a  class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                    </div>
-                    <!-- listing-item end -->
-                </div>
-               
-                
-     
-                                <!--slick-slide-item end-->
+                            
+                                
+                    
+                                                <!--slick-slide-item end-->
                             </div>
                             <!--listing-carousel end-->
                             <div class="swiper-button-prev sw-btn"><i class="fa fa-long-arrow-left"></i></div>
                             <div class="swiper-button-next sw-btn"><i class="fa fa-long-arrow-right"></i></div>
                         </div>
+                                    
+        <!-- carousel -->
+        
                         <!--  carousel end-->
                     </section>
                     <!-- section end -->
@@ -1438,9 +1441,9 @@
         <!--=============== scripts  ===============-->
           <!-- <script  src="js/start.js"></script> -->
           <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-          <script type="text/javascript" src="js/main.js"></script>
+          <script src="js/main.js" defer></script>
           
-        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
