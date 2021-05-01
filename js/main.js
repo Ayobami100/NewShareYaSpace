@@ -416,14 +416,18 @@ function loadIt()
   
   else {
 
+    // alert('No')
+
     console.log(puser)
 
     document.getElementById('signout').style.display = 'none';
     document.getElementById('signin').style.display = 'block';
     document.getElementById('dropit').style.display = 'none';
-    // document.getElementById('avatar').src = res.data.user.imgProfile;
     document.getElementById('reg').style.display = 'block';
     document.getElementById('addlisting').style.display = 'none';
+
+    // alert('and NO')
+
 
     if(window.location.href === 'register.html')
     {
@@ -712,13 +716,13 @@ async function getbookinglength(){
         //  alert(userId)
          console.log(response.data)
          // localStorage.setItem('allreview',response.data.data.length);
-          totalbooking = response.data.data.filter(ttb => ttb.order.hostId == userId)
-           document.getElementById('allbookings').innerHTML = totalbooking.length;
+         filteredbooking = response.data.data.filter(ttb => ttb.order.hostId == userId)
+           document.getElementById('allbookings').innerHTML = filteredbooking.length;
 
 
            if(document.getElementById("dashboard-listing") != undefined){
              
-      if(totalbooking != null & totalbooking != "")
+      if(filteredbooking != null & filteredbooking != "")
       {
         for(let i = 0;i < filteredbooking.length;i++){
 
@@ -730,7 +734,7 @@ async function getbookinglength(){
              '<img src="images/avatar/avatar-bg.png" alt="">'+
           '</div>'+
           '<div class="dashboard-message-text">'+
-             '<h4>hupo <span>27 December 2021</span></h4>'+
+             '<h4>'+filteredbooking[i].User.firstname+' <span>27 December 2021</span></h4>'+
               '<div class="booking-details fl-wrap">'+
                  '<span class="booking-title">Listing Item :</span> :'+
                   '<span class="booking-text"><a href="listing-sinle.html">'+filteredbooking[i].listingDetails.listing.spaceTitle+'</a></span>'+
@@ -1051,9 +1055,11 @@ async function postNewBooking(){
   
 async function findsinglelisting(){
 
-  loadIt();
-            const parsedUrl = new URL(window.location.href);
-            parsedUrlId = parsedUrl.searchParams.get("id");
+loadIt()
+ 
+const parsedUrl = new URL(window.location.href);
+parsedUrlId = parsedUrl.searchParams.get("id");
+
 if(parsedUrlId ){
 
               
@@ -1124,7 +1130,44 @@ if(parsedUrlId ){
          document.getElementById("listingReview").innerHTML = (response.data.data[0].reviews.length >= 1) ? response.data.data[0].reviews.length + " Reviews" : "0 Review";
          document.getElementById("listingRating").innerHTML = (response.data.data[0].reviews.length >= 1) ? response.data.data[0].reviews[0].rating  : "No Rating";
          document.getElementById("listingComment").innerHTML = (response.data.data[0].reviews.length >= 1) ? response.data.data[0].reviews[0].comments  : "No Comment";
-  
+         
+         if(response.data.data[0].listing){
+          allhomestates = response.data.data.filter(homestate => homestate.listing.state)
+          const items = allhomestates.slice(0, 5)
+          for (let i = 0; i < items.length-1; i++){
+            var available = document.createElement('div')
+            available.innerHTML =
+            '<div class="rooms-item fl-wrap">'+
+            '<div class="rooms-media">'+
+                '<img src="images/gal/5.jpg" alt="">'+
+                '<div class="dynamic-gal more-photos-button" data-dynamicPath="">  View Gallery'+
+                '<span>3 photos</span> <i class="far fa-long-arrow-right"></i></div>'+
+               
+            '</div>'+
+            '<div class="rooms-details">'+
+                '<div class="rooms-details-header fl-wrap">'+
+                   '<span class="rooms-price">NGN81 <strong> / person</strong></span>'+
+                    '<h3>Standard Family Room</h3>'+
+                   '<h5>Max Guests: <span>3 persons</span></h5>'+
+                '/div>'+
+                '<p>Morbi varius, nulla sit amet rutrum elementum, est elit finibus tellus, ut tristique elit risus at metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'+
+                '<div class="facilities-list fl-wrap">'+
+                    '<ul>'+
+                        '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
+                        '<li><i class="fal fa-bath"></i><span>1 Bathroom</span></li>'+
+                        '<li><i class="fal fa-snowflake"></i><span>Air conditioner</span></li>'+
+                        '<li><i class="fal fa-tv"></i><span> Tv Inside</span></li>'+
+                        '<li><i class="fas fa-concierge-bell"></i><span>Breakfast</span></li>'+
+                    '</ul>'+
+                    '<a href="rooms/room1.html" class="btn color-bg ajax-link">Details<i class="fas fa-caret-right"></i></a>'+
+                '</div>'+
+            '</div>'+
+        '</div>'
+
+          }
+
+
+         }
 
          if(response.data.data[0].listing.attachments){
            getImages = response.data.data[0].listing.attachments.split(',');
@@ -1205,6 +1248,9 @@ if(parsedUrlId ){
     else{
       window.location.href = "404.html"
     }
+
+
+
 
 }
   
@@ -1851,7 +1897,7 @@ function getsinglehost(){
 async function findsinglehosting(){
 
   document.getElementById('loader-wrap').style.display = 'block';
-  // loadIt();   
+  loadIt();   
 
   await axios.get('https://share.highflierstutors.com/api/listing')
   .then(function (response) {
@@ -1878,12 +1924,22 @@ async function findsinglehosting(){
       document.getElementById('hostname').innerHTML = hostsingle[0].host.firstname +" "+hostsingle[0].host.lastname;
       document.getElementById('hostname-top').innerHTML = hostsingle[0].host.firstname +" "+hostsingle[0].host.lastname;
       document.getElementById('hostname-below').innerHTML = hostsingle[0].host.firstname +" "+hostsingle[0].host.lastname;
-      document.getElementById('hostaddress').innerHTML = hostsingle[0].host.country;
-      document.getElementById('hostphone').innerHTML = hostsingle[0].host.number;
-      document.getElementById('hostemail').innerHTML = hostsingle[0].host.email;
+      document.getElementById('hoststate').innerHTML = hostsingle[0].host.country;
+      document.getElementById('hostcity').innerHTML = hostsingle[0].host.number;
+      document.getElementById('hostreview').innerHTML = hostsingle[0].host.email;
+      document.getElementById('hostcreated').innerHTML = hostsingle[0].host.email;
   
-     
-  
+      var div =  document.createElement("ul");
+      div.innerHTML = 
+     '<li><a href="author-single.html?id'+ hostsingle[0].host.id+'" target="_blank"><i class="fab fa-facebook-f"></i></a></li>'+
+     ' <li><a href="author-single.html?id'+ hostsingle[0].host.id+'" target="_blank"><i class="fab fa-twitter"></i></a></li>'+
+      '<li><a href="author-single.html?id'+ hostsingle[0].host.id+'" target="_blank"><i class="fab fa-vk"></i></a></li>'+
+     '<li><a href="author-single.html?id'+ hostsingle[0].host.id+'" target="_blank"><i class="fab fa-instagram"></i></a></li>'
+
+      var element = document.getElementById("social");
+        
+      element.append(div);
+
         for (let i = 0;i < hostsingle.length;i++){
   
           if(hostsingle[i].reviews[0] != undefined){
@@ -2256,6 +2312,7 @@ async function allfavorite(){
             // console.log(json.data)
               // console.log(favoptions)
               document.getElementById('favoritecounter').innerText = json.data.length;
+              console.log(json.data.length)
 
             loadAllFavoriteListing();
         }
@@ -2299,6 +2356,7 @@ async function loadAllFavoriteListing(){
 }
 
 async function getHomeStates(){
+
   loadIt();
   // var emailreview = document.getElementById("emailreview").value;
   // var namereview = document.getElementById('namereview').value;
@@ -2375,7 +2433,7 @@ async function getHomeStates(){
           document.getElementById('statelisting6').innerText = fed;
           document.getElementById('statelisting7').innerText = ekiti
 
-          document.getElementById('loader-wrap').style.display = 'none';
+          // document.getElementById('loader-wrap').style.display = 'none';
 
 
           if(allhomestates != ""){
@@ -2385,7 +2443,7 @@ async function getHomeStates(){
             if(items != null & items != ""){
              
   
-              for(let i = 1; i <= items.length;i++ )
+              for(let i = 1; i < items.length;i++ )
               {
                 // alert('1')
                 
