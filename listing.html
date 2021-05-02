@@ -97,12 +97,8 @@
                                 <div id="userValue"></div>
                             </div>
                                <ul>
-                                <li><a href="myprofile.html"> Edit profile</a></li>
-                                <li><a href="listing-table.html"> My Listing</a></li>
-                                
-                                <li><a href="bookings.html">  Bookings  </a></li>
-                                <li><a href="review.html"> Reviews </a></li>
-                                 <li><a href="#" onclick="logOff()">Log Out</a></li>
+                                  <li><a href="dashboard.html"> My Dashboard </a></li>
+                                 <li><a href="#" onclick="logOff()">Sign Out</a></li>
                             </ul>
                         </div>
                         <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
@@ -548,8 +544,9 @@
         <script type="text/javascript" src="js/mapplugins.js"></script>
         <script type="text/javascript" src="js/maps.js"></script> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-        <script src="./js/read-more-text.js"></script>
+        <script src="./js/read-more-text.js" defer></script>
         <script  src="js/main.js"></script>
+        
         
         
         <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
@@ -560,18 +557,14 @@
        
         <script>
          
-        // $(document).ready(function(){
-        //     var readMore = new ReadMore('.more', {
-        //     openText: 'Read more...', // Opening link text
-        //     closeText: 'Show less...', // Closing link text
-        //     speed: '1' // Transition speed in seconds
-        //   })
+        $(document).ready(function(){
+            var readMore = new ReadMore('.more', {
+            openText: 'Read more...', // Opening link text
+            closeText: 'Show less...', // Closing link text
+            speed: '1' // Transition speed in seconds
+          })
          
-        // })
+        })
         </script>	
-        
-         
-        
-        </script>
     </body>
 </html>
