@@ -22,6 +22,7 @@
     console.log(moreText)
 
     moreText.forEach(function (element) {
+      if(element.innerHTML.length > 80)
       element.style.cssText = 'max-height: 20px; min-height: 20px; overflow:hidden;border:1px solid transparent; '
     })
 
@@ -36,15 +37,20 @@
     }
 
     options = this.options
-
+    // alert(moreText.length)
     
     for(var c = 0; c < moreText.length; c++) {
+     
       let element = moreText[c]
-      link = document.createElement('a')
-      link.classList.add('show-more')
-      link.setAttribute('href', '#')
-      link.innerHTML = options.openText
-      element.parentNode.insertBefore(link, element.nextSibling);
+      if(element.innerHTML.length > 80){
+        link = document.createElement('a')
+        link.classList.add('show-more')
+        link.setAttribute('href', '#')
+        link.innerHTML = options.openText
+        element.parentNode.insertBefore(link, element.nextSibling);
+      }
+
+      
     }
 
     var showMore = document.querySelectorAll('.show-more')
@@ -56,7 +62,7 @@
         
         if (this.previousSibling.style.maxHeight == this.previousSibling.scrollHeight + 'px') {
           console.log('here!')
-          // this.innerHTML = options.openText
+          this.innerHTML = options.openText
           this.previousSibling.style.maxHeight = '20px'
           return
         }

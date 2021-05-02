@@ -1657,7 +1657,7 @@ function addBooking(){
                       
                         // var readMore = new ReadMore('#more');
                     
-                        new ReadMore('.more', {});
+                        // new ReadMore('.more', {});
                         //  openText: 'Read more...',
                         //  closeText: 'Show less...',
                         //  speed: '3'
@@ -2438,14 +2438,14 @@ async function getHomeStates(){
 
           if(allhomestates != ""){
 
-            const items = allhomestates.slice(0, 10)
+            const items = allhomestates.slice(0, 9)
 
             if(items != null & items != ""){
              
   
               for(let i = 1; i < items.length;i++ )
               {
-                // alert('1')
+                alert(items[i].listing.spaceTitle)
                 
                   console.log(items[i].listing.created_at)
                   // console.log(allhomestates[i].listing.id)
@@ -2473,7 +2473,7 @@ async function getHomeStates(){
 
                     li.innerHTML = 
                             '<h3 class="title-sin_map"><a id="'+items[i].listing.id+'" onclick="pool(id)" style="cursor:pointer;">'+items[i].listing.spaceTitle+'</a></h3>'
-                           
+                            li.classList.add('more')
                     var ele = document.getElementById('popularTitle'+i);
                 
               
