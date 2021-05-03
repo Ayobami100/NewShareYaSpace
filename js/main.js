@@ -1501,7 +1501,7 @@ function addBooking(){
                 if(filteredStates != null & filteredStates != ""){
                   for(let i = 0; i < filteredStates.length; i++)
                   {
-                    alert('oooo')
+                    
 
                       // console.log(filteredStates[i].listing.id)
                       // console.log(filteredStates[i].listing.id)
@@ -1684,7 +1684,6 @@ function addBooking(){
               else if(getparsedUrlId === true & parsedUrlId == 'all-listing')
               {
           
-                alert('all listing')
               
                 
                   // loadIt();   
