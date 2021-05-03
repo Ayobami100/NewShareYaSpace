@@ -1472,7 +1472,7 @@ function addBooking(){
 
             getparsedUrlId = isNaN(parsedUrlId);
 
-          document.getElementById('loader-wrap').style.display = 'block';
+          // document.getElementById('loader-wrap').style.display = 'block';
           axios.get('https://share.highflierstutors.com/api/listing')
           .then(function (response) 
         {
@@ -1501,9 +1501,9 @@ function addBooking(){
                 if(filteredStates != null & filteredStates != ""){
                   for(let i = 0; i < filteredStates.length; i++)
                   {
-                    
+                    alert('oooo')
 
-                      console.log(filteredStates[i].listing.id)
+                      // console.log(filteredStates[i].listing.id)
                       // console.log(filteredStates[i].listing.id)
                       // publicId = filteredStates[i].listing.id;
                           
@@ -1515,7 +1515,7 @@ function addBooking(){
                       
                           var div =  document.createElement("div");
                           div.innerHTML = 
-                          '<div class="gallery-item listing-item" style="cursor:pointer;">'+
+                          '<div class="listing-item" style="cursor:pointer;">'+
                           '<article class="geodir-category-listing fl-wrap">'+
                               '<div class="geodir-category-img">'+
                                   '<a onclick="getUserId(id)" id="'+filteredStates[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+filteredStates[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
@@ -1547,7 +1547,7 @@ function addBooking(){
                                     '</div>'+
                                   '</div>'+
                                 '</div>'+
-                                  '<div class="more">'+  filteredStates[i].listing.spaceDetails +'</div>'+
+                              '<div class="more">'+  filteredStates[i].listing.spaceDetails +'</div>'+
               
                                   '<ul class="facilities-list fl-wrap">'+
                                       '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
@@ -1582,7 +1582,7 @@ function addBooking(){
                         var div1 =  document.createElement("div");
                         // div1.id = 'more'
                         div1.innerHTML = 
-                        '<div class="gallery-item listing-item" style="cursor:pointer;">'+
+                        '<div class="listing-item" style="cursor:pointer;">'+
                           '<article class="geodir-category-listing fl-wrap">'+
                             '<div class="geodir-category-img">'+
                               '<a onclick="getUserId(id)" id="'+filteredStates[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+filteredStates[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
@@ -1612,10 +1612,7 @@ function addBooking(){
                                       '</div>'+
                               '</div>'+
                             '</div>'+
-                            // '<div  class="content">'+
-                              // '<div >'+
-                                  
-                                    '<div class="more">'+ filteredStates[i].listing.spaceDetails +'</div>'+
+                          '<div class="more">'+  filteredStates[i].listing.spaceDetails +'</div>'+
                                   
                                   
                               // '<p></p>'+
@@ -1657,7 +1654,7 @@ function addBooking(){
                       
                         // var readMore = new ReadMore('#more');
                     
-                        // new ReadMore('.more', {});
+                        new ReadMore('.more', {});
                         //  openText: 'Read more...',
                         //  closeText: 'Show less...',
                         //  speed: '3'
@@ -1679,6 +1676,7 @@ function addBooking(){
                     // document.getElementById('loader-wrap').style.display = 'none';
                 }
                 document.getElementById('loader-wrap').style.display = 'none';
+                
 
               }
 
@@ -1686,7 +1684,7 @@ function addBooking(){
               else if(getparsedUrlId === true & parsedUrlId == 'all-listing')
               {
           
-    
+                alert('all listing')
               
                 
                   // loadIt();   
@@ -1707,57 +1705,56 @@ function addBooking(){
                         
                             var div =  document.createElement("div");
                             div.innerHTML = 
-                            '<div class="gallery-item listing-item" style="cursor:pointer;">'+
-                            '<article class="geodir-category-listing fl-wrap">'+
-                                '<div class="geodir-category-img">'+
-                                    '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
-                                    '<div class="listing-avatar">'+'<a id="getUserId(id)">'+'<img src="./images/avatar/avatar-bg.png" alt="" style="object-fit: cover;">'+'</a>'+
-                                      '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
-                                    '</div>'+
-                                  
-                                    // '<div class="sale-window">Sale 20%</div>'+
-                                    '<div class="geodir-category-opt">'+
-                                      '<div class="listing-rating card-popup-rainingvis" data-starrating2 ="'+response.data.data[i].reviews[j].rating.split('.')[0]+'"></div>'+
-                                        '<div class="rate-class-name">'+
-                                            '<div class="score" id="score"><strong>Very Good</strong>'+ Object.values(response.data.data[i].reviews).length +" Reviews"+'</div>'+
-                                                '<span>'+response.data.data[i].reviews[j].rating+'</span>'+
-                                            '</div>'+
-                                        '</div>'+
-                                  '</div>'+
-                                  '<div class="geodir-category-content fl-wrap">'+
-                                    '<div class="geodir-category-content-title fl-wrap">'+
-                                      '<div class="geodir-category-content-title-item">'+
-                                        '<h3 class="title-sin_map">'+
-                                        '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
-                                        '</h3>'+
-                                        '<div class="geodir-category-location fl-wrap">'+
-                                          '<a  id="'+response.data.data[i].listing.id+' onclick="getUserId(id)" class="map-item">'+
-                                            '<i class="fas fa-map-marker-alt"></i>'+
-                                            response.data.data[i].listing.address+
-                                          '</a>'+
-                                        '</div>'+
+                            '<div class="listing-item" style="cursor:pointer; float:left">'+
+                              '<article class="geodir-category-listing fl-wrap">'+
+                                  '<div class="geodir-category-img">'+
+                                      '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
+                                      '<div class="listing-avatar">'+'<a id="getUserId(id)">'+'<img src="./images/avatar/avatar-bg.png" alt="" style="object-fit: cover;">'+'</a>'+
+                                        '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                                       '</div>'+
-                                    '</div>'+
-                                  '</div>'+
-                                    '<div class="more">'+  response.data.data[i].listing.spaceDetails +'</div>'+
-                
-                                    '<ul class="facilities-list fl-wrap">'+
-                                        '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
-                                      '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
-                                        '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
-                                        '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
-                                    '</ul>'+
-                                    '<div class="geodir-category-footer fl-wrap">'+
-                                        '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  response.data.data[i].listing.price +'</span></div>'+
-                                        '<div class="geodir-opt-list">'+
-                                            // '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
-                                            '<a class="geodir-js-favorite" id="'+response.data.data[i].listing.id+'" onclick="crosscheckFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favorite</span></a>'+
-                                            // '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
+                                    
+                                      // '<div class="sale-window">Sale 20%</div>'+
+                                      '<div class="geodir-category-opt">'+
+                                        '<div class="listing-rating card-popup-rainingvis" data-starrating2 ="'+response.data.data[i].reviews[j].rating.split('.')[0]+'"></div>'+
+                                          '<div class="rate-class-name">'+
+                                              '<div class="score" id="score"><strong>Very Good</strong>'+ Object.values(response.data.data[i].reviews).length +" Reviews"+'</div>'+
+                                                  '<span>'+response.data.data[i].reviews[j].rating+'</span>'+
+                                              '</div>'+
+                                          '</div>'+
+                                      '</div>'+
+                                      '<div class="geodir-category-content fl-wrap">'+
+                                        '<div class="geodir-category-content-title fl-wrap">'+
+                                          '<div class="geodir-category-content-title-item">'+
+                                            '<h3 class="title-sin_map">'+
+                                            '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'" return false;>'+response.data.data[i].listing.spaceTitle+'</a>'+
+                                            '</h3>'+
+                                            '<div class="geodir-category-location fl-wrap">'+
+                                              '<a  id="'+response.data.data[i].listing.id+' onclick="getUserId(id)" class="map-item">'+
+                                                '<i class="fas fa-map-marker-alt"></i>'+
+                                                response.data.data[i].listing.address+
+                                              '</a>'+
+                                            '</div>'+
+                                          '</div>'+
                                         '</div>'+
-                                    '</div>'+
-                                '</div>'+
-                                '</article>'+
-                                '</div>'
+                                      '<div class="more">'+  response.data.data[i].listing.spaceDetails +'</div>'+
+                  
+                                      // '<ul class="facilities-list fl-wrap">'+
+                                      //     '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
+                                      //   '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
+                                      //     '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
+                                      //     '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
+                                      // '</ul>'+
+                                      '<div class="geodir-category-footer fl-wrap">'+
+                                      '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  response.data.data[i].listing.price +'</span></div>'+
+                                      '<div class="geodir-opt-list">'+
+                                          // '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
+                                          '<a class="geodir-js-favorite" id = "'+response.data.data[i].listing.id+'" onclick="crosscheckFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip" >Save as Favorite</span></a>'+
+                                          // '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
+                                      '</div>'+
+                                  '</div>'+
+                              '</div>'+
+                              '</article>'+
+                              '</div>'
                             var element = document.getElementById("listing-item");
                           
                             element.append(div);
@@ -1774,7 +1771,7 @@ function addBooking(){
                           var div1 =  document.createElement("div");
                           // div1.id = 'more'
                           div1.innerHTML = 
-                          '<div class="gallery-item listing-item" style="cursor:pointer;">'+
+                          '<div class="listing-item" style="cursor:pointer; display:block">'+
                             '<article class="geodir-category-listing fl-wrap">'+
                               '<div class="geodir-category-img">'+
                                 '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
@@ -1840,13 +1837,13 @@ function addBooking(){
                           
                         }
                       
-                        
+                       
                         document.getElementById('totalListing').innerHTML = "TOTAL AVAILABLE LISTINGS" + "   "+response.data.data.length;
                         document.getElementById('totalListing').style.marginBottom = '100px'           
                       
                     } // var readMore = new ReadMore('#more');
-                 
                     new ReadMore('.more', {});
+                    
                     //  openText: 'Read more...',
                     //  closeText: 'Show less...',
                     //  speed: '3'
@@ -1929,16 +1926,13 @@ async function findsinglehosting(){
       document.getElementById('hostreview').innerHTML = hostsingle[0].host.email;
       document.getElementById('hostcreated').innerHTML = hostsingle[0].host.email;
   
-      var div =  document.createElement("ul");
-      div.innerHTML = 
-     '<li><a href="author-single.html?id'+ hostsingle[0].host.id+'" target="_blank"><i class="fab fa-facebook-f"></i></a></li>'+
-     ' <li><a href="author-single.html?id'+ hostsingle[0].host.id+'" target="_blank"><i class="fab fa-twitter"></i></a></li>'+
-      '<li><a href="author-single.html?id'+ hostsingle[0].host.id+'" target="_blank"><i class="fab fa-vk"></i></a></li>'+
-     '<li><a href="author-single.html?id'+ hostsingle[0].host.id+'" target="_blank"><i class="fab fa-instagram"></i></a></li>'
+      // var div =  document.createElement("ul");
+      // div.innerHTML = 
+    
 
-      var element = document.getElementById("social");
+      // var element = document.getElementById("social");
         
-      element.append(div);
+      // element.append(div);
 
         for (let i = 0;i < hostsingle.length;i++){
   
@@ -2445,9 +2439,9 @@ async function getHomeStates(){
   
               for(let i = 1; i < items.length;i++ )
               {
-                alert(items[i].listing.spaceTitle)
+                // alert(items[i].listing.spaceTitle)
                 
-                  console.log(items[i].listing.created_at)
+                  // console.log(items[i].listing.created_at)
                   // console.log(allhomestates[i].listing.id)
                   // publicId = allhomestates[i].listing.id;
                       
@@ -2460,6 +2454,7 @@ async function getHomeStates(){
                       // document.getElementById('popularTitle'+i).innerText = items[i].listing.spaceTitle;
                       document.getElementById('popularAddress'+i).innerText = items[i].listing.address;
                       document.getElementById('popularDetails'+i).innerText = items[i].listing.spaceDetails;
+                      // li.classList.add('more')
                       document.getElementById('popularPrice'+i).innerText = "NGN "+ items[i].listing.price;
                       // document.getElementById('popularUser'+i).className = items[i].listing.id;
 
@@ -2472,8 +2467,8 @@ async function getHomeStates(){
                    var li =  document.createElement("div");
 
                     li.innerHTML = 
-                            '<h3 class="title-sin_map"><a id="'+items[i].listing.id+'" onclick="pool(id)" style="cursor:pointer;">'+items[i].listing.spaceTitle+'</a></h3>'
-                            li.classList.add('more')
+                            '<h3 class="title-sin_map "><a id="'+items[i].listing.id+'" onclick="pool(id)" style="cursor:pointer;">'+items[i].listing.spaceTitle+'</a></h3>'
+                           
                     var ele = document.getElementById('popularTitle'+i);
                 
               
@@ -2490,11 +2485,11 @@ async function getHomeStates(){
             ele.append(di);
 
               
-                
+            
 
                 }
 
-              
+                new ReadMore('.more', {});
               }
           }
         
@@ -2548,6 +2543,4 @@ async function recentAdded(){
 }
 
 // ==============================================================================
-
-
 
