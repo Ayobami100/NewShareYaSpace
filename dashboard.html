@@ -8,6 +8,24 @@
         <meta name="robots" content="index, follow"/>
         <meta name="keywords" content=""/>
         <meta name="description" content=""/>
+
+           
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        
+        <script type="module" >
+        
+            $(document).ready(function(){
+                
+            document.getElementById('signout').style.display = 'none';
+            document.getElementById('signin').style.display = 'none';
+            document.getElementById('dropit').style.display = 'none';
+            // document.getElementById('avatar').src = res.data.user.imgProfile;
+            
+            document.getElementById('reg').style.display = 'none';
+            document.getElementById('addlisting').style.display = 'none';
+            })
+            
+        </script>
         <!--=============== css  ===============-->
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/plugins.css">
@@ -34,27 +52,11 @@
                         <div class="logo-holder">
                             <a href="index.html"><img src="images/logo.png" alt=""></a>
                         </div>
-                    <a href="add-listing.html" id="addlisting" class="add-Listing">Add Listing <span><i class="far fa-plus"></i></span></a>
-                    <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
+                        <a href="add-listing.html" id="addlisting" class="add-Listing">Add Listing <span><i class="far fa-plus"></i></span></a>
+                        <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
                         <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
                         <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
-                        <!-- <div class="lang-wrap">
-                            <div class="show-lang"><img src="images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
-                            <ul class="lang-tooltip green-bg">
-                                <li><a href="#"><img src="images/lan/4.png" alt=""> De</a></li>
-                                <li><a href="#"><img src="images/lan/5.png" alt=""> It</a></li>
-                                <li><a href="#"><img src="images/lan/2.png" alt=""> Fr</a></li>
-                                <li><a href="#"><img src="images/lan/3.png" alt=""> Es</a></li>
-                            </ul>
-                        </div> -->
-                        <!-- <div class="currency-wrap">
-                            <div class="show-currency-tooltip"><i class="fas fa-dollar-sign"></i> <span>USD <i class="fa fa-caret-down"></i> </span></div>
-                            <ul class="currency-tooltip">
-                                <li><a href="#"><i class="far fa-euro-sign"></i> EUR</a></li>
-                                <li><a href="#"><i class="far fa-pound-sign"></i> GBP</a></li>
-                                <li><a href="#"><i class="far fa-ruble-sign"></i>RUR</a></li>
-                            </ul>
-                        </div> -->
+                     
                     </div>
                 </div>
                 <!-- header-top end-->
@@ -62,20 +64,15 @@
                 <div class="header-inner fl-wrap">
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-                                                  <div class="wishlist-link"><a href="favorite.html"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></a></div>
-
+                          <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></div>
                         <div class="header-user-menu">
                             <div class="header-user-name" id="dropit">
                                 <span><img  id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
                                 <div id="userValue"></div>
                             </div>
-                                 <ul>
-                                <li><a href="myprofile.html"> Edit profile</a></li>
-                                <li><a href="listing-table.html"> My Listing</a></li>
-                                
-                                <li><a href="bookings.html">  Bookings  </a></li>
-                                <li><a href="review.html"> Reviews </a></li>
-                                 <li><a href="#" onclick="logOff()">Log Out</a></li>
+                               <ul>
+                                <li><a href="dashboard.html"> My Dashboard </a></li>
+                                 <li><a href="#" onclick="logOff()">Sign Out</a></li>
                             </ul>
                         </div>
                         <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
@@ -92,129 +89,42 @@
                                 <ul>
                                     <li>
                                         <a href="index.html" class="act-link">Home </a>
-                                        <!--second level -->
-                                        <!-- <ul>
-                                            <li><a href="index.html">Parallax Image</a></li>
-                                            <li><a href="index2.html">Slider</a></li>
-                                            <li><a href="index3.html">Video</a></li>
-                                            <li><a href="index4.html">Slideshow</a></li>
-                                        </ul> -->
-                                        <!--second level end-->
+                                     
                                     </li>
                                     <li>
                                        <a href="listing.html?id=all-listing">Listings </a>
-                                        <!--second level -->
-                                        <!-- <ul> -->
-                                            <!-- <li><a href="listing.html">Column map</a></li>
-                                            <li><a href="listing6.html">Column map 2</a></li>
-                                            <li><a href="listing2.html">Fullwidth Map</a></li>
-                                            <li><a href="listing3.html">Fullwidth Map 2</a></li>
-                                            <li><a href="listing4.html">Without Map</a></li>
-                                            <li><a href="listing5.html">Without Map 2</a></li>
-                                            <li>
-                                                <a href="#">Single <i class="fas fa-caret-down"></i></a> -->
-                                                <!--third  level  -->
-                                                <!-- <ul>
-                                                    <li><a href="listing-single.html">Style 1</a></li>
-                                                    <li><a href="listing-single2.html">Style 2</a></li>
-                                                    <li><a href="listing-single3.html">Style 3</a></li>
-                                                    <li><a href="listing-single4.html">Style 4</a></li>
-                                                </ul> -->
-                                                <!--third  level end-->
-                                            <!-- </li>
-                                        </ul> -->
-                                        <!--second level end-->
+                                     
                                     </li>
-                                    <!-- <li>
-                                        <a href="blog.html">News</a>
-                                    </li> -->
+                                   
                                     <li>
                                         <a href="#">Pages <i class="fas fa-caret-down"></i></a>
                                         <!--second level -->
                                         <ul>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="contacts.html">Contacts</a></li>
-                                            <!-- <li><a href="author-single.html">User single</a></li>
-                                            <li><a href="help.html">Help FAQ</a></li>
-                                            <li><a href="pricing-tables.html">Pricing</a></li>
-                                            <li><a href="booking-single.html">Booking</a></li>
-                                            <li><a href="dashboard.html">User Dashboard</a></li>
-                                            <li><a href="blog2.html">Blog Classik</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                            <li><a href="add-listing.html">Add Listing</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                            <li><a href="invoice.html">Invoice</a></li>
-                                            <li><a href="coming-soon.html">Coming Soon</a></li> -->
+                                          
                                         </ul>                                      
                                     </li>
                                 </ul>
                             </nav>
                         </div>
                         <!-- navigation  end -->
-                        <!-- wishlist-wrap-->
-                        
-                        <!-- wishlist-wrap end-->
+                      <!-- wishlist-wrap-->
+                   <div class="wishlist-wrap scrollbar-inner novis_wishlist" >
+                    <div class="box-widget-content">
+                        <div class="widget-posts fl-wrap">
+                            <ul id="favoritelist">
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- wishlist-wrap end-->
                     </div>
                 </div>
                 <!-- header-inner end-->
                 <!-- header-search -->
-                <div class="header-search vis-search">
-                    <div class="container">
-                        <div class="row">
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-4">
-                                <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Destination or Listing Name</label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
-                                    <input type="text" placeholder="Location" class="autocomplete-input" id="autocompleteid" value=""/>
-                                    <a href="#"><i class="fal fa-dot-circle"></i></a>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap date-parent">
-                                    <label>Date In-Out </label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="When" name="header-search"   value=""/>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap">
-                                    <div class="quantity-item">
-                                        <label>Rooms</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Adults</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Children</label>
-                                        <div class="quantity">
-                                            <input type="number" min="0" max="3" step="1" value="0">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-2">
-                                <div class="header-search-input-item fl-wrap">
-                                    <button class="header-search-button" onclick="window.location.href='listing.html'">Search <i class="far fa-search"></i></button>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                        </div>
-                    </div>
-                    <div class="close-header-search"><i class="fal fa-angle-double-up"></i></div>
-                </div>
+                
                 <!-- header-search  end -->
             </header>
             <!--  header end -->
@@ -244,15 +154,15 @@
                                             <ul>
                                                 <li>
                                                     Listings	
-                                                    <!-- <span>4</span> -->
+                                                    <span id="alllisting"></span>
                                                 </li>
                                                 <li>
                                                     Bookings
-                                                    <!-- <span>32</span>	 -->
+                                                    <span id="allbookings"></span>	
                                                 </li>
                                                 <li>
                                                     Reviews	
-                                                    <!-- <span>9</span>	 -->
+                                                    <span id="allreview"></span>	
                                                 </li>
                                             </ul>
                                         </div>
@@ -271,7 +181,7 @@
                                                 <li><a href="password.html">Change Password</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="messages.html"><i class="far fa-envelope"></i> Messages <span>3</span></a></li>
+                                        <li><a href="messages.html"><i class="far fa-envelope"></i> Messages</a></li>
                                         <li>
                                             <a href="listing-table.html"><i class="far fa-th-list"></i> My Listings  </a>
                                             <ul>
@@ -280,17 +190,17 @@
                                                 <li><a href="#">Expire</a><span>3</span></li> -->
                                             </ul>
                                         </li>
-                                        <li><a href="bookings.html"> <i class="far fa-calendar-check"></i> Bookings <span>2</span></a></li>
+                                        <li><a href="bookings.html"> <i class="far fa-calendar-check"></i> Bookings</a></li>
                                         <li><a href="review.html"><i class="far fa-comments"></i> Reviews </a></li>
                                     </ul>
                                 </div>
                                 <!--dasboard-menu end-->
                                 <!--Tariff Plan menu-->
-                                <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
+                                <!-- <div   class="tfp-btn"><span>Tariff Plan : </span> <strong>Extended</strong></div>
                                 <div class="tfp-det">
                                     <p>You Are on <a href="#">Extended</a> . Use link bellow to view details or upgrade. </p>
                                     <a href="#" class="tfp-det-btn color2-bg">Details</a>
-                                </div>
+                                </div> -->
                                 <!--Tariff Plan menu end-->
                             </div>
                         </div>
@@ -347,34 +257,34 @@
                                         </div>
                                         <!-- dashboard-list end-->                                           
                                         <!-- dashboard-list end-->    
-                                        <div class="dashboard-list">
+                                        <!-- <div class="dashboard-list">
                                             <div class="dashboard-message">
                                                 <span class="new-dashboard-item"><i class="fal fa-times"></i></span>
                                                 <div class="dashboard-message-text">
                                                     <p><i class="fal fa-comments-alt"></i> Someone left a review on <a href="#">Park Central</a> listing!</p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- dashboard-list end-->                                           
                                         <!-- dashboard-list end-->    
-                                        <div class="dashboard-list">
+                                        <!-- <div class="dashboard-list">
                                             <div class="dashboard-message">
                                                 <span class="new-dashboard-item"><i class="fal fa-times"></i></span>
                                                 <div class="dashboard-message-text">
                                                     <p><i class="far fa-check"></i> Your listing <a href="#">Holiday Home</a> has been approved! </p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- dashboard-list end-->    
                                         <!-- dashboard-list end-->    
-                                        <div class="dashboard-list">
+                                        <!-- <div class="dashboard-list">
                                             <div class="dashboard-message">
                                                 <span class="new-dashboard-item"><i class="fal fa-times"></i></span>
                                                 <div class="dashboard-message-text">
                                                     <p><i class="far fa-heart"></i>Someone bookmarked your <a href="#">Moonlight Listing</a> listing!</p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- dashboard-list end-->                                           
                                         <!-- dashboard-list end-->    
                                         <div class="dashboard-list">
@@ -655,14 +565,14 @@
         </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->
-        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script  src="js/main.js"></script>  
+     
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script> 
         <script type="text/javascript" src="js/charts.js"></script> 
         <script type="text/javascript" src="js/dasboard.js"></script>   
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-        <script  src="js/main.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>    
+      
     </body>
 </html>

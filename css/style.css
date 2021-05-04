@@ -3520,7 +3520,7 @@ input[type=number]
     overflow: hidden;
 }
 .listing-item {
-	float:left;
+    float:left  !important;
 	width:50%;
 	padding:0 8px 0 0;
 	margin-bottom:12px;
@@ -3530,7 +3530,7 @@ input[type=number]
 	padding:0 0 0 8px;
 }
 .three-columns-grid .listing-item {
-	width:33.3%;
+	width:25%;
 	padding:0 8px !important;
 }
 .listing-item.has_one_column , .slick-slide-item .listing-item  {
@@ -5996,7 +5996,7 @@ article.post-article .list-single-main-item {
 	width:auto;
 	height:500px !important;
 	float:left;
-	cursor: w-resize;
+	/* cursor: w-resize; */
 }
 .fw-carousel .slick-slide-item img {
 	width:auto  ;

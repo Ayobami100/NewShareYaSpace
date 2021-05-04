@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html lang="en">
-     <head>
+    <head>
         <!--=============== basic  ===============-->
         <meta charset="UTF-8">
         <title>ShareYaSpace</title>
@@ -10,7 +10,6 @@
         <meta name="description" content=""/>
 
         <!-- =========================================================================== -->
-
         <script type="module" >
         
             $(document).ready(function(){
@@ -25,17 +24,28 @@
             })
             
         </script>
+
+
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/plugins.css">
         <link type="text/css" rel="stylesheet" href="css/style.css">
         <link type="text/css" rel="stylesheet" href="css/color.css">
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
+
+        <style>
+            .more{
+                font-weight: normal;
+               
+            }
+            .show-more{
+                color: rgb(9, 71, 112);
+            }
+        </style>
     </head>
      <body onload="loadIt()">
         <!--loader-->
-      <div class="loader-wrap" id="loader-wrap">
-     
+       <div class="loader-wrap" id="loader-wrap">
             <div class="pin">
                 <div class="pulse"></div>
             </div>
@@ -80,13 +90,12 @@
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
                          <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></div>
-
                         <div class="header-user-menu">
                             <div class="header-user-name" id="dropit">
-                                <span><img  id="avatar" src="images/avatar/avatar-bg.png" alt=""></span>
+                                <span><img  id="avatar" alt="images/avatar/avatar-bg.png"></span>
                                 <div id="userValue"></div>
                             </div>
-                                <ul>
+                               <ul>
                                   <li><a href="dashboard.html"> My Dashboard </a></li>
                                  <li><a href="#" onclick="logOff()">Sign Out</a></li>
                             </ul>
@@ -115,7 +124,7 @@
                                         <!--second level end-->
                                     </li>
                                     <li>
-                                       <a href="listing.html?id=all-listing">Listings </a>
+                                      <a href="listing.html?id=all-listing">Listings </a>
                                         <!--second level -->
                                         <!-- <ul> -->
                                             <!-- <li><a href="listing.html">Column map</a></li>
@@ -146,7 +155,7 @@
                                         <!--second level -->
                                         <ul>
                                             <li><a href="about.html">About</a></li>
-                                            <li><a href="contacts.html"  class="act-link">Contacts</a></li>
+                                            <li><a href="contacts.html">Contacts</a></li>
                                             <!-- <li><a href="author-single.html">User single</a></li>
                                             <li><a href="help.html">Help FAQ</a></li>
                                             <li><a href="pricing-tables.html">Pricing</a></li>
@@ -166,7 +175,7 @@
                         <!-- navigation  end -->
                         <!-- wishlist-wrap-->
                        <div class="wishlist-wrap scrollbar-inner novis_wishlist" >
-                        <div class="box-widget-content">
+                    <div class="box-widget-content">
                         <div class="widget-posts fl-wrap">
                             <ul id="favoritelist">
                                 
@@ -179,63 +188,7 @@
                 </div>
                 <!-- header-inner end-->
                 <!-- header-search -->
-                <div class="header-search vis-search">
-                    <div class="container">
-                        <div class="row">
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-4">
-                                <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Destination or Listing Name</label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
-                                    <input type="text" placeholder="Location" class="autocomplete-input" id="autocompleteid" value=""/>
-                                    <a href="#"><i class="fal fa-dot-circle"></i></a>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap date-parent">
-                                    <label>Date In-Out </label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="When" name="header-search"   value=""/>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap">
-                                    <div class="quantity-item">
-                                        <label>Rooms</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Adults</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Children</label>
-                                        <div class="quantity">
-                                            <input type="number" min="0" max="3" step="1" value="0">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-2">
-                                <div class="header-search-input-item fl-wrap">
-                                    <button class="header-search-button" onclick="window.location.href='listing.html'">Search <i class="far fa-search"></i></button>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                        </div>
-                    </div>
-                    <div class="close-header-search"><i class="fal fa-angle-double-up"></i></div>
-                </div>
+                
                 <!-- header-search  end -->
             </header>
             <!--  header end -->
@@ -243,96 +196,102 @@
             <div id="wrapper">
                 <!-- content-->
                 <div class="content">
-                    <!-- map-view-wrap --> 
-                    <div class="map-view-wrap">
-                        <div class="container">
-                            <div class="map-view-wrap_item">
-                                <div class="list-single-main-item-title fl-wrap">
-                                    <h3>Contacts</h3>
-                                </div>
-                                <div class="box-widget-list mar-top">
-                                    <ul>
-                                        <li><span><i class="fal fa-map-marker"></i> Adress :</span> <a href="#">No 234 Iyana ipaja Lagos State</a></li>
-                                        <li><span><i class="fal fa-phone"></i> Phone :</span> <a href="#">+7(123)987654</a></li>
-                                        <li><span><i class="fal fa-envelope"></i> Mail :</span> <a href="#">AlisaNoory@domain.com</a></li>
-                                        <li><span><i class="fal fa-browser"></i> Website :</span> <a href="#">shareyaspace.com</a></li>
-                                    </ul>
-                                </div>
-                                <div class="list-widget-social">
-                                    <ul>
-                                        <li><a href="#" target="_blank" ><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#" target="_blank" ><i class="fab fa-vk"></i></a></li>
-                                        <li><a href="#" target="_blank" ><i class="fab fa-instagram"></i></a></li>
-                                    </ul>
-                                </div>
+                   
+                    <!-- <div class="col-list-wrap left-list">
+                        <div class="mobile-list-controls fl-wrap">
+                            <div class="container">
+                               
                             </div>
-                        </div>
-                    </div>
-                    <!--map-view-wrap end --> 
-                    <!-- Map -->
-                    <div class="map-container fw-map2">
-                        <div id="singleMap" data-latitude="40.7427837" data-longitude="-73.11445617675781"></div>
-                    </div>
-                    <!-- Map end --> 
-                    <div class="breadcrumbs-fs fl-wrap">
-                        <div class="container">
-                            <div class="breadcrumbs fl-wrap"><a href="#">Home</a><a href="#">Pages</a><span>Contacts</span></div>
-                        </div>
-                    </div>
-                    <section  id="sec1" class="grey-b lue-bg middle-padding">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <!--   list-single-main-item -->
-                                    <div class="list-single-main-item fl-wrap">
-                                        <div class="list-single-main-item-title fl-wrap">
-                                            <h3>Our Office </h3>
-                                        </div>
-                                        <div class="list-single-main-media fl-wrap">
-                                            <img src="images/all/8.jpg" alt="" class="respimg">
-                                        </div>
-                                        <p>Praesent eros turpis, commodo vel justo at, pulvinar mollis eros. Mauris aliquet eu quam id ornare. Morbi ac quam enim. Cras vitae nulla condimentum, semper dolor non, faucibus dolor.   </p>
-                                        <div class="list-single-main-item-title fl-wrap mar-top">
-                                            <h3>Working Hours </h3>
-                                        </div>
-                                        <ul class="cat-item">
-                                            <li><a href="#">Monday to Friday</a> <span>9am - 7pm</span></li>
-                                            <li><a href="#">Saturday to Sunday </a> <span>Closed</span></li>
-                                        </ul>
-                                    </div>
-                                    <!--   list-single-main-item end -->
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="list-single-main-item fl-wrap">
-                                        <div class="list-single-main-item-title fl-wrap">
-                                            <h3>Get In Touch</h3>
-                                        </div>
-                                        <div id="contact-form">
-                                            <div id="message"></div>
-                                            <form  class="custom-form" action="php/contact.php" name="contactform" id="contactform">
-                                                <fieldset>
-                                                    <label><i class="fal fa-user"></i></label>
-                                                    <input type="text" name="name" id="name" placeholder="Your Name *" value=""/>
-                                                    <div class="clearfix"></div>
-                                                    <label><i class="fal fa-envelope"></i>  </label>
-                                                    <input type="text"  name="email" id="email" placeholder="Email Address*" value=""/>
+                        </div> -->
+                        <!--list-wrap-search   -->
+                       
+                        <!--list-wrap-search end -->
+                        <!-- list-main-wrap-->
+                        <section class="grey-blue-bg small-padding" id="sec1">
+                        <!-- <div class="list-main-wrap fl-wrap card-listing"> -->
+                            <!-- <a class="custom-scroll-link back-to-filters" href="#lisfw"><i class="fas fa-angle-up"></i><span>Back to Filters</span></a> -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="list-main-wrap-opt fl-wrap">
+                                            <div class="small-padding team-info">
+                                                <h3>Message the Host</h3>
+                                            </div>
+                                            <div class="small-padding">
+                                                <!-- <div class="col-sm-3">
+                                                    <div class="header-search-input-item fl-wrap date-parent">
+                                                        <label>Date In-Out </label>
+                                                        <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                                        <input type="text" placeholder="When" name="header-search"  />
+                                                    </div>
+                                                </div> -->
+                                            </div>
+
+                                            <div class="profile-edit-container">
+                                                <div class="custom-form" id="receive">
+
+                                                    <form method="post" name="registerform" onsubmit="return false;">                                                   
+            
+                                                        <label>Your First Name <i class="far fa-user"></i></label>
+                                                        <input type="text" placeholder="Enter First Name" value="" id="firstname" required />
+                                                        <label>Your Last Name <i class="far fa-user"></i></label>
+                                                        <input type="text" placeholder="Enter Last Name" value="" id="lastname" required />
+                                                        <label>Email Address<i class="far fa-envelope"></i> </label>
+                                                        <input type="email" placeholder="username@example.com" value="" id="emailreg"
+                                                            required />     
+                                                        <label>Phone<i class="far fa-phone"></i> </label>
+                                                            <input type="text" value="+234" id="phone" required />
+            
+                                                        <label> Message</label>
+                                                        <textArea type="text" placeholder="Message" value=""
+                                                            id="address" required> </textArea>   
                                                     
-                                                    <textarea name="comments"  id="comments" cols="40" rows="3" placeholder="Your Message:"></textarea>
-                                                </fieldset>
-                                                <button class="btn float-btn color2-bg" style="margin-top:15px;" id="submit">Send Message<i class="fal fa-angle-right"></i></button>
-                                             
-                                            </form>
+            
+                                                
+                                                        
+                                                        <div class="profile-edit-container">
+                                                            <div class="custom-form">
+                                                                <button class="btn color2-bg float-btn" onclick="createConversation()">Send<i class="fal fa-save"></i></button>
+            
+                                                            </div>
+                                                        </div>
+                                                        <!-- profile-edit-container end-->
+                                                    </form>
+
+                                                </div>
+                                                <div id="sent">
+                                                    <div class="small-padding team-info">
+                                                        <h3 style="color: green; align-items: center;" ><i class="fa fa-thumbs-up"></i>Your message has been sent</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                                    
                                         </div>
-                                        <!-- contact form  end--> 
+                                      
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="list-main-wrap-opt fl-wrap">
+                                    
+                                            
+                                        </div>
+                                      
                                     </div>
                                 </div>
+                                <!-- list-main-wrap-title-->
+                                <!-- <div class="list-main-wrap-title fl-wrap">
+                                    <h2>Results For : <span>New York </span></h2>
+                                </div> -->
+                                <!-- list-main-wrap-title end-->
+                                <!-- list-main-wrap-opt-->
+                               
+                                <!-- pagination end-->
                             </div>
-                        </div>
-                        <div class="section-decor"></div>
-                    </section>
-                    <!-- section end -->
-                </div>
+                        </section>
+                        <!-- list-main-wrap end-->
+                    </div>
+                    <!--col-list-wrap end -->
+                    <!-- <div class="limit-box fl-wrap"></div> -->
+                
                 <!-- content end-->
             </div>
             <!--wrapper end -->
@@ -392,7 +351,7 @@
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/2.png" alt=""></a>
                                             </div>
-                                            <!--footer-carousel-item end-->                             
+                                            <!--footer-carousel-item end-->
                                             <!--footer-carousel-item-->
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/3.png" alt=""></a>
@@ -402,7 +361,7 @@
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/4.png" alt=""></a>
                                             </div>
-                                            <!--footer-carousel-item end-->      
+                                            <!--footer-carousel-item end-->
                                             <!--footer-carousel-item-->
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/5.png" alt=""></a>
@@ -412,7 +371,7 @@
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/6.png" alt=""></a>
                                             </div>
-                                            <!--footer-carousel-item end-->                                     
+                                            <!--footer-carousel-item end-->
                                         </div>
                                         <div class="fc-cont  fc-cont-prev"><i class="fal fa-angle-left"></i></div>
                                         <div class="fc-cont  fc-cont-next"><i class="fal fa-angle-right"></i></div>
@@ -504,22 +463,109 @@
                 </div>
                 <!--sub-footer end -->
             </footer>
-            <!--footer end -->           
+            <!--footer end -->
             <!--register form -->
-          
-
-            
+            <div class="main-register-wrap modal">
+                <div class="reg-overlay"></div>
+                <div class="main-register-holder">
+                    <div class="main-register fl-wrap">
+                        <div class="close-reg color-bg"><i class="fal fa-times"></i></div>
+                        <ul class="tabs-menu">
+                            <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
+                        </ul>
+                        <!--tabs -->
+                        <div id="tabs-container">
+                            <div class="tab">
+                                <!--tab -->
+                                <div id="tab-1" class="tab-content">
+                                       <h3>Sign-in to  <span>ShareYa<strong>Space</strong></span></h3>
+                                    <div class="custom-form">
+                                       <form method="post" id="loginform"  name="registerform" onsubmit="return false;">
+                                             <label>Username or Email Address <span>*</span> </label>
+                                            <input name="email" type="email"  id="email1" onClick="this.select()" value="" required>
+                                            <label class="formerror">Please enter a valid email <span></span></label>
+                                            
+                                            <label >Password <span>*</span> </label>
+                                            <input name="password" type="password" id="password1"  onClick="this.select()" value="" required>
+                                             <button  type="submit" class="log-submit-btn color-bg" onClick="loginUser()"><span>Log In</span></button>
+                                            <div class="clearfix"></div>
+                                            <div class="filter-tags">
+                                                <input id="check-a" type="checkbox" name="check">
+                                                <label for="check-a">Remember me</label>
+                                            </div>
+                                        </form>
+                                        <div class="lost_password">
+                                            <a href="#">Lost Your Password?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--tab end -->
+                                <!--tab -->
+                                <div class="tab">
+                                    <div id="tab-2" class="tab-content">
+                                        <h3>Sign Up <span>Easy<strong>Book</strong></span></h3>
+                                        <div class="custom-form">
+                                            <form method="post"   name="registerform" class="main-register-form" id="main-register-form2">
+                                                <label >Full Name <span>*</span> </label>
+                                                <input name="name" type="text"   onClick="this.select()" value="">
+                                                <label>Email Address <span>*</span></label>
+                                                <input name="email" type="text"  onClick="this.select()" value="">
+                                                <label >Password <span>*</span></label>
+                                                <input name="password" type="password"   onClick="this.select()" value="" >
+                                                <button type="submit"     class="log-submit-btn"  ><span>Register</span></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--tab end -->
+                            </div>
+                            <!--tabs end -->
+                            <div class="log-separator fl-wrap"><span>or</span></div>
+                            <div class="soc-log fl-wrap">
+                                <p>For faster login or register use your social account.</p>
+                                <a href="#" class="facebook-log"><i class="fab fa-facebook-f"></i>Connect with Facebook</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--register form end -->
             <a class="to-top"><i class="fas fa-caret-up"></i></a>
         </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-        <script  src="js/main.js"></script>
-        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script  src="js/main.js"></script> -->
+        <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+        <!-- <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
+        <script type="text/javascript" src="js/mapplugins.js"></script>
+        <script type="text/javascript" src="js/maps.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script src="./js/read-more-text.js" defer></script>
+        <script  src="js/main.js"></script>
         
-        <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>      -->
+        
+        
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+        <script type="text/javascript" src="js/plugins.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+   
+
+       
+        <script>
+         
+        $(document).ready(function(){
+            var readMore = new ReadMore('.more', {
+            openText: 'Read more...', // Opening link text
+            closeText: 'Show less...', // Closing link text
+            speed: '1' // Transition speed in seconds
+          })
+         
+        })
+        </script>	
     </body>
 </html>
