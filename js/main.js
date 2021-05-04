@@ -1565,7 +1565,11 @@ function addBooking(){
                 if(filteredStates != null & filteredStates != ""){
                   for(let i = 0; i < filteredStates.length; i++)
                   {
+<<<<<<< HEAD
                   
+=======
+                    
+>>>>>>> 9f9de3e7a85ba1eaaee820b11d7a77e276d309ea
 
                       // console.log(filteredStates[i].listing.id)
                       // console.log(filteredStates[i].listing.id)
@@ -1746,7 +1750,12 @@ function addBooking(){
 
 
               else if(getparsedUrlId === true & parsedUrlId == 'all-listing')
+<<<<<<< HEAD
               {         
+=======
+              {
+          
+>>>>>>> 9f9de3e7a85ba1eaaee820b11d7a77e276d309ea
               
                 
                   // loadIt();   
