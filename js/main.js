@@ -518,6 +518,7 @@ async function getreviewlength(){
         // document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
         // alert(userId)
         // console.log(response.data)
+        
         // localStorage.setItem('allreview',response.data.data.length);
        totalreview = response.data.data.filter(ttb => ttb.hostId == userId)
        document.getElementById('allreview').innerHTML = totalreview.length;
@@ -538,7 +539,7 @@ async function getreviewlength(){
             for (let i = 0;i < totalreview.length;i++){
   
               keeplist = totalreview[i].listingId;
-              console.log(keeplist);
+              // console.log(keeplist);
       
               // findlisting()
     
@@ -546,54 +547,98 @@ async function getreviewlength(){
               var input = totalreview[i].created_at;
               
               var finduserwithid = totalreview[i].userId;
+              var usernameReview;
 
-              axios.get('https://share.highflierstutors.com/api/findUser/'+finduserwithid,{
-
-                // headers: {
-                //   'Authorization': `Bearer ${puser}` 
-                // }
-            
-              })
+              axios.get('https://share.highflierstutors.com/api/findUser/'+finduserwithid)
             
                 
               .then(function (response) {
-                console.log(response.data)
+                // console.log(response.data.user)
+              usernameReview = response.data.user[0].firstname +" "+response.data.user[0].lastname;
+              
               })
+                // ======================================================================================================================
+             
+                axios.get('https://share.highflierstutors.com/api/listing')
+
+                .then(function (response) 
+              {
+                // console.log(response)
+                filteredlisting = response.data.data.filter(ttb => ttb.listing.id == 1)
+
+                console.log(filteredlisting)
 
               var fields = input.split('T');
       
               var name = fields[0];
-    
-              var div =  document.createElement("div");
-              div.innerHTML = 
-    
-             ' <div class="reviews-comments-item">'+
-              '<div class="review-comments-avatar">'+
-                  '<img src="images/avatar/2.jpg" alt="" class="respimg"> '+
-             ' </div>'+
-              '<div class="reviews-comments-item-text">'+
-                  '<h4><a href="#">Segun Ola</a> on <a href="listing-single.html" class="reviews-comments-item-link">'+reviewspaceTitle+'</a></h4>'+
-                 '<div class="review-score-user">'+
-                      '<span>'+totalreview[i].rating+'</span>'+
-                      '<strong>'+totalreview[i].comments+'</strong>'+
-                  '</div>'+
-                  '<div class="clearfix"></div>'+
-                  '<p> '+reviewspaceInfo+'</p>'+
-                  '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
-              '</div>'+
-          '</div>'
-    
-    
-          document.getElementById('loader-wrap').style.display = 'none';
-    
-          var element = document.getElementById("showreview");
-         
-          if(element != null && element != 'undefined')
-          {
-            element.appendChild(div);
-          }
+
+              if(filteredlisting.length > 0){
+
+                var div =  document.createElement("div");
+                div.innerHTML = 
+      
+               ' <div class="reviews-comments-item">'+
+                '<div class="review-comments-avatar">'+
+                    '<img src="images/avatar/2.jpg" alt="" class="respimg"> '+
+               ' </div>'+
+                '<div class="reviews-comments-item-text">'+
+                    '<h4><a href="#">'+usernameReview+'</a> on <a href="listing-single.html" class="reviews-comments-item-link">'+filteredlisting[0].listing.spaceTitle+'</a></h4>'+
+                   '<div class="review-score-user">'+
+                        '<span>'+totalreview[i].rating+'</span>'+
+                        '<strong>'+totalreview[i].comments+'</strong>'+
+                    '</div>'+
+                    '<div class="clearfix"></div>'+
+                    '<p> '+filteredlisting[0].listing.spaceDetails+'</p>'+
+                    '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
+                '</div>'+
+            '</div>'
+      
+      
+                document.getElementById('loader-wrap').style.display = 'none';
           
+                var element = document.getElementById("showreview");
+              
+                if(element != null && element != 'undefined')
+                {
+                  element.appendChild(div);
+                }
+              }
+              else{ 
+                
+                var div =  document.createElement("div");
+
+                div.innerHTML = 
+      
+                ' <div class="reviews-comments-item">'+
+                 '<div class="review-comments-avatar">'+
+                     '<img src="images/avatar/2.jpg" alt="" class="respimg"> '+
+                ' </div>'+
+                 '<div class="reviews-comments-item-text">'+
+                     '<h4><a href="#">'+usernameReview+'</a> on <a href="listing-single.html" class="reviews-comments-item-link">Unavailable</a></h4>'+
+                    '<div class="review-score-user">'+
+                         '<span>'+totalreview[i].rating+'</span>'+
+                         '<strong>'+totalreview[i].comments+'</strong>'+
+                     '</div>'+
+                     '<div class="clearfix"></div>'+
+                     '<p>Unavailable</p>'+
+                     '<div class="reviews-comments-item-date"><span><i class="far fa-calendar-check"></i>'+name+'</span><a href="#"><i class="fal fa-reply"></i> Reply</a></div>'+
+                 '</div>'+
+             '</div>'
+       
+       
+                 document.getElementById('loader-wrap').style.display = 'none';
+           
+                 var element = document.getElementById("showreview");
+               
+                 if(element != null && element != 'undefined')
+                 {
+                   element.appendChild(div);
+                 }
+              }
+    
             
+            })
+        
         }
           
           
@@ -1486,8 +1531,8 @@ function addBooking(){
             const parsedUrl = new URL(window.location.href);
             parsedUrlId = parsedUrl.searchParams.get("id");
 
-            console.log(parsedUrlId)
-            console.log(isNaN (parsedUrlId))
+            // console.log(parsedUrlId)
+            // console.log(isNaN (parsedUrlId))
 
             getparsedUrlId = isNaN(parsedUrlId);
 
@@ -1509,10 +1554,10 @@ function addBooking(){
 
              if(getparsedUrlId === true & parsedUrlId != 'all-listing'){
                 
-                console.log(response.data.data)
+                // console.log(response.data.data)
                 allhomestates = response.data.data.filter(homestate => homestate.listing.state)
       
-                console.log(allhomestates);
+                // console.log(allhomestates);
 
                 filteredStates = allhomestates.filter(kw => kw.listing.state == parsedUrlId)
                 console.log(filteredStates);
@@ -1520,7 +1565,7 @@ function addBooking(){
                 if(filteredStates != null & filteredStates != ""){
                   for(let i = 0; i < filteredStates.length; i++)
                   {
-                    alert('oooo')
+                  
 
                       // console.log(filteredStates[i].listing.id)
                       // console.log(filteredStates[i].listing.id)
@@ -1701,9 +1746,7 @@ function addBooking(){
 
 
               else if(getparsedUrlId === true & parsedUrlId == 'all-listing')
-              {
-          
-                alert('all listing')
+              {         
               
                 
                   // loadIt();   
