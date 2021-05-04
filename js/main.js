@@ -378,9 +378,6 @@ function loadIt()
     document.getElementById('dropit').style.display = 'block';
     document.getElementById('avatar').src = userimgProfile;
   
-    var category = document.getElementById("category");
-    var constantreview = document.getElementById("constantreview");
-    var element = document.getElementById("allreview");
 
     // console.log(loc var element = document.getElementById("allreview");alStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){
@@ -390,14 +387,15 @@ function loadIt()
     // }
 
     // document.getElementById('userValue').innerText = " ";
-    if(window.location.href === 'register.html')
-    {
+    if(document.body.contains(document.getElementById('studentdetails'))){
       
     document.getElementById("studentdetails").style.display = "none";    
     document.getElementById("otp").style.display = "none";
     }
-    else if(typeof(category) != 'undefined' && category != null)
-    {
+
+
+    if(document.body.contains(document.getElementById('category'))){
+      
       // document.getElementById('showdiscount').style.display = "none"
     populateCombo()
     populatecountry()
@@ -406,12 +404,18 @@ function loadIt()
     }
   
     //If it isn't "undefined" and it isn't "null", then it exists.
-    if(typeof(element) != 'undefined' && element != null){
+    if(document.body.contains(document.getElementById('allreview'))){
+      
       getreviewlength();
     getlistinglength();
     getbookinglength()
-
     }
+ 
+    if(document.body.contains(document.getElementById('sent'))){
+      
+      document.getElementById('sent').style.display = 'none'
+    }
+    
   }
   
   else {
@@ -513,7 +517,7 @@ async function getreviewlength(){
        // document.getElementById('allreview').innerHTML = localStorage.getItem('allreview');
         // document.getElementById('fullname').innerHTML = userFirstname+" "+userLastname;
         // alert(userId)
-        console.log(response.data)
+        // console.log(response.data)
         // localStorage.setItem('allreview',response.data.data.length);
        totalreview = response.data.data.filter(ttb => ttb.hostId == userId)
        document.getElementById('allreview').innerHTML = totalreview.length;
@@ -540,7 +544,22 @@ async function getreviewlength(){
     
               // =========================split date created on the API==================================================================
               var input = totalreview[i].created_at;
-    
+              
+              var finduserwithid = totalreview[i].userId;
+
+              axios.get('https://share.highflierstutors.com/api/findUser/'+finduserwithid,{
+
+                // headers: {
+                //   'Authorization': `Bearer ${puser}` 
+                // }
+            
+              })
+            
+                
+              .then(function (response) {
+                console.log(response.data)
+              })
+
               var fields = input.split('T');
       
               var name = fields[0];
@@ -2544,3 +2563,16 @@ async function recentAdded(){
 
 // ==============================================================================
 
+async function firstMessage()
+{
+window.location.href = 'conversation.html'
+
+
+  
+}
+
+function createConversation(){
+  
+  document.getElementById('receive').style.display = 'none'
+  document.getElementById('sent').style.display = 'block'
+}

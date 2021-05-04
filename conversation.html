@@ -3,12 +3,13 @@
     <head>
         <!--=============== basic  ===============-->
         <meta charset="UTF-8">
-        <title>ShareYaSpace - Listing Booking Directory Listing Template</title>
+        <title>ShareYaSpace</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <meta name="robots" content="index, follow"/>
         <meta name="keywords" content=""/>
         <meta name="description" content=""/>
-        <!--=============== css  ===============-->
+
+        <!-- =========================================================================== -->
         <script type="module" >
         
             $(document).ready(function(){
@@ -25,48 +26,26 @@
         </script>
 
 
-
         <link type="text/css" rel="stylesheet" href="css/reset.css">
         <link type="text/css" rel="stylesheet" href="css/plugins.css">
         <link type="text/css" rel="stylesheet" href="css/style.css">
         <link type="text/css" rel="stylesheet" href="css/color.css">
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
+
         <style>
-                a.social-link {
-                display:inline;
-                background-color: #aaa;
-                color:#fff !important;
-                text-decoration:none;
-                padding:6px 12px;
-                margin: 0;
-                -webkit-transition: background 0.1s linear;
-                -moz-transition: background 0.1s linear;
-                -ms-transition: background 0.1s linear;
-                -o-transition: background 0.1s linear;
-                transition: background 0.1s linear;
-                }
-                a:hover.facebook {
-                    background-color:#4a66b7;
-                }
-                a:hover.twitter {
-                    background-color:#00acee;
-                }
-                a:hover.linkedin {
-                    background-color:#1b86bc;
-                }
-                a:hover.gplus {
-                    background-color:#dd4b38;
-                }
-                a:hover.email {
-                    background-color:#ff9600;
-                }
-            </style>
+            .more{
+                font-weight: normal;
+               
+            }
+            .show-more{
+                color: rgb(9, 71, 112);
+            }
+        </style>
     </head>
-     <body onload="findsinglehosting()">
+     <body onload="loadIt()">
         <!--loader-->
-      <div class="loader-wrap" id="loader-wrap">
-     
+       <div class="loader-wrap" id="loader-wrap">
             <div class="pin">
                 <div class="pulse"></div>
             </div>
@@ -74,7 +53,7 @@
         <!--loader end-->
         <!-- Main  -->
         <div id="main">
-            <!-- header-->           
+            <!-- header-->
             <header class="main-header">
                 <!-- header-top-->
                 <div class="header-top fl-wrap">
@@ -86,22 +65,37 @@
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i class="far fa-plus"></i></span></a>
                         <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
                         <div class="show-reg-form" id="signout" onclick="logOff()"><i class="fa fa-sign-in"></i>Sign Out</div>
-                      
+                        <!-- <div class="lang-wrap">
+                            <div class="show-lang"><img src="images/lan/1.png" alt=""> <span>Eng</span><i class="fa fa-caret-down"></i></div>
+                            <ul class="lang-tooltip green-bg">
+                                <li><a href="#"><img src="images/lan/4.png" alt=""> De</a></li>
+                                <li><a href="#"><img src="images/lan/5.png" alt=""> It</a></li>
+                                <li><a href="#"><img src="images/lan/2.png" alt=""> Fr</a></li>
+                                <li><a href="#"><img src="images/lan/3.png" alt=""> Es</a></li>
+                            </ul>
+                        </div> -->
+                        <!-- <div class="currency-wrap">
+                            <div class="show-currency-tooltip"><i class="fas fa-dollar-sign"></i> <span>USD <i class="fa fa-caret-down"></i> </span></div>
+                            <ul class="currency-tooltip">
+                                <li><a href="#"><i class="far fa-euro-sign"></i> EUR</a></li>
+                                <li><a href="#"><i class="far fa-pound-sign"></i> GBP</a></li>
+                                <li><a href="#"><i class="far fa-ruble-sign"></i>RUR</a></li>
+                            </ul>
+                        </div> -->
                     </div>
                 </div>
-
                 <!-- header-top end-->
                 <!-- header-inner-->
                 <div class="header-inner fl-wrap">
                     <div class="container">
                         <div class="show-search-button"><span>Search</span> <i class="fas fa-search"></i> </div>
-                            <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></div>     
-                    <div class="header-user-menu">
+                         <div class="wishlist-link"><i class="fal fa-heart"></i><span class="wl_counter" id="favoritecounter"></span></div>
+                        <div class="header-user-menu">
                             <div class="header-user-name" id="dropit">
-                                <span><img  id="avatar"  alt=""></span>
+                                <span><img  id="avatar" alt="images/avatar/avatar-bg.png"></span>
                                 <div id="userValue"></div>
                             </div>
-                              <ul>
+                               <ul>
                                   <li><a href="dashboard.html"> My Dashboard </a></li>
                                  <li><a href="#" onclick="logOff()">Sign Out</a></li>
                             </ul>
@@ -119,7 +113,7 @@
                             <nav>
                                 <ul>
                                     <li>
-                                        <a href="index.html" class="act-link">Home </a>
+                                        <a href="index.html">Home </a>
                                         <!--second level -->
                                         <!-- <ul>
                                             <li><a href="index.html">Parallax Image</a></li>
@@ -130,7 +124,7 @@
                                         <!--second level end-->
                                     </li>
                                     <li>
-                                       <a href="listing.html?id=all-listing">Listings </a>
+                                      <a href="listing.html?id=all-listing">Listings </a>
                                         <!--second level -->
                                         <!-- <ul> -->
                                             <!-- <li><a href="listing.html">Column map</a></li>
@@ -194,92 +188,7 @@
                 </div>
                 <!-- header-inner end-->
                 <!-- header-search -->
-                <div class="header-search vis-search">
-                    <div class="container">
-                        <div class="row">
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Name</label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="Name" name="header-search"   value=""/>
-                                    <!-- <span class="header-search-input-item-icon"><i class="fal fa-map-marker-alt"></i></span>
-                                    <input type="text" placeholder="Location" class="autocomplete-input" id="autocompleteid" value=""/>
-                                    <a href="#"><i class="fal fa-dot-circle"></i></a> -->
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Category</label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="Name" name="header-search"   value=""/>
-                                <!-- <div class="header-search-input-item fl-wrap date-parent">
-                                    <label>Date In-Out </label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="When" name="header-search"   value=""/>
-                                </div> -->
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Category</label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="Name" name="header-search"   value=""/>
-                                <!-- <div class="header-search-input-item fl-wrap date-parent">
-                                    <label>Date In-Out </label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="When" name="header-search"   value=""/>
-                                </div> -->
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap location autocomplete-container">
-                                    <label>Category</label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="Name" name="header-search"   value=""/>
-                                <!-- <div class="header-search-input-item fl-wrap date-parent">
-                                    <label>Date In-Out </label>
-                                    <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                    <input type="text" placeholder="When" name="header-search"   value=""/>
-                                </div> -->
-                            </div>
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <!-- <div class="col-sm-3">
-                                <div class="header-search-input-item fl-wrap">
-                                    <div class="quantity-item">
-                                        <label>Rooms</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Adults</label>
-                                        <div class="quantity">
-                                            <input type="number" min="1" max="3" step="1" value="1">
-                                        </div>
-                                    </div>
-                                    <div class="quantity-item">
-                                        <label>Children</label>
-                                        <div class="quantity">
-                                            <input type="number" min="0" max="3" step="1" value="0">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <!-- header-search-input-item end -->
-                            <!-- header-search-input-item -->
-                            <div class="col-sm-2">
-                                <div class="header-search-input-item fl-wrap">
-                                    <button class="header-search-button" onclick="window.location.href='listing.html'">Search <i class="far fa-search"></i></button>
-                                </div>
-                            </div>
-                            <!-- header-search-input-item end -->
-                        </div>
-                    </div>
-                    <div class="close-header-search"><i class="fal fa-angle-double-up"></i></div>
-                </div>
-               
+                
                 <!-- header-search  end -->
             </header>
             <!--  header end -->
@@ -287,160 +196,102 @@
             <div id="wrapper">
                 <!-- content-->
                 <div class="content">
-                    <!--  section  -->
-                    <section class="color-bg middle-padding ">
-                        <div class="wave-bg wave-bg2"></div>
-                        <div class="container">
-                            <div class="flat-title-wrap">
-                                <h2><span>Host  : <strong id="hostname-top"></strong></span></h2>
-                                <span class="section-separator"></span>
-                                <h4>The host</h4>
+                   
+                    <!-- <div class="col-list-wrap left-list">
+                        <div class="mobile-list-controls fl-wrap">
+                            <div class="container">
+                               
                             </div>
-                        </div>
-                    </section>
-                    <!--  section  end-->
-                    <div class="breadcrumbs-fs fl-wrap">
-                        <div class="container">
-                            <div class="breadcrumbs fl-wrap"><a href="#">Home</a><a href="#">Pages</a><span>Author Single</span></div>
-                        </div>
-                    </div>
-                    <!-- section-->
-                    <section  id="sec1" class="middle-padding grey-blue-bg">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <!-- box-widget-item-->
-                                    <div class="box-widget-item fl-wrap">
-                                        <div class="box-widget">
-                                            <div class="box-widget-content">
-                                                <div class="box-widget-item-header">
-                                                    <h3>About Host</h3>
-                                                </div>
-                                                <div class="box-widget-author fl-wrap">
-                                                    <div class="box-widget-author-title fl-wrap">
-                                                        <div class="box-widget-author-title-img">
-                                                           <img src="images/avatar/avatar-bg.png" alt=""> 
+                        </div> -->
+                        <!--list-wrap-search   -->
+                       
+                        <!--list-wrap-search end -->
+                        <!-- list-main-wrap-->
+                        <section class="grey-blue-bg small-padding" id="sec1">
+                        <!-- <div class="list-main-wrap fl-wrap card-listing"> -->
+                            <!-- <a class="custom-scroll-link back-to-filters" href="#lisfw"><i class="fas fa-angle-up"></i><span>Back to Filters</span></a> -->
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="list-main-wrap-opt fl-wrap">
+                                            <div class="small-padding team-info">
+                                                <h3>Message the Host</h3>
+                                            </div>
+                                            <div class="small-padding">
+                                                <!-- <div class="col-sm-3">
+                                                    <div class="header-search-input-item fl-wrap date-parent">
+                                                        <label>Date In-Out </label>
+                                                        <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                                        <input type="text" placeholder="When" name="header-search"  />
+                                                    </div>
+                                                </div> -->
+                                            </div>
+
+                                            <div class="profile-edit-container">
+                                                <div class="custom-form" id="receive">
+
+                                                    <form method="post" name="registerform" onsubmit="return false;">                                                   
+            
+                                                        <label>Your First Name <i class="far fa-user"></i></label>
+                                                        <input type="text" placeholder="Enter First Name" value="" id="firstname" required />
+                                                        <label>Your Last Name <i class="far fa-user"></i></label>
+                                                        <input type="text" placeholder="Enter Last Name" value="" id="lastname" required />
+                                                        <label>Email Address<i class="far fa-envelope"></i> </label>
+                                                        <input type="email" placeholder="username@example.com" value="" id="emailreg"
+                                                            required />     
+                                                        <label>Phone<i class="far fa-phone"></i> </label>
+                                                            <input type="text" value="+234" id="phone" required />
+            
+                                                        <label> Message</label>
+                                                        <textArea type="text" placeholder="Message" value=""
+                                                            id="address" required> </textArea>   
+                                                    
+            
+                                                
+                                                        
+                                                        <div class="profile-edit-container">
+                                                            <div class="custom-form">
+                                                                <button class="btn color2-bg float-btn" onclick="createConversation()">Send<i class="fal fa-save"></i></button>
+            
+                                                            </div>
                                                         </div>
-                                                        <a href="author-single.html" id="hostname"></a>
-                                                        <!-- <span>Co-manager associated</span> -->
+                                                        <!-- profile-edit-container end-->
+                                                    </form>
+
+                                                </div>
+                                                <div id="sent">
+                                                    <div class="small-padding team-info">
+                                                        <h3 style="color: green; align-items: center;" ><i class="fa fa-thumbs-up"></i>Your message has been sent</h3>
                                                     </div>
                                                 </div>
                                             </div>
+                                                    
                                         </div>
+                                      
                                     </div>
-                                    <!-- box-widget-item end-->
-                                    <!-- box-widget-item-->
-                                    <div class="box-widget-item fl-wrap">
-                                        <div class="box-widget">
-                                            <div class="box-widget-content">
-                                                <div class="box-widget-item-header">
-                                                    <h3>Host Information</h3>
-                                                </div>
-                                                <div class="box-widget-list">
-                                                    <ul>
-                                                        <li><span><i class="fal fa-map-marker"></i> State :</span> <a href="#" id="hoststate"></a></li>
-                                                        <li><span><i class="fal fa-phone"></i> City :</span> <a href="#" id="hostcity"></a></li>
-                                                        <li><span><i class="fal fa-hand"></i> Number of Reviews :</span> <a href="#" id="hostreview"></a></li>
-                                                        <li><span><i class="fal fa-envelope"></i> Since :</span> <a href="#" id="hostcreated"></a></li>
-                                                        <!-- <li><span><i class="fal fa-browser"></i> Website :</span> <a href="#">shareyaspace.com</a></li> -->
-                                                    </ul>
-                                                </div>
-                                                <div class="list-widget-social">
-                                                    <ul id="social">
-                                                        <h1 id="title">Title</h1>
-                                                        <p>Lorem ipsum stinky butthole.</p>
-                                                        
-                                                        <!-- Social Media Share Buttons -->
-                                                        <li><a class="social-link facebook" href="" id="fb-share" rel="nofollow" target="_blank" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                                         <li> <a class="social-link twitter" href="" id="tweet" rel="nofollow" target="_blank" title="Tweet this Page"><i class="fa fa-twitter"></i></a></li>
-                                                        <li> <a class="social-link linkedin" href="" id="linkedin" rel="nofollow" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                                        <!-- <li><a href="" target="_blank"><i class="fab fa-instagram"></i></a></li> -->
-
-                                                        <!-- <a ><i class="fa fa-facebook"></i> Share</a>
-                                                        <a class="social-link twitter" href="" id="tweet" rel="nofollow" target="_blank" title="Tweet this Page"><i class="fa fa-twitter"></i> Tweet</a>
-                                                        <a class="social-link linkedin" href="" id="linkedin" rel="nofollow" target="_blank" title="Share on LinkedIn"><i class="fa fa-linkedin"></i> LinkedIn</a>
-                                                        <a class="social-link gplus" href="" id="gplus-share" title="Plus 1 on Google+"><i class="fa fa-google-plus"></i></a>
-                                                        <a class="social-link email" href="" id="email-share" title="Email to a Friend"><i class="fa fa-envelope"></i></a> -->
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                    <div class="col-md-4">
+                                        <div class="list-main-wrap-opt fl-wrap">
+                                    
+                                            
                                         </div>
+                                      
                                     </div>
-                                    <!-- box-widget-item end-->
-                                    <!-- box-widget-item-->
-                                    <div class="box-widget-item fl-wrap">
-                                        <div class="box-widget">
-                                            <div class="box-widget-content">
-                                                <div class="box-widget-item-header">
-                                                    <h3>Get In Touuch</h3>
-                                                </div>
-                                                <div id="contact-form">
-                                                    <div id="message"></div>
-                                                    <a class="btn color2-bg" onclick="firstMessage()" style="cursor: pointer;">Contact Host<i class="fal fa-user-envelope"></i></a>
-
-                                                    <!-- <form  class="custom-form" action="php/contact.php" name="contactform" id="contactform">
-                                                        <fieldset>
-                                                            <label><i class="fal fa-user"></i></label>
-                                                            <input type="text" name="name" id="name" placeholder="Your Name *" value=""/>
-                                                            <div class="clearfix"></div>
-                                                            <label><i class="fal fa-envelope"></i>  </label>
-                                                            <input type="text"  name="email" id="email" placeholder="Email Address*" value=""/>
-                                                            <textarea name="comments"  id="comments" cols="40" rows="3" placeholder="Your Message:"></textarea>
-                                                        </fieldset>
-                                                        <button class="btn float-btn color2-bg no-shdow-btn" style="margin-top:15px;" id="submit">Send Message<i class="fal fa-angle-right"></i></button>
-                                                    </form> -->
-                                                </div>
-                                                <!-- contact form  end--> 
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- box-widget-item end-->                                   
                                 </div>
-                                <div class="col-md-8">
-                                    <!-- <div class="list-single-main-item fl-wrap no-mar-bottom ">
-                                        <div class="list-single-main-item-title fl-wrap">
-                                           <h3>About <h3 id="hostname"> .</h3></h3>
-                                        </div>
-                                        <p>
-                                            Vestibulum orci felis, ullamcorper non condimentum non, ultrices ac nunc. Mauris non ligula suscipit, vulputate mi accumsan, dapibus felis. Nullam sed sapien dui. Nulla auctor sit amet sem non porta. Integer iaculis tellus nulla, quis imperdiet magna venenatis vitae..
-                                        </p>
-                                        <p>Ut nec hinc dolor possim. An eros argumentum vel, elit diceret duo eu, quo et aliquid ornatus delicatissimi. Cu nam tale ferri utroque, eu habemus albucius mel, cu vidit possit ornatus eum. Eu ius postulant salutatus definitionem,  explicari. Graeci viderer qui ut, at habeo facer solet usu. Pri choro pertinax indoctum ne, ad partiendo persecuti forensibus est.</p>
-                                        <blockquote>
-                                            <p>Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper.</p>
-                                        </blockquote>
-                                        <p>Ut nec hinc dolor possim. An eros argumentum vel, elit diceret duo eu, quo et aliquid ornatus delicatissimi. Cu nam tale ferri utroque, eu habemus albucius mel, cu vidit possit ornatus eum. Eu ius postulant salutatus definitionem, an e trud erroribus explicari. Graeci viderer qui ut, at habeo facer solet usu. Pri choro pertinax indoctum ne, ad partiendo persecuti forensibus est.</p>
-                                    </div> -->
-                                    <div class="list-main-wrap-opt fl-wrap">
-                                        <div class="list-main-wrap-title fl-wrap">
-                                            <h2>Listings added by <span id="hostname-below"> Jessie</span></h2>
-                                        </div>
-                                    </div>
-                                   
-                                    <!-- listing-item-container -->
-                                    <div class="listing-item-container init-grid-items fl-wrap" id="host-listing">
-                                        <div id="totalListing" style="margin: 20px;">
-                                   
-                                        </div>
-                                        <!-- listing-item  -->
-                                   
-                                        <!-- listing-item end --> 
-                                        <!-- <div class="pagination">
-                                            <a href="#" class="prevposts-link"><i class="fa fa-caret-left"></i></a>
-                                            <a href="#">1</a>
-                                            <a href="#" class="current-page">2</a>
-                                            <a href="#">3</a>
-                                            <a href="#">4</a>
-                                            <a href="#" class="nextposts-link"><i class="fa fa-caret-right"></i></a>
-                                        </div> -->
-                                    </div>
-                                    <!-- listing-item-container end-->                                 
-                                </div>
+                                <!-- list-main-wrap-title-->
+                                <!-- <div class="list-main-wrap-title fl-wrap">
+                                    <h2>Results For : <span>New York </span></h2>
+                                </div> -->
+                                <!-- list-main-wrap-title end-->
+                                <!-- list-main-wrap-opt-->
+                               
+                                <!-- pagination end-->
                             </div>
-                        </div>
-                        <div class="section-decor"></div>
-                    </section>
-                    <!-- section end -->
-                </div>
+                        </section>
+                        <!-- list-main-wrap end-->
+                    </div>
+                    <!--col-list-wrap end -->
+                    <!-- <div class="limit-box fl-wrap"></div> -->
+                
                 <!-- content end-->
             </div>
             <!--wrapper end -->
@@ -500,7 +351,7 @@
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/2.png" alt=""></a>
                                             </div>
-                                            <!--footer-carousel-item end-->                             
+                                            <!--footer-carousel-item end-->
                                             <!--footer-carousel-item-->
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/3.png" alt=""></a>
@@ -510,7 +361,7 @@
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/4.png" alt=""></a>
                                             </div>
-                                            <!--footer-carousel-item end-->      
+                                            <!--footer-carousel-item end-->
                                             <!--footer-carousel-item-->
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/5.png" alt=""></a>
@@ -520,7 +371,7 @@
                                             <div class="footer-carousel-item">
                                                 <a href="#"><img src="images/partners/6.png" alt=""></a>
                                             </div>
-                                            <!--footer-carousel-item end-->                                     
+                                            <!--footer-carousel-item end-->
                                         </div>
                                         <div class="fc-cont  fc-cont-prev"><i class="fal fa-angle-left"></i></div>
                                         <div class="fc-cont  fc-cont-next"><i class="fal fa-angle-right"></i></div>
@@ -613,21 +464,6 @@
                 <!--sub-footer end -->
             </footer>
             <!--footer end -->
-            <!--map-modal -->
-            <div class="map-modal-wrap">
-                <div class="map-modal-wrap-overlay"></div>
-                <div class="map-modal-item">
-                    <div class="map-modal-container fl-wrap">
-                        <div class="map-modal fl-wrap">
-                            <div id="singleMap" data-latitude="40.7" data-longitude="-73.1"></div>
-                        </div>
-                        <h3><i class="fal fa-location-arrow"></i><a href="#">Listing Title</a></h3>
-                        <input id="pac-input" class="controls fl-wrap controls-mapwn" type="text" placeholder="What Nearby ?   Bar , Gym , Restaurant ">
-                        <div class="map-modal-close"><i class="fal fa-times"></i></div>
-                    </div>
-                </div>
-            </div>
-            <!--map-modal end -->           
             <!--register form -->
             <div class="main-register-wrap modal">
                 <div class="reg-overlay"></div>
@@ -637,7 +473,7 @@
                         <ul class="tabs-menu">
                             <li class="current"><a href="#tab-1"><i class="fal fa-sign-in-alt"></i> Login</a></li>
                         </ul>
-                        <!--tabs -->                       
+                        <!--tabs -->
                         <div id="tabs-container">
                             <div class="tab">
                                 <!--tab -->
@@ -698,60 +534,38 @@
         </div>
         <!-- Main end -->
         <!--=============== scripts  ===============-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-        <script src="js/main.js"></script>
-                 
-        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script  src="js/main.js"></script> -->
+        <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
+        <!-- <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>  
-        <script type="text/javascript" src="js/map-single.js"></script>   
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>
+        <script type="text/javascript" src="js/mapplugins.js"></script>
+        <script type="text/javascript" src="js/maps.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+        <script src="./js/read-more-text.js" defer></script>
+        <script  src="js/main.js"></script>
         
+        
+        
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+        <script type="text/javascript" src="js/plugins.js"></script>
+        <script type="text/javascript" src="js/scripts.js"></script>
+   
+
+       
         <script>
-            
-                jQuery(document).ready(function($){
-                    function getFBShares(page){
-                        var shares;
-                        $.getJSON("http://graph.facebook.com/?ids=" + page, function(data){
-                            if (data[page].shares > 1){
-                                shares = data[page].shares;
-                                $("#fb-share").append(" (" + shares + ")");
-                            }
-                        });
-                    }
-                    function getTweets(page){
-                        var tweets;
-                        $.getJSON("http://urls.api.twitter.com/1/urls/count.json?url=" + page + "&callback=?", function(data){
-                            if (data.count > 1) {
-                                tweets = data.count;
-                                $("#tweet").append(" (" + tweets + ")");
-                            }
-                        });
-                    }
-                    function getLinkedIn(page){
-                        var linkedinCount;
-                        $.getJSON("http://www.linkedin.com/countserv/count/share?url=" + page + "&callback=?", function(data){
-                            if (data.count > 1) {
-                                linkedinCount = data.count;
-                                $("#linkedin").append(" (" + linkedinCount + ")");
-                            }
-                        });
-                    }
-
-                    var Url = window.location.href;
-                    var UrlEncoded = encodeURIComponent(Url);
-                    var title = encodeURIComponent(document.getElementById("title").innerText);
-                    getFBShares(Url);
-                    getTweets(Url);
-                    getLinkedIn(Url);
-                    document.getElementById("fb-share").href="http://www.facebook.com/share.php?u=" + UrlEncoded;
-                    document.getElementById("tweet").href="http://twitter.com/home?status=" + title + " " + UrlEncoded;
-                    document.getElementById("linkedin").href="http://www.linkedin.com/shareArticle?mini=true&url=" + UrlEncoded + "&title=" + title;
-                    document.getElementById("gplus-share").href="https://plus.google.com/share?url=" + UrlEncoded;
-                    document.getElementById("email-share").href="mailto:?body=Take a look at this page I found: " + title + ". You can read it here: " + Url;
-                });
-
-        </script>
          
+        $(document).ready(function(){
+            var readMore = new ReadMore('.more', {
+            openText: 'Read more...', // Opening link text
+            closeText: 'Show less...', // Closing link text
+            speed: '1' // Transition speed in seconds
+          })
+         
+        })
+        </script>	
     </body>
 </html>
