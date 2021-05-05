@@ -564,7 +564,7 @@ async function getreviewlength(){
                 .then(function (response) 
               {
                 // console.log(response)
-                filteredlisting = response.data.data.filter(ttb => ttb.listing.id == 1)
+                filteredlisting = response.data.data.filter(ttb => ttb.listing.id == keeplist)
 
                 console.log(filteredlisting)
 
@@ -1527,7 +1527,8 @@ function addBooking(){
 
 
   async function allListing(){
-            loadIt();
+            // loadIt();
+            
             const parsedUrl = new URL(window.location.href);
             parsedUrlId = parsedUrl.searchParams.get("id");
 
@@ -1608,17 +1609,17 @@ function addBooking(){
                                           filteredStates[i].listing.address+
                                         '</a>'+
                                       '</div>'+
-                                    '</div>'+
-                                  '</div>'+
+                                  //   '</div>'+
+                                  // '</div>'+
                                 '</div>'+
                               '<div class="more">'+  filteredStates[i].listing.spaceDetails +'</div>'+
               
-                                  '<ul class="facilities-list fl-wrap">'+
-                                      '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
-                                    '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
-                                      '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
-                                      '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
-                                  '</ul>'+
+                                  // '<ul class="facilities-list fl-wrap">'+
+                                  //     '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
+                                  //   '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
+                                  //     '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
+                                  //     '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
+                                  // '</ul>'+
                                   '<div class="geodir-category-footer fl-wrap">'+
                                       '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  filteredStates[i].listing.price +'</span></div>'+
                                       '<div class="geodir-opt-list">'+
@@ -1798,7 +1799,7 @@ function addBooking(){
                                               '</a>'+
                                             '</div>'+
                                           '</div>'+
-                                        '</div>'+
+                                        // '</div>'+
                                       '<div class="more">'+  response.data.data[i].listing.spaceDetails +'</div>'+
                   
                                       // '<ul class="facilities-list fl-wrap">'+
@@ -1979,15 +1980,18 @@ async function findsinglehosting(){
       
       hostsingle = response.data.data.filter(hosty => hosty.host.id == keepsinglehost)
 
-      console.log(hostsingle)
+      // console.log(hostsingle)
+      // console.log(keepsinglehost)
+
       document.getElementById('totalListing').innerHTML = "TOTAL LISTING " + "   "+hostsingle.length;
       document.getElementById('hostname').innerHTML = hostsingle[0].host.firstname +" "+hostsingle[0].host.lastname;
       document.getElementById('hostname-top').innerHTML = hostsingle[0].host.firstname +" "+hostsingle[0].host.lastname;
       document.getElementById('hostname-below').innerHTML = hostsingle[0].host.firstname +" "+hostsingle[0].host.lastname;
-      document.getElementById('hoststate').innerHTML = hostsingle[0].host.country;
-      document.getElementById('hostcity').innerHTML = hostsingle[0].host.number;
-      document.getElementById('hostreview').innerHTML = hostsingle[0].host.email;
-      document.getElementById('hostcreated').innerHTML = hostsingle[0].host.email;
+      document.getElementById('hostcountry').innerHTML = hostsingle[0].host.country;
+      // document.getElementById('hoststate').innerHTML = hostsingle[0].host.country;
+      // document.getElementById('hostcity').innerHTML = hostsingle[0].host.number;
+      // document.getElementById('hostreview').innerHTML = hostsingle[0].host.email;
+      // document.getElementById('hostcreated').innerHTML = hostsingle[0].host.email;
   
       // var div =  document.createElement("ul");
       // div.innerHTML = 
@@ -2492,7 +2496,6 @@ async function getHomeStates(){
 
           // document.getElementById('loader-wrap').style.display = 'none';
 
-
           if(allhomestates != ""){
 
             const items = allhomestates.slice(0, 9)
@@ -2502,58 +2505,57 @@ async function getHomeStates(){
   
               for(let i = 1; i < items.length;i++ )
               {
-                // alert(items[i].listing.spaceTitle)
+
+
+     if(i == 4 || i == 5 || i == 6 || i == 7){
+  
+      document.getElementById('popularUser'+i).innerText = items[i].host.firstname;
+      document.getElementById('popularComment'+i).innerText = (items[i].reviews != "") ? items[i].reviews[0].comments : "No Comments";
+      document.getElementById('popularReview'+i).innerText = (items[i].reviews != "") ? items[i].reviews.length : "No Review";
+      document.getElementById('popularRating'+i).innerText = (items[i].reviews != "") ? items[i].reviews[0].rating : "No Rating";
+      // document.getElementById('popularTitle'+i).innerText = items[i].listing.spaceTitle;
+      document.getElementById('popularAddress'+i).innerText = items[i].listing.address;
+      document.getElementById('popularDetails'+i).innerText = items[i].listing.spaceDetails;
+      // li.classList.add('more')
+      document.getElementById('popularPrice'+i).innerText = "NGN "+ items[i].listing.price;
+      // document.getElementById('popularUser'+i).className = items[i].listing.id;
+
+     
+    
+      document.getElementById('popularDetails'+i).style.height = '100px'
+      document.getElementById('popularDetails'+i).style.border = '1px solid transparent'
+      document.getElementById('popularDetails'+i).style.overflow = 'hidden'
+ 
+   var li =  document.createElement("div");
+
+    li.innerHTML = 
+            '<h3 class="title-sin_map "><a id="'+items[i].listing.id+'" onclick="pool(id)" style="cursor:pointer;">'+items[i].listing.spaceTitle+'</a></h3>'
+           
+    var ele = document.getElementById('popularTitle'+i);
+
+
+ele.appendChild(li);
+
+var di =  document.createElement("div");
+
+di.innerHTML = 
+    '<a id="'+items[i].listing.id+'" onclick="pool(id)" style="cursor:pointer;"><img src="images/gal/8.jpg" alt=""></a>'
+       
+var ele = document.getElementById('tryit'+i);
+
+
+ele.append(di);
+
+
+
+
+}
+
+
+}
+     }
+     new ReadMore('.more', {});
                 
-                  // console.log(items[i].listing.created_at)
-                  // console.log(allhomestates[i].listing.id)
-                  // publicId = allhomestates[i].listing.id;
-                      
-          
-                  
-                      document.getElementById('popularUser'+i).innerText = items[i].host.firstname;
-                      document.getElementById('popularComment'+i).innerText = (items[i].reviews != "") ? items[i].reviews[0].comments : "No Comments";
-                      document.getElementById('popularReview'+i).innerText = (items[i].reviews != "") ? items[i].reviews.length : "No Review";
-                      document.getElementById('popularRating'+i).innerText = (items[i].reviews != "") ? items[i].reviews[0].rating : "No Rating";
-                      // document.getElementById('popularTitle'+i).innerText = items[i].listing.spaceTitle;
-                      document.getElementById('popularAddress'+i).innerText = items[i].listing.address;
-                      document.getElementById('popularDetails'+i).innerText = items[i].listing.spaceDetails;
-                      // li.classList.add('more')
-                      document.getElementById('popularPrice'+i).innerText = "NGN "+ items[i].listing.price;
-                      // document.getElementById('popularUser'+i).className = items[i].listing.id;
-
-                     
-                    
-                      document.getElementById('popularDetails'+i).style.height = '100px'
-                      document.getElementById('popularDetails'+i).style.border = '1px solid transparent'
-                      document.getElementById('popularDetails'+i).style.overflow = 'hidden'
-                 
-                   var li =  document.createElement("div");
-
-                    li.innerHTML = 
-                            '<h3 class="title-sin_map "><a id="'+items[i].listing.id+'" onclick="pool(id)" style="cursor:pointer;">'+items[i].listing.spaceTitle+'</a></h3>'
-                           
-                    var ele = document.getElementById('popularTitle'+i);
-                
-              
-                ele.appendChild(li);
-
-                var di =  document.createElement("div");
-
-                di.innerHTML = 
-                    '<a id="'+items[i].listing.id+'" onclick="pool(id)" style="cursor:pointer;"><img src="images/gal/8.jpg" alt=""></a>'
-                       
-                var ele = document.getElementById('tryit'+i);
-            
-          
-            ele.append(di);
-
-              
-            
-
-                }
-
-                new ReadMore('.more', {});
-              }
           }
         
           }
