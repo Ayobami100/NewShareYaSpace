@@ -11,6 +11,7 @@
     <meta name="keywords" content="" />
     <meta name="description" content="" />
 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script type="module" >
         
         $(document).ready(function(){
@@ -91,13 +92,9 @@
                             <div id="userValue"></div>
                         </div>
                         <ul>
-                            <li><a href="myprofile.html"> Edit profile</a></li>
-                            <li><a href="listing-table.html"> My Listing</a></li>
-                            
-                            <li><a href="bookings.html">  Bookings  </a></li>
-                            <li><a href="review.html"> Reviews </a></li>
-                             <li><a href="#" onclick="logOff()">Log Out</a></li>
-                        </ul>
+                            <li><a href="dashboard.html"> My Dashboard </a></li>
+                           <li><a href="#" onclick="logOff()">Sign Out</a></li>
+                      </ul>
                     </div>
                     <div class="home-btn"><a href="index.html"><i class="fas fa-home"></i></a></div>
                     <!-- nav-button-wrap-->
@@ -393,39 +390,42 @@
                                                         
                                                     
                                                 </div>
-                                              
-                                                <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="row">
     
-                                                    <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
-                                                        <label>Number of Rooms<i class="fa fa-sitemap"></i></label>
-                                                        <div class="quantity">
-                                                            <input id="numberofrooms" type="number" min="1" max="90"
-                                                                step="1" value="1" >
+                                                        <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
+                                                            <label>Number of Rooms<i class="fa fa-sitemap"></i></label>
+                                                            <div class="quantity">
+                                                                <input id="numberofrooms" type="number" min="1" max="90"
+                                                                    step="1" value="1" >
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
-                                                        <label>Number of Guest</label>
-                                                        <div class="quantity">
-                                                            <input id="numberofguest" type="number" min="1" max="90"
-                                                                step="1" value="1">
+                                                        <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
+                                                            <label>Number of Guest</label>
+                                                            <div class="quantity">
+                                                                <input id="numberofguest" type="number" min="1" max="90"
+                                                                    step="1" value="1">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
-                                                        <label>Bathrooms</label>
-                                                        <div class="quantity">
-                                                            <input id="bathrooms" type="number" min="1" max="90" step="1"
-                                                                value="1">
+                                                        <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
+                                                            <label>Bathrooms</label>
+                                                            <div class="quantity">
+                                                                <input id="bathrooms" type="number" min="1" max="90" step="1"
+                                                                    value="1">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
-                                                        <label>beds</label>
-                                                        <div class="quantity">
-                                                            <input id="beds" type="number" min="1" max="90" step="1"
-                                                                value="1">
+                                                        <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
+                                                            <label>beds</label>
+                                                            <div class="quantity">
+                                                                <input id="beds" type="number" min="1" max="90" step="1"
+                                                                    value="1">
+                                                            </div>
                                                         </div>
+        
                                                     </div>
-    
                                                 </div>
+                                              
+                                               
                                                 <div class="col-md-6">
                                                     <label>Country<i class="fa fa-globe"></i></label>
                                                     <select data-placeholder="Room Type" name="repopt"   id="country" >
@@ -461,7 +461,7 @@
                                                         <div class="col-list-search-input-item in-loc-dec date-container  ">
                                                             <label>Listing Period<i class="fal fa-calendar-check"></i></label>
                                                             <span class="header-search-input-item-icon"></span>
-                                                            <input type="text"   placeholder="When" name="dates" id="listingdate" readonly/>
+                                                            <input type="text"   placeholder="When" name="dates" id="listingdate" />
                                                         </div>
                                                     </div>
     
@@ -476,7 +476,7 @@
                                                         <div class="header-search-input-item date-parent">
                                                             <label>Discount Period<i class="fal fa-calendar-check"></i></label>
                                                             <span class="header-search-input-item-icon"></span>
-                                                            <input type="text"   placeholder="When" name="dates" id="discountperiod"  readonly />
+                                                            <input type="text"   placeholder="When" name="dates" id="discountperiod"   />
                                                            
                                                         </div>
                                                         <!-- <div class="header-search-input-item fl-wrap date-parent">
@@ -539,50 +539,47 @@
                                                     <!-- Checkboxes -->
                                                     <ul class="fl-wrap filter-tags">
                                                         <li>
-                                                            <input id="check-aaa5" type="checkbox" name="check" checked onchange="getAmenity()">
-                                                            <label for="check-aaa5">Free WiFi</label>
+                                                            <input id="wifi" type="checkbox" name="check" value="Free WiFi;" onchange="getAmenity(id)">
+                                                            <label for="wifi">Free WiFi</label>
                                                         </li>
                                                         <li>
-                                                            <input id="check-bb5" type="checkbox" name="check" checked>
-                                                            <label for="check-bb5">Parking</label>
+                                                            <input id="parking" type="checkbox" name="check" value="Parking;" onchange="getAmenity(id)">
+                                                            <label for="parkimg">Parking</label>
                                                         </li>
                                                         <li>
-                                                            <input id="check-dd5" type="checkbox" name="check">
-                                                            <label for="check-dd5">Fitness Center</label>
+                                                            <input id="fitness" type="checkbox" name="check" value="Fitness Center;"  onchange="getAmenity(id)">
+                                                            <label for="fitness">Fitness Center</label>
                                                         </li>
                                                       
                                                       
                                                         <li>
-                                                            <input id="check-cc5" type="checkbox" name="check">
-                                                            <label for="check-cc5">Non-smoking Rooms</label>
+                                                            <input id="smoking" type="checkbox" name="check" value="Non-smoking Rooms;"  onchange="getAmenity(id)">
+                                                            <label for="smoking">Non-smoking Rooms</label>
                                                         </li>
+                                                     
                                                         <li>
-                                                            <input id="check-ff5" type="checkbox" name="check" checked>
-                                                            <label for="check-ff5">Airport Shuttle</label>
-                                                        </li>
-                                                        <li>
-                                                            <input id="check-c4" type="checkbox" name="check">
-                                                            <label for="check-c4">Air Conditioning</label>
+                                                            <input id="air" type="checkbox" name="check" value="Air Conditioning;" onchange="getAmenity(id)">
+                                                            <label for="air">Air Conditioning</label>
                                                         </li>
                                                     </ul>
                                                     <!-- Checkboxes end -->
+                                                </div>
+                                                <div class="filter-tags" style="margin-top: 7rem;">
+                                                    <input id="check" type="checkbox" name="check" onchange="getAmenity(id)" checked>
+                                                    <label for="check">By continuing, you agree to the<a href="#">Terms and Conditions</a>.</label>
                                                 </div>
                                             </div>
                                             
                                             <!-- profile-edit-container-->
                                             <div class="profile-edit-container">
                                                 <div class="custom-form">
-                                                    <!-- <label>Facebook <i class="fab fa-facebook"></i></label>
-                                                <input type="text" placeholder="https://www.facebook.com/" />
-                                                <label>Twitter<i class="fab fa-twitter"></i>  </label>
-                                                <input type="text" placeholder="https://twitter.com/" />
-                                                <label>Vkontakte<i class="fab fa-vk"></i>  </label>
-                                                <input type="text" placeholder="https://vk.com" />
-                                                <label> Instagram <i class="fab fa-instagram"></i>  </label>
-                                                <input type="text" placeholder="https://www.instagram.com/" /> -->
-                                                <p id="listmessage"></p>
+                                                    
+                                                
+                                               
                                                     <button class="btn color2-bg float-btn" type="submit" id="filly" onclick="postNewListing()">Save Listing<i class=""></i></button>
+                                                    
                                                 </div>
+                                                <p id="listmessage"></p>
                                             </div>
                                             <!-- profile-edit-container end-->
                                         </div>    
@@ -898,7 +895,8 @@
     <!-- <script type="text/javascript" src="js/map-add.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
-        <script type="text/javascript" src="js/jquery.min.js"></script> 
+
+        <!-- <script type="text/javascript" src="js/jquery.min.js"></script>  -->
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script> 
 

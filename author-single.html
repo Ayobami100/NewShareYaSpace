@@ -9,6 +9,8 @@
         <meta name="keywords" content=""/>
         <meta name="description" content=""/>
         <!--=============== css  ===============-->
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
         <script type="module" >
         
             $(document).ready(function(){
@@ -699,7 +701,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
         <script src="js/main.js"></script>
                  
-        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <!-- <script type="text/javascript" src="js/jquery.min.js"></script> -->
         <script type="text/javascript" src="js/plugins.js"></script>
         <script type="text/javascript" src="js/scripts.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDwJSRi0zFjDemECmFl9JtRj1FY7TiTRRo&libraries=places&callback=initAutocomplete"></script>  
@@ -738,7 +740,7 @@
 
                     var Url = window.location.href;
                     var UrlEncoded = encodeURIComponent(Url);
-                    var title = encodeURIComponent(document.getElementById("title").innerText);
+                    // var title = encodeURIComponent(document.getElementById("title").innerText);
                     getFBShares(Url);
                     getTweets(Url);
                     getLinkedIn(Url);

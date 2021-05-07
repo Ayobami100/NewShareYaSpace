@@ -345,11 +345,7 @@
                                         <div class="">
                                          
                                             <form method="post" name="registerform" onsubmit="return false;">
-                                                <p><input type="file" accept="image/*" name="image" id="file" onchange="loadFile(event)" style="display: none;"></p>
-                                                        <!-- <button><label for="file" style="cursor: pointer;">Upload Image</label></button> -->
-                                                        <p><img id="output" width="200" /></p>
-                                                        <input type="file" id="img" onchange="validateImage()">
-                                                        <p id="imageUrl"></p>
+                                               
                                             
     
                                                 <label>Your First Name <i class="far fa-user"></i></label>
@@ -374,70 +370,24 @@
                                                     <select required name="country" id="country" selected disabled id="country">
                                                         <option value="nigeria">Nigeria</option>
                                                     </select>
+
+                                                    <label> Address <i class="fas fa-map-marker"></i> </label>
+                                                    <input type="text" placeholder="No 234 Iyana ipaja Lagos State" 
+                                                        id="" required />
     
                                                 <label>Phone<i class="far fa-phone"></i> </label>
                                                     <input type="text" value="+234" id="phone" required />
     
-                                                <label> Address <i class="fas fa-map-marker"></i> </label>
-                                                <input type="text" placeholder="No 234 Iyana ipaja Lagos State" 
-                                                    id="" required />
+                                             
     
-                                                <label> Password <i class="far fa-lock"></i> </label>
+                                                <!-- <label> Password <i class="far fa-lock"></i> </label>
                                                 <input type="password" placeholder="Enter Password" value="" id="" required />
     
                                                 <label> Confirm Password <i class="far fa-lock"></i> </label>
                                                 <input type="password" placeholder="Confirm Password" value="" required />
-    
+     -->
                                          
-                                                <!-- profile-edit-container end-->
-                                                <div class="box-widget-item-header mat-top">
-                                                    <h3>Student Information</h3>
-                                                </div>
-                                                <!-- profile-edit-container-->
-                                                <div class="profile-edit-container add-list-container">
-                                                    <div class="custom-form">
-                                                        <div class="row">
-                                                            <div class="col-md-12">
-                                                                <div class="" style="margin-top: -10px;">
-                                                                    <label> Are you a Student? <i class="far fa-unlock"></i> </label>
-                                                                    <select name="school" id="school" onchange="findStudent()">
-                                                                        <option value="0" selected>Are you?</option>
-                                                                        <option value="yes">Yes</option>
-                                                                        <option value="no">No</option>
-                                                                    </select> 
-                                                                </div>
-    
-                                                                <div id="studentdetails" style="padding:70px; margin-top: 30px; display: none;">
-                                                                    <label> Choose Your School <i class="far fa-school"></i> </label>
-                                                                    <select name="school" id="school">
-                                                                        <option value="nigeria">Ekiti State University</option>
-                                                                        <option value="nigeria">University of Ilorin</option>
-                                                                        <option value="nigeria">University of Ibadan</option>
-                                                                    </select>
-    
-                                                                    <label> Course of Study <i class="fas fa-book"></i> </label>
-                                                                    <input type="text" placeholder="Mass Communication" value="" id="cos" />
-    
-                                                                    <label> Matriculation Number<i class="fas fa-book"></i> </label>
-                                                                    <input type="text" placeholder="Nas/13062" value="" id="mat" />
-                                                                </div>
-                                                            </div>
-                                                            <!--col end-->
-                                                            <!--col -->
-                                                            <div class="col-md-4">
-                                                                <!-- <div class="add-list-media-header">
-                                                                    <label class="radio inline">
-                                                                        <input type="radio" name="gender" onclick="findStudent()" checked>
-                                                                        <span>No</span>
-                                                                    </label>
-                                                                </div> -->
-                                                            </div>
-                                                            <!--col end-->
-    
-                                                            <!--col end-->
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                
     
                                                 <div class="profile-edit-container">
                                                     <div class="custom-form">

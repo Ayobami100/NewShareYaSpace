@@ -417,7 +417,7 @@ function  initShareYaSpace() {
         minDate: dateToday
     });
     $('input[name="header-search"]').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        $(this).val(picker.startDate.format('MM-DD-YYYY h:MM:ss.SSS') + ' to ' + picker.endDate.format('MM-DD-YYYY h:MM:ss.SSS'));
     });
     $('input[name="header-search"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
@@ -431,10 +431,13 @@ function  initShareYaSpace() {
         minDate: dateToday
     });
     $('input[name="dates"]').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        $(this).val(picker.startDate.format('MM-DD-YYYY h:MM:ss.SSS') + ' to ' + picker.endDate.format('MM-DD-YYYY h:MM:ss.SSS'));
+        console.log(picker)
+        console.log(picker.timePicker)
     });
     $('input[name="dates"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
+        console.log(picker)
     });
     $('input[name="bookdates"]').daterangepicker({
         autoUpdateInput: false,
@@ -445,11 +448,11 @@ function  initShareYaSpace() {
         minDate: dateToday
     });
     $('input[name="bookdates"]').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        $(this).val(picker.startDate.format('MM-DD-YYYY h:MM:ss.SSS') + ' to ' + picker.endDate.format('MM-DD-YYYY h:MM:ss.SSS'));
     });
     $('input[name="bookdates"]').on('apply.daterangepicker', function (ev, picker) {
-        var start = moment(picker.startDate.format('MM/DD/YYYY')),
-            end = moment(picker.endDate.format('MM/DD/YYYY')),
+        var start = moment(picker.startDate.format('MM-DD-YYYY h:MM:ss.SSS')),
+            end = moment(picker.endDate.format('MM-DD-YYYY h:MM:ss.SSS')),
             c = 24 * 60 * 60 * 1000,
             diffDays = Math.round(Math.abs((start - end) / (c))),
             tdv = $("#totaldays").val(diffDays + 1).trigger('change');
@@ -470,7 +473,7 @@ function  initShareYaSpace() {
 
    
     // $('input[name="birthdates"]').on('apply.datepicker', function (ev, picker) {
-    //     $(this).val(picker.date.format('MM/DD/YYYY'));
+    //     $(this).val(picker.date.format('MM-DD-YYYY'));
     // });
     // $('input[name="birthdates"]').on('cancel.datepicker', function (ev, picker) {
     //     $(this).val('');
@@ -484,14 +487,14 @@ function  initShareYaSpace() {
     //     }
     // });
     // $('input[name="birthdates"]').on('apply.datepicker', function (ev, picker) {
-    //     $(this).val(picker.date.format('MM/DD/YYYY'));
+    //     $(this).val(picker.date.format('MM-DD-YYYY'));
     // });
     // $('input[name="birthdates"]').on('cancel.datepicker', function (ev, picker) {
     //     $(this).val('');
     // });
     // ==========================================
     $('input[name="main-input-search"]').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        $(this).val(picker.startDate.format('MM-DD-YYYY') + ' to ' + picker.endDate.format('MM-DD-YYYY'));
     });
     $('input[name="main-input-search"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
@@ -506,7 +509,7 @@ function  initShareYaSpace() {
         minDate: dateToday
     });
     $('input[name="main-input-search_slider"]').on('apply.daterangepicker', function (ev, picker) {
-        $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+        $(this).val(picker.startDate.format('MM-DD-YYYY') + ' to ' + picker.endDate.format('MM-DD-YYYY'));
     });
     $('input[name="main-input-search_slider"]').on('cancel.daterangepicker', function (ev, picker) {
         $(this).val('');
