@@ -28,6 +28,8 @@ let fav = 0 ;
  var favUser = localStorage.getItem('favUser')
  const userToken = localStorage.getItem('token');
  const userOtp = localStorage.getItem('otp');
+ const userEmail = localStorage.getItem('email');
+ const userPhone = localStorage.getItem('phone');
  const userimgProfile = "https://share.highflierstutors.com/images/1276705039.jpg";
 
 // =====================================================================================================================================================
@@ -50,6 +52,8 @@ let totalbooking;
 // =========================Amenities and Legal Agreement===================================================================
 let keepallamenity = []
 let keeplegal = ""
+let keepallchatmeesage = ""
+let currentMessageId = ""
 
 // ======================================================================================
 var keepnigeriastates;
@@ -196,6 +200,8 @@ async function loginUser() {
          localStorage.setItem('DOB', response.data.user.DOB);
          localStorage.setItem('imgProfile', response.data.user.imgProfile);
          localStorage.setItem('role', response.data.user.role);
+         localStorage.setItem('email', response.data.data.email);
+         localStorage.setItem('phone', response.data.data.number);
   
          //document.getElementById('loader-wrap').style.display = 'none';
          alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
@@ -203,7 +209,7 @@ async function loginUser() {
          form = document.getElementById('loginform');
          window.location.reload();
          form.reset();
-        window.location.href = 'index.html';
+        // window.location.href = 'index.html';
        
   
       }
@@ -301,6 +307,8 @@ else{
         localStorage.setItem('DOB', response.data.data.DOB);
         localStorage.setItem('otp', response.data.data.otp);
         localStorage.setItem('imgProfile', response.data.data.imgProfile);
+        localStorage.setItem('email', response.data.data.email);
+        localStorage.setItem('phone', response.data.data.number);
 
 
 
@@ -391,7 +399,10 @@ function loadIt()
     document.getElementById('addlisting').style.display = 'block';
     document.getElementById('dropit').style.display = 'block';
     document.getElementById('avatar').src = userimgProfile;
-  
+
+   console.log(document.getElementById('signin'))
+   console.log(document.getElementById('dropit'))
+   console.log(document.getElementById('signout'))
 
     // console.log(loc var element = document.getElementById("allreview");alStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){
@@ -568,7 +579,7 @@ async function getreviewlength(){
             
                 
               .then(function (response) {
-                // console.log(response.data.user)
+                console.log(response.data)
               usernameReview = response.data.user[0].firstname +" "+response.data.user[0].lastname;
               
               })
@@ -1020,7 +1031,7 @@ function getUserBooking() {
   
       //document.getElementById('loader-wrap').style.display = 'none';
   
-      console.log(userId)
+      bookNow()
 
       
 
@@ -1595,7 +1606,7 @@ function addBooking(){
                       
                           var div =  document.createElement("div");
                           div.innerHTML = 
-                          '<div class="listing-item" style="cursor:pointer;">'+
+                          '<div class="listing-item" style="cursor:pointer; height:25rem">'+
                           '<article class="geodir-category-listing fl-wrap">'+
                               '<div class="geodir-category-img">'+
                                   '<a onclick="getUserId(id)" id="'+filteredStates[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+filteredStates[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
@@ -1624,23 +1635,17 @@ function addBooking(){
                                           filteredStates[i].listing.address+
                                         '</a>'+
                                       '</div>'+
-                                  //   '</div>'+
+                                    '</div>'+
                                   // '</div>'+
                                 '</div>'+
                               '<div class="more">'+  filteredStates[i].listing.spaceDetails +'</div>'+
               
-                                  // '<ul class="facilities-list fl-wrap">'+
-                                  //     '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
-                                  //   '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
-                                  //     '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
-                                  //     '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
-                                  // '</ul>'+
                                   '<div class="geodir-category-footer fl-wrap">'+
                                       '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  filteredStates[i].listing.price +'</span></div>'+
                                       '<div class="geodir-opt-list">'+
-                                          // '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
+                                          
                                           '<a class="geodir-js-favorite" id="'+filteredStates[i].listing.id+'" onclick="crosscheckFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favorite</span></a>'+
-                                          // '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
+      
                                       '</div>'+
                                   '</div>'+
                               '</div>'+
@@ -1662,7 +1667,7 @@ function addBooking(){
                         var div1 =  document.createElement("div");
                         // div1.id = 'more'
                         div1.innerHTML = 
-                        '<div class="listing-item" style="cursor:pointer;">'+
+                        '<div class="listing-item" style="cursor:pointer; height:25rem">'+
                           '<article class="geodir-category-listing fl-wrap">'+
                             '<div class="geodir-category-img">'+
                               '<a onclick="getUserId(id)" id="'+filteredStates[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+filteredStates[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
@@ -1784,7 +1789,7 @@ function addBooking(){
                         
                             var div =  document.createElement("div");
                             div.innerHTML = 
-                            '<div class="listing-item" style="cursor:pointer; float:left">'+
+                            '<div class="listing-item" style="cursor:pointer; float:left; height:25rem">'+
                               '<article class="geodir-category-listing fl-wrap">'+
                                   '<div class="geodir-category-img">'+
                                       '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
@@ -1814,26 +1819,20 @@ function addBooking(){
                                               '</a>'+
                                             '</div>'+
                                           '</div>'+
-                                        // '</div>'+
-                                      '<div class="more">'+  response.data.data[i].listing.spaceDetails +'</div>'+
-                  
-                                      // '<ul class="facilities-list fl-wrap">'+
-                                      //     '<li><i class="fal fa-wifi"></i><span>Free WiFi</span></li>'+
-                                      //   '<li><i class="fal fa-parking"></i><span>Parking</span></li>'+
-                                      //     '<li><i class="fal fa-smoking-ban"></i><span>Non-smoking Rooms</span></li>'+
-                                      //     '<li><i class="fal fa-utensils"></i><span> Restaurant</span></li>'+
-                                      // '</ul>'+
-                                      '<div class="geodir-category-footer fl-wrap">'+
-                                      '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  response.data.data[i].listing.price +'</span></div>'+
-                                      '<div class="geodir-opt-list">'+
-                                          // '<a href="#0" class="map-item"><i class="fal fa-map-marker-alt"></i><span class="geodir-opt-tooltip">On the map <strong>1</strong></span></a>'+
-                                          '<a class="geodir-js-favorite" id = "'+response.data.data[i].listing.id+'" onclick="crosscheckFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip" >Save as Favorite</span></a>'+
-                                          // '<a href="#" class="geodir-js-booking"><i class="fal fa-exchange"></i><span class="geodir-opt-tooltip">Find Directions</span></a>'+
-                                      '</div>'+
-                                  '</div>'+
-                              '</div>'+
-                              '</article>'+
-                              '</div>'
+                                        '</div>'+
+                                        '<div class="more">'+ response.data.data[i].listing.spaceDetails +'</div>'+
+              
+                                        '<div class="geodir-category-footer fl-wrap">'+
+                                            '<div class="geodir-category-price">Per Day <span>'+" NGN  "+  response.data.data[i].listing.price +'</span></div>'+
+                                            '<div class="geodir-opt-list">'+
+                                                
+                                                '<a class="geodir-js-favorite" id="'+response.data.data[i].listing.id+'" onclick="crosscheckFavorite(id)"><i class="fal fa-heart"></i><span class="geodir-opt-tooltip">Save as Favorite</span></a>'+
+            
+                                            // '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '</article>'+
+                                    '</div>'
                             var element = document.getElementById("listing-item");
                           
                             element.append(div);
@@ -1850,7 +1849,7 @@ function addBooking(){
                           var div1 =  document.createElement("div");
                           // div1.id = 'more'
                           div1.innerHTML = 
-                          '<div class="listing-item" style="cursor:pointer; display:block">'+
+                          '<div class="listing-item" style="cursor:pointer; height:25rem">'+
                             '<article class="geodir-category-listing fl-wrap">'+
                               '<div class="geodir-category-img">'+
                                 '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
@@ -2645,6 +2644,8 @@ async function cityListing(cityid){
 // alert(cityid)
   window.location.href = "listing.html?id="+cityid
 }
+
+
 function checkAvailable(){
 
 var checkbegin = document.getElementById('checkdate').value.split('-')[0];
@@ -2705,6 +2706,8 @@ else{
 }
 
 }
+
+
 async function firstMessage()
 {
 window.location.href = 'conversation.html'
@@ -2717,6 +2720,8 @@ function createConversation(){
   document.getElementById('receive').style.display = 'none'
   document.getElementById('sent').style.display = 'block'
 }
+
+
 async function allConversation(){
   loadIt();
   axios.get('https://share.highflierstutors.com/api/chatconversation')
@@ -2726,56 +2731,47 @@ async function allConversation(){
    
   }
   else{
-    console.log(response.data.data)
-    alert(userId)
-    let result = response.data.data.filter(user => user.id == userId);
-    let result2 = response.data.data.filter(muser => muser.second_user == userId)
-    console.log(result)
-    console.log(result2)
+   
 
-    for(let i = 0; i < result.length; i++){
+    keepallchatmeesage = response.data.data;
+   
+    // console.log(keepallchatmeesage)
+
+    var element = document.getElementById("chatlist");
+
+    while(element.firstChild){
+      element.removeChild(element.firstChild)
+    }
+  
+    
+    for(let i = 0; i < keepallchatmeesage.length; i++){
+
+      lastmessage = keepallchatmeesage[i].chatmessages.length;
+      console.log(lastmessage)
 
       var div =  document.createElement("div");
 
       div.innerHTML =     
-      '<a class="chat-contacts-item" href="#">'+
+      '<a class="chat-contacts-item" href="javascript.void():" id="'+keepallchatmeesage[i].id+'" onclick="openMessage(id)">'+
         '<div class="dashboard-message-avatar">'+
             '<img src="images/avatar/avatar-bg.png" alt="">'+
-            '<div class="message-counter">1</div>'+
+            '<div class="message-counter">'+lastmessage+'</div>'+
         '</div>'+
         '<div class="chat-contacts-item-text">'+
-            '<h4>Adam Koncy</h4>'+
-            '<span>27 Dec 2018 </span>'+
-            '<p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p>'+
+            '<h4>'+keepallchatmeesage[i].user.firstname+" "+keepallchatmeesage[i].user.lastname+'</h4>'+
+            '<span>'+keepallchatmeesage[i].created_at.split('T')[0]+'</span>'+
+            '<p>'+keepallchatmeesage[i].chatmessages[lastmessage-1].body+'</p>'+
         '</div>'+
       '</a>'
 
-      var element = document.getElementById("chatlist");
+     
      
      element.appendChild(div);
      
     }
-    
-    for(let i = 0; i < result2.length; i++){
-      var div =  document.createElement("div");
 
-      div.innerHTML =     
-      '<a class="chat-contacts-item" href="#">'+
-        '<div class="dashboard-message-avatar">'+
-            '<img src="images/avatar/avatar-bg.png" alt="">'+
-            '<div class="message-counter">1</div>'+
-        '</div>'+
-        '<div class="chat-contacts-item-text">'+
-            '<h4>Adam Koncy</h4>'+
-            '<span>27 Dec 2018 </span>'+
-            '<p>Vivamus lobortis vel nibh nec maximus. Donec dolor erat, rutrum ut feugiat sed, ornare vitae nunc. Donec massa nisl, bibendum id ultrices sed, accumsan sed dolor.</p>'+
-        '</div>'+
-      '</a>'
-
-      var element = document.getElementById("chatlist");
-     
-     element.appendChild(div);
-     
+    if(currentMessageId.length > 0){
+      openMessage(currentMessageId);
     }
     
     
@@ -2783,3 +2779,131 @@ async function allConversation(){
 
 })
 }
+
+function openMessage(hr){
+
+
+currentMessageId = hr;
+  filteredchatmessages = keepallchatmeesage.filter(gy => gy.id == hr)
+
+  console.log(filteredchatmessages)
+
+
+  let element = document.getElementById("detailsmessage");
+  // if(document.body.contains(document.getElementById('detailsmessage'))){
+  // element.parentNode.removeChild(element)}
+  while(element.firstChild){
+    element.removeChild(element.firstChild)
+  }
+
+  // element.innerHTML = ""
+
+  for(let i = 0; i < filteredchatmessages[0].chatmessages.length; i++){
+
+    dasy = filteredchatmessages[0].chatmessages[i].created_at.split('T')
+if(filteredchatmessages[0].chatmessages[i].user_id == userId){
+
+  // alert(filteredchatmessages[0].chatmessages[i].body)
+  var div =  document.createElement("div");
+
+  div.innerHTML =     
+
+'<div class="chat-message chat-message_user fl-wrap">'+
+'<div class="dashboard-message-avatar">'+
+   ' <img src="https://share.highflierstutors.com/images/267094325.jpeg" alt="">'+
+   '<span>'+userFirstname+'</span>'+
+' </div>'+
+' <span class="massage-date">'+dasy[0]+'<span>'+dasy[1].split(':')[0]+'.'+dasy[1].split(':')[1]+'</span></span>'+
+'<p>'+filteredchatmessages[0].chatmessages[i].body+'</p>'+
+'</div>'
+  
+ 
+ element.append(div);
+}
+else{
+
+  let element = document.getElementById("detailsmessage");
+  var div =  document.createElement("div");
+
+  div.innerHTML =     
+
+  '<div class="chat-message chat-message_guest fl-wrap">'+
+  '<div class="dashboard-message-avatar">'+
+     ' <img src="https://share.highflierstutors.com/images/267094325.jpeg" alt="">'+
+     '<span>'+filteredchatmessages[0].user.firstname+'</span>'+
+ ' </div>'+
+ ' <span class="massage-date">'+filteredchatmessages[0].chatmessages[i].created_at.split('T')[0]+' <span>'+dasy[1].split(':')[0]+'.'+dasy[1].split(':')[1]+'</span></span>'+
+  '<p>'+filteredchatmessages[0].chatmessages[i].body+'</p>'+
+'</div>'
+ 
+ element.append(div);
+}
+   
+  }
+
+ 
+
+
+
+
+}
+
+async function sendMessage(){
+
+
+  if(document.getElementById('messagetext').value.length > 0){
+    alert( filteredchatmessages[0].chatmessages[0].chat_conversation_id)
+
+    axios.post('https://share.highflierstutors.com/api/chatmessage',{
+      body: document.getElementById('messagetext').value,
+      chat_conversation_id: filteredchatmessages[0].chatmessages[0].chat_conversation_id
+    })
+    .then(function (response) {
+    if (response.status !== 200){
+  
+
+    }
+    else{
+
+      allConversation();
+   
+      document.getElementById('messagetext').value = ""
+// var div =  document.createElement("div");
+
+//       div.innerHTML =     
+    
+//       '<div class="chat-message chat-message_guest fl-wrap">'+
+//       '<div class="dashboard-message-avatar">'+
+//          ' <img src="https://share.highflierstutors.com/images/267094325.jpeg" alt="">'+
+//          '<span>'+userFirstname+'</span>'+
+//      ' </div>'+
+//      ' <span class="massage-date">'+filteredchatmessages[0].chatmessages[0].created_at.split('T')[0]+' <span>'+dasy[1].split(':')[0]+'.'+dasy[1].split(':')[1]+'</span></span>'+
+//       '<p>'+document.getElementById('messagetext').value+'</p>'+
+//     '</div>'
+
+
+//   let element = document.getElementById("detailsmessage");
+     
+//      element.append(div);
+
+  // alert(document.getElementById('messagetext').value)
+    }
+
+  })
+  }
+}
+
+
+async function bookNow(){
+  
+  document.getElementById('billinglistingname').value = keepsinglespacetitle
+  document.getElementById('billingfirstname').value = userFirstname
+  document.getElementById('billinglastname').value = userLastname
+  document.getElementById('billingemail').value = userEmail
+  document.getElementById('billingphone').value = userPhone
+  // document.getElementById('billinglistingname').value = keepsinglespacetitle
+}
+// spinner.className = "show";
+// setTimeout(() => {
+//   spinner.className = spinner.className.replace("show", "");
+// }, 5000);

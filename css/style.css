@@ -3836,11 +3836,12 @@ input[type=number]
 	border-radius:4px;
 	border:1px   dotted #e4e4e4;
 	text-transform:uppercase;
+	max-width: max-content;
 }
 .geodir-category-price span{
 	font-weight:600;
 	margin-top:6px;
-	font-size:13px;
+	font-size:10px;
 	color:#5ECFB1;
 }
 .geodir-category-location a {

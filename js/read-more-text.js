@@ -22,8 +22,14 @@
     console.log(moreText)
 
     moreText.forEach(function (element) {
-      if(element.innerHTML.length > 80)
+      if(element.innerHTML.length > 100){
       element.style.cssText = 'max-height: 20px; min-height: 20px; overflow:hidden;border:1px solid transparent; '
+
+      }
+      // else{
+      //   element.style.cssText = 'max-height: 30px; min-height: 30px; overflow:hidden;border:1px solid transparent; '
+      // }
+     
     })
 
     this.options = {
@@ -42,7 +48,7 @@
     for(var c = 0; c < moreText.length; c++) {
      
       let element = moreText[c]
-      if(element.innerHTML.length > 80){
+      if(element.innerHTML.length > 100){
         link = document.createElement('a')
         link.classList.add('show-more')
         link.setAttribute('href', '#')
