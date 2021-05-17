@@ -18,6 +18,7 @@ axios.interceptors.request.use(function (config) {
 let fav = 0 ;
 // document.getElementById('favoritecounter').innerHTML = localStorage.getItem('fav');
  var puser = localStorage.getItem('token');
+ var roly = localStorage.getItem('role');
  let favoptions
  let groupedFav
  let keeplistingfromhome;
@@ -119,127 +120,134 @@ var keepnigeriastates;
 
 async function loginUser() {
 
-  var email = document.getElementById("email1").value;
-  var password = document.getElementById('password1').value;
-  // const form = document.querySelector("form[name='contact-form']");
-  // const nameInput = document.querySelector("input[name='password']");
-  // const emailInput = document.querySelector("input[name='email']");
-  // // const phoneInput = document.querySelector("input[name='phone']");
-  // // const messageInput = document.querySelector("textarea[name='message']");
-  
-  // nameInput.isValid = () => !!nameInput.value;
-  // emailInput.isValid = () => isValidEmail(emailInput.value);
-  // // phoneInput.isValid = () => isValidPhone(phoneInput.value);
-  // // messageInput.isValid = () => !!messageInput.value;
-  
-  // const inputFields = [nameInput, emailInput];
-  
-  // const isValidEmail = (email) => {
-  //   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  //   return re.test(String(email).toLowerCase());
-  // };
-  
-  // const isValidPhone = (phone) => {
-  //   const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-  //   return re.test(String(phone).toLowerCase());
-  // };
-  
-  // let shouldValidate = false;
-  // let isFormValid = false;
-  
-  // const validateInputs = () => {
-  //   console.log("we are here");
-  //   if (!shouldValidate) return;
-  
-  //   isFormValid = true;
-  //   inputFields.forEach((input) => {
-  //     input.classList.remove("invalid");
-  //     // input.nextElementSibling.classList.add("hide");
-  
-  //     if (!input.isValid()) {
-  //       input.classList.add("invalid");
-  //       isFormValid = false;
-  //       // input.nextElementSibling.classList.remove("hide");
-  //     }
-  //   });
-  // };
-  
-  // form.addEventListener("submit", (e) => {
-  //   e.preventDefault();
-    // shouldValidate = true;
-    // validateInputs();
-    if (email != "" && password != "") {
-   
- 
-      //document.getElementById('loader-wrap').style.display = 'block';
-
-
-  await axios.post('https://share.highflierstutors.com/api/login', {
-
-    email: email,
-    password: password
-
-  }) .then(function (response) {
-      console.log(response)
-      // alert(response)
-      if (response != "success") {
-
-       
-        localStorage.setItem('token', response.data.token);
-
-        console.log(response.data)
-        console.log(response.data.user.id)
-        console.log(response.data.user.firstname)
-        console.log(response.data.user.lastname)
-        console.log(response.data.user.role)
-  
-  
-        localStorage.setItem('id', response.data.user.id);
-        localStorage.setItem('firstname', response.data.user.firstname);
-         localStorage.setItem('lastname', response.data.user.lastname);
-         localStorage.setItem('DOB', response.data.user.DOB);
-         localStorage.setItem('imgProfile', response.data.user.imgProfile);
-         localStorage.setItem('role', response.data.user.role);
-         localStorage.setItem('email', response.data.data.email);
-         localStorage.setItem('phone', response.data.data.number);
-  
-         //document.getElementById('loader-wrap').style.display = 'none';
-         alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
+  try{
+          var email = document.getElementById("email1").value;
+          var password = document.getElementById('password1').value;
+          // const form = document.querySelector("form[name='contact-form']");
+          // const nameInput = document.querySelector("input[name='password']");
+          // const emailInput = document.querySelector("input[name='email']");
+          // // const phoneInput = document.querySelector("input[name='phone']");
+          // // const messageInput = document.querySelector("textarea[name='message']");
+          
+          // nameInput.isValid = () => !!nameInput.value;
+          // emailInput.isValid = () => isValidEmail(emailInput.value);
+          // // phoneInput.isValid = () => isValidPhone(phoneInput.value);
+          // // messageInput.isValid = () => !!messageInput.value;
+          
+          // const inputFields = [nameInput, emailInput];
+          
+          // const isValidEmail = (email) => {
+          //   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          //   return re.test(String(email).toLowerCase());
+          // };
+          
+          // const isValidPhone = (phone) => {
+          //   const re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+          //   return re.test(String(phone).toLowerCase());
+          // };
+          
+          // let shouldValidate = false;
+          // let isFormValid = false;
+          
+          // const validateInputs = () => {
+          //   console.log("we are here");
+          //   if (!shouldValidate) return;
+          
+          //   isFormValid = true;
+          //   inputFields.forEach((input) => {
+          //     input.classList.remove("invalid");
+          //     // input.nextElementSibling.classList.add("hide");
+          
+          //     if (!input.isValid()) {
+          //       input.classList.add("invalid");
+          //       isFormValid = false;
+          //       // input.nextElementSibling.classList.remove("hide");
+          //     }
+          //   });
+          // };
+          
+          // form.addEventListener("submit", (e) => {
+          //   e.preventDefault();
+            // shouldValidate = true;
+            // validateInputs();
+            if (email != "" && password != "") {
+          
         
-         form = document.getElementById('loginform');
-         window.location.reload();
-         form.reset();
-        // window.location.href = 'index.html';
-       
-  
-      }
-      else{
-        //document.getElementById('loader-wrap').style.display = 'none';
-        alert('These details does not match our record')
-      }
+              //document.getElementById('loader-wrap').style.display = 'block';
+        
+        
+          await axios.post('https://share.highflierstutors.com/api/login', {
+        
+            email: email,
+            password: password
+        
+          }) .then(function (response) {
+              console.log(response)
+              // alert(response)
+              if (response != "success") {
+        
+              
+                localStorage.setItem('token', response.data.token);
+        
+                console.log(response.data)
+                console.log(response.data.user.id)
+                console.log(response.data.user.firstname)
+                console.log(response.data.user.lastname)
+                console.log(response.data.user.role)
+          
+          
+                localStorage.setItem('id', response.data.user.id);
+                localStorage.setItem('firstname', response.data.user.firstname);
+                localStorage.setItem('lastname', response.data.user.lastname);
+                localStorage.setItem('DOB', response.data.user.DOB);
+                localStorage.setItem('imgProfile', response.data.user.imgProfile);
+                localStorage.setItem('role', response.data.user.role);
+                localStorage.setItem('email', response.data.user.email);
+                localStorage.setItem('phone', response.data.user.number);
+          
+                //document.getElementById('loader-wrap').style.display = 'none';
+                alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
+                
+                form = document.getElementById('loginform');
+                window.location.reload();
+                form.reset();
+                window.location.href = 'index.html';
+              
+          
+              }
+              else{
+                //document.getElementById('loader-wrap').style.display = 'none';
+                alert('These details does not match our record')
+              }
+        
+            
+            })
+        
+            .catch(function (error) {
+              if(error){
+                //document.getElementById('loader-wrap').style.display = 'none';
+                alert(error);
+                console.log(error)
+              }
+              //  alert('You are not Logged in  ')
+            // res = error.response.data.message[0];
+            
+            });
+        
+        
+        
+        }
+        else{
+          //document.getElementById('loader-wrap').style.display = 'none';
+                alert('Kindly fill all inputs')
+        
+        }
+  }
+  catch{
+      alert("Error!")
+  }
 
-    
-    })
-
-    .catch(function (error) {
-      if(error){
-        //document.getElementById('loader-wrap').style.display = 'none';
-        alert(error);
-        console.log(error)
-      }
-      //  alert('You are not Logged in  ')
-     // res = error.response.data.message[0];
-     
-    });
-
-
-
-}
-else{
-  //document.getElementById('loader-wrap').style.display = 'none';
-        alert('Kindly fill all inputs')
-
-}
+ 
 }
 
 
@@ -403,6 +411,7 @@ function loadIt()
    console.log(document.getElementById('signin'))
    console.log(document.getElementById('dropit'))
    console.log(document.getElementById('signout'))
+   console.log(roly)
 
     // console.log(loc var element = document.getElementById("allreview");alStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){
@@ -1553,7 +1562,7 @@ function addBooking(){
 
 
   async function allListing(){
-            // loadIt();
+            loadIt();
             
             const parsedUrl = new URL(window.location.href);
             parsedUrlId = parsedUrl.searchParams.get("id");
@@ -1564,7 +1573,8 @@ function addBooking(){
             getparsedUrlId = isNaN(parsedUrlId);
 
           // //document.getElementById('loader-wrap').style.display = 'block';
-          axios.get('https://share.highflierstutors.com/api/listing')
+          axios.get('https://api.shareyaspace.com/listing')
+          // axios.get('https://share.highflierstutors.com/api/listing')
           .then(function (response) 
         {
 
@@ -2727,15 +2737,16 @@ async function allConversation(){
   axios.get('https://share.highflierstutors.com/api/chatconversation')
   .then(function (response) {
   if (response.status !== 200){
-
    
   }
   else{
    
 
     keepallchatmeesage = response.data.data;
+// alert('error')
    
-    // console.log(keepallchatmeesage)
+    console.log(keepallchatmeesage)
+    alert('error')
 
     var element = document.getElementById("chatlist");
 
@@ -2752,7 +2763,7 @@ async function allConversation(){
       var div =  document.createElement("div");
 
       div.innerHTML =     
-      '<a class="chat-contacts-item" href="javascript.void():" id="'+keepallchatmeesage[i].id+'" onclick="openMessage(id)">'+
+      '<a class="chat-contacts-item" href="javascript:void(0)" id="'+keepallchatmeesage[i].id+'" onclick="openMessage(id)">'+
         '<div class="dashboard-message-avatar">'+
             '<img src="images/avatar/avatar-bg.png" alt="">'+
             '<div class="message-counter">'+lastmessage+'</div>'+
