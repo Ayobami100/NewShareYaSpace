@@ -1,9 +1,10 @@
 
 
-console.log(localStorage.getItem('token'))
-console.log(localStorage.getItem('favUser'))
+console.log(localStorage.getItem('token'));
+console.log(localStorage.getItem('favUser'));
+console.log(localStorage.getItem('role'));
 
-
+// const axios = require('axios').default;
 
 
 axios.interceptors.request.use(function (config) {
@@ -31,7 +32,7 @@ let fav = 0 ;
  const userOtp = localStorage.getItem('otp');
  const userEmail = localStorage.getItem('email');
  const userPhone = localStorage.getItem('phone');
- const userimgProfile = "https://share.highflierstutors.com/images/1276705039.jpg";
+ const userimgProfile = "api.shareyaspace.com/images/1276705039.jpg";
 
 // =====================================================================================================================================================
  var keeplist
@@ -176,7 +177,7 @@ async function loginUser() {
               //document.getElementById('loader-wrap').style.display = 'block';
         
         
-          await axios.post('https://share.highflierstutors.com/api/login', {
+          await axios.post('api.shareyaspace.com/api/login', {
         
             email: email,
             password: password
@@ -280,7 +281,7 @@ else{
   //document.getElementById('loader-wrap').style.display = 'block';
 
 
-  await axios.post('https://share.highflierstutors.com/api/register', {
+  await axios.post('api.shareyaspace.com/api/register', {
     firstname: firstname,
     lastname: lastname,
     email: emailreg,
@@ -408,10 +409,6 @@ function loadIt()
     document.getElementById('dropit').style.display = 'block';
     document.getElementById('avatar').src = userimgProfile;
 
-   console.log(document.getElementById('signin'))
-   console.log(document.getElementById('dropit'))
-   console.log(document.getElementById('signout'))
-   console.log(roly)
 
     // console.log(loc var element = document.getElementById("allreview");alStorage.getItem('user'))
     // if(localStorage.getItem('user') == Object){
@@ -421,6 +418,19 @@ function loadIt()
     // }
 
     // document.getElementById('userValue').innerText = " ";
+    if(roly == 1){
+      document.getElementById('becomehost').style.display = 'block';
+      document.getElementById('addlisting').style.display = 'none';
+    }
+    if(roly == 2){
+      // document.getElementById('addlisting').style.display = 'block';
+
+    }
+    if(roly == 3){
+      // document.getElementById('addlisting').style.display = 'block';
+    }
+
+
     if(document.body.contains(document.getElementById('studentdetails'))){
       
     document.getElementById("studentdetails").style.display = "none";    
@@ -437,7 +447,8 @@ function loadIt()
     document.getElementById('newlisting').reset();
    
     }
-  
+     
+
     //If it isn't "undefined" and it isn't "null", then it exists.
     if(document.body.contains(document.getElementById('allreview'))){
       
@@ -538,7 +549,7 @@ async function getreviewlength(){
 
   //document.getElementById('loader-wrap').style.display = 'block';
 
-  await axios.get('https://share.highflierstutors.com/api/review',{
+  await axios.get('api.shareyaspace.com/api/review',{
 
     // headers: {
     //   'Authorization': `Bearer ${puser}` 
@@ -584,7 +595,7 @@ async function getreviewlength(){
               var finduserwithid = totalreview[i].userId;
               var usernameReview;
 
-              axios.get('https://share.highflierstutors.com/api/findUser/'+finduserwithid)
+              axios.get('api.shareyaspace.com/api/findUser/'+finduserwithid)
             
                 
               .then(function (response) {
@@ -594,7 +605,7 @@ async function getreviewlength(){
               })
                 // ======================================================================================================================
              
-                axios.get('https://share.highflierstutors.com/api/listing')
+                axios.get('api.shareyaspace.com/api/listing')
 
                 .then(function (response) 
               {
@@ -717,7 +728,7 @@ async function getlistinglength(){
 
   //document.getElementById('loader-wrap').style.display = 'block';
 
-  await axios.get('https://share.highflierstutors.com/api/listing')
+  await axios.get('api.shareyaspace.com/api/listing')
 
     
   .then(function (response) {
@@ -747,7 +758,7 @@ async function getlistinglength(){
                 '<div class="dashboard-message">'+
                    ' <span class="new-dashboard-item">New</span>'+
                     '<div class="listing-table-image">'+
-                        '<a href="listing-single.html"><img src="https://share.highflierstutors.com/images/'+name+'" alt="" class="respimg"></a>'+
+                        '<a href="listing-single.html"><img src="api.shareyaspace.com/images/'+name+'" alt="" class="respimg"></a>'+
                     '</div>'+
                     '<div class="listing-table-text">'+
                         '<h4><a href="listing-single.html">'+totallisting[i].listing.spaceTitle+'</a></a></h4>'+
@@ -802,7 +813,7 @@ async function getbookinglength(){
  
 
 
-    await axios.get('https://share.highflierstutors.com/api/order',{
+    await axios.get('api.shareyaspace.com/api/order',{
 
     // headers: {
     //   'Authorization': `Bearer ${puser}` }
@@ -902,7 +913,7 @@ function getUserListing() {
     //document.getElementById('loader-wrap').style.display = 'block';
    
     loadIt();
-    // await axios.get('https://share.highflierstutors.com/api/listing')
+    // await axios.get('api.shareyaspace.com/api/listing')
 
     // .then(function (response) {
       // console.log(response)
@@ -931,7 +942,7 @@ function getUserReview() {
    
 
 
-    // await axios.get('https://share.highflierstutors.com/api/review')
+    // await axios.get('api.shareyaspace.com/api/review')
 
     
     // .then(function (response) {
@@ -1031,15 +1042,17 @@ function getUserReview() {
 function getUserBooking() {
 
     //document.getElementById('loader-wrap').style.display = 'block';
-    loadIt();
+    // loadIt();
 
-    // await axios.get('https://share.highflierstutors.com/api/order')
+    // await axios.get('api.shareyaspace.com/api/order')
   
     // .then(function (response) {
     //   console.log(response)
   
       //document.getElementById('loader-wrap').style.display = 'none';
   
+
+      alert('tyyy')
       bookNow()
 
       
@@ -1055,7 +1068,7 @@ async function findlisting(){
 
   //document.getElementById('loader-wrap').style.display = 'block';
 
-  await axios.get('https://share.highflierstutors.com/api/listingfind/'+keeplist+'')
+  await axios.get('api.shareyaspace.com/api/listingfind/'+keeplist+'')
   .then(function (response) {
 if(response.status == 200){
 
@@ -1079,7 +1092,7 @@ async function postNewReview(){
       
   //document.getElementById('loader-wrap').style.display = 'block';
        
-      await axios.post('https://share.highflierstutors.com/api/review', {
+      await axios.post('api.shareyaspace.com/api/review', {
 
         comments: comment,
         rating: rating,
@@ -1122,7 +1135,7 @@ async function postNewBooking(){
       
   //document.getElementById('loader-wrap').style.display = 'block';
        
-      await axios.post('https://share.highflierstutors.com/api/order', {
+      await axios.post('api.shareyaspace.com/api/order', {
 
        
     
@@ -1172,7 +1185,7 @@ if(parsedUrlId ){
     // //document.getElementById('loader-wrap').style.display = 'block';
     // showSpinner();
    
-    await axios.get('https://share.highflierstutors.com/api/listingfind/'+parsedUrlId+'')
+    await axios.get('api.shareyaspace.com/api/listingfind/'+parsedUrlId+'')
     .then(function (response) {
     if (response.status !== 200){
         console.warn('Looks like there was a problem. error: ' +
@@ -1212,10 +1225,15 @@ if(parsedUrlId ){
       //  document.getElementById("orderemail").value = response.data.data[0].user.email;
       // document.getElementById("orderphonee").value = response.data.data[0].user.phone;
    
-         document.getElementById("orderspacetitle").innerHTML = response.data.data[0].listing.spaceTitle;
+         document.getElementById("orderspacetitle").innerHTML = keepsinglespacetitle;
          document.getElementById("datetoday").innerHTML = new Date().toLocaleDateString();
          document.getElementById("orderprice").innerHTML = response.data.data[0].listing.price;
-        // console.log(keepsinglehost)
+        //  document.getElementById('billinglistingname').value = keepsinglespacetitle
+         document.getElementById('billingfirstname').value = userFirstname
+         document.getElementById('billinglastname').value = userLastname
+         document.getElementById('billingemail').value = userEmail
+         document.getElementById('billingphone').value = userPhone
+        console.log(userEmail)
      
         //  document.getElementById('bookedprice').value = response.data.data[0].listing.price;
          document.getElementById('bookedlisting').innerHTML =  '<option value="" selected disabled>'+response.data.data[0].listing.spaceTitle+'</option>'
@@ -1275,10 +1293,10 @@ if(parsedUrlId ){
 
               var putImages = document.createElement('a')
               
-              document.getElementById('tagImages'+i).src = "https://share.highflierstutors.com/images/"+getImages[i]
+              document.getElementById('tagImages'+i).src = "api.shareyaspace.com/images/"+getImages[i]
               putImages.innerHTML =
               
-                      '<a href="https://share.highflierstutors.com/images/'+getImages[i]+'" class="gal-link popup-image"><i class="fa fa-search"></i></a>'
+                      '<a href="api.shareyaspace.com/images/'+getImages[i]+'" class="gal-link popup-image"><i class="fa fa-search"></i></a>'
         
 
           document.getElementById('tagImages'+i).append(putImages)
@@ -1504,7 +1522,7 @@ function addBooking(){
 
                   //document.getElementById('loader-wrap').style.display = 'block';
 
-                  await fetch('https://share.highflierstutors.com/api/listingsave',{
+                  await fetch('api.shareyaspace.com/api/listingsave',{
                     method: "POST",        
                     body: formData,
                     // credentials: 'include',
@@ -1573,8 +1591,8 @@ function addBooking(){
             getparsedUrlId = isNaN(parsedUrlId);
 
           // //document.getElementById('loader-wrap').style.display = 'block';
-          axios.get('https://api.shareyaspace.com/listing')
-          // axios.get('https://share.highflierstutors.com/api/listing')
+          axios.get('https://api.shareyaspace.com/api/listing')
+          // axios.get('api.shareyaspace.com/api/listing')
           .then(function (response) 
         {
 
@@ -1619,7 +1637,7 @@ function addBooking(){
                           '<div class="listing-item" style="cursor:pointer; height:25rem">'+
                           '<article class="geodir-category-listing fl-wrap">'+
                               '<div class="geodir-category-img">'+
-                                  '<a onclick="getUserId(id)" id="'+filteredStates[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+filteredStates[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
+                                  '<a onclick="getUserId(id)" id="'+filteredStates[i].listing.id+'">'+'<img src="api.shareyaspace.com/images/'+filteredStates[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
                                   '<div class="listing-avatar">'+'<a id="getUserId(id)">'+'<img src="./images/avatar/avatar-bg.png" alt="" style="object-fit: cover;">'+'</a>'+
                                     '<span class="avatar-tooltip">Added By<strong> '+filteredStates[i].host.firstname+" "+filteredStates[i].host.lastname+' </strong></span>'+
                                   '</div>'+
@@ -1680,7 +1698,7 @@ function addBooking(){
                         '<div class="listing-item" style="cursor:pointer; height:25rem">'+
                           '<article class="geodir-category-listing fl-wrap">'+
                             '<div class="geodir-category-img">'+
-                              '<a onclick="getUserId(id)" id="'+filteredStates[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+filteredStates[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
+                              '<a onclick="getUserId(id)" id="'+filteredStates[i].listing.id+'">'+'<img src="api.shareyaspace.com/images/'+filteredStates[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
                               '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png" alt="" style="object-fit: cover;">'+'</a>'+
                                 '<span class="avatar-tooltip">Added By<strong> '+filteredStates[i].host.firstname+" "+filteredStates[i].host.lastname+' </strong></span>'+
                               '</div>'+
@@ -1802,7 +1820,7 @@ function addBooking(){
                             '<div class="listing-item" style="cursor:pointer; float:left; height:25rem">'+
                               '<article class="geodir-category-listing fl-wrap">'+
                                   '<div class="geodir-category-img">'+
-                                      '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
+                                      '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="api.shareyaspace.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
                                       '<div class="listing-avatar">'+'<a id="getUserId(id)">'+'<img src="./images/avatar/avatar-bg.png" alt="" style="object-fit: cover;">'+'</a>'+
                                         '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                                       '</div>'+
@@ -1862,7 +1880,7 @@ function addBooking(){
                           '<div class="listing-item" style="cursor:pointer; height:25rem">'+
                             '<article class="geodir-category-listing fl-wrap">'+
                               '<div class="geodir-category-img">'+
-                                '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
+                                '<a onclick="getUserId(id)" id="'+response.data.data[i].listing.id+'">'+'<img src="api.shareyaspace.com/images/'+response.data.data[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
                                 '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png" alt="" style="object-fit: cover;">'+'</a>'+
                                   '<span class="avatar-tooltip">Added By<strong> '+response.data.data[i].host.firstname+" "+response.data.data[i].host.lastname+' </strong></span>'+
                                 '</div>'+
@@ -1984,7 +2002,7 @@ async function findsinglehosting(){
   //document.getElementById('loader-wrap').style.display = 'block';
   loadIt();   
 
-  await axios.get('https://share.highflierstutors.com/api/listing')
+  await axios.get('api.shareyaspace.com/api/listing')
   .then(function (response) {
 
   if (response.status !== 200){
@@ -2043,7 +2061,7 @@ async function findsinglehosting(){
               '<div class="gallery-item listing-item" style="cursor:pointer;">'+
               '<article class="geodir-category-listing fl-wrap">'+
                   '<div class="geodir-category-img">'+
-                      '<a onclick="getUserId(id)" id="'+hostsingle[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+hostsingle[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
+                      '<a onclick="getUserId(id)" id="'+hostsingle[i].listing.id+'">'+'<img src="api.shareyaspace.com/images/'+hostsingle[i].listing.attachments.split(',')[0]+'" alt="" style="object-fit: cover;">'+'</a>'+
                       '<div class="listing-avatar">'+'<a id="getUserId(id)">'+'<img src="./images/avatar/avatar-bg.png" alt="" style="object-fit: contain;">'+'</a>'+
                         '<span class="avatar-tooltip">Added By<strong> '+hostsingle[i].host.firstname+" "+hostsingle[i].host.lastname+' </strong></span>'+
                       '</div>'+
@@ -2104,7 +2122,7 @@ async function findsinglehosting(){
               '<div class="listing-item">'+
                 '<article class="geodir-category-listing fl-wrap">'+
                   '<div class="geodir-category-img">'+
-                    '<a onclick="getUserId(id)" id="'+hostsingle[i].listing.id+'">'+'<img src="https://share.highflierstutors.com/images/'+hostsingle[i].listing.attachments.split(',')[0]+'" alt=""  style="object-fit: cover;">'+'</a>'+
+                    '<a onclick="getUserId(id)" id="'+hostsingle[i].listing.id+'">'+'<img src="api.shareyaspace.com/images/'+hostsingle[i].listing.attachments.split(',')[0]+'" alt=""  style="object-fit: cover;">'+'</a>'+
                     '<div class="listing-avatar">'+'<a href="author-single.html">'+'<img src="./images/avatar/avatar-bg.png" alt="">'+'</a>'+
                       '<span class="avatar-tooltip">Added By<strong> '+hostsingle[i].host.firstname+" "+hostsingle[i].host.lastname+' </strong></span>'+
                     '</div>'+
@@ -2200,7 +2218,7 @@ async function findsinglehosting(){
 }
 
 function populatecountry(){
-  // axios.get('https://share.highflierstutors.com/api/allcountry')
+  // axios.get('api.shareyaspace.com/api/allcountry')
   // .then(function (response) {
   // if (response.status !== 200){
   //     console.warn('Looks like there was a problem. error: ' +
@@ -2230,7 +2248,7 @@ function populatecountry(){
 function populatestate(){
   //document.getElementById('loader-wrap').style.display = 'block';
 
-  axios.get('https://share.highflierstutors.com/api/ngstatecities')
+  axios.get('api.shareyaspace.com/api/ngstatecities')
   .then(function (response) {
   if (response.status !== 200){
       console.warn('Looks like there was a problem. error: ' +
@@ -2271,7 +2289,7 @@ function getCity(){
   if(sool.value == "Lagos"){  
     
 
-    axios.get('https://share.highflierstutors.com/api/lagcities')
+    axios.get('api.shareyaspace.com/api/lagcities')
     .then(function (response) {
     if (response.status !== 200){
 
@@ -2305,7 +2323,7 @@ function populateCombo() {
 
   
   //document.getElementById('loader-wrap').style.display = 'block';
-  axios.get('https://share.highflierstutors.com/api/allCategory')
+  axios.get('api.shareyaspace.com/api/allCategory')
 
     .then(function (response) {
     if (response.status !== 200){
@@ -2334,7 +2352,7 @@ async function postNewFavorite(vid){
   
 
 
-          axios.post('https://share.highflierstutors.com/api/favorite',{
+          axios.post('api.shareyaspace.com/api/favorite',{
             userId: favUser,
             listingId : vid
           })
@@ -2416,9 +2434,9 @@ function crosscheckFavorite(vid){
 async function allfavorite(){
 
   // loadIt()
-  // axios.get('https://share.highflierstutors.com/api/favorite')
+  // axios.get('api.shareyaspace.com/api/favorite')
  
-  await fetch('https://share.highflierstutors.com/api/favorite',{
+  await fetch('api.shareyaspace.com/api/favorite',{
   
     headers: {
       Authorization: 'Bearer '  + localStorage.getItem('token')}
@@ -2457,7 +2475,7 @@ async function loadAllFavoriteListing(){
 
                 li.innerHTML = 
                 '<li class="clearfix" style="cursor: pointer;">'+
-                  '<a  id="'+favoptions[i].listingDetails.listing.id+'" onclick=getUserId(id) class="widget-posts-img"><img src="https://share.highflierstutors.com/images/'+favoptions[i].listingDetails.listing.attachments.split(',')[0]+'"alt="" class="respimg">'+
+                  '<a  id="'+favoptions[i].listingDetails.listing.id+'" onclick=getUserId(id) class="widget-posts-img"><img src="api.shareyaspace.com/images/'+favoptions[i].listingDetails.listing.attachments.split(',')[0]+'"alt="" class="respimg">'+
                     '<div class="widget-posts-descr">'+
                         '<a >'+favoptions[i].listingDetails.listing.spaceTitle+'</a>'+
                         '<div class="listing-rating card-popup-rainingvis" data-starrating2="5">'+
@@ -2488,7 +2506,7 @@ async function getHomeStates(){
 
   //document.getElementById('loader-wrap').style.display = 'block';
  
-      await axios.get('https://share.highflierstutors.com/api/ngstatecities', {
+      await axios.get('api.shareyaspace.com/api/ngstatecities', {
 
        
       })  
@@ -2515,7 +2533,7 @@ async function getHomeStates(){
       });
 
 
-      await axios.get('https://share.highflierstutors.com/api/listing')
+      await axios.get('api.shareyaspace.com/api/listing')
       .then(function (response) {
         if (response.status !== 200){
           console.warn('Looks like there was a problem. error: ' +
@@ -2734,7 +2752,7 @@ function createConversation(){
 
 async function allConversation(){
   loadIt();
-  axios.get('https://share.highflierstutors.com/api/chatconversation')
+  axios.get('api.shareyaspace.com/api/chatconversation')
   .then(function (response) {
   if (response.status !== 200){
    
@@ -2745,8 +2763,8 @@ async function allConversation(){
     keepallchatmeesage = response.data.data;
 // alert('error')
    
-    console.log(keepallchatmeesage)
-    alert('error')
+    // console.log(keepallchatmeesage)
+    // alert('error')
 
     var element = document.getElementById("chatlist");
 
@@ -2754,36 +2772,54 @@ async function allConversation(){
       element.removeChild(element.firstChild)
     }
   
-    
-    for(let i = 0; i < keepallchatmeesage.length; i++){
+    if(keepallchatmeesage.length > 0){
+      for(let i = 0; i < keepallchatmeesage.length; i++){
 
-      lastmessage = keepallchatmeesage[i].chatmessages.length;
-      console.log(lastmessage)
-
+        lastmessage = keepallchatmeesage[i].chatmessages.length;
+        // console.log(lastmessage)
+  
+        var div =  document.createElement("div");
+  
+        div.innerHTML =     
+        '<a class="chat-contacts-item" href="javascript:void(0)" id="'+keepallchatmeesage[i].id+'" onclick="openMessage(id)">'+
+          '<div class="dashboard-message-avatar">'+
+              '<img src="images/avatar/avatar-bg.png" alt="">'+
+              '<div class="message-counter">'+lastmessage+'</div>'+
+          '</div>'+
+          '<div class="chat-contacts-item-text">'+
+              '<h4>'+keepallchatmeesage[i].user.firstname+" "+keepallchatmeesage[i].user.lastname+'</h4>'+
+              '<span>'+keepallchatmeesage[i].created_at.split('T')[0]+'</span>'+
+              '<p>'+keepallchatmeesage[i].chatmessages[lastmessage-1].body+'</p>'+
+          '</div>'+
+        '</a>'
+  
+       
+       
+       element.appendChild(div);
+       
+      }
+  
+      if(currentMessageId.length > 0){
+        openMessage(currentMessageId);
+      }
+    }
+    else{
       var div =  document.createElement("div");
-
+  
       div.innerHTML =     
-      '<a class="chat-contacts-item" href="javascript:void(0)" id="'+keepallchatmeesage[i].id+'" onclick="openMessage(id)">'+
-        '<div class="dashboard-message-avatar">'+
-            '<img src="images/avatar/avatar-bg.png" alt="">'+
-            '<div class="message-counter">'+lastmessage+'</div>'+
-        '</div>'+
+      
         '<div class="chat-contacts-item-text">'+
-            '<h4>'+keepallchatmeesage[i].user.firstname+" "+keepallchatmeesage[i].user.lastname+'</h4>'+
-            '<span>'+keepallchatmeesage[i].created_at.split('T')[0]+'</span>'+
-            '<p>'+keepallchatmeesage[i].chatmessages[lastmessage-1].body+'</p>'+
-        '</div>'+
-      '</a>'
+            '<h4 style="color:red; font-weight:300; margin-top: 10rem" >No Message</h4>'+
+            
+        '</div>'
+    
 
      
      
      element.appendChild(div);
-     
     }
-
-    if(currentMessageId.length > 0){
-      openMessage(currentMessageId);
-    }
+    
+  
     
     
   }
@@ -2821,7 +2857,7 @@ if(filteredchatmessages[0].chatmessages[i].user_id == userId){
 
 '<div class="chat-message chat-message_user fl-wrap">'+
 '<div class="dashboard-message-avatar">'+
-   ' <img src="https://share.highflierstutors.com/images/267094325.jpeg" alt="">'+
+   ' <img src="api.shareyaspace.com/images/267094325.jpeg" alt="">'+
    '<span>'+userFirstname+'</span>'+
 ' </div>'+
 ' <span class="massage-date">'+dasy[0]+'<span>'+dasy[1].split(':')[0]+'.'+dasy[1].split(':')[1]+'</span></span>'+
@@ -2840,7 +2876,7 @@ else{
 
   '<div class="chat-message chat-message_guest fl-wrap">'+
   '<div class="dashboard-message-avatar">'+
-     ' <img src="https://share.highflierstutors.com/images/267094325.jpeg" alt="">'+
+     ' <img src="api.shareyaspace.com/images/267094325.jpeg" alt="">'+
      '<span>'+filteredchatmessages[0].user.firstname+'</span>'+
  ' </div>'+
  ' <span class="massage-date">'+filteredchatmessages[0].chatmessages[i].created_at.split('T')[0]+' <span>'+dasy[1].split(':')[0]+'.'+dasy[1].split(':')[1]+'</span></span>'+
@@ -2865,7 +2901,7 @@ async function sendMessage(){
   if(document.getElementById('messagetext').value.length > 0){
     alert( filteredchatmessages[0].chatmessages[0].chat_conversation_id)
 
-    axios.post('https://share.highflierstutors.com/api/chatmessage',{
+    axios.post('api.shareyaspace.com/api/chatmessage',{
       body: document.getElementById('messagetext').value,
       chat_conversation_id: filteredchatmessages[0].chatmessages[0].chat_conversation_id
     })
@@ -2885,7 +2921,7 @@ async function sendMessage(){
     
 //       '<div class="chat-message chat-message_guest fl-wrap">'+
 //       '<div class="dashboard-message-avatar">'+
-//          ' <img src="https://share.highflierstutors.com/images/267094325.jpeg" alt="">'+
+//          ' <img src="api.shareyaspace.com/images/267094325.jpeg" alt="">'+
 //          '<span>'+userFirstname+'</span>'+
 //      ' </div>'+
 //      ' <span class="massage-date">'+filteredchatmessages[0].chatmessages[0].created_at.split('T')[0]+' <span>'+dasy[1].split(':')[0]+'.'+dasy[1].split(':')[1]+'</span></span>'+
@@ -2905,13 +2941,14 @@ async function sendMessage(){
 }
 
 
-async function bookNow(){
+function bookNow(){
   
-  document.getElementById('billinglistingname').value = keepsinglespacetitle
-  document.getElementById('billingfirstname').value = userFirstname
-  document.getElementById('billinglastname').value = userLastname
-  document.getElementById('billingemail').value = userEmail
-  document.getElementById('billingphone').value = userPhone
+  alert(userFirstname)
+  // document.getElementById('billinglistingname').value = keepsinglespacetitle
+  // document.getElementById('billingfirstname').value = userFirstname
+  // document.getElementById('billinglastname').value = userLastname
+  // document.getElementById('billingemail').value = userEmail
+  // document.getElementById('billingphone').value = userPhone
   // document.getElementById('billinglistingname').value = keepsinglespacetitle
 }
 // spinner.className = "show";
