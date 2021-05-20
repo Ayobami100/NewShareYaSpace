@@ -1591,7 +1591,7 @@ function addBooking(){
             getparsedUrlId = isNaN(parsedUrlId);
 
           // //document.getElementById('loader-wrap').style.display = 'block';
-          axios.get('https://api.shareyaspace.com/api/listing')
+          axios.get('api.shareyaspace.com/api/listing')
           // axios.get('api.shareyaspace.com/api/listing')
           .then(function (response) 
         {
@@ -2436,28 +2436,28 @@ async function allfavorite(){
   // loadIt()
   // axios.get('api.shareyaspace.com/api/favorite')
  
-  await fetch('api.shareyaspace.com/api/favorite',{
+  await fetch('/api.shareyaspace.com/api/favorite',{
   
     headers: {
       Authorization: 'Bearer '  + localStorage.getItem('token')}
 
         })
-        .then(response =>  response.json())
-        .then(json => {
-          console.log(json.data)
-          console.log(userId)
-        if(json.data != null & json.data != undefined){
-        favoptions = json.data
-              localStorage.setItem('favUser',json.data.length)
-            // console.log(json.data)
-              // console.log(favoptions)
-              document.getElementById('favoritecounter').innerText = json.data.length;
-              console.log(json.data.length)
+  //       .then(response =>  response.json())
+  //       .then(json => {
+  //         console.log(json.data)
+  //         console.log(userId)
+  //       if(json.data != null & json.data != undefined){
+  //       favoptions = json.data
+  //             localStorage.setItem('favUser',json.data.length)
+  //           // console.log(json.data)
+  //             // console.log(favoptions)
+  //             document.getElementById('favoritecounter').innerText = json.data.length;
+  //             console.log(json.data.length)
 
-            loadAllFavoriteListing();
-        }
+  //           loadAllFavoriteListing();
+  //       }
        
-  })
+  // })
   .catch(function (err) {
     //document.getElementById('loader-wrap').style.display = 'none';
     console.error('Fetch Error -', err);
@@ -2506,7 +2506,7 @@ async function getHomeStates(){
 
   //document.getElementById('loader-wrap').style.display = 'block';
  
-      await axios.get('api.shareyaspace.com/api/ngstatecities', {
+      await axios.get('/api.shareyaspace.com/api/ngstatecities', {
 
        
       })  
