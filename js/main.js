@@ -415,6 +415,7 @@ function loadIt()
      
       document.getElementById('userValue').innerText = userFirstname + " " + userLastname;
       allfavorite();
+      alert('oooo')
     // }
 
     // document.getElementById('userValue').innerText = " ";
@@ -1594,7 +1595,7 @@ function addBooking(){
             getparsedUrlId = isNaN(parsedUrlId);
 
           // //document.getElementById('loader-wrap').style.display = 'block';
-          axios.get('https://share.highflierstutors.com/api/listing')
+          axios.get('https://api.shareyaspace.com/api/listing')
           // axios.get('https://share.highflierstutors.com/api/listing')
           .then(function (response) 
         {
@@ -1621,6 +1622,7 @@ function addBooking(){
                 console.log(filteredStates);
 
                 if(filteredStates != null & filteredStates != ""){
+
                   for(let i = 0; i < filteredStates.length; i++)
                   {
 
@@ -1782,7 +1784,7 @@ function addBooking(){
                       
                   var div =  document.createElement("div");
                   div.innerHTML = 
-                  '<div  style="margin-top: 100px; font-weight: bold;color : red">'+
+                  '<div  style="margin-bottom: 5rem; font-weight: 300;color : red">'+
                 '<h1>No Listing Available</h1>'+
                 '</div>'
                   element.append(div);
@@ -2251,7 +2253,7 @@ function populatecountry(){
 function populatestate(){
   //document.getElementById('loader-wrap').style.display = 'block';
 
-  axios.get('https://share.highflierstutors.com/api/ngstatecities')
+  axios.get('https://api.shareyaspace.com/api/ngstatecities')
   .then(function (response) {
   if (response.status !== 200){
       console.warn('Looks like there was a problem. error: ' +
@@ -2292,7 +2294,7 @@ function getCity(){
   if(sool.value == "Lagos"){  
     
 
-    axios.get('https://share.highflierstutors.com/api/lagcities')
+    axios.get('https://api.shareyaspace.com/api/lagcities')
     .then(function (response) {
     if (response.status !== 200){
 
@@ -2435,7 +2437,7 @@ function crosscheckFavorite(vid){
 
 }
 async function allfavorite(){
-
+alert('ppppp')
   // loadIt()
   // axios.get('https://share.highflierstutors.com/api/favorite')
  
@@ -2445,22 +2447,22 @@ async function allfavorite(){
       Authorization: 'Bearer '  + localStorage.getItem('token')}
 
         })
-  //       .then(response =>  response.json())
-  //       .then(json => {
-  //         console.log(json.data)
-  //         console.log(userId)
-  //       if(json.data != null & json.data != undefined){
-  //       favoptions = json.data
-  //             localStorage.setItem('favUser',json.data.length)
-  //           // console.log(json.data)
-  //             // console.log(favoptions)
-  //             document.getElementById('favoritecounter').innerText = json.data.length;
-  //             console.log(json.data.length)
+        .then(response =>  response.json())
+        .then(json => {
+          console.log(json.data)
+          console.log(userId)
+        if(json.data != null & json.data != undefined){
+        favoptions = json.data
+              localStorage.setItem('favUser',json.data.length)
+            // console.log(json.data)
+              // console.log(favoptions)
+              document.getElementById('favoritecounter').innerText = json.data.length;
+              console.log(json.data.length)
 
-  //           loadAllFavoriteListing();
-  //       }
+            loadAllFavoriteListing();
+        }
        
-  // })
+  })
   .catch(function (err) {
     //document.getElementById('loader-wrap').style.display = 'none';
     console.error('Fetch Error -', err);
