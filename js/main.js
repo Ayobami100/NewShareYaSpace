@@ -177,7 +177,7 @@ async function loginUser() {
               //document.getElementById('loader-wrap').style.display = 'block';
         
         
-          await axios.post('https://share.highflierstutors.com/api/login', {
+          await axios.post('https://api.shareyaspace.com/api/login', {
         
             email: email,
             password: password
@@ -281,7 +281,7 @@ else{
   //document.getElementById('loader-wrap').style.display = 'block';
 
 
-  await axios.post('https://share.highflierstutors.com/api/register', {
+  await axios.post('https://api.shareyaspace.com/api/register', {
     firstname: firstname,
     lastname: lastname,
     email: emailreg,
@@ -415,7 +415,7 @@ function loadIt()
      
       document.getElementById('userValue').innerText = userFirstname + " " + userLastname;
       allfavorite();
-      alert('oooo')
+      // alert('oooo')
     // }
 
     // document.getElementById('userValue').innerText = " ";
@@ -551,7 +551,7 @@ async function getreviewlength(){
 loadIt()
   //document.getElementById('loader-wrap').style.display = 'block';
 
-  await axios.get('https://share.highflierstutors.com/api/review',{
+  await axios.get('https://api.shareyaspace.com/api/review',{
 
     // headers: {
     //   'Authorization': `Bearer ${puser}` 
@@ -597,7 +597,7 @@ loadIt()
               var finduserwithid = totalreview[i].userId;
               var usernameReview;
 
-              axios.get('https://share.highflierstutors.com/api/findUser/'+finduserwithid)
+              axios.get('https://api.shareyaspace.com/api/findUser/'+finduserwithid)
             
                 
               .then(function (response) {
@@ -607,7 +607,7 @@ loadIt()
               })
                 // ======================================================================================================================
              
-                axios.get('https://share.highflierstutors.com/api/listing')
+                axios.get('https://api.shareyaspace.com/api/listing')
 
                 .then(function (response) 
               {
@@ -730,7 +730,7 @@ async function getlistinglength(){
 
   //document.getElementById('loader-wrap').style.display = 'block';
 
-  await axios.get('https://share.highflierstutors.com/api/listing')
+  await axios.get('https://api.shareyaspace.com/api/listing')
 
     
   .then(function (response) {
@@ -817,7 +817,7 @@ async function getbookinglength(){
  
 
 
-    await axios.get('https://share.highflierstutors.com/api/order',{
+    await axios.get('https://api.shareyaspace.com/api/order',{
 
     // headers: {
     //   'Authorization': `Bearer ${puser}` }
@@ -917,7 +917,7 @@ function getUserListing() {
     //document.getElementById('loader-wrap').style.display = 'block';
    
     loadIt();
-    // await axios.get('https://share.highflierstutors.com/api/listing')
+    // await axios.get('https://api.shareyaspace.com/api/listing')
 
     // .then(function (response) {
       // console.log(response)
@@ -946,7 +946,7 @@ function getUserReview() {
    
 
 
-    // await axios.get('https://share.highflierstutors.com/api/review')
+    // await axios.get('https://api.shareyaspace.com/api/review')
 
     
     // .then(function (response) {
@@ -1048,7 +1048,7 @@ function getUserBooking() {
     //document.getElementById('loader-wrap').style.display = 'block';
     // loadIt();
 
-    // await axios.get('https://share.highflierstutors.com/api/order')
+    // await axios.get('https://api.shareyaspace.com/api/order')
   
     // .then(function (response) {
     //   console.log(response)
@@ -1072,7 +1072,7 @@ async function findlisting(){
 
   //document.getElementById('loader-wrap').style.display = 'block';
 
-  await axios.get('https://share.highflierstutors.com/api/listingfind/'+keeplist+'')
+  await axios.get('https://api.shareyaspace.com/api/listingfind/'+keeplist+'')
   .then(function (response) {
 if(response.status == 200){
 
@@ -1096,7 +1096,7 @@ async function postNewReview(){
       
   //document.getElementById('loader-wrap').style.display = 'block';
        
-      await axios.post('https://share.highflierstutors.com/api/review', {
+      await axios.post('https://api.shareyaspace.com/api/review', {
 
         comments: comment,
         rating: rating,
@@ -1139,7 +1139,7 @@ async function postNewBooking(){
       
   //document.getElementById('loader-wrap').style.display = 'block';
        
-      await axios.post('https://share.highflierstutors.com/api/order', {
+      await axios.post('https://api.shareyaspace.com/api/order', {
 
        
     
@@ -1189,7 +1189,7 @@ if(parsedUrlId ){
     // //document.getElementById('loader-wrap').style.display = 'block';
     // showSpinner();
    
-    await axios.get('https://share.highflierstutors.com/api/listingfind/'+parsedUrlId+'')
+    await axios.get('https://api.shareyaspace.com/api/listingfind/'+parsedUrlId+'')
     .then(function (response) {
     if (response.status !== 200){
         console.warn('Looks like there was a problem. error: ' +
@@ -1526,7 +1526,7 @@ function addBooking(){
 
                   //document.getElementById('loader-wrap').style.display = 'block';
 
-                  await fetch('https://share.highflierstutors.com/api/listingsave',{
+                  await fetch('https://api.shareyaspace.com/api/listingsave',{
                     method: "POST",        
                     body: formData,
                     // credentials: 'include',
@@ -1596,7 +1596,7 @@ function addBooking(){
 
           // //document.getElementById('loader-wrap').style.display = 'block';
           axios.get('https://api.shareyaspace.com/api/listing')
-          // axios.get('https://share.highflierstutors.com/api/listing')
+          // axios.get('https://api.shareyaspace.com/api/listing')
           .then(function (response) 
         {
 
@@ -1633,9 +1633,11 @@ function addBooking(){
                           
                         // console.log(filteredStates[i].reviews[i].rating )
                       
-                      if(filteredStates[i].reviews[0] != undefined){
+                      if(filteredStates[i].reviews.length > 0){
               
                         for (let j = 0;j < filteredStates[i].reviews.length;j++){
+
+                          console.log(filteredStates[i].reviews[j].rating)
                       
                           var div =  document.createElement("div");
                           div.innerHTML = 
@@ -1649,7 +1651,7 @@ function addBooking(){
                                 
                                   // '<div class="sale-window">Sale 20%</div>'+
                                   '<div class="geodir-category-opt">'+
-                                    '<div class="listing-rating card-popup-rainingvis" data-starrating2 ="'+filteredStates[i].reviews[j].rating.split('.')[0]+'"></div>'+
+                                    '<div class="listing-rating card-popup-rainingvis" data-starrating2 ="3"></div>'+
                                       '<div class="rate-class-name">'+
                                           '<div class="score" id="score"><strong>Very Good</strong>'+ Object.values(filteredStates[i].reviews).length +" Reviews"+'</div>'+
                                               '<span>'+filteredStates[i].reviews[j].rating+'</span>'+
@@ -2007,7 +2009,7 @@ async function findsinglehosting(){
   //document.getElementById('loader-wrap').style.display = 'block';
   loadIt();   
 
-  await axios.get('https://share.highflierstutors.com/api/listing')
+  await axios.get('https://api.shareyaspace.com/api/listing')
   .then(function (response) {
 
   if (response.status !== 200){
@@ -2223,7 +2225,7 @@ async function findsinglehosting(){
 }
 
 function populatecountry(){
-  // axios.get('https://share.highflierstutors.com/api/allcountry')
+  // axios.get('https://api.shareyaspace.com/api/allcountry')
   // .then(function (response) {
   // if (response.status !== 200){
   //     console.warn('Looks like there was a problem. error: ' +
@@ -2328,7 +2330,7 @@ function populateCombo() {
 
   
   //document.getElementById('loader-wrap').style.display = 'block';
-  axios.get('https://share.highflierstutors.com/api/allCategory')
+  axios.get('https://api.shareyaspace.com/api/allCategory')
 
     .then(function (response) {
     if (response.status !== 200){
@@ -2357,7 +2359,7 @@ async function postNewFavorite(vid){
   
 
 
-          axios.post('https://share.highflierstutors.com/api/favorite',{
+          axios.post('https://api.shareyaspace.com/api/favorite',{
             userId: favUser,
             listingId : vid
           })
@@ -2437,11 +2439,11 @@ function crosscheckFavorite(vid){
 
 }
 async function allfavorite(){
-alert('ppppp')
+// alert('ppppp')
   // loadIt()
-  // axios.get('https://share.highflierstutors.com/api/favorite')
+  // axios.get('https://api.shareyaspace.com/api/favorite')
  
-  await fetch('https://share.highflierstutors.com/api/favorite',{
+  await fetch('https://api.shareyaspace.com/api/favorite',{
   
     headers: {
       Authorization: 'Bearer '  + localStorage.getItem('token')}
@@ -2511,7 +2513,7 @@ async function getHomeStates(){
 
   //document.getElementById('loader-wrap').style.display = 'block';
  
-      await axios.get('https://share.highflierstutors.com/api/ngstatecities', {
+      await axios.get('https://api.shareyaspace.com/api/ngstatecities', {
 
        
       })  
@@ -2538,7 +2540,7 @@ async function getHomeStates(){
       });
 
 
-      await axios.get('https://share.highflierstutors.com/api/listing')
+      await axios.get('https://api.shareyaspace.com/api/listing')
       .then(function (response) {
         if (response.status !== 200){
           console.warn('Looks like there was a problem. error: ' +
@@ -2757,7 +2759,7 @@ function createConversation(){
 
 async function allConversation(){
   loadIt();
-  axios.get('https://share.highflierstutors.com/api/chatconversation')
+  axios.get('https://api.shareyaspace.com/api/chatconversation')
   .then(function (response) {
   if (response.status !== 200){
    
@@ -2906,7 +2908,7 @@ async function sendMessage(){
   if(document.getElementById('messagetext').value.length > 0){
     alert( filteredchatmessages[0].chatmessages[0].chat_conversation_id)
 
-    axios.post('https://share.highflierstutors.com/api/chatmessage',{
+    axios.post('https://api.shareyaspace.com/api/chatmessage',{
       body: document.getElementById('messagetext').value,
       chat_conversation_id: filteredchatmessages[0].chatmessages[0].chat_conversation_id
     })
