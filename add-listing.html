@@ -19,7 +19,7 @@
         document.getElementById('signout').style.display = 'none';
         document.getElementById('signin').style.display = 'none';
           document.getElementById('dropit').style.display = 'none';
-            document.getElementById('becomehost').style.display = 'none';
+        document.getElementById('becomehost').style.display = 'none';
         // document.getElementById('avatar').src = res.data.user.imgProfile;
         
         document.getElementById('reg').style.display = 'none';
@@ -57,6 +57,8 @@
                     </div>
                     <a href="add-listing.html" id="addlisting" class="add-Listing">Add Listing <span><i
                                 class="far fa-plus"></i></span></a>
+                    <a href="host.html" id="becomehost" class="add-Listing">Become a Host <span><i class="far fa-plus"></i></span></a>
+
                     <a href="register.html" id="reg" class="add-Listing">Register <span><i
                                 class="far fa-plus"></i></span></a>
                     <div class="show-reg-form modal-open" id="signin"><i class="fa fa-sign-in"></i>Sign In</div>
@@ -359,7 +361,7 @@
                                                     <input type="text" id="organization" placeholder="Organization Name"  />
                                                 </div>
     
-                                                <div class="col-md-6">
+                                                <div>
                                                     <label>Guest Only<i class="fa fa-user"></i></label>
                                                         <div class="listsearch-input-item">
                                                             <select id="guestonly"  >
@@ -373,7 +375,17 @@
                                                         </div>
     
                                                 </div>
-                                                <div class="col-md-6">
+                                                   
+                                                    <!-- </div> -->
+                                                
+    
+                                                <div class="col-12">
+                                                    
+                                                    
+                                                </div>
+                                                <div class="col-md-12">
+
+
                                                     <label>Space Owner<i class="fa fa-home"></i></label>
                                                     <!-- <div class="listsearch-input-item"> -->
                                                         <select  id="spaceowner"  >
@@ -381,17 +393,11 @@
                                                             <option value="yes">Yes</option>
                                                             <option value="no">No</option>                                                        
                                                         </select>
-                                                    <!-- </div> -->
-                                                </div>
-    
-                                                <div class="col-md-6">
+                                                        
                                                     <label>Space Rules<i class="fa fa-expand"></i></label>
                                                     
                                                         <input type="text" placeholder="Enter Space Rule"  id="spacerules"/>
                                                         
-                                                    
-                                                </div>
-                                                <div class="col-md-12">
                                                     <div class="row">
     
                                                         <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">

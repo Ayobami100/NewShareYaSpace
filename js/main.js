@@ -32,6 +32,8 @@ let fav = 0 ;
  const userOtp = localStorage.getItem('otp');
  const userEmail = localStorage.getItem('email');
  const userPhone = localStorage.getItem('phone');
+ const userCountry = localStorage.getItem('country');
+ 
  const userimgProfile = "api.shareyaspace.com/images/1276705039.jpg";
 
 // =====================================================================================================================================================
@@ -196,7 +198,9 @@ async function loginUser() {
                 console.log(response.data.user.lastname)
                 console.log(response.data.user.role)
           
-          
+
+
+                localStorage.setItem('getalluserdetails', response.data.user)
                 localStorage.setItem('id', response.data.user.id);
                 localStorage.setItem('firstname', response.data.user.firstname);
                 localStorage.setItem('lastname', response.data.user.lastname);
@@ -205,6 +209,7 @@ async function loginUser() {
                 localStorage.setItem('role', response.data.user.role);
                 localStorage.setItem('email', response.data.user.email);
                 localStorage.setItem('phone', response.data.user.number);
+                localStorage.setItem('country', response.data.user.country);
           
                 //document.getElementById('loader-wrap').style.display = 'none';
                 alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
@@ -318,6 +323,7 @@ else{
         localStorage.setItem('imgProfile', response.data.data.imgProfile);
         localStorage.setItem('email', response.data.data.email);
         localStorage.setItem('phone', response.data.data.number);
+        localStorage.setItem('country', response.data.user.country);
 
 
 
@@ -441,11 +447,13 @@ function loadIt()
 
     if(document.body.contains(document.getElementById('category'))){
       
-      // document.getElementById('showdiscount').style.display = "none"
+      document.getElementById('showdiscount').style.display = "none"
     populateCombo()
     populatecountry()
     populatestate()
     document.getElementById('newlisting').reset();
+
+    alert('564')
    
     }
      
@@ -453,9 +461,9 @@ function loadIt()
     //If it isn't "undefined" and it isn't "null", then it exists.
     if(document.body.contains(document.getElementById('allreview'))){
       
-      getreviewlength();
-    getlistinglength();
-    getbookinglength()
+    //   getreviewlength();
+    // getlistinglength();
+    // getbookinglength()
     }
  
     if(document.body.contains(document.getElementById('sent'))){
@@ -463,6 +471,7 @@ function loadIt()
       document.getElementById('sent').style.display = 'none'
     }
     
+    alert('890')
   }
   
   else {
@@ -1236,7 +1245,9 @@ if(parsedUrlId ){
          document.getElementById('billingfirstname').value = userFirstname
          document.getElementById('billinglastname').value = userLastname
          document.getElementById('billingemail').value = userEmail
-         document.getElementById('billingphone').value = userPhone
+         document.getElementById('billingphone').value = userPhone;
+         document.getElementById('billingcountry').value = userCountry
+
         console.log(userEmail)
      
         //  document.getElementById('bookedprice').value = response.data.data[0].listing.price;
@@ -2289,8 +2300,8 @@ function populatestate(){
   console.error('Fetch Error -', err);
 });
 }
-function getCity(){
-
+async function getCity(){
+alert('568')
   let sool = document.getElementById('state');
  
   if(sool.value == "Lagos"){  
@@ -2328,7 +2339,7 @@ function getCity(){
 
 function populateCombo() {
 
-  
+  // loadIt()
   //document.getElementById('loader-wrap').style.display = 'block';
   axios.get('https://api.shareyaspace.com/api/allCategory')
 
@@ -2350,6 +2361,12 @@ function populateCombo() {
     .catch(function (err) {
       console.error('Fetch Error -', err);
     });
+
+    populatecountry()
+    populatestate()
+    document.getElementById('newlisting').reset();
+
+    
 }
 
 async function postNewFavorite(vid){
@@ -2440,26 +2457,28 @@ function crosscheckFavorite(vid){
 }
 async function allfavorite(){
 // alert('ppppp')
-  // loadIt()
-  // axios.get('https://api.shareyaspace.com/api/favorite')
+//   loadIt()
+  axios.get('https://api.shareyaspace.com/api/favorite')
  
-  await fetch('https://api.shareyaspace.com/api/favorite',{
+  // await fetch('https://api.shareyaspace.com/api/favorite',{
   
-    headers: {
-      Authorization: 'Bearer '  + localStorage.getItem('token')}
+  //   headers: {
+  //     Authorization: 'Bearer '  + localStorage.getItem('token')}
 
-        })
-        .then(response =>  response.json())
-        .then(json => {
-          console.log(json.data)
+  //       })
+        .then(response => 
+        //    response.json())
+        // .then(json => 
+          {
+          console.log(response.data)
           console.log(userId)
-        if(json.data != null & json.data != undefined){
-        favoptions = json.data
-              localStorage.setItem('favUser',json.data.length)
+        if(response.data.data != null & response.data.data != undefined){
+        favoptions = response.data.data
+              localStorage.setItem('favUser',response.data.data.length)
             // console.log(json.data)
               // console.log(favoptions)
-              document.getElementById('favoritecounter').innerText = json.data.length;
-              console.log(json.data.length)
+              document.getElementById('favoritecounter').innerText = response.data.data.length;
+              console.log(response.data.data.length)
 
             loadAllFavoriteListing();
         }
