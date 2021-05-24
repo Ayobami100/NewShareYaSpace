@@ -453,7 +453,7 @@ function loadIt()
     populatestate()
     document.getElementById('newlisting').reset();
 
-    alert('564')
+    // alert('564')
    
     }
      
@@ -471,7 +471,7 @@ function loadIt()
       document.getElementById('sent').style.display = 'none'
     }
     
-    alert('890')
+    // alert('890')
   }
   
   else {
@@ -2301,7 +2301,7 @@ function populatestate(){
 });
 }
 async function getCity(){
-alert('568')
+// alert('568')
   let sool = document.getElementById('state');
  
   if(sool.value == "Lagos"){  
