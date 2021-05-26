@@ -33,6 +33,9 @@ let fav = 0 ;
  const userEmail = localStorage.getItem('email');
  const userPhone = localStorage.getItem('phone');
  const userCountry = localStorage.getItem('country');
+ const userAddress = localStorage.getItem('address');
+
+
  
  const userimgProfile = "api.shareyaspace.com/images/1276705039.jpg";
 
@@ -55,7 +58,7 @@ let totalbooking;
 
 // =========================Amenities and Legal Agreement===================================================================
 let keepallamenity = []
-let keeplegal = ""
+let keeplegal = "2"
 let keepallchatmeesage = ""
 let currentMessageId = ""
 
@@ -210,6 +213,7 @@ async function loginUser() {
                 localStorage.setItem('email', response.data.user.email);
                 localStorage.setItem('phone', response.data.user.number);
                 localStorage.setItem('country', response.data.user.country);
+                localStorage.setItem('address', response.data.user.address);
           
                 //document.getElementById('loader-wrap').style.display = 'none';
                 alert('You are Logged in Successfully ' + localStorage.getItem('firstname'))
@@ -451,6 +455,8 @@ function loadIt()
     populateCombo()
     populatecountry()
     populatestate()
+ 
+    
     document.getElementById('newlisting').reset();
 
     // alert('564')
@@ -461,9 +467,9 @@ function loadIt()
     //If it isn't "undefined" and it isn't "null", then it exists.
     if(document.body.contains(document.getElementById('allreview'))){
       
-    //   getreviewlength();
-    // getlistinglength();
-    // getbookinglength()
+      getreviewlength();
+    getlistinglength();
+    getbookinglength()
     }
  
     if(document.body.contains(document.getElementById('sent'))){
@@ -557,7 +563,7 @@ function loadIt()
 
 async function getreviewlength(){
 
-loadIt()
+// loadIt()
   //document.getElementById('loader-wrap').style.display = 'block';
 
   await axios.get('https://api.shareyaspace.com/api/review',{
@@ -768,7 +774,7 @@ async function getlistinglength(){
                 div.innerHTML = 
                 '<div class="dashboard-list">'+
                 '<div class="dashboard-message">'+
-                   ' <span class="new-dashboard-item">New</span>'+
+                  //  ' <span class="new-dashboard-item">New</span>'+
                     '<div class="listing-table-image">'+
                         '<a href="listing-single.html"><img src="api.shareyaspace.com/images/'+name+'" alt="" class="respimg"></a>'+
                     '</div>'+
@@ -820,7 +826,7 @@ async function getlistinglength(){
 
 }
 async function getbookinglength(){
-  loadIt();
+  // loadIt();
 
   //document.getElementById('loader-wrap').style.display = 'block';
  
@@ -852,12 +858,12 @@ async function getbookinglength(){
           var div =  document.createElement("div");
             div.innerHTML = 
           '<div class="dashboard-message">'+
-          '<span class="new-dashboard-item">New</span>'+
+            
          ' <div class="dashboard-message-avatar">'+
              '<img src="images/avatar/avatar-bg.png" alt="">'+
           '</div>'+
           '<div class="dashboard-message-text">'+
-             '<h4>'+filteredbooking[i].User.firstname+' <span>27 December 2021</span></h4>'+
+             '<h4>'+filteredbooking[i].User.firstname+' <span>'+filteredbooking[i].order.updated_at.split('T')[0]+'</span></h4>'+
               '<div class="booking-details fl-wrap">'+
                  '<span class="booking-title">Listing Item :</span> :'+
                   '<span class="booking-text"><a href="listing-sinle.html">'+filteredbooking[i].listingDetails.listing.spaceTitle+'</a></span>'+
@@ -882,9 +888,19 @@ async function getbookinglength(){
                   '<span class="booking-title">Payment State :</span> '+
                   '<span class="booking-text"> <strong class="done-paid">Paid  </strong>'+filteredbooking[i].order.paymentMode+'</span>'+
               '</div>'+
+
+              '<ul class="listing-table-opt  fl-wrap">'+
+              '<li><a href="javascript:void(0)" onclick="acceptBook()">Accept <i class="fal fa-edit"></i></a></li>'+
+              '<li><a href="javascript:void(0)" class="del-btn"  onclick="cancelBook()">Cancel <i class="fal fa-trash-alt"></i></a></li>'+
+              '<li><a href="javascript:void(0)" class="del-btn"  onclick="rejectBook()">Reject <i class="fal fa-trash-alt"></i></a></li>'+
+              // '<li><a href="#" class="del-btn">Delete <i class="fal fa-trash-alt"></i></a></li>'+
+              
+          '</ul>'+
               '<span class="fw-separator"></span>'+
               '<p></p>'+
+              
           '</div>'+
+        
       '</div>'
   
       var element = document.getElementById("dashboard-listing");
@@ -1494,9 +1510,11 @@ function addBooking(){
             endDate = end2;
 
           // =====================================================================
-              for(const file of inpFile.files){
-                formData.append('attachments[]',file)
-              }      
+          for(let file of inpFile.files){
+            // formData.append('attachments[]',file)
+            console.log(file)
+          }    
+
 
                 formData.append('spaceTitle' , document.getElementById('spacetitle').value)
                 formData.append('address'  , address);
@@ -1534,10 +1552,15 @@ function addBooking(){
                 formData.append('postcode' , 'null');
 
 
+                for(let file of inpFile.files){
+                  formData.append('attachments[]',file)
+                  
+                }    
+
 
                   //document.getElementById('loader-wrap').style.display = 'block';
 
-                  await fetch('https://api.shareyaspace.com/api/listingsave',{
+                  await axios('https://api.shareyaspace.com/api/listingsave',{
                     method: "POST",        
                     body: formData,
                     // credentials: 'include',
@@ -1547,11 +1570,10 @@ function addBooking(){
                     // headers['content-type'] = 'multipart/form-data; boundary'
                   }
                 
-                  )  .then(response =>  response.json())
-                  .then(json => {
+                  )  .then(response => {
                   
                   
-                    if (json == 200){
+                    if (response == 200){
                       //document.getElementById('loader-wrap').style.display = 'none';
                       
                       document.getElementById("listmessage").style.display="block";
@@ -1570,8 +1592,23 @@ function addBooking(){
                       // alert(response.error)
                     }
                   }).catch(function (error) {
-                    //document.getElementById('loader-wrap').style.display = 'none';
-                    console.log('Fetch Error -', error);
+                    if (error.response) {
+                      // The request was made and the server responded with a status code
+                      // that falls out of the range of 2xx
+                      console.log(error.response.data);
+                      console.log(error.response.status);
+                      console.log(error.response.headers);
+                      
+                    } else if (error.request) {
+                      // The request was made but no response was received
+                      // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+                      // http.ClientRequest in node.js
+                      console.log(error.request);
+                    } else {
+                      // Something happened in setting up the request that triggered an Error
+                      console.log('Error', error.message);
+                    }
+                    console.log(error.config);
                   });
 
                 
@@ -1845,7 +1882,7 @@ function addBooking(){
                                     
                                       // '<div class="sale-window">Sale 20%</div>'+
                                       '<div class="geodir-category-opt">'+
-                                        '<div class="listing-rating card-popup-rainingvis" data-starrating2 ="'+response.data.data[i].reviews[j].rating.split('.')[0]+'"></div>'+
+                                        '<div class="listing-rating card-popup-rainingvis" data-starrating2 ="4"></div>'+
                                           '<div class="rate-class-name">'+
                                               '<div class="score" id="score"><strong>Very Good</strong>'+ Object.values(response.data.data[i].reviews).length +" Reviews"+'</div>'+
                                                   '<span>'+response.data.data[i].reviews[j].rating+'</span>'+
@@ -2735,6 +2772,7 @@ function getAmenity(id){
   
   idp = document.getElementById(id)
 
+  
   if(id == "check"){
     if(idp.checked ==  true)
     {
@@ -2981,3 +3019,21 @@ function bookNow(){
 // setTimeout(() => {
 //   spinner.className = spinner.className.replace("show", "");
 // }, 5000);
+
+
+function editProfile(){
+  loadIt();
+
+  document.getElementById('firstname').value = userFirstname
+  document.getElementById('lastname').value = userLastname
+  document.getElementById('email').value = userEmail
+  document.getElementById('phone').value = userPhone;
+  // document.getElementById('country').value = userCountry
+  document.getElementById('start').value = userDOB
+  document.getElementById('address').value = userAddress;
+
+  // var newData = JSON.parse(userAddress)
+  // console.log(userAddress)
+
+ 
+}
