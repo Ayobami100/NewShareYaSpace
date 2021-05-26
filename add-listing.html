@@ -311,191 +311,197 @@
                     <div class="container">
                         <!--dasboard-wrap-->
                         <div class="dasboard-wrap fl-wrap">
-                            <!-- dashboard-content-->
-                            <div class="dashboard-content fl-wrap">
-                                <h1 style="font-weight: 800;"> ADD NEW LISTING</h1>
-                                <div class="box-widget-item-header">                                
-                                    <h3> Basic Information</h3>
-                                </div>
-                                <!-- profile-edit-container-->
-                                <div class="profile-edit-container">
-                                    <!-- enctype='multipart/form-data' -->
-                                        <!-- <form action="POST">
-                                            <input type="file" onChange={(e) => this.handleFile(e)}/>
-                                        </form> -->
-                                    <form  onsubmit="return false;" id='newlisting' >
-                                        <div class="custom-form">
-                                       
-                                            <div class="row">
-                                                <div class="col-lg-12" >
-                                                    <label>Listing Title <i class="fal fa-briefcase"></i></label>
-                                                    <input type="text" placeholder="Name of your Listing"  id="spacetitle" />
-                                                </div>
-                                              
+                            <div class="profile-edit-container">
+                                <!-- dashboard-content-->
+                                <!-- <div class="dashboard-content fl-wrap"> -->
+                                <div class="custom-form">
+                              
+                                    <div class="box-widget-item-header">     
+                                        <h1 style="font-weight: 800;"> ADD NEW LISTING</h1>                           
+                                        <h3> Basic Information</h3>
+                                    </div>
+                                    <!-- profile-edit-container-->
+                                
+                                        <!-- enctype='multipart/form-data' -->
+                                            <!-- <form action="POST">
+                                                <input type="file" onChange={(e) => this.handleFile(e)}/>
+                                            </form> -->
+                                
+                                    <div class="">
+                                        
+                                        <form method="post" name="registerform" onsubmit="return false;" id="newlisting">
                                             
-                                                <div class="col-md-6">
-                                                    <label>Type / Category<i class="fa-arrow-down"></i></label>
-                                                        <!-- <select id="locality-dropdown" name="locality">
-                                                        </select> -->
-                                                        <select data-placeholder="Room Type" name="repopt" id="category" >
-                                                            <option value="0" selected>Type / Category</option>
-                                                            
-                                                        </select>
-                                                    
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Address <i class="fa fa-street-view"></i></label>
-                                                    <input type="text" placeholder="Enter Listing Address" id="address" />
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Entire Space<i class="fa fa-asterisk"></i></label>
-                                                    <select data-placeholder="Room Type" name="repopt" id="entirespace"   >
-                                                        <option value="0" selected>---</option>
-                                                        <option value="yes">Yes</option>
-                                                        <option value="no">No</option>
-                                                        
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>Organization <i class="fa fa-sitemap"></i></label>
-                                                    <input type="text" id="organization" placeholder="Organization Name"  />
-                                                </div>
-    
-                                                <div>
-                                                    <label>Guest Only<i class="fa fa-user"></i></label>
-                                                        <div class="listsearch-input-item">
-                                                            <select id="guestonly"  >
-                                                                <option value="0" selected>---</option>
-                                                                <option value="yes">Yes</option>
-                                                                <option value="no">No</option>
-                                                                
-                                                            </select>
-                                                            <!--data-formula -->
-                                                            <!-- <input type="text" name="item_total" class="hid-input"    data-form="{repopt}"> -->
-                                                        </div>
-    
-                                                </div>
-                                                   
+                                        
+                                            
+                                                <!-- </div> -->
+                                            
+
+                                            <div class="col-12">
+                                                
+                                                
+                                            </div>
+                                            <div class="col-md-12">
+
+
+                                                    <!-- <div class="col-lg-12" > -->
+                                                        <label>Listing Title <i class="fal fa-briefcase"></i></label>
+                                                        <input type="text" placeholder="Name of your Listing"  id="spacetitle" />
                                                     <!-- </div> -->
                                                 
-    
-                                                <div class="col-12">
-                                                    
-                                                    
-                                                </div>
-                                                <div class="col-md-12">
-
-
-                                                    <label>Space Owner<i class="fa fa-home"></i></label>
-                                                    <!-- <div class="listsearch-input-item"> -->
-                                                        <select  id="spaceowner"  >
+                                                
+                                                    <!-- <div class="col-md-6"> -->
+                                                        <label>Type / Category<i class="fa-arrow-down"></i></label>
+                                                            <!-- <select id="locality-dropdown" name="locality">
+                                                            </select> -->
+                                                            <select data-placeholder="Room Type" name="repopt" id="category" >
+                                                                <option value="0" selected>Type / Category</option>
+                                                                
+                                                            </select>
+                                                        
+                                                    <!-- </div>// -->
+                                                    <!-- <div class="col-md-6"> -->
+                                                        <label>Address <i class="fa fa-street-view"></i></label>
+                                                        <input type="text" placeholder="Enter Listing Address" id="address" />
+                                                    <!-- </div> -->
+                                                    <!-- <div class="col-md-6"> -->
+                                                        <label>Entire Space<i class="fa fa-asterisk"></i></label>
+                                                        <select data-placeholder="Room Type" name="repopt" id="entirespace"   >
                                                             <option value="0" selected>---</option>
                                                             <option value="yes">Yes</option>
-                                                            <option value="no">No</option>                                                        
+                                                            <option value="no">No</option>
+                                                            
                                                         </select>
-                                                        
-                                                    <label>Space Rules<i class="fa fa-expand"></i></label>
-                                                    
-                                                        <input type="text" placeholder="Enter Space Rule"  id="spacerules"/>
-                                                        
-                                                    <div class="row">
-    
-                                                        <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
-                                                            <label>Number of Rooms<i class="fa fa-sitemap"></i></label>
-                                                            <div class="quantity">
-                                                                <input id="numberofrooms" type="number" min="1" max="90"
-                                                                    step="1" value="1" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
-                                                            <label>Number of Guest</label>
-                                                            <div class="quantity">
-                                                                <input id="numberofguest" type="number" min="1" max="90"
-                                                                    step="1" value="1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
-                                                            <label>Bathrooms</label>
-                                                            <div class="quantity">
-                                                                <input id="bathrooms" type="number" min="1" max="90" step="1"
-                                                                    value="1">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
-                                                            <label>beds</label>
-                                                            <div class="quantity">
-                                                                <input id="beds" type="number" min="1" max="90" step="1"
-                                                                    value="1">
-                                                            </div>
-                                                        </div>
+                                                    <!-- </div> -->
+                                                    <!-- <div class="col-md-6"> -->
+                                                        <label>Organization <i class="fa fa-sitemap"></i></label>
+                                                        <input type="text" id="organization" placeholder="Organization Name"  />
+                                                    <!-- </div> -->
         
-                                                    </div>
-                                                </div>
-                                              
-                                               
-                                                <div class="col-md-6">
-                                                    <label>Country<i class="fa fa-globe-asia"></i></label>
-                                                    <select data-placeholder="Room Type" name="repopt"   id="country" >
-                                                        <option value="Nigeria" selected disabled>Nigeria</option>
-                                                        
+                                                    <!-- <div> -->
+                                                        <label>Guest Only<i class="fa fa-user"></i></label>
+                                                            <div class="listsearch-input-item">
+                                                                <select id="guestonly"  >
+                                                                    <option value="0" selected>---</option>
+                                                                    <option value="yes">Yes</option>
+                                                                    <option value="no">No</option>
+                                                                    
+                                                                </select>
+                                                                <!--data-formula -->
+                                                                <!-- <input type="text" name="item_total" class="hid-input"    data-form="{repopt}"> -->
+                                                            </div>
+        
+                                                    <!-- </div> -->
+
+                                                <label>Space Owner<i class="fa fa-home"></i></label>
+                                                <!-- <div class="listsearch-input-item"> -->
+                                                    <select  id="spaceowner"  >
+                                                        <option value="0" selected>---</option>
+                                                        <option value="yes">Yes</option>
+                                                        <option value="no">No</option>                                                        
                                                     </select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>State <i class="fa fa-street-view"></i></label>
-                                                    <select data-placeholder="Room Type"  id="state" onchange="getCity()" >
-                                                        <option value="0" selected>Choose State</option>
-                                                        
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label>City<i class="fa fa-road"></i></label>
-                                                    <select data-placeholder="Room Type" name="repopt"   id="city" >
-                                                        <option value="0" selected>Choose City</option>
-                                                        
-                                                    </select>
-                                                </div>
-                                                <!-- <div class="col-md-6"  >
-                                                    <label>Price <i class="fa fa-key"></i></label>
-                                                    <input type="text" placeholder=""  id="price" enabled/>
-                                                </div> -->
+
+                                                <label>Space Rules<i class="fa fa-expand"></i></label>
                                                 
-                                                <div class="col-md-6">
-                                                    <label>Price<i class="fas fa-money-check-alt"></i></label>
-                                                    <input type="text" placeholder="Enter Listing Price"  id="price"/>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <div class="col-md-12">
-                                                        <div class="col-list-search-input-item in-loc-dec date-container  ">
-                                                            <label>Listing Period<i class="fal fa-calendar-check"></i></label>
-                                                            <span class="header-search-input-item-icon"></span>
-                                                            <input type="text"   placeholder="When" name="dates" id="listingdate" />
+                                                    <input type="text" placeholder="Enter Space Rule"  id="spacerules"/>
+                                                    
+                                                <div class="row">
+
+                                                    <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
+                                                        <label>Number of Rooms<i class="fa fa-sitemap"></i></label>
+                                                        <div class="quantity">
+                                                            <input id="numberofrooms" type="number" min="1" max="90"
+                                                                step="1" value="1" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
+                                                        <label>Number of Guest</label>
+                                                        <div class="quantity">
+                                                            <input id="numberofguest" type="number" min="1" max="90"
+                                                                step="1" value="1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
+                                                        <label>Bathrooms</label>
+                                                        <div class="quantity">
+                                                            <input id="bathrooms" type="number" min="1" max="90" step="1"
+                                                                value="1">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-3 col-lg-2 col-xs-6">
+                                                        <label>beds</label>
+                                                        <div class="quantity">
+                                                            <input id="beds" type="number" min="1" max="90" step="1"
+                                                                value="1">
                                                         </div>
                                                     </div>
     
                                                 </div>
-    
-                                                <div class="col-md-6">
-                                                    <label>Discount <i class="fa fa-american-sign-language-interpreting"></i></label>
-                                                    <input type="text" placeholder="Enter Discounted Price"  id="discount"/>
-                                                </div>
-                                               
-                                                <div class="col-md-12" id="showdiscount">   
-                                                        <div class="header-search-input-item date-parent">
-                                                            <label>Discount Period<i class="fal fa-calendar-check"></i></label>
-                                                            <span class="header-search-input-item-icon"></span>
-                                                            <input type="text"   placeholder="When" name="dates" id="discountperiod"   />
-                                                           
-                                                        </div>
-                                                        <!-- <div class="header-search-input-item fl-wrap date-parent">
-                                                            <label>Date In-Out </label>
-                                                            <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
-                                                            <input type="text" placeholder="When" name="header-search"   enabled/>
-                                                        </div>                    -->
-                                                </div>                                          
-                                               
                                             </div>
+                                        
+                                        
+                                            <div class="col-md-6">
+                                                <label>Country<i class="fa fa-globe-asia"></i></label>
+                                                <select data-placeholder="Room Type" name="repopt"   id="country" >
+                                                    <option value="Nigeria" selected disabled>Nigeria</option>
+                                                    
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>State <i class="fa fa-street-view"></i></label>
+                                                <select data-placeholder="Room Type"  id="state" onchange="getCity()" >
+                                                    <option value="0" selected>Choose State</option>
+                                                    
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>City<i class="fa fa-road"></i></label>
+                                                <select data-placeholder="Room Type" name="repopt"   id="city" >
+                                                    <option value="0" selected>Choose City</option>
+                                                    
+                                                </select>
+                                            </div>
+                                            <!-- <div class="col-md-6"  >
+                                                <label>Price <i class="fa fa-key"></i></label>
+                                                <input type="text" placeholder=""  id="price" enabled/>
+                                            </div> -->
+                                            
+                                            <div class="col-md-6">
+                                                <label>Price<i class="fas fa-money-check-alt"></i></label>
+                                                <input type="text" placeholder="Enter Listing Price"  id="price"/>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-12">
+                                                    <div class="col-list-search-input-item in-loc-dec date-container  ">
+                                                        <label>Listing Period<i class="fal fa-calendar-check"></i></label>
+                                                        <span class="header-search-input-item-icon"></span>
+                                                        <input type="text"   placeholder="When" name="dates" id="listingdate" />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <label>Discount <i class="fa fa-american-sign-language-interpreting"></i></label>
+                                                <input type="text" placeholder="Enter Discounted Price"  id="discount"/>
+                                            </div>
+                                        
+                                            <div class="col-md-12" id="showdiscount">   
+                                                    <div class="header-search-input-item date-parent">
+                                                        <label>Discount Period<i class="fal fa-calendar-check"></i></label>
+                                                        <span class="header-search-input-item-icon"></span>
+                                                        <input type="text"   placeholder="When" name="dates" id="discountperiod"   />
+                                                    
+                                                    </div>
+                                                    <!-- <div class="header-search-input-item fl-wrap date-parent">
+                                                        <label>Date In-Out </label>
+                                                        <span class="header-search-input-item-icon"><i class="fal fa-calendar-check"></i></span>
+                                                        <input type="text" placeholder="When" name="header-search"   enabled/>
+                                                    </div>                    -->
+                                            </div>                                          
+                                        
+                                        
                                             <!-- profile-edit-container end-->
-                                          
+                                        
                                             <!-- profile-edit-container-->
                                             <div class="profile-edit-container">
                                                 <div class="custom-form">
@@ -505,7 +511,7 @@
 
                                                         <input enctype='multipart/form-data' type="file" id="docpicker" 
                                                         accept=".jpg,.jpeg,.png,.svg"
-                                                         class="form-control" multiple/>   
+                                                        class="form-control" multiple/>   
                                                         
                                                         
                                                     </div>
@@ -546,26 +552,26 @@
                                                     <!-- Checkboxes -->
                                                     <ul class="fl-wrap filter-tags">
                                                         <li>
-                                                            <input id="wifi" type="checkbox" name="check" value="Free WiFi;" onchange="getAmenity(id)">
+                                                            <input id="wifi" type="checkbox" name="check" value="Free WiFi" onchange="getAmenity(id)">
                                                             <label for="wifi">Free WiFi</label>
                                                         </li>
                                                         <li>
-                                                            <input id="parking" type="checkbox" name="check" value="Parking;" onchange="getAmenity(id)">
+                                                            <input id="parking" type="checkbox" name="check" value="Parking" onchange="getAmenity(id)">
                                                             <label for="parkimg">Parking</label>
                                                         </li>
                                                         <li>
-                                                            <input id="fitness" type="checkbox" name="check" value="Fitness Center;"  onchange="getAmenity(id)">
+                                                            <input id="fitness" type="checkbox" name="check" value="Fitness Center"  onchange="getAmenity(id)">
                                                             <label for="fitness">Fitness Center</label>
                                                         </li>
-                                                      
-                                                      
+                                                    
+                                                    
                                                         <li>
-                                                            <input id="smoking" type="checkbox" name="check" value="Non-smoking Rooms;"  onchange="getAmenity(id)">
+                                                            <input id="smoking" type="checkbox" name="check" value="Non-smoking Rooms"  onchange="getAmenity(id)">
                                                             <label for="smoking">Non-smoking Rooms</label>
                                                         </li>
-                                                     
+                                                    
                                                         <li>
-                                                            <input id="air" type="checkbox" name="check" value="Air Conditioning;" onchange="getAmenity(id)">
+                                                            <input id="air" type="checkbox" name="check" value="Air Conditioning" onchange="getAmenity(id)">
                                                             <label for="air">Air Conditioning</label>
                                                         </li>
                                                     </ul>
@@ -582,20 +588,22 @@
                                                 <div class="custom-form">
                                                     
                                                 
-                                               
+                                            
                                                     <button class="btn color2-bg float-btn" type="submit" id="filly" onclick="postNewListing()">Save Listing<i class=""></i></button>
                                                     
                                                 </div>
                                                 <p id="listmessage"></p>
                                             </div>
                                             <!-- profile-edit-container end-->
-                                        </div>    
-                                    </form>
-                                  
-                                    <!-- dashboard-list-box end-->
+                                        </form>
+                                    </div>
                                 </div>
+                                    <!-- dashboard-list-box end-->
+                                
                                 <!-- dasboard-wrap end-->
                             </div>
+                        </div>
+                    </div>
                 </section>
                 <div class="limit-box fl-wrap"></div>
             </div>

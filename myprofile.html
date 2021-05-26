@@ -34,7 +34,7 @@
         <!--=============== favicons ===============-->
         <link rel="shortcut icon" href="images/favicon.ico">
     </head>
-     <body>
+     <body onload="editProfile()">
         <!--loader-->
       <div class="loader-wrap" id="loader-wrap">
      
@@ -319,7 +319,18 @@
                                                 <li><a href="#">Expire</a><span>3</span></li> -->
                                             </ul>
                                         </li>
-                                        <li><a href="bookings.html"> <i class="far fa-calendar-check"></i> Bookings</a></li>
+                                         <li><a href="bookings.html"> <i class="far fa-calendar-check"></i> Bookings</a>
+                                        
+                                            <ul>
+                                                <li><a href="myprofile.html">Cancelled Bookings</a></li>
+                                                <li><a href="password.html">Rejected Bookings</a></li>
+                                                <li><a href="password.html">Accepted Bookings</a></li>
+                                                <li><a href="password.html">Pending Bookings</a></li>
+                                            </ul>
+                                        </li>
+                                        
+                                        
+                                        
                                         <li><a href="review.html"><i class="far fa-comments"></i> Reviews </a></li>
                                     </ul>
                                 </div>
@@ -355,7 +366,7 @@
                                                 <label>Your Last Name <i class="far fa-user"></i></label>
                                                 <input type="text" placeholder="Enter Last Name" value="" id="lastname" required />
                                                 <label>Email Address<i class="far fa-envelope"></i> </label>
-                                                <input type="email" placeholder="username@example.com" value="" id="emailreg"
+                                                <input type="email" placeholder="username@example.com" value="" id="email"
                                                     required />
                                                
                                                     <label for="start">Date of Birth<i class="far fa-calendar"></i></label>
@@ -369,13 +380,13 @@
                                                     max="2020-01-01" required> -->
     
                                                 <label> Country <i class="far fa-globe"></i> </label>
-                                                    <select required name="country" id="country" selected disabled id="country">
+                                                    <select required name="country" id="country"  selected disabled >
                                                         <option value="nigeria">Nigeria</option>
                                                     </select>
 
                                                     <label> Address <i class="fas fa-map-marker"></i> </label>
                                                     <input type="text" placeholder="No 234 Iyana ipaja Lagos State" 
-                                                        id="" required />
+                                                        id="address" required />
     
                                                 <label>Phone<i class="far fa-phone"></i> </label>
                                                     <input type="text" value="+234" id="phone" required />
@@ -393,7 +404,7 @@
     
                                                 <div class="profile-edit-container">
                                                     <div class="custom-form">
-                                                        <button class="btn color2-bg  float-btn" onclick="">Save Changes<i class="fal fa-save"></i></button>
+                                                        <button class="btn color2-bg  float-btn" onclick="">Update Changes<i class="fal fa-save"></i></button>
     
                                                     </div>
                                                 </div>
